@@ -17,6 +17,9 @@ class SpotForm(FlaskForm):
     guest = IntegerField('guests',validators=[DataRequired()])
     bedroom = IntegerField('bedrooms',validators=[DataRequired()])
     bathroom = IntegerField('bathrooms',validators=[DataRequired()])
+
+    images =FieldList(StringField('image'))
+
     image = StringField("image", validators=[DataRequired()])
     
     # images = StringField('image')

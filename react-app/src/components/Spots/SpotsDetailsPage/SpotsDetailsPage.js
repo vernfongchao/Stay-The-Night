@@ -1,17 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 const SpotsDetailsPage = () => {
     const { id } = useParams ()
     console.log(id)
     const spots = useSelector(state => state.spots)
     const spot = spots[id]
     console.log(spot)
-    
+
+    const [errorImage,setErrorImage] = useState(spot?.images[1])
+
     useEffect(() =>{
         window.scrollTo(0, 0)
     },[])
 
+    const handleImage = (e) => {
+        e.src="../../../../images/image-not-found-scaled.png"
+        setErrorImage("../../../../images/image-not-found-scaled.png")
+    }
+    console.log(spot?.images[0])
 
     return(
         <div className="details-page-container">
@@ -24,7 +32,9 @@ const SpotsDetailsPage = () => {
                 <p>{spot.state}</p>
                 <p>{spot.country}</p>
             </div>
-            <img src={spot?.images[0]}>
+            {/* <img src={errorImage}>
+            </img> */}
+            <img src={""} onError={handleImage}>
             </img>
             <div>
                 <h3>Hosted By: {spot.first} {spot.last}</h3>

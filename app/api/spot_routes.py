@@ -31,7 +31,7 @@ def post_spot():
     form = SpotForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print("/n/n THIS IS THE SPOT OBJECT /n/n===============================================================================", request.data)
+        print("/n/n THIS IS THE SPOT OBJECT /n/n===============================================================================", form.data)
         spot = Spot()
         
         form.populate_obj(spot)
