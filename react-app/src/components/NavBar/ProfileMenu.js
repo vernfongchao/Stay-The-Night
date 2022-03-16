@@ -2,6 +2,8 @@ import React,{useState} from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
+import LoginFormModal from "../auth/LoginFormModal";
+import SignUpFormModal from "../auth/SignUpFormModal";
 
 const ProfileMenu = () => {
     const user = useSelector(state => state.session.user)
@@ -11,12 +13,8 @@ const ProfileMenu = () => {
     if (!user) {
         profileMenu = (
             <div>
-                <div>
-                    {/* Login Modal */}
-                </div>
-                <div>
-                    {/* Sign up Modal} */}
-                </div>
+                <LoginFormModal/>
+                <SignUpFormModal />
             </div>
         )
     } else if (user) {
