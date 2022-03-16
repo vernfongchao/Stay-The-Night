@@ -46,6 +46,7 @@ def post_spot():
             spot_id = spot.id,
             image = image
         )
+        
         db.session.add(new_image)
         db.session.commit()
 

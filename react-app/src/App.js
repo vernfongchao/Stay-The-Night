@@ -5,10 +5,12 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import SpotsPage from './components/Spots/SpotsPage';
+import SpotsDetailsPage from './components/Spots/SpotsDetailsPage/SpotsDetailsPage';
 // import UsersList from './components/UsersList';
 // import User from './components/User';
 import { authenticate } from './store/session';
-import {getSpots} from './store/spot'
+import { getSpots } from './store/spot'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,6 +37,12 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route exact path='/spots'>
+          <SpotsPage />
+        </Route>
+        <Route path='/spots/:id'>
+          <SpotsDetailsPage />
         </Route>
         {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList />

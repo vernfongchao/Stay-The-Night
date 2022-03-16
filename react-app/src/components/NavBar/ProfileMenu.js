@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
 
 const ProfileMenu = () => {
@@ -22,7 +23,12 @@ const ProfileMenu = () => {
         profileMenu = (
             <div>
                 <div>
-                    {/* Profile Page */}
+                    <p>Hello {user?.username.length > 10 ? user?.username.slice(0,10) : user?.username }</p>
+                </div>
+                <div>
+                    <Link to={`/profile/${user?.id}`}>
+                        My Profile
+                    </Link>
                 </div>
                 <div>
                     <LogoutButton />
@@ -40,10 +46,9 @@ const ProfileMenu = () => {
         <div className="profile-menu-container">
             <div className="profile-menu-button-container">
                 <button className="profile-menu-button" onClick={toggleMenu}>
-
                 </button>
             </div>
-            (showMenu && { profileMenu })
+            {showMenu &&  profileMenu }
         </div>
     )
 }
