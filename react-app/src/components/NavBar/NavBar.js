@@ -1,12 +1,22 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+// import { NavLink } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
+import ProfileMenu from './ProfileMenu';
 
 const NavBar = () => {
+
   return (
     <nav>
       <ul>
+        <ProfileMenu />
+        {/* <li>
+          <NavLink to='/profile/:id'>
+
+          </NavLink>
+        </li>
+
+
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
@@ -26,10 +36,7 @@ const NavBar = () => {
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
           </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

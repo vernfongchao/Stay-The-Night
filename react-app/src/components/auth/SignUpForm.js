@@ -5,6 +5,8 @@ import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
+  const [first, setFirst] = useState('')
+  const [last, setLast] = useState('')
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,12 +16,21 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
+    const data = await dispatch(signUp(first, last, username, email, password, repeatPassword));
+    if (data) {
+      setErrors(data)
+      if(password !== repeatPassword){
+        setPassword("")
+        setRepeatPassword("")
       }
     }
+  };
+  const updateFirst = (e) => {
+    setFirst(e.target.value);
+  };
+
+  const updateLast = (e) => {
+    setLast(e.target.value);
   };
 
   const updateUsername = (e) => {
@@ -50,7 +61,25 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
-        <label>User Name</label>
+      <label>First Name</label>
+        <input
+          type='text'
+          name='username'
+          onChange={updateFirst}
+          value={first}
+        ></input>
+      </div>
+      <div>
+      <label>Last Name</label>
+        <input
+          type='text'
+          name='username'
+          onChange={updateLast}
+          value={last}
+        ></input>
+      </div>
+      <div>
+        <label>Username</label>
         <input
           type='text'
           name='username'
@@ -83,7 +112,6 @@ const SignUpForm = () => {
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
         ></input>
       </div>
       <button type='submit'>Sign Up</button>

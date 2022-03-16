@@ -26,6 +26,12 @@ function User() {
         <strong>User Id</strong> {userId}
       </li>
       <li>
+        <strong>First Name</strong> {user.first}
+      </li>
+      <li>
+        <strong>Last Name</strong> {user.second}
+      </li>
+      <li>
         <strong>Username</strong> {user.username}
       </li>
       <li>
