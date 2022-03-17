@@ -8,7 +8,6 @@ const SpotsDetailsPage = () => {
     const user = useSelector(state => state.session.user)
     const spots = useSelector(state => state.spots)
     const spot = spots[id]
-    console.log(spot)
 
     // const [errorImage,setErrorImage] = useState(spot?.images[0])
 
@@ -17,7 +16,7 @@ const SpotsDetailsPage = () => {
     }, [])
 
     const handleImage = (e) => {
-        e.target.src = "../../../../images/image-not-found-scaled.png"
+        e.target.src = "https://a0.muscache.com/im/pictures/bc5774ec-57b5-43cf-864d-4d13eb3785a7.jpg?im_w=1200"
         // setErrorImage("../../../../images/image-not-found-scaled.png")
     }
 

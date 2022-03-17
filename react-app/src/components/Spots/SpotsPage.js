@@ -18,7 +18,6 @@ const SpotsPage = () => {
         <div>
             {spotsArr?.map(spot => (
                 <div key ={spot.id}>
-                    {console.log(spot)}
                     <Link to={`/spots/${spot.id}`} spot={spot} id = {`image-spots-${spot.id}`}>
                         <img onError={handleImage} src={spot.images[0].image} alt={`spots #${spot.id}`}>
                         </img>

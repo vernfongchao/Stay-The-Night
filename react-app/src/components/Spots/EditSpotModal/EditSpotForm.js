@@ -8,7 +8,9 @@ import './EditSpotForm.css'
 
 const EditSpotForm = ({ setShowModal }) => {
     const dispatch = useDispatch()
-    const { seteditDeleteModal } = useEditDeleteModal()
+    const { editDeleteModal,setEditDeleteModal } = useEditDeleteModal()
+
+    // console.log(editDeleteModal,setEditDeleteModal)
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
     const spots = useSelector(state => state.spots)
@@ -75,11 +77,9 @@ const EditSpotForm = ({ setShowModal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const edit_images = [...imageFields]
-        console.log(edit_images)
 
         if (edit_images.length > images.length) {
             edit_images.forEach((image, index) => {
-                console.log(image)
                 if (spot.images[index]){
                     image["id"] = spot.images[index].id
                 } else {
@@ -98,7 +98,6 @@ const EditSpotForm = ({ setShowModal }) => {
                 }
             })
         }
-
 
         const edit_spot = {
             spot_id: id,
@@ -119,8 +118,8 @@ const EditSpotForm = ({ setShowModal }) => {
         if (data.errors) {
             setErrors(data.errors)
         } else if (data) {
-            // console.log(data)
             setShowModal(false)
+            setEditDeleteModal(false)
         }
     }
 
@@ -148,7 +147,7 @@ const EditSpotForm = ({ setShowModal }) => {
         <div className="spot-edit-form-page">
             {imageFields?.map(({ image }) => (image.length !== 0 &&
                 <img src={image}
-                    onError={(e) => e.target.src = "../../../../images/image-not-found-scaled.png"}
+                    onError={(e) => e.target.src = "https://a0.muscache.com/im/pictures/bc5774ec-57b5-43cf-864d-4d13eb3785a7.jpg?im_w=1200"}
                     alt="House"
                     width="100px"
                     height="100px">

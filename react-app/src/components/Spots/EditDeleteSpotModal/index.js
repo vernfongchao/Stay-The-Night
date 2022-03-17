@@ -6,17 +6,17 @@ export const EditDeleteContext = createContext()
 export const useEditDeleteModal = () => useContext(EditDeleteContext)
 
 const EditDeleteModal = () => {
-    const [editDeleteModal, seteditDeleteModal] = useState(false)
+    const [editDeleteModal, setEditDeleteModal] = useState(false)
 
     return (
         <EditDeleteContext.Provider
-            value={{ editDeleteModal, seteditDeleteModal }}>
+            value={{ editDeleteModal, setEditDeleteModal }}>
             <div className="edit-delete-modal-container">
-                <div onClick={() => seteditDeleteModal(true)}>
+                <div onClick={() => setEditDeleteModal(true)}>
                     <p>...</p>
                 </div>
                 {editDeleteModal && (
-                    <Modal onClose={() => seteditDeleteModal(false)}>
+                    <Modal onClose={() => setEditDeleteModal(false)}>
                         <EditDeleteMenu />
                     </Modal>
                 )}

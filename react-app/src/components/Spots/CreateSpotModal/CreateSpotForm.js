@@ -25,7 +25,6 @@ const CreateSpotForm = ({ setShowModal }) => {
     const [imageFields, setImageFields] = useState([
         { image: "" }
     ])
-    console.log(errors)
     const handleSubmit = async (e) => {
         e.preventDefault()
         const spot = {
@@ -46,7 +45,6 @@ const CreateSpotForm = ({ setShowModal }) => {
         if (data.errors) {
             setErrors(data.errors)
         } else if (data) {
-            console.log(data)
             history.push(`/spots/${data.id}`)
             setShowModal(false)
         }
@@ -107,7 +105,7 @@ const CreateSpotForm = ({ setShowModal }) => {
         <div className="spot-form-page">
             {imageFields?.map(({ image }) => (image.length !== 0 &&
                 <img src={image}
-                    onError={(e) => e.target.src = "../../../../images/image-not-found-scaled.png"}
+                    onError={(e) => e.target.src = "https://a0.muscache.com/im/pictures/bc5774ec-57b5-43cf-864d-4d13eb3785a7.jpg?im_w=1200"}
                     alt="House"
                     width="100px"
                     height="100px">
