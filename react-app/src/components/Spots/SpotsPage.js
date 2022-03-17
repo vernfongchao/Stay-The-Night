@@ -10,7 +10,7 @@ const SpotsPage = () => {
     // const [errorImage,setErrorImage] = useState("")
     
     const handleImage = (e) => {
-        e.target.src="../../../images/image-not-found-scaled.png"
+        e.target.src="../../../public/images/image-not-found-scaled.png"
         // setErrorImage("../../../images/image-not-found-scaled.png")
     }
 
