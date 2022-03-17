@@ -20,6 +20,7 @@ class Spot(db.Model):
 
     user = db.relationship("User", back_populates="spots", lazy='subquery')
     images = db.relationship('Image', back_populates='spot',cascade = "all,delete")
+    reviews = db.relationship("Review",back_populates='spot',cascade = "all,delete")
 
     def to_dict(self):
         return {

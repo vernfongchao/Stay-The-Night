@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import EditDeleteModal from "../EditDeleteSpotModal";
+import DisplayReviews from "../../Reviews/DisplayReviews/DisplayReviews";
 
 const SpotsDetailsPage = () => {
     const { id } = useParams()
@@ -50,6 +51,7 @@ const SpotsDetailsPage = () => {
             <div>
                 <p>{spot?.description}</p>
             </div>
+            <DisplayReviews />
         </div>
     )
 }

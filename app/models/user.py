@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), server_onupdate=db.func.now())
 
     spots = db.relationship("Spot",back_populates='user')
+    reviews = db.relationship("Review",back_populates='user')
 
     @property
     def password(self):
