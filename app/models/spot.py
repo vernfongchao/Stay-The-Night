@@ -18,8 +18,8 @@ class Spot(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), server_onupdate=db.func.now())
 
-    user = db.relationship("User", back_populates="spots")
-    images = db.relationship('Image',back_populates='spot',cascade = "all, delete-orphan")
+    user = db.relationship("User", back_populates="spots", lazy='subquery')
+    images = db.relationship('Image', back_populates='spot',cascade = "all,delete")
 
     def to_dict(self):
         return {

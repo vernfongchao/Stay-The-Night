@@ -127,3 +127,11 @@ def edit_spot(id):
                 return {'errors': errors}, 400
 
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@spot_routes.route('/<int:id>', methods=['DELETE'])
+def delete_spot(id):
+    delete_spot = Spot.query.get(id)
+    db.session.delete(delete_spot)
+    db.session.commit()
+    return delete_spot.to_dict()

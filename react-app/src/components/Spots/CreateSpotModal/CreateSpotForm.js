@@ -221,10 +221,10 @@ const CreateSpotForm = ({ setShowModal }) => {
                         </input>
                     </div>
                 ))}
+                <button type='button' onClick={handleAddUrl}>Add Images</button>
+                <button type='button' onClick={handleRemoveUrl}>Remove Images</button>
 
                 <div className="spot-form-button-container">
-                    <button type='button' onClick={handleAddUrl}>Add Images</button>
-                    <button type='button' onClick={handleRemoveUrl}>Remove Images</button>
                     <button type="submit" onClick={handleSubmit}>
                         Add a Spot
                     </button >

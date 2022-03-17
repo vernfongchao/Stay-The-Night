@@ -1,5 +1,6 @@
 const LOAD_SPOTS = '/spots/LOAD_SPOTS'
 const LOAD_SPOT = '/spots/ADD_SPOTS'
+const REMOVE_SPOT = '/spots/REMOVE_SPORT'
 
 const loadSpots = spots => (
     {
@@ -14,6 +15,14 @@ const loadSpot = spot => (
         spot
     }
 )
+
+const removeSpot = spot => (
+    {
+        type: REMOVE_SPOT,
+        spot
+    }
+)
+
 
 export const getSpots = () => async dispatch => {
     const response = await fetch('/api/spots/')
@@ -43,7 +52,6 @@ export const addSpot = (payload) => async dispatch => {
             return data
         }
     }
-    return response
 }
 
 export const editSpot = (payload) => async dispatch => {
@@ -64,8 +72,21 @@ export const editSpot = (payload) => async dispatch => {
             return data
         }
     }
-    return response
 }
+
+export const deleteSpot = (id) => async dispatch => {
+    const response = await fetch(`/api/spots/${id}`,{
+        method: 'DELETE'
+    })
+    if(response.ok){
+        const spot = await response.json()
+        dispatch(removeSpot(spot))
+        console.log(spot)
+        return spot
+    }
+}
+
+
 
 
 const spotReducer = (state = {}, action) => {
@@ -79,6 +100,11 @@ const spotReducer = (state = {}, action) => {
         case LOAD_SPOT: {
             newState = { ...state };
             newState[action.spot.id] = action.spot
+            return newState
+        }
+        case REMOVE_SPOT: {
+            newState = {...state};
+            delete newState[action.spot.id]
             return newState
         }
         default:

@@ -10,7 +10,6 @@ const EditSpotForm = ({ setShowModal }) => {
     const dispatch = useDispatch()
     const { editDeleteModal,setEditDeleteModal } = useEditDeleteModal()
 
-    // console.log(editDeleteModal,setEditDeleteModal)
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
     const spots = useSelector(state => state.spots)
