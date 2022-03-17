@@ -50,25 +50,25 @@ const EditSpotForm = ({ setShowModal }) => {
             setGuest(max)
             vali_errors.push("Maximum Guests Reach")
         }
-        if (price <= 1) {
+        if (guest <= 1) {
             setGuest(1)
-            vali_errors.push("Price can not be under 1")
+            vali_errors.push("Guest can not be under 1")
         }
         if (bedroom >= max) {
             setBedroom(max)
             vali_errors.push("Maximum Bedrooms Reach")
         }
-        if (price <= 1) {
+        if (bedroom <= 1) {
             setBedroom(1)
-            vali_errors.push("Price can not be under 1")
+            vali_errors.push("Bedroom can not be under 1")
         }
         if (bathroom >= max) {
             setBathroom(max)
             vali_errors.push("Maximum Bathrooms Reach")
         }
-        if (price <= 1) {
+        if (bathroom <= 1) {
             setBathroom(1)
-            vali_errors.push("Price can not be under 1")
+            vali_errors.push("Bathroom can not be under 1")
         }
         setErrors(vali_errors)
     }, [price, guest, bedroom, bathroom])
