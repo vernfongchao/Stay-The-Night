@@ -10,16 +10,16 @@ class Spot(db.Model):
     state = db.Column(db.String, nullable=False)
     country = db.Column(db.String, nullable=False)
     name = db.Column(db.String, nullable=False)
-    price = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.BigInteger, nullable=False)
     description = db.Column(db.String, nullable=False)
-    guest = db.Column(db.Integer, nullable=False)
-    bathroom = db.Column(db.Integer, nullable=False)
-    bedroom = db.Column(db.Integer, nullable=False)
+    guest = db.Column(db.BigInteger, nullable=False)
+    bathroom = db.Column(db.BigInteger, nullable=False)
+    bedroom = db.Column(db.BigInteger, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), server_onupdate=db.func.now())
 
     user = db.relationship("User", back_populates="spots")
-    images = db.relationship('Image',back_populates='spot')
+    images = db.relationship('Image',back_populates='spot',cascade = "all, delete-orphan")
 
     def to_dict(self):
         return {
@@ -37,6 +37,6 @@ class Spot(db.Model):
             'bedroom': self.bedroom,
             'first': self.user.first_name,
             'last': self.user.last_name,
-            'images': [image.image for image in self.images]
+            'images': [{'id':image.id,"image":image.image} for image in self.images]
         }
 

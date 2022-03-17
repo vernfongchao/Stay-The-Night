@@ -1,4 +1,5 @@
 const LOAD_SPOTS = '/spots/LOAD_SPOTS'
+const LOAD_SPOT = '/spots/ADD_SPOTS'
 
 const loadSpots = spots => (
     {
@@ -7,9 +8,16 @@ const loadSpots = spots => (
     }
 )
 
+const loadSpot = spot => (
+    {
+        type: LOAD_SPOT,
+        spot
+    }
+)
+
 export const getSpots = () => async dispatch => {
     const response = await fetch('/api/spots/')
-    if (response.ok){
+    if (response.ok) {
         const spots = await response.json()
         dispatch(loadSpots(spots))
         return null
@@ -17,12 +25,41 @@ export const getSpots = () => async dispatch => {
     return response
 }
 
-const spotReducer = (state = {},action) => {
+export const addSpot = (payload) => async dispatch => {
+    const response = await fetch('/api/spots/', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        const spot = await response.json()
+        dispatch(loadSpot(spot))
+        return spot
+    } else if (response.status < 500) {
+        const data = await response.json()
+        // console.log(data)
+        if (data) {
+            return data
+        }
+    }
+    return response
+}
+
+
+
+const spotReducer = (state = {}, action) => {
     let newState;
-    switch(action.type){
-        case LOAD_SPOTS:{
-            newState = {...state};
+    switch (action.type) {
+        case LOAD_SPOTS: {
+            newState = { ...state };
             action.spots.forEach(spot => newState[spot.id] = spot);
+            return newState
+        }
+        case LOAD_SPOT: {
+            newState = { ...state };
+            newState[action.spot.id] = action.spot
             return newState
         }
         default:

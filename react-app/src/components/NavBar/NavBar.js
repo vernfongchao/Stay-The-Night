@@ -1,14 +1,17 @@
 
 import React from 'react';
 // import { NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ProfileMenu from './ProfileMenu';
+import CreateSpotModal from '../Spots/CreateSpotModal';
 
 const NavBar = () => {
+  const user = useSelector(state => state.session.user)
 
   return (
     <nav>
       <ul>
+        {user && <CreateSpotModal />}
         <ProfileMenu />
         {/* <li>
           <NavLink to='/profile/:id'>
