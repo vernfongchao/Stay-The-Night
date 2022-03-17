@@ -1,0 +1,4 @@
+.spot-edit-form-container {
+  display: flex;
+  flex-direction: column;
+}

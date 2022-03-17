@@ -1,0 +1,13 @@
+.spot-form-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.spot-error-form-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.error-message{
+    margin: 0;
+}

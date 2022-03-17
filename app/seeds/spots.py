@@ -20,7 +20,7 @@ def seed_spots():
         city="Monroe", 
         state="North Carolina",
         country="USA",
-        name="2 BR Modern Queen Suite w/ Hot Tub & Outdoor Oasis", 
+        name="★The Black Chateau★ Springbreak| Heated Pool in Living Room!!! | ♛Royal Beds | Pool Table", 
         price= 400,
         description= "Enjoy this 1800's home located conveniently near Historic downtown Monroe, NC. Monroe features a variety of activities for anyone looking for a weekend away from the city of Charlotte, NC. Enjoy wine tasting at local vineyards, shop antiques on the famous “Treasure Hunt”, or grab dinner downtown. Built in 1842, The Browning home place was once an inn for weary travelers! Come stay in the oldest standing structure in Monroe and enjoy a piece of history.",
         guest = 7,
