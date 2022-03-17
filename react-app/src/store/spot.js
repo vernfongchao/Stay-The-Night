@@ -39,7 +39,6 @@ export const addSpot = (payload) => async dispatch => {
         return spot
     } else if (response.status < 500) {
         const data = await response.json()
-        // console.log(data)
         if (data) {
             return data
         }
@@ -47,6 +46,26 @@ export const addSpot = (payload) => async dispatch => {
     return response
 }
 
+export const editSpot = (payload) => async dispatch => {
+    const response = await fetch('/api/spots/', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        const spot = await response.json()
+        dispatch(loadSpot(spot))
+        return spot
+    } else if (response.status < 500) {
+        const data = await response.json()
+        if (data) {
+            return data
+        }
+    }
+    return response
+}
 
 
 const spotReducer = (state = {}, action) => {

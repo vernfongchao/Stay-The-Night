@@ -12,7 +12,7 @@ const EditFormModal = () => {
             </div>
             {showModal && (
                 <Modal onClose={()=> setShowModal(false)}>
-                    <EditSpotForm/>
+                    <EditSpotForm setShowModal={setShowModal}/>
                 </Modal>
             )}
         </div>

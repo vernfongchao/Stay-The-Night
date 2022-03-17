@@ -80,7 +80,7 @@ const CreateSpotForm = ({ setShowModal }) => {
             vali_errors.push("Maximum Bathrooms Reach")
         }
         setErrors(vali_errors)
-    }, [price,guest,bedroom,bathroom])
+    }, [price, guest, bedroom, bathroom])
 
     const handleOnChange = (index, e) => {
         const array = [...imageFields]
@@ -99,17 +99,9 @@ const CreateSpotForm = ({ setShowModal }) => {
             const array = [...imageFields]
             array.pop()
             setImageFields(array)
-
         }
     }
 
-    // handleChange = (e) => {
-    //     const val = e.target.value
-    //     const max = 1000
-    //     const maxLength = max.toString().length-1
-    //     const newVal = val < max ? val : parseInt(val.toString().substring(0, maxLength))
-    //     // setState, etc.     
-    // }
 
     return (
         <div className="spot-form-page">
@@ -119,8 +111,6 @@ const CreateSpotForm = ({ setShowModal }) => {
                     alt="House"
                     width="100px"
                     height="100px">
-
-
                 </img>
             ))}
             {errors && (<div className="spot-error-form-container">
@@ -160,6 +150,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                     name="state"
                     onChange={(e) => setState(e.target.value)}
                 />
+
                 <input type="text"
                     label="Country"
                     value={country}
@@ -186,22 +177,12 @@ const CreateSpotForm = ({ setShowModal }) => {
                     onChange={(e) => setDescription(e.target.value)}
                 />
 
-                {imageFields.map((imageField, index) => (
-                    <div key={index}>
-                        <label>Image URL</label>
-                        <input name="image" type="text" value={imageField.image} onChange={e => handleOnChange(index, e)}>
-
-                        </input>
-                    </div>
-                ))}
                 <input type="number"
                     label="Guest"
                     value={guest}
                     placeholder="Guest"
                     name="guest"
                     onChange={(e) => setGuest(e.target.value)}
-                    min={1}
-                    max={10000}
                 />
 
                 <input type="number"
@@ -210,7 +191,6 @@ const CreateSpotForm = ({ setShowModal }) => {
                     placeholder="Bedrooms"
                     name="bedroom"
                     onChange={(e) => setBedroom(e.target.value)}
-                    inputProps={{ min: 0, max: 10 }}
                 />
                 <input type="number"
                     label="Bathroom"
@@ -218,8 +198,15 @@ const CreateSpotForm = ({ setShowModal }) => {
                     placeholder="Bathrooms"
                     name="bathroom"
                     onChange={(e) => setBathroom(e.target.value)}
-                    max={10000000}
                 />
+                {imageFields.map((imageField, index) => (
+                    <div key={index}>
+                        <label>Image URL</label>
+                        <input name="image" type="text" value={imageField.image} onChange={e => handleOnChange(index, e)}>
+
+                        </input>
+                    </div>
+                ))}
 
                 <div className="spot-form-button-container">
                     <button type='button' onClick={handleAddUrl}>Add Images</button>

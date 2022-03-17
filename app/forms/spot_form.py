@@ -34,11 +34,11 @@ class SpotForm(FlaskForm):
     state = StringField('state', validators=[DataRequired()])
     country = StringField('country', validators=[DataRequired()])
     name = StringField('name', validators=[DataRequired()])
-    price = IntegerField('price',validators=[DataRequired("This field must only contain a number")])
+    price = IntegerField('price',validators=[DataRequired("This field must only contain a postive number")])
     description = StringField('description',validators=[DataRequired()])
-    guest = IntegerField('guests',validators=[DataRequired("This field must only contain a number")])
-    bedroom = IntegerField('bedrooms',validators=[DataRequired("This field must only contain a number")])
-    bathroom = IntegerField('bathrooms',validators=[DataRequired("This field must only contain a number")])
+    guest = IntegerField('guests',validators=[DataRequired("This field must only contain a postive number")])
+    bedroom = IntegerField('bedrooms',validators=[DataRequired("This field must only contain a postive number")])
+    bathroom = IntegerField('bathrooms',validators=[DataRequired("This field must only contain a postive number")])
 
     # images =FieldList(StringField('image'))
 
