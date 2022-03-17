@@ -147,7 +147,7 @@ const EditSpotForm = ({ setShowModal }) => {
         <div className="spot-edit-form-page">
             {imageFields?.map(({ image }) => (image.length !== 0 &&
                 <img src={image}
-                    onError={(e) => e.target.src = "https://a0.muscache.com/im/pictures/bc5774ec-57b5-43cf-864d-4d13eb3785a7.jpg?im_w=1200"}
+                    onError={(e) => e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"}
                     alt="House"
                     width="100px"
                     height="100px">

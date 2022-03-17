@@ -10,7 +10,7 @@ const SpotsPage = () => {
     // const [errorImage,setErrorImage] = useState("")
     
     const handleImage = (e) => {
-        e.target.src="../../../public/images/image-not-found-scaled.png"
+        e.target.src="https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"
         // setErrorImage("../../../images/image-not-found-scaled.png")
     }
 
