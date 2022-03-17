@@ -65,6 +65,60 @@ def post_spot():
         errors = validation_errors_to_error_messages(form.errors)
         images = request.get_json()['images']
 
+        for single_image in images:
+            print("LENGTH ==============================================",len(single_image["image"]))
+            if (len(single_image["image"]) < 1):
+                errors.append("Missing Image Url Field input")
+                return {'errors': errors}, 400
+
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@spot_routes.route('/<int:id>', methods=["PUT"])
+@login_required
+def edit_spot(id):
+    form = SpotForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = request.get_json()
+        images = data["images"]
+
+        if len(images[0]["image"]) < 1:
+            return {'errors': ["Please upload at least 1 Image"]}, 400
+
+        for image in images:
+            print("=================images",image)
+            if (image["image"] == None):
+                continue
+            if (len(image["image"]) < 1):
+                return {'errors': ["Please Remove Unused Image URL Fields"]}, 400
+
+        spot = Spot.query.get(id)
+
+        form.populate_obj(spot)
+
+        db.session.commit()
+
+        for image in images:
+            if (image["id"] == None):
+                new_image = Image(
+                    spot_id=id,
+                    image=image["image"]
+                )
+                db.session.add(new_image)
+            else:
+                edit_image = Image.query.get(image["id"])
+                if (image["image"]) == None:
+                    db.session.delete(edit_image)
+                else:
+                    edit_image.image = image["image"]
+
+        db.session.commit()
+
+        return spot.to_dict()
+
+    else:
+        errors = validation_errors_to_error_messages(form.errors)
+        images = request.get_json()['images']
 
         for single_image in images:
             print("LENGTH ==============================================",len(single_image["image"]))

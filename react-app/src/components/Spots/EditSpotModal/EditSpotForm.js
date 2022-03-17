@@ -13,7 +13,6 @@ const EditSpotForm = ({ setShowModal }) => {
     const user = useSelector(state => state.session.user)
     const spots = useSelector(state => state.spots)
     const spot = spots[id]
-    console.log(id)
 
     const [name, setName] = useState(spot.name)
     const [address, setAddress] = useState(spot.address)
@@ -28,7 +27,6 @@ const EditSpotForm = ({ setShowModal }) => {
     const [errors, setErrors] = useState([])
 
     let images = []
-    console.log(images)
     const [imageFields, setImageFields] = useState(images)
 
     spot.images.forEach(({ image }) => {
@@ -74,10 +72,36 @@ const EditSpotForm = ({ setShowModal }) => {
     }, [price, guest, bedroom, bathroom])
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        
-        const spot = {
+        const edit_images = [...imageFields]
+        console.log(edit_images)
+
+        if (edit_images.length > images.length) {
+            edit_images.forEach((image, index) => {
+                console.log(image)
+                if (spot.images[index]){
+                    image["id"] = spot.images[index].id
+                } else {
+                    image["id"] = null
+                }
+            })
+            images = edit_images
+        } else {
+            images.forEach((image, index) => {
+                if (imageFields[index] !== undefined) {
+                    image["image"] = imageFields[index].image
+                    image["id"] = spot.images[index].id
+                } else {
+                    image.image = null
+                    image["id"] = spot.images[index].id
+                }
+            })
+        }
+
+
+        const edit_spot = {
+            spot_id: id,
             user_id: user.id,
             name,
             address,
@@ -89,16 +113,15 @@ const EditSpotForm = ({ setShowModal }) => {
             guest,
             bedroom,
             bathroom,
-            images: imageFields
+            images,
         }
-        // const data = await dispatch(addSpot(spot))
-        // if (data.errors) {
-        //     setErrors(data.errors)
-        // } else if (data) {
-        //     console.log(data)
-        //     history.push(`/spots/${data.id}`)
-        //     setShowModal(false)
-        // }
+        const data = await dispatch(editSpot(edit_spot))
+        if (data.errors) {
+            setErrors(data.errors)
+        } else if (data) {
+            // console.log(data)
+            setShowModal(false)
+        }
     }
 
     const handleOnChange = (index, e) => {

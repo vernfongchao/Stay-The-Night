@@ -8,7 +8,7 @@ const SpotsDetailsPage = () => {
     const user = useSelector(state => state.session.user)
     const spots = useSelector(state => state.spots)
     const spot = spots[id]
-    // console.log(spot)
+    console.log(spot)
 
     // const [errorImage,setErrorImage] = useState(spot?.images[0])
 
@@ -25,7 +25,7 @@ const SpotsDetailsPage = () => {
         <div className="details-page-container">
             <div>
                 <h3>{spot?.name}</h3>
-                {user?.id === spot.user_id && <EditDeleteModal />}
+                {user?.id === spot?.user_id && <EditDeleteModal />}
             </div>
             <div>
                 <p>{spot?.address}</p>
