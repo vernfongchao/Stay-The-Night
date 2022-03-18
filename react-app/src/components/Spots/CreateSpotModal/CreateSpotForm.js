@@ -107,11 +107,11 @@ const CreateSpotForm = ({ setShowModal }) => {
         setImageFields([...imageFields, { image: "" }])
     }
 
-    const handleRemoveUrl = () => {
+    const handleRemoveUrl = (index) => {
         if (imageFields.length <= 1) return
         else {
             const array = [...imageFields]
-            array.pop()
+            array.splice(index,1)
             setImageFields(array)
         }
     }
@@ -219,10 +219,10 @@ const CreateSpotForm = ({ setShowModal }) => {
                         <input name="image" type="text" value={imageField.image} onChange={e => handleOnChange(index, e)}>
 
                         </input>
+                        <button type='button' onClick={(e) =>handleRemoveUrl(index)}>-</button>
                     </div>
                 ))}
                 <button type='button' onClick={handleAddUrl}>Add Images</button>
-                <button type='button' onClick={handleRemoveUrl}>Remove Images</button>
 
                 <div className="spot-form-button-container">
                     <button type="submit" onClick={handleSubmit}>

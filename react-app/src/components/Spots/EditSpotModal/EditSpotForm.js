@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { useEditDeleteModal } from "../EditDeleteSpotModal"
@@ -8,7 +8,7 @@ import './EditSpotForm.css'
 
 const EditSpotForm = ({ setShowModal }) => {
     const dispatch = useDispatch()
-    const { editDeleteModal,setEditDeleteModal } = useEditDeleteModal()
+    const { editDeleteModal, setEditDeleteModal } = useEditDeleteModal()
 
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
@@ -79,7 +79,7 @@ const EditSpotForm = ({ setShowModal }) => {
 
         if (edit_images.length > images.length) {
             edit_images.forEach((image, index) => {
-                if (spot.images[index]){
+                if (spot.images[index]) {
                     image["id"] = spot.images[index].id
                 } else {
                     image["id"] = null
@@ -133,11 +133,11 @@ const EditSpotForm = ({ setShowModal }) => {
         setImageFields([...imageFields, { image: "" }])
     }
 
-    const handleRemoveUrl = () => {
+    const handleRemoveUrl = (index) => {
         if (imageFields.length <= 1) return
         else {
             const array = [...imageFields]
-            array.pop()
+            array.splice(index,1)
             setImageFields(array)
         }
     }
@@ -273,11 +273,11 @@ const EditSpotForm = ({ setShowModal }) => {
                         <input name="image" type="text" value={imageField.image} onChange={e => handleOnChange(index, e)}>
 
                         </input>
+                        <button type='button' onClick={() =>handleRemoveUrl(index)}>-</button>
                     </div>
                 ))}
                 <div className="spot-form-button-container">
                     <button type='button' onClick={handleAddUrl}>Add Images</button>
-                    <button type='button' onClick={handleRemoveUrl}>Remove Images</button>
                     <button type="submit" onClick={handleSubmit}>
                         Submit Edit
                     </button >

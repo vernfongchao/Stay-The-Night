@@ -36,7 +36,7 @@ def post_spot():
         images = data["images"]
 
         if len(images[0]["image"]) < 1:
-            return {'errors': ["Please upload at least 1 Image"]}, 400
+            return {'errors': ["First Image Field is requied"]}, 400
 
         for image in images:
             if (len(image["image"]) < 1):
@@ -83,7 +83,7 @@ def edit_spot(id):
         images = data["images"]
 
         if len(images[0]["image"]) < 1:
-            return {'errors': ["Please upload at least 1 Image"]}, 400
+            return {'errors': ["First Image Field is requied"]}, 400
 
         for image in images:
             print("=================images",image)
