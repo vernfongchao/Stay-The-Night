@@ -29,7 +29,7 @@ const ProfileMenu = () => {
                     </Link>
                 </div>
                 <div>
-                    <LogoutButton />
+                    <LogoutButton setShowMenu={setShowMenu} />
                 </div>
             </div>
         )
