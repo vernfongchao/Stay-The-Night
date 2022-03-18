@@ -69,8 +69,11 @@ const EditSpotForm = ({ setShowModal }) => {
             setBathroom(1)
             vali_errors.push("Bathroom can not be under 1")
         }
+        if (imageFields.length <= 1) {
+            vali_errors.push("Must Add at least 1 Image")
+        }
         setErrors(vali_errors)
-    }, [price, guest, bedroom, bathroom])
+    }, [price, guest, bedroom, bathroom,imageFields])
 
 
     const handleSubmit = async (e) => {

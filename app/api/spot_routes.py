@@ -35,12 +35,9 @@ def post_spot():
         data = request.get_json()
         images = data["images"]
 
-        if len(images[0]["image"]) < 1:
-            return {'errors': ["First Image Field is requied"]}, 400
-
         for image in images:
             if (len(image["image"]) < 1):
-                return {'errors': ["Please Remove Unused Image URL Fields"]}, 400
+                return {'errors': ["Missing Image Url Field input"]}, 400
 
         spot = Spot()
 
@@ -82,15 +79,13 @@ def edit_spot(id):
         data = request.get_json()
         images = data["images"]
 
-        if len(images[0]["image"]) < 1:
-            return {'errors': ["First Image Field is requied"]}, 400
 
         for image in images:
             print("=================images",image)
             if (image["image"] == None):
                 continue
             if (len(image["image"]) < 1):
-                return {'errors': ["Please Remove Unused Image URL Fields"]}, 400
+                return {'errors': ["Missing Image Url Field input"]}, 400
 
         spot = Spot.query.get(id)
 
