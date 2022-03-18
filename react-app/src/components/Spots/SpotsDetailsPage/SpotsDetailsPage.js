@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import EditDeleteModal from "../EditDeleteSpotModal";
 import DisplayReviews from "../../Reviews/DisplayReviews/DisplayReviews";
 import CreateReviewModal from '../../Reviews/CreateReviewModal'
+import './SpotsDetails.css'
 
 const SpotsDetailsPage = () => {
     const { id } = useParams()
@@ -18,7 +19,6 @@ const SpotsDetailsPage = () => {
 
     const spot = spots[id]
 
-    // const [errorImage,setErrorImage] = useState(spot?.images[0])
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -26,7 +26,7 @@ const SpotsDetailsPage = () => {
 
     const handleImage = (e) => {
         e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"
-        // setErrorImage("../../../../images/image-not-found-scaled.png")
+
     }
 
     return (

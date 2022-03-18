@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { editReview } from "../../../store/review"
-
+import { useEditDeleteReviewModal } from "../EditDeleteReviewModal"
 
 
 
 const EditReviewForm = ({ curr_review, setShowModal }) => {
     const dispatch = useDispatch()
+    const {setEditDeleteReviewModal} = useEditDeleteReviewModal()
+
     const user = useSelector(state => state.session.user)
 
     const [rating, setRating] = useState(curr_review.rating)
@@ -28,6 +30,7 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
             setErrors(data.errors)
         } else if (data) {
             setShowModal(false)
+            setEditDeleteReviewModal(false)
         }
     }
     useEffect(() => {

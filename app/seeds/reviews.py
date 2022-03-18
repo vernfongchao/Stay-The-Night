@@ -1,5 +1,6 @@
 from app.models import db, Review
 
+
 def seed_reviews():
     review1 = Review(
         user_id=2,
@@ -35,7 +36,7 @@ def seed_reviews():
         user_id=4,
         spot_id=2,
         rating=5,
-        review="I arrived with my husband and 4 children to getaway before school started this week in GA. The place was not cleaned or disinfected. I immediately contacted the hosts to report my findings. The mangers have no respect for the guests because they will ignore you or say you can’t be right even if proof pics are sent. The place is a hidden gem but the level of cleanliness is a joke during a pandemic. Killed 5 waterbugs/roaches, dirty dishes in cabinet, food on floors, food surrounding the pool, Confetti IN THE POOL (after they say that’s a strict rule of NO CONFETTI), sticky dining table, no chalk for pool sticks, cake box left on top of refrigerator, vending machine stole my sons money, ants all over kitchen counter and wall attracted to food and icing, dead mosquito on shower wall master bedroom, food left in cloths draw in another room, dirty washcloth still in hamper in another room. When pics were sent the only thing they want to do is send cleaners back to home so we can all be together. UMM NO."
+        review="I arrived with my husband and 4 children to getaway before school started this week in GA. The place was not cleaned or disinfected. I immediately contacted the hosts to report my findings. The mangers have no respect for the guests because they will ignore you or say you can’t be right even if proof pics are sent. The place is a hidden gem but the level of cleanliness is a joke during a pandemic. Killed 5 waterbugs/roaches, dirty dishes in cabinet, food on floors, food surrounding the pool, Confetti IN THE POOL (after they say that’s a strict rule of NO CONFETTI), sticky dining table, no chalk for pool sticks, cake box left on top of refrigerator, vending machine stole my sons money, ants all over kitchen counter and wall attracted to food and icing, dead mosquito on shower wall master bedroom, food left in cloths draw in another room, dirty washcloth still in hamper in another room."
     )
     review7 = Review(
         user_id=1,
@@ -55,8 +56,8 @@ def seed_reviews():
         rating=5,
         review="We stayed overnight on a road trip at Paulette's place. The place is cosy and comfortable. While not luxurious, we were not wanting for any amenities either and loved the peace and quiet of farm life. We really enjoyed spending time with Paulette's dogs and only regret that we didn't stay longer. It is a very quiet, laid back place that was surprisingly not that distant from Atlanta."
     )
-    db.session.add_all([review1,review2,review3,review4,review5,review6,review7,review8,review9])
-
+    db.session.add_all([review1, review2, review3, review4,
+                       review5, review6, review7, review8, review9])
 
     db.session.commit()
 

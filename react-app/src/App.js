@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import LandingPage from './components/LandingPage/LandingPage';
 import LoginForm from './components/auth/LoginFormModal/LoginForm';
 import SignUpForm from './components/auth/SignUpFormModal/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import SpotsPage from './components/Spots/SpotsPage';
+import SpotsPage from './components/Spots/AllSpots/SpotsPage';
 import SpotsDetailsPage from './components/Spots/SpotsDetailsPage/SpotsDetailsPage';
 // import UsersList from './components/UsersList';
 // import User from './components/User';
@@ -34,6 +35,9 @@ function App() {
     <>
       <NavBar />
       <Switch>
+        <Route exact path='/'>
+          <LandingPage />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>

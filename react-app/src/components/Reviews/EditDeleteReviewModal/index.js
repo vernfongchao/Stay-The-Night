@@ -21,8 +21,6 @@ const EditDeleteReviewModal = ({review,id}) => {
                     </Modal>
                 )}
             </div>
-
-
         </EditDeleteReviewContext.Provider>
     )
 }

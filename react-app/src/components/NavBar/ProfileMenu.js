@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
@@ -7,21 +7,21 @@ import SignUpFormModal from "../auth/SignUpFormModal";
 
 const ProfileMenu = () => {
     const user = useSelector(state => state.session.user)
-    const [showMenu, setShowMenu]=useState(false)
+    const [showMenu, setShowMenu] = useState(false)
 
     let profileMenu;
     if (!user) {
         profileMenu = (
-            <div>
-                <LoginFormModal/>
+            <div className="profile-drop-down-menu">
+                <LoginFormModal />
                 <SignUpFormModal />
             </div>
         )
     } else if (user) {
         profileMenu = (
-            <div>
+            <div className="profile-drop-down-menu">
                 <div>
-                    <p>Hello {user?.username.length > 10 ? user?.username.slice(0,10) : user?.username }</p>
+                    <p>Hello {user?.username.length > 10 ? user?.username.slice(0, 10) : user?.username}</p>
                 </div>
                 <div>
                     <Link to={`/profile/${user?.id}`}>
@@ -34,7 +34,7 @@ const ProfileMenu = () => {
             </div>
         )
     }
- 
+
     const toggleMenu = (e) => {
         setShowMenu(!showMenu)
     }
@@ -44,9 +44,10 @@ const ProfileMenu = () => {
         <div className="profile-menu-container">
             <div className="profile-menu-button-container">
                 <button className="profile-menu-button" onClick={toggleMenu}>
+                    <i className="fa-solid fa-user"></i>
                 </button>
             </div>
-            {showMenu &&  profileMenu }
+            {showMenu && profileMenu}
         </div>
     )
 }

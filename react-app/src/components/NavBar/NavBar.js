@@ -5,15 +5,20 @@ import { useSelector } from 'react-redux';
 import ProfileMenu from './ProfileMenu';
 import CreateSpotModal from '../Spots/CreateSpotModal';
 
+import './NavBar.css'
+
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
 
   return (
-    <nav>
-      <ul>
+    <nav className='navbar-container'>
+
+      <div className='navbar-right-container'>
+
         {user && <CreateSpotModal />}
         <ProfileMenu />
-      </ul>
+      </div>
+
     </nav>
   );
 }
