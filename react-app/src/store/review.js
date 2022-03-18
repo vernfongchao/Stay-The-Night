@@ -54,11 +54,32 @@ export const addReview = (payload) => async dispatch => {
     }
 }
 
+export const editReview = (payload) => async dispatch => {
+    const response = await fetch(`/api/reviews/${payload.id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        const review = await response.json()
+        dispatch(loadReview(review))
+        return review
+    } else if (response.status < 500) {
+        const data = await response.json()
+        if (data) {
+            return data
+        }
+    }
+}
+
+
 export const deleteReview = (id) => async dispatch => {
-    const response = await fetch(`/api/reviews/${id}`,{
+    const response = await fetch(`/api/reviews/${id}`, {
         method: "DELETE"
     })
-    if(response.ok){
+    if (response.ok) {
         const review = await response.json()
         dispatch(removeReview(review))
         return review
@@ -76,12 +97,12 @@ const reviewReducer = (state = {}, action) => {
             return newState
         }
         case ADD_REVIEW: {
-            newState = {...state};
+            newState = { ...state };
             newState[action.review.id] = action.review
             return newState
         }
         case REMOVE_REVIEW: {
-            newState = {...state};
+            newState = { ...state };
             delete newState[action.review.id]
             return newState
         }
