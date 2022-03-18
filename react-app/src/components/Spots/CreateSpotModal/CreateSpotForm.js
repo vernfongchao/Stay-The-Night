@@ -94,7 +94,7 @@ const CreateSpotForm = ({ setShowModal }) => {
             vali_errors.push("Bathroom can not be under 1")
         }
         setErrors(vali_errors)
-    }, [price, guest, bedroom, bathroom])
+    }, [price, guest, bedroom, bathroom,imageFields])
 
     const handleOnChange = (index, e) => {
         const array = [...imageFields]
