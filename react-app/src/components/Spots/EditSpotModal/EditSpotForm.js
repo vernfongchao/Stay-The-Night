@@ -16,12 +16,18 @@ const EditSpotForm = ({ setShowModal }) => {
     const spot = spots[id]
 
     const [name, setName] = useState(spot.name)
+    const [maxName, setMaxName] = useState("")
     const [address, setAddress] = useState(spot.address)
+    const [maxAddress, setMaxAddress] = useState("")
     const [city, setCity] = useState(spot.city)
+    const [maxCity, setMaxCity] = useState("")
     const [state, setState] = useState(spot.state);
+    const [maxState, setMaxState] = useState("")
     const [country, setCountry] = useState(spot.country);
-    const [price, setPrice] = useState(spot.price);
+    const [maxCountry, setMaxCountry] = useState("")
     const [description, setDescription] = useState(spot.description);
+    const [maxDescription, setMaxDescription] = useState("");
+    const [price, setPrice] = useState(spot.price);
     const [guest, setGuest] = useState(spot.guest);
     const [bedroom, setBedroom] = useState(spot.bedroom);
     const [bathroom, setBathroom] = useState(spot.bathroom);
@@ -30,51 +36,58 @@ const EditSpotForm = ({ setShowModal }) => {
     let images = []
     const [imageFields, setImageFields] = useState(images)
 
+    useEffect(() => {
+        const vali_errors = []
+        if (imageFields.length >= 5) {
+            vali_errors.push(["Maximum pictures allowed met"])
+        }
+        if (name.length >= 100) {
+            setMaxName("Maximum Characters Reached")
+        }
+        if (name.length < 100) {
+            setMaxName("")
+        }
+        if (address.length >= 50) {
+            setMaxAddress("Maximum Characters Reached")
+        }
+        if (address.length < 50) {
+            setMaxAddress("")
+        }
+        if (city.length >= 50) {
+            setMaxCity("Maximum Characters Reached")
+        }
+        if (city.length < 50) {
+            setMaxCity("")
+        }
+        if (state.length >= 50) {
+            setMaxState("Maximum Characters Reached")
+        }
+        if (state.length < 50) {
+            setMaxState("")
+        }
+        if (country.length >= 50) {
+            setMaxCountry("Maximum Characters Reached")
+        }
+        if (country.length < 50) {
+            setMaxCountry("")
+        }
+        if (description.length >= 1000) {
+            setMaxDescription("Maximum Characters Reached")
+        }
+        if (description.length < 1000) {
+            setMaxDescription("")
+        }
+        setErrors(vali_errors)
+    }, [imageFields, name, address, city, state, country, description])
+
+
+
+
+
+
     spot.images.forEach(({ image }) => {
         images.push({ image })
     })
-
-    // useEffect(() => {
-    //     const max = 1000000
-    //     const vali_errors = []
-    //     if (price >= max) {
-    //         setPrice(max)
-    //         vali_errors.push("Maximum Price Reach")
-    //     }
-    //     if (price <= 1) {
-    //         setPrice(1)
-    //         vali_errors.push("Price can not be under 1")
-    //     }
-    //     if (guest >= max) {
-    //         setGuest(max)
-    //         vali_errors.push("Maximum Guests Reach")
-    //     }
-    //     if (guest <= 1) {
-    //         setGuest(1)
-    //         vali_errors.push("Guest can not be under 1")
-    //     }
-    //     if (bedroom >= max) {
-    //         setBedroom(max)
-    //         vali_errors.push("Maximum Bedrooms Reach")
-    //     }
-    //     if (bedroom <= 1) {
-    //         setBedroom(1)
-    //         vali_errors.push("Bedroom can not be under 1")
-    //     }
-    //     if (bathroom >= max) {
-    //         setBathroom(max)
-    //         vali_errors.push("Maximum Bathrooms Reach")
-    //     }
-    //     if (bathroom <= 1) {
-    //         setBathroom(1)
-    //         vali_errors.push("Bathroom can not be under 1")
-    //     }
-    //     if (imageFields.length <= 1) {
-    //         vali_errors.push("Must Add at least 1 Image")
-    //     }
-    //     setErrors(vali_errors)
-    // }, [price, guest, bedroom, bathroom,imageFields])
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -140,7 +153,7 @@ const EditSpotForm = ({ setShowModal }) => {
         if (imageFields.length <= 1) return
         else {
             const array = [...imageFields]
-            array.splice(index,1)
+            array.splice(index, 1)
             setImageFields(array)
         }
     }
@@ -162,17 +175,19 @@ const EditSpotForm = ({ setShowModal }) => {
             </div>)}
             <form className="spot-edit-form-container">
                 <div>
+                    <p>{maxName}</p>
                     <label for="name">Name</label>
                     <input type="text"
                         value={name}
                         placeholder="Name"
                         name="name"
                         onChange={(e) => setName(e.target.value)}
+                        maxLength="100"
                     />
                 </div>
 
                 <div>
-
+                    <p>{maxAddress}</p>
                     <label for="address">Address</label>
                     <input type="text"
                         label="Address"
@@ -180,10 +195,12 @@ const EditSpotForm = ({ setShowModal }) => {
                         placeholder="Address"
                         name="address"
                         onChange={(e) => setAddress(e.target.value)}
+                        maxLength="50"
                     />
                 </div>
 
                 <div>
+                    <p>{maxCity}</p>
                     <label for="city">City</label>
                     <input type="text"
                         label="City"
@@ -191,10 +208,12 @@ const EditSpotForm = ({ setShowModal }) => {
                         placeholder="City"
                         name="city"
                         onChange={(e) => setCity(e.target.value)}
+                        maxLength="50"
                     />
                 </div>
 
                 <div>
+                    <p>{maxState}</p>
                     <label for="state">State</label>
                     <input type="text"
                         label="State"
@@ -202,6 +221,33 @@ const EditSpotForm = ({ setShowModal }) => {
                         placeholder="State"
                         name="state"
                         onChange={(e) => setState(e.target.value)}
+                        maxLength="50"
+                    />
+                </div>
+                <div>
+                    <p>{maxCountry}</p>
+                    <label for="country">Country</label>
+                    <input type="text"
+                        label="Country"
+                        value={country}
+                        placeholder="Country"
+                        name="country"
+                        onChange={(e) => setCountry(e.target.value)}
+                        maxLength="50"
+                    />
+                </div>
+
+                <div>
+                    <p>{maxDescription}</p>
+                    <label for='description'>Description</label>
+                    <textarea
+                        name='description'
+                        value={description}
+                        placeholder="Give a description..."
+                        row="40"
+                        column="50"
+                        onChange={(e) => setDescription(e.target.value)}
+                        maxLength="1000"
                     />
                 </div>
 
@@ -213,18 +259,6 @@ const EditSpotForm = ({ setShowModal }) => {
                         placeholder="Price"
                         name="price"
                         onChange={(e) => setPrice(e.target.value)}
-                    />
-                </div>
-
-                <div>
-                    <label for='description'>Description</label>
-                    <textarea
-                        name='description'
-                        value={description}
-                        placeholder="Give a description..."
-                        row="40"
-                        column="50"
-                        onChange={(e) => setDescription(e.target.value)}
                     />
                 </div>
                 <div>
@@ -260,23 +294,14 @@ const EditSpotForm = ({ setShowModal }) => {
                     />
                 </div>
 
-                <div>
-                    <label for="country">Country</label>
-                    <input type="text"
-                        label="Country"
-                        value={country}
-                        placeholder="Country"
-                        name="country"
-                        onChange={(e) => setCountry(e.target.value)}
-                    />
-                </div>
+
                 {imageFields.map((imageField, index) => (
                     <div key={index}>
                         <label>Image URL</label>
                         <input name="image" type="text" value={imageField.image} onChange={e => handleOnChange(index, e)}>
 
                         </input>
-                        <button type='button' onClick={() =>handleRemoveUrl(index)}>-</button>
+                        <button type='button' onClick={() => handleRemoveUrl(index)}>-</button>
                     </div>
                 ))}
                 <div className="spot-form-button-container">

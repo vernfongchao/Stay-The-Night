@@ -12,12 +12,18 @@ const CreateSpotForm = ({ setShowModal }) => {
     const history = useHistory()
     const user = useSelector(state => state.session.user)
     const [name, setName] = useState("")
+    const [maxName, setMaxName] = useState("")
     const [address, setAddress] = useState("")
+    const [maxAddress, setMaxAddress] = useState("")
     const [city, setCity] = useState("")
+    const [maxCity, setMaxCity] = useState("")
     const [state, setState] = useState("");
+    const [maxState, setMaxState] = useState("")
     const [country, setCountry] = useState("");
-    const [price, setPrice] = useState("");
+    const [maxCountry, setMaxCountry] = useState("")
     const [description, setDescription] = useState("");
+    const [maxDescription, setMaxDescription] = useState("");
+    const [price, setPrice] = useState("");
     const [guest, setGuest] = useState("");
     const [bedroom, setBedroom] = useState("");
     const [bathroom, setBathroom] = useState("");
@@ -25,6 +31,51 @@ const CreateSpotForm = ({ setShowModal }) => {
     const [imageFields, setImageFields] = useState([
         { image: "" }
     ])
+
+    useEffect(() => {
+        const vali_errors = []
+        if (imageFields.length >= 5) {
+            vali_errors.push(["Maximum pictures allowed met"])
+        }
+        if (name.length >= 100) {
+            setMaxName("Maximum Characters Reached")
+        }
+        if (name.length < 100) {
+            setMaxName("")
+        }
+        if (address.length >= 50) {
+            setMaxAddress("Maximum Characters Reached")
+        }
+        if (address.length < 50) {
+            setMaxAddress("")
+        }
+        if (city.length >= 50) {
+            setMaxCity("Maximum Characters Reached")
+        }
+        if (city.length < 50) {
+            setMaxCity("")
+        }
+        if (state.length >= 50) {
+            setMaxState("Maximum Characters Reached")
+        }
+        if (state.length < 50) {
+            setMaxState("")
+        }
+        if (country.length >= 50) {
+            setMaxCountry("Maximum Characters Reached")
+        }
+        if (country.length < 50) {
+            setMaxCountry("")
+        }
+        if (description.length >= 1000) {
+            setMaxDescription("Maximum Characters Reached")
+        }
+        if (description.length < 1000) {
+            setMaxDescription("")
+        }
+        setErrors(vali_errors)
+    }, [imageFields, name, address, city, state, country,description])
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const spot = {
@@ -50,51 +101,7 @@ const CreateSpotForm = ({ setShowModal }) => {
         }
     }
 
-    useEffect(() => {
-        const vali_errors = []
-        if (imageFields.length >= 5) {
-            vali_errors.push(["Maximum pictures allowed met"])
-        }
-        setErrors(vali_errors)
-    }, [imageFields])
 
-    // useEffect(() => {
-    //     const max = 1000000
-    //     const vali_errors = []
-    //     if (price >= max) {
-    //         setPrice(max)
-    //         vali_errors.push("Maximum Price Reach")
-    //     }
-    //     if (price <= 1) {
-    //         setPrice(1)
-    //         vali_errors.push("Price can not be under 1")
-    //     }
-    //     if (guest >= max) {
-    //         setGuest(max)
-    //         vali_errors.push("Maximum Guests Reach")
-    //     }
-    //     if (guest <= 1) {
-    //         setGuest(1)
-    //         vali_errors.push("Guest can not be under 1")
-    //     }
-    //     if (bedroom >= max) {
-    //         setBedroom(max)
-    //         vali_errors.push("Maximum Bedrooms Reach")
-    //     }
-    //     if (bedroom <= 1) {
-    //         setBedroom(1)
-    //         vali_errors.push("Bedroom can not be under 1")
-    //     }
-    //     if (bathroom >= max) {
-    //         setBathroom(max)
-    //         vali_errors.push("Maximum Bathrooms Reach")
-    //     }
-    //     if (bathroom <= 1) {
-    //         setBathroom(1)
-    //         vali_errors.push("Bathroom can not be under 1")
-    //     }
-    //     setErrors(vali_errors)
-    // }, [price, guest, bedroom, bathroom,imageFields])
 
     const handleOnChange = (index, e) => {
         const array = [...imageFields]
@@ -111,10 +118,14 @@ const CreateSpotForm = ({ setShowModal }) => {
         if (imageFields.length <= 1) return
         else {
             const array = [...imageFields]
-            array.splice(index,1)
+            array.splice(index, 1)
             setImageFields(array)
         }
     }
+
+    console.log(name.length)
+
+    console.log(maxName)
 
 
     return (
@@ -133,44 +144,62 @@ const CreateSpotForm = ({ setShowModal }) => {
                 ))}
             </div>)}
             <form className="spot-form-container">
+
+
+                <p>{maxName}</p>
                 <input type="text"
                     label="Name"
                     value={name}
                     placeholder="Name"
                     name="name"
                     onChange={(e) => setName(e.target.value)}
+                    maxLength="100"
                 />
-
+                <p>{maxAddress}</p>
                 <input type="text"
                     label="Address"
                     value={address}
                     placeholder="Address"
                     name="address"
                     onChange={(e) => setAddress(e.target.value)}
+                    maxLength="50"
                 />
-
+                <p>{maxCity}</p>
                 <input type="text"
                     label="City"
                     value={city}
                     placeholder="City"
                     name="city"
                     onChange={(e) => setCity(e.target.value)}
+                    maxLength="50"
                 />
-
+                <p>{maxState}</p>
                 <input type="text"
                     label="State"
                     value={state}
                     placeholder="State"
                     name="state"
                     onChange={(e) => setState(e.target.value)}
+                    maxLength="50"
                 />
-
+                <p>{maxCountry}</p>
                 <input type="text"
                     label="Country"
                     value={country}
                     placeholder="Country"
                     name="country"
                     onChange={(e) => setCountry(e.target.value)}
+                    maxLength="50"
+                />
+                <p>{maxDescription}</p>
+                <textarea
+                    name='description'
+                    value={description}
+                    placeholder="Give a description..."
+                    row="40"
+                    column="50"
+                    onChange={(e) => setDescription(e.target.value)}
+                    maxLength="1000"
                 />
 
                 <input type="number"
@@ -181,15 +210,6 @@ const CreateSpotForm = ({ setShowModal }) => {
                     onChange={(e) => setPrice(e.target.value)}
                 />
 
-                <textarea
-                    name='description'
-                    value={description}
-                    placeholder="Give a description..."
-                    row="40"
-                    column="50"
-
-                    onChange={(e) => setDescription(e.target.value)}
-                />
 
                 <input type="number"
                     label="Guest"
@@ -219,7 +239,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                         <input name="image" type="text" value={imageField.image} onChange={e => handleOnChange(index, e)}>
 
                         </input>
-                        <button type='button' onClick={(e) =>handleRemoveUrl(index)}>-</button>
+                        <button type='button' onClick={(e) => handleRemoveUrl(index)}>-</button>
                     </div>
                 ))}
                 <button type='button' onClick={handleAddUrl}>Add Images</button>
