@@ -43,10 +43,25 @@ def post_review(id):
         return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 
+@review_routes.route('/<int:id>', methods=["PUT"])
+@login_required
+def edit_review(id):
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        review = Review.query.get(id)
+        form.populate_obj(review)
+        db.session.commit()
+
+        return review.to_dict()
+    else:
+        return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+
 @review_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_review(id):
-    print("===========================",id)
+    print("===========================", id)
     delete_review = Review.query.get(id)
     db.session.delete(delete_review)
     db.session.commit()

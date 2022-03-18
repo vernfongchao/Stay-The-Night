@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { editReview } from "../../../store/review"
 
 
 
 
 const EditReviewForm = ({ curr_review, setShowModal }) => {
-    console.log(curr_review)
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
@@ -23,12 +23,12 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
             review,
         }
         console.log(edit_review)
-        // const data = await dispatch()
-        // if (data.errors) {
-        //     setErrors(data.errors)
-        // } else if (data) {
-        //     setShowModal(false)
-        // }
+        const data = await dispatch(editReview(edit_review))
+        if (data.errors) {
+            setErrors(data.errors)
+        } else if (data) {
+            setShowModal(false)
+        }
     }
     useEffect(() => {
         const vali_errors = []
