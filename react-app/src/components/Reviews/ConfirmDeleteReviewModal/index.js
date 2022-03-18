@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { Modal } from '../../../context/Modal'
+import ConfirmDeleteReview from "./ConfirmDeleteReview"
 
-const ConfirmDeleteReviewModal = () => {
+const ConfirmDeleteReviewModal = ({id}) => {
     const [showModal, setShowModal] = useState(false)
 
     return (
@@ -12,7 +13,7 @@ const ConfirmDeleteReviewModal = () => {
             {
                 showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        {/* <ConfirmDeletePage setShowModal={setShowModal}/> */}
+                        <ConfirmDeleteReview id={id} setShowModal={setShowModal}/>
                     </Modal>
                 )
             }

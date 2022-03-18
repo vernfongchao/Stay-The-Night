@@ -41,3 +41,12 @@ def post_review(id):
         return new_review.to_dict()
     else:
         return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+
+@review_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_review(id):
+    delete_review = Review.query.get(id)
+    db.session.delete(delete_review)
+    db.session.commit()
+    return delete_review.to_dict()

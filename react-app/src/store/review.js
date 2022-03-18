@@ -1,5 +1,6 @@
 const LOAD_REVIEWS = '/reviews/LOAD_REVIEWS'
 const ADD_REVIEW = '/reviews/ADD_REVIEW'
+const REMOVE_REVIEW = '/reviews/REMOVE_SPOT'
 
 const loadReviews = reviews => (
     {
@@ -14,6 +15,14 @@ const loadReview = review => (
         review
     }
 )
+
+const removeReview = review => (
+    {
+        type: REMOVE_REVIEW,
+        review
+    }
+)
+
 
 export const getReviews = () => async dispatch => {
     const response = await fetch('/api/reviews/')
@@ -45,6 +54,17 @@ export const addReview = (payload) => async dispatch => {
     }
 }
 
+export const deleteReview = (id) => async dispatch => {
+    const response = await fetch(`/api/reviews/${id}`,{
+        method: "DELETE"
+    })
+    if(response.ok){
+        const review = await response.json()
+        dispatch(removeReview(review))
+        return review
+    }
+}
+
 
 
 const reviewReducer = (state = {}, action) => {
@@ -58,6 +78,11 @@ const reviewReducer = (state = {}, action) => {
         case ADD_REVIEW: {
             newState = {...state};
             newState[action.review.id] = action.review
+            return newState
+        }
+        case REMOVE_REVIEW: {
+            newState = {...state};
+            delete newState[action.review.id]
             return newState
         }
         default:

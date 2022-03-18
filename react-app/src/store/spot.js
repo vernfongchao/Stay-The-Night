@@ -81,7 +81,6 @@ export const deleteSpot = (id) => async dispatch => {
     if(response.ok){
         const spot = await response.json()
         dispatch(removeSpot(spot))
-        console.log(spot)
         return spot
     }
 }

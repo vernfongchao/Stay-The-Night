@@ -9,6 +9,13 @@ const SpotsDetailsPage = () => {
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
     const spots = useSelector(state => state.spots)
+    const reviews = Object.values(useSelector(state => state.reviews))
+    
+    const filterReviews = reviews.filter(({spot_id}) => spot_id === +id) 
+    console.log(filterReviews)
+
+
+
     const spot = spots[id]
 
     // const [errorImage,setErrorImage] = useState(spot?.images[0])
@@ -29,6 +36,7 @@ const SpotsDetailsPage = () => {
                 {user?.id === spot?.user_id && <EditDeleteModal />}
             </div>
             <div>
+                <p>{}</p>
                 <p>{spot?.address}</p>
                 <p>{spot?.city}</p>
                 <p>{spot?.state}</p>
