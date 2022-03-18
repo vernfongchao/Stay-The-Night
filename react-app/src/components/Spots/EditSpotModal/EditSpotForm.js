@@ -34,46 +34,46 @@ const EditSpotForm = ({ setShowModal }) => {
         images.push({ image })
     })
 
-    useEffect(() => {
-        const max = 1000000
-        const vali_errors = []
-        if (price >= max) {
-            setPrice(max)
-            vali_errors.push("Maximum Price Reach")
-        }
-        if (price <= 1) {
-            setPrice(1)
-            vali_errors.push("Price can not be under 1")
-        }
-        if (guest >= max) {
-            setGuest(max)
-            vali_errors.push("Maximum Guests Reach")
-        }
-        if (guest <= 1) {
-            setGuest(1)
-            vali_errors.push("Guest can not be under 1")
-        }
-        if (bedroom >= max) {
-            setBedroom(max)
-            vali_errors.push("Maximum Bedrooms Reach")
-        }
-        if (bedroom <= 1) {
-            setBedroom(1)
-            vali_errors.push("Bedroom can not be under 1")
-        }
-        if (bathroom >= max) {
-            setBathroom(max)
-            vali_errors.push("Maximum Bathrooms Reach")
-        }
-        if (bathroom <= 1) {
-            setBathroom(1)
-            vali_errors.push("Bathroom can not be under 1")
-        }
-        if (imageFields.length <= 1) {
-            vali_errors.push("Must Add at least 1 Image")
-        }
-        setErrors(vali_errors)
-    }, [price, guest, bedroom, bathroom,imageFields])
+    // useEffect(() => {
+    //     const max = 1000000
+    //     const vali_errors = []
+    //     if (price >= max) {
+    //         setPrice(max)
+    //         vali_errors.push("Maximum Price Reach")
+    //     }
+    //     if (price <= 1) {
+    //         setPrice(1)
+    //         vali_errors.push("Price can not be under 1")
+    //     }
+    //     if (guest >= max) {
+    //         setGuest(max)
+    //         vali_errors.push("Maximum Guests Reach")
+    //     }
+    //     if (guest <= 1) {
+    //         setGuest(1)
+    //         vali_errors.push("Guest can not be under 1")
+    //     }
+    //     if (bedroom >= max) {
+    //         setBedroom(max)
+    //         vali_errors.push("Maximum Bedrooms Reach")
+    //     }
+    //     if (bedroom <= 1) {
+    //         setBedroom(1)
+    //         vali_errors.push("Bedroom can not be under 1")
+    //     }
+    //     if (bathroom >= max) {
+    //         setBathroom(max)
+    //         vali_errors.push("Maximum Bathrooms Reach")
+    //     }
+    //     if (bathroom <= 1) {
+    //         setBathroom(1)
+    //         vali_errors.push("Bathroom can not be under 1")
+    //     }
+    //     if (imageFields.length <= 1) {
+    //         vali_errors.push("Must Add at least 1 Image")
+    //     }
+    //     setErrors(vali_errors)
+    // }, [price, guest, bedroom, bathroom,imageFields])
 
 
     const handleSubmit = async (e) => {
