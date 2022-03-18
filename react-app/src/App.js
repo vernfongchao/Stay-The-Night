@@ -11,6 +11,7 @@ import SpotsDetailsPage from './components/Spots/SpotsDetailsPage/SpotsDetailsPa
 // import User from './components/User';
 import { authenticate } from './store/session';
 import { getSpots } from './store/spot'
+import { getReviews } from './store/review';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -20,6 +21,7 @@ function App() {
     (async () => {
       await dispatch(authenticate());
       await dispatch(getSpots())
+      await dispatch(getReviews())
       setLoaded(true);
     })();
   }, [dispatch]);

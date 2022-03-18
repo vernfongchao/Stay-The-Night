@@ -33,9 +33,9 @@ def seed_spots():
         city="Barnesville", 
         state="Georgia",
         country="USA",
-        name="The Guest House", 
+        name="The Farm House", 
         price= 49,
-        description= "The Guest House is a primitive cottage and resides on 400 acres outside of Barnesville, Georgia. Bunn Ranch is a working cattle and sheep farm. This space is a two story primitive cottage with primitive artwork and a claw foot tub. Sit in your choice of antique rockers that have been collected over the years. The floors and stairs were salvaged from an old home that was here on the farm. Surrounded by rolling hills and close to town, come enjoy some time for YOU! We will consider STR students.",
+        description= "The Farm House is a primitive cottage and resides on 400 acres outside of Barnesville, Georgia. Bunn Ranch is a working cattle and sheep farm. This space is a two story primitive cottage with primitive artwork and a claw foot tub. Sit in your choice of antique rockers that have been collected over the years. The floors and stairs were salvaged from an old home that was here on the farm. Surrounded by rolling hills and close to town, come enjoy some time for YOU! We will consider STR students.",
         guest = 5,
         bathroom = 1,
         bedroom= 4
