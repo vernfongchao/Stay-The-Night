@@ -36,6 +36,7 @@ class Spot(db.Model):
             'guest': self.guest,
             'bathroom': self.bathroom,
             'bedroom': self.bedroom,
+            'reviews': [{'id':review.id,'rating':review.rating} for review in self.reviews],
             'first': self.user.first_name,
             'last': self.user.last_name,
             'images': [{'id':image.id,"image":image.image} for image in self.images]

@@ -55,7 +55,7 @@ const CreateSpotForm = ({ setShowModal }) => {
         if (imageFields.length >= 5) {
             vali_errors.push(["Maximum pictures allowed met"])
         }
-        setErrors([vali_errors])
+        setErrors(vali_errors)
     }, [imageFields])
 
     useEffect(() => {

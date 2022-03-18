@@ -1,5 +1,5 @@
 const LOAD_SPOTS = '/spots/LOAD_SPOTS'
-const LOAD_SPOT = '/spots/ADD_SPOTS'
+const ADD_SPOT = '/spots/ADD_SPOTS'
 const REMOVE_SPOT = '/spots/REMOVE_SPORT'
 
 const loadSpots = spots => (
@@ -11,7 +11,7 @@ const loadSpots = spots => (
 
 const loadSpot = spot => (
     {
-        type: LOAD_SPOT,
+        type: ADD_SPOT,
         spot
     }
 )
@@ -97,7 +97,7 @@ const spotReducer = (state = {}, action) => {
             action.spots.forEach(spot => newState[spot.id] = spot);
             return newState
         }
-        case LOAD_SPOT: {
+        case ADD_SPOT: {
             newState = { ...state };
             newState[action.spot.id] = action.spot
             return newState
