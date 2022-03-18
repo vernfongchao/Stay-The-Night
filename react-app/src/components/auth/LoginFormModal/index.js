@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import {Modal} from '../../../context/Modal'
 import LoginForm from "./LoginForm"
 
-const LoginFormModal = () => {
+const LoginFormModal = ({setShowMenu}) => {
     const [showModal,setShowModal] = useState(false)
 
     return (
@@ -12,7 +12,7 @@ const LoginFormModal = () => {
             </div>
             {showModal && (
                 <Modal onClose={()=> setShowModal(false)}>
-                    <LoginForm />
+                    <LoginForm setShowMenu={setShowMenu}/>
                 </Modal>
             )}
         </div>

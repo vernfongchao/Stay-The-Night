@@ -3,13 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 
-const LoginForm = () => {
+const LoginForm = ({setShowMenu}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  console.log(setShowMenu)
 
 
   useEffect(()=>{
@@ -22,6 +23,7 @@ const LoginForm = () => {
     if (data) {
       setErrors(data);
     }
+    else{setShowMenu(false)}
   };
 
   const updateEmail = (e) => {
