@@ -15,7 +15,7 @@ const DisplayReviews = () => {
                 <div className="display-each-review-container">
                     <div className="review-username-edit-delete-container">
                         <p>Username {review.username}</p>
-                        {user?.id === review.user_id && <EditDeleteReviewModal review={review} id={id}/>}
+                        {user?.id === review.user_id && <EditDeleteReviewModal review={review} id={review.id}/>}
                     </div>
                     <p>Rating {review.rating}</p>
                     <p>Review {review.review}</p>
