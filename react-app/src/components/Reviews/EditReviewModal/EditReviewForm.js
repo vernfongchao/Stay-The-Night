@@ -22,12 +22,13 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
             rating,
             review,
         }
-        const data = await dispatch()
-        if (data.errors) {
-            setErrors(data.errors)
-        } else if (data) {
-            setShowModal(false)
-        }
+        console.log(edit_review)
+        // const data = await dispatch()
+        // if (data.errors) {
+        //     setErrors(data.errors)
+        // } else if (data) {
+        //     setShowModal(false)
+        // }
     }
     useEffect(() => {
         const vali_errors = []
