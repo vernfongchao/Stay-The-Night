@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
 
-const SignUpForm = () => {
+const SignUpForm = ({ setShowMenu }) => {
   const [errors, setErrors] = useState([]);
   const [first, setFirst] = useState('')
   const [maxFirst, setMaxFirst] = useState('')
@@ -43,7 +43,7 @@ const SignUpForm = () => {
     if (email.length < 50) {
       setMaxEmail("")
     }
-  },[first,last,username,email])
+  }, [first, last, username, email])
 
 
 
@@ -58,6 +58,8 @@ const SignUpForm = () => {
         setPassword("")
         setRepeatPassword("")
       }
+    } else {
+      setShowMenu(false)
     }
   };
   const updateFirst = (e) => {
@@ -129,7 +131,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        
+
         <label>Email</label>
         <input
           type='text'

@@ -13,8 +13,8 @@ const ProfileMenu = () => {
     if (!user) {
         profileMenu = (
             <div className="profile-drop-down-menu">
-                <LoginFormModal />
-                <SignUpFormModal />
+                <LoginFormModal setShowMenu={setShowMenu}/>
+                <SignUpFormModal setShowMenu={setShowMenu}/>
             </div>
         )
     } else if (user) {
@@ -29,7 +29,7 @@ const ProfileMenu = () => {
                     </Link>
                 </div>
                 <div>
-                    <LogoutButton />
+                    <LogoutButton setShowMenu={setShowMenu} />
                 </div>
             </div>
         )
