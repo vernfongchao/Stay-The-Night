@@ -14,7 +14,6 @@ const CreateReviewModal = () => {
                 <Modal onClose={() => setShowModal(false)}>
                     <CreateReviewForm setShowModal={setShowModal} />
                 </Modal>
-
             }
 
         </div>

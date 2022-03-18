@@ -11,7 +11,6 @@ const ConfirmDeletePage = ({setShowModal}) => {
     const handleDelete = async(e) => {
         e.preventDefault()
         const data = await dispatch(deleteSpot(id))
-        console.log(data)
         if (data){
             history.push('/spots')
             setShowModal(false)

@@ -9,18 +9,16 @@ const DisplayReviews = () => {
     const reviews = useSelector(state => state.reviews)
     const reviewArr = Object.values(reviews)
     const filterReviews = reviewArr?.filter(({ spot_id }) => spot_id === +id)
-    console.log(filterReviews)
-
     return (
         <div className="reviews-display-container">
-            {filterReviews.map(({ username, rating, review, user_id }) => (
+            {filterReviews.map((review) => (
                 <div className="display-each-review-container">
                     <div className="review-username-edit-delete-container">
-                        <p>Username {username}</p>
-                        {user?.id === user_id && <EditDeleteReviewModal />}
+                        <p>Username {review.username}</p>
+                        {user?.id === review.user_id && <EditDeleteReviewModal review={review} id={id}/>}
                     </div>
-                    <p>Rating {rating}</p>
-                    <p>Review {review}</p>
+                    <p>Rating {review.rating}</p>
+                    <p>Review {review.review}</p>
                 </div>
             ))}
 

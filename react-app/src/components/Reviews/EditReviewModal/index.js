@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Modal } from '../../../context/Modal'
 import EditReviewForm from "./EditReviewForm"
 
-const EditReviewModal = () => {
+const EditReviewModal = ({review}) => {
     const [showModal, setShowModal] = useState(false)
 
     return (
@@ -12,7 +12,7 @@ const EditReviewModal = () => {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditReviewForm setShowModal={setShowModal} />
+                    <EditReviewForm curr_review={review} setShowModal={setShowModal} />
                 </Modal>
             )}
         </div>

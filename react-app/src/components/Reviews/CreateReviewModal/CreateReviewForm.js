@@ -26,6 +26,7 @@ const CreateReviewForm = ({ setShowModal }) => {
             setShowModal(false)
         }
     }
+    
     useEffect(() => {
         const vali_errors = []
         if (rating >= 5) {

@@ -5,7 +5,7 @@ import EditDeleteReviewMenu from "./EditDeleteReviewMenu"
 export const EditDeleteReviewContext = createContext()
 export const useEditDeleteReviewModal = () => useContext(EditDeleteReviewContext)
 
-const EditDeleteReviewModal = () => {
+const EditDeleteReviewModal = ({review,id}) => {
     const [editDeleteReviewModal, setEditDeleteReviewModal] = useState(false)
 
     return (
@@ -17,7 +17,7 @@ const EditDeleteReviewModal = () => {
                 </div>
                 {editDeleteReviewModal && (
                     <Modal onClose={() => setEditDeleteReviewModal(false)}>
-                        <EditDeleteReviewMenu />
+                        <EditDeleteReviewMenu review={review} id={id} />
                     </Modal>
                 )}
             </div>
