@@ -6,14 +6,21 @@ const CreateSpotModal = () => {
     const [showModal, setShowModal] = useState(false)
 
     return (
-        <div className="create-spot-modal-container">
-            <button onClick={() => setShowModal(true)} >
+        <div className="create-spot-modal-container"  >
+            {/* 
+            <div className="create-spot-button" onClick={() => setShowModal(true)} >
                 Add a Spot!
+            </div> */}
+            <button className="create-spot-button" onClick={() => setShowModal(true)} >
+                <span className="create-spot-button-text">
+                    Add a Spot!
+
+                </span>
             </button>
             {
                 showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CreateSpotForm setShowModal={setShowModal}/>
+                        <CreateSpotForm setShowModal={setShowModal} />
                     </Modal>
                 )
             }

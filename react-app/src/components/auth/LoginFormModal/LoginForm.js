@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 
-const LoginForm = ({setShowMenu}) => {
+import './LoginForm.css'
+
+const LoginForm = ({ setShowMenu }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,9 +15,9 @@ const LoginForm = ({setShowMenu}) => {
   console.log(setShowMenu)
 
 
-  useEffect(()=>{
+  useEffect(() => {
 
-  },[])
+  }, [])
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -23,8 +25,21 @@ const LoginForm = ({setShowMenu}) => {
     if (data) {
       setErrors(data);
     }
-    else{setShowMenu(false)}
+    else { setShowMenu(false) }
   };
+
+  const onDemo = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(data);
+    }
+    else { setShowMenu(false) }
+  };
+
+
+
+
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -39,34 +54,42 @@ const LoginForm = ({setShowMenu}) => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className='login-form-page-container'>
+      <div className='login-form-header-container'>
+      <i className="fa-solid fa-user"></i>
+        <h1 className='login-form-header-text'> LOGIN</h1>
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+      <form className='login-form-container' onSubmit={onLogin}>
+        <div>
+          {errors.map((error, ind) => (
+            <div className='login-error-message' key={ind}>{error}</div>
+          ))}
+        </div>
+        <div className='login-form-field-container'>
+
+          <input className='login-form-field'
+            name='email'
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={updateEmail}
+          />
+          <input className='login-form-field'
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={updatePassword}
+          />
+        </div>
+
+        <div className='login-form-button-containers'>
+          <button className='login-form-demo-button' type='button' onClick={onDemo}>Demo</button>
+          <button className='login-form-demo-button'type='submit'>Login</button>
+        </div>
+      </form>
+
+    </div>
   );
 };
 

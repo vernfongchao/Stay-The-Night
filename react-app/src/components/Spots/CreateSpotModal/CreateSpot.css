@@ -1,13 +1,42 @@
-.spot-form-container{
-    display: flex;
-    flex-direction: column;
+.create-spot-button {
+  background-color: black;
+  border: 0;
+  width: 100px;
+
+  height: 30px;
 }
 
-.spot-error-form-container{
-    display: flex;
-    flex-direction: column;
+.create-spot-button span {
+  color: white;
+  font-weight: 500px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1em;
 }
 
-.error-message{
-    margin: 0;
+.create-spot-button:hover {
+  background-color: gray;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.spot-form-page{
+  border-radius: 10px;
+  height: 900px;
+  width: 600px;
+}
+
+
+
+.spot-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.spot-error-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-message {
+  margin: 0;
 }

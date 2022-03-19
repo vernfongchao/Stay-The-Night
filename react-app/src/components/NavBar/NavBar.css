@@ -41,6 +41,10 @@
 }
 
 .profile-drop-down-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-left: 10px;
   position: fixed;
   width: 200px;
   height: 100px;

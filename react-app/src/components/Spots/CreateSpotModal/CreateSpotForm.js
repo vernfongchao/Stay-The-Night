@@ -74,7 +74,7 @@ const CreateSpotForm = ({ setShowModal }) => {
             setMaxDescription("")
         }
         setErrors(vali_errors)
-    }, [imageFields, name, address, city, state, country,description])
+    }, [imageFields, name, address, city, state, country, description])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -130,6 +130,10 @@ const CreateSpotForm = ({ setShowModal }) => {
 
     return (
         <div className="spot-form-page">
+
+            <div className='login-form-header-container'>
+                <h1 className='login-form-header-text'> Host a Spot!</h1>
+            </div>
             {imageFields?.map(({ image }) => (image.length !== 0 &&
                 <img src={image}
                     onError={(e) => e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"}

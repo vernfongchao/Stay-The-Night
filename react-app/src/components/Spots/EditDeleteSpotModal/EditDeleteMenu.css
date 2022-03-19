@@ -1,0 +1,14 @@
+.edit-delete-modal-container {
+  display: flex;
+  align-items: flex-end;
+  margin: 21px 0px;
+}
+
+.edit-delete-button-container {
+  width: 50px;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.fa-solid.fa-ellipsis {
+}

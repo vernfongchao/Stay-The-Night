@@ -13,21 +13,17 @@
 }
 
 .details-spot-page-name {
+  max-width: 100%;
   overflow-wrap: break-word;
   font-weight: 500;
 }
-
-.details-page-title-bullet span{
-  border-bottom: 0.01rem black solid;
-  position: relative;
-  left: -10px;
-}
-
-
-.details-spot-address-detail {
+.details-spot-address-detail-container {
   display: flex;
-  /* width: 35%; */
+  width: 100%;
   /* justify-content: space-between; */
+}
+.details-page-star-text {
+  max-width: 70px;
 }
 
 .fa-solid.fa-star {
@@ -36,6 +32,22 @@
 
 .details-page-review-text {
   padding-left: 5px;
+}
+
+.details-spot-address-detail{
+  display: flex;
+  /* overflow-x: auto; */
+  overflow-wrap: break-word;
+  max-width: 900px;
+}
+.details-spot-address-detail p{
+  overflow-wrap: break-word;
+}
+
+.details-page-title-bullet span {
+  border-bottom: 0.01rem black solid;
+  position: relative;
+  left: -10px;
 }
 
 .details-page-image-grid {
@@ -88,6 +100,10 @@ h2 {
 .details-page-house-details {
   display: flex;
   justify-content: space-between;
+  /* overflow-wrap: anywhere; */
+}
+.details-page-house-details p {
+  overflow-wrap: anywhere;
 }
 
 .details-page-price-text {
@@ -96,6 +112,10 @@ h2 {
 
 .details-page-description-container {
   padding-top: 5px;
+}
+
+.details-page-description-text {
+  overflow-wrap: break-word;
 }
 
 .details-page-header-container {

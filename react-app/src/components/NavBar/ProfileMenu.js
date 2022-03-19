@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
@@ -12,9 +12,9 @@ const ProfileMenu = () => {
     let profileMenu;
     if (!user) {
         profileMenu = (
-            <div className="profile-drop-down-menu">
-                <LoginFormModal setShowMenu={setShowMenu}/>
-                <SignUpFormModal setShowMenu={setShowMenu}/>
+            <div className="profile-drop-down-menu" >
+                <LoginFormModal setShowMenu={setShowMenu} />
+                <SignUpFormModal setShowMenu={setShowMenu} />
             </div>
         )
     } else if (user) {
@@ -43,8 +43,8 @@ const ProfileMenu = () => {
     return (
         <div className="profile-menu-container">
             <div className="profile-menu-button-container">
-                <button className="profile-menu-button" onClick={toggleMenu}>
-                    <i className="fa-solid fa-user"></i>
+                <button className="profile-menu-button" id="profile-menu" onClick={toggleMenu}>
+                    <i className="fa-solid fa-user" id="profile-menu"></i>
                 </button>
             </div>
             {showMenu && profileMenu}

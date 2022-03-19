@@ -1,8 +1,16 @@
 .landing-page-container {
+  height: 89.8%;
   padding-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }
 
 .landing-image-container {
@@ -11,15 +19,16 @@
   align-items: center;
 }
 .landing-image {
-  height: 80%;
-  width: 80%;
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 10px;
 }
 
 .flexible-container {
   display: flex;
   flex-direction: column;
   position: absolute;
-  padding-top: min(400px, 33%);
+  padding-top: min(550px, 35%);
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -27,11 +36,12 @@
 
 .flexible-container-header {
   color: white;
+  font-size: 3em;
 }
 
 .flexible-button {
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-    Helvetica Neue, sans-serif ;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1em;
   font-weight: bold;
   color: purple;
   width: 120px;
@@ -39,5 +49,9 @@
   border-radius: 30px;
   background-color: white;
   cursor: pointer;
-  border: 1px solid black;
+  border: 0.1px solid black;
+}
+
+.flexible-button:hover {
+  background-color: black;
 }
