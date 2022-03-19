@@ -56,24 +56,25 @@ const LoginForm = ({ setShowMenu }) => {
   return (
     <div className='login-form-page-container'>
       <div className='login-form-header-container'>
-        <h1 className='login-form-header-text'><i className="fa-solid fa-user"></i> LOGIN</h1>
+      <i className="fa-solid fa-user"></i>
+        <h1 className='login-form-header-text'> LOGIN</h1>
       </div>
       <form className='login-form-container' onSubmit={onLogin}>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div className='login-error-message' key={ind}>{error}</div>
           ))}
         </div>
         <div className='login-form-field-container'>
 
-          <input className='login-form-email-field'
+          <input className='login-form-field'
             name='email'
             type='text'
             placeholder='Email'
             value={email}
             onChange={updateEmail}
           />
-          <input className='login-form-password-field'
+          <input className='login-form-field'
             name='password'
             type='password'
             placeholder='Password'

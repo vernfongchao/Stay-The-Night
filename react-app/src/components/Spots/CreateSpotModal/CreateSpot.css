@@ -19,6 +19,14 @@
   cursor: pointer;
 }
 
+.spot-form-page{
+  border-radius: 10px;
+  height: 900px;
+  width: 600px;
+}
+
+
+
 .spot-form-container {
   display: flex;
   flex-direction: column;

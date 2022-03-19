@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
 
+import './SignUpForm.css'
+
 const SignUpForm = ({ setShowMenu }) => {
   const [errors, setErrors] = useState([]);
   const [first, setFirst] = useState('')
@@ -91,76 +93,99 @@ const SignUpForm = ({ setShowMenu }) => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className='sign-form-page-container'>
+      <div className='login-form-header-container'>
+        <i className="fa-solid fa-user"></i>
+        <h1 className='login-form-header-text'> Sign Up</h1>
       </div>
-      <div>
-        <p>{maxFirst}</p>
-        <label>First Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateFirst}
-          value={first}
-          maxLength="100"
-        ></input>
-      </div>
-      <div>
-        <p>{maxLast}</p>
-        <label>Last Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateLast}
-          value={last}
-          maxLength="100"
-        ></input>
-      </div>
-      <div>
-        <p>{maxUsername}</p>
-        <label>Username</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-          maxLength="40"
-        ></input>
-      </div>
-      <div>
-        <p>{maxEmail}</p>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-          maxLength="50"
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+
+      <form className='signup-form-container' onSubmit={onSignUp}>
+        <div>
+          {errors.map((error, ind) => (
+            <div className='signup-error-message' key={ind}>{error}</div>
+          ))}
+        </div>
+        <div className='signup-form-field-container'>
+          <div className='signup-form-field-input-container'>
+            {maxFirst &&
+              <p className='signup-error-message'>{maxFirst}</p>
+            }
+            <input className='signup-form-field'
+              type='text'
+              name='username'
+              onChange={updateFirst}
+              value={first}
+              maxLength="100"
+              placeholder='First Name'
+            ></input>
+
+          </div>
+
+          <div className='signup-form-field-input-container'>
+            {maxLast &&
+              <p className='signup-error-message'>{maxLast}</p>
+            }
+            <input className='signup-form-field'
+              type='text'
+              name='username'
+              onChange={updateLast}
+              value={last}
+              maxLength="100"
+              placeholder='Last Name'
+            ></input>
+          </div>
+
+
+          <div className='signup-form-field-input-container'>
+            {maxUsername &&
+              <p className='signup-error-message'>{maxUsername}</p>
+            }
+            <input className='signup-form-field'
+              type='text'
+              name='username'
+              onChange={updateUsername}
+              value={username}
+              maxLength="40"
+              placeholder='Username'
+            ></input>
+          </div>
+
+          <div className='signup-form-field-input-container'>
+            {maxEmail &&
+              <p className='signup-error-message'>{maxEmail}</p>
+            }
+            <input className='signup-form-field'
+              type='text'
+              name='email'
+              onChange={updateEmail}
+              value={email}
+              maxLength="50"
+              placeholder='Email'
+            ></input>
+          </div>
+
+
+          <input className='signup-form-field'
+            type='password'
+            name='password'
+            onChange={updatePassword}
+            value={password}
+            placeholder="Password"
+          ></input>
+
+          <input className='signup-form-field'
+            type='password'
+            name='repeat_password'
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            placeholder="Confirm Password"
+          ></input>
+        </div>
+        <button className="signup-form-button" type='submit'>Sign Up</button>
+        <div className='login-form-button-containers'>
+        </div>
+      </form>
+    </div>
   );
 };
 

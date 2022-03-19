@@ -7,8 +7,8 @@ const SignUpFormModal = ({setShowMenu}) => {
 
     return (
         <div className= "signup-form-modal-container">
-            <div onClick={() => setShowModal(true)}>
-                <p>Sign Up</p>
+            <div className="signup-form-button-container"onClick={() => setShowModal(true)}>
+                <p className="signup-form-button-text">Sign Up</p>
             </div>
             {showModal && (
                 <Modal onClose={()=> setShowModal(false)}>
