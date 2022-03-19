@@ -1,0 +1,25 @@
+.reviews-display-container {
+  padding-top: 20px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  /* overflow-wrap: break-word; */
+}
+
+.display-each-review-container {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+}
+
+.review-username-edit-delete-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.display-review-text{
+
+}

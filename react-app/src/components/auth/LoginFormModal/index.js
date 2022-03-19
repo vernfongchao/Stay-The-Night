@@ -7,8 +7,8 @@ const LoginFormModal = ({setShowMenu}) => {
 
     return (
         <div className= "login-form-modal-container">
-            <div onClick={() => setShowModal(true)}>
-                <p>Login</p>
+            <div className="login-form-button-container" onClick={() => setShowModal(true)}>
+                <p className="login-form-button-text">Log in</p>
             </div>
             {showModal && (
                 <Modal onClose={()=> setShowModal(false)}>

@@ -20,8 +20,8 @@ class SpotForm(FlaskForm):
     description = StringField('description', validators=[DataRequired(), Length(
         min=1, max=1000, message='Description name must be at least than 1 characters and no more than 1000 characters')])
     guest = IntegerField('guests', validators=[DataRequired(), NumberRange(
-        min=1, max=1000000, message='Number must be between 1 and 1000000')])
+        min=1, max=1000, message='Number must be between 1 and 1000')])
     bedroom = IntegerField('bedrooms', validators=[DataRequired(), NumberRange(
-        min=1, max=1000000, message='Number must be between 1 and 1000000')])
+        min=1, max=1000, message='Number must be between 1 and 1000')])
     bathroom = IntegerField('bathrooms', validators=[DataRequired(), NumberRange(
-        min=1, max=1000000, message='Number must be between 1 and 1000000')])
+        min=1, max=1000, message='Number must be between 1 and 1000')])

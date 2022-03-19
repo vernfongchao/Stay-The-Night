@@ -25,7 +25,7 @@ const SpotsPage = () => {
                         </img>
                     </Link>
                     <div className='each-spot-details-container'>
-                        <p>{spot.name}</p>
+                        <h3 className='each-spot-name'>{spot.name}</h3>
                         <div className='each-spot-basic-info'>
                             <p>Guests: {spot.guest} </p>
                             <p>Bedrooms: {spot.bedroom} </p>

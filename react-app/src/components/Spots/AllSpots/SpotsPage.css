@@ -26,12 +26,21 @@
   flex-direction: column;
 }
 
+.each-spot-name {
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+
 .each-spot-basic-info {
+  font-family: "Roboto", sans-serif;
   display: flex;
+  justify-content: space-between;
+  width: 60%;
 }
 
 .each-spot-price {
-    font-weight: bold;
+  font-weight: bold;
   margin-left: auto;
   margin-top: auto;
 }

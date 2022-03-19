@@ -44,12 +44,14 @@ const SpotsDetailsPage = () => {
 
     return (
         <div className="details-spot-page-container">
+
             <div className="details-spot-page-title">
                 <h1 className="details-spot-page-name">{spot?.name}</h1>
                 {user?.id === spot?.user_id && <EditDeleteModal />}
             </div>
-            <div className="details-spot-address-detail">
-                <p className="details-page-start-text"><i className="fa-solid fa-star"></i>{roundedAvg}</p>
+
+            <div className="details-spot-address-detail-container">
+                <p className="details-page-star-text"><i className="fa-solid fa-star"></i>{roundedAvg}</p>
                 <p className="details-page-review-text">
                     <li className="details-page-title-bullet">
                         <span>
@@ -57,29 +59,34 @@ const SpotsDetailsPage = () => {
                         </span>
                     </li>
                 </p>
-                <p>{spot?.address}, {spot?.city}, {spot?.state}, {spot?.country}</p>
+                <div className="details-spot-address-detail">
+                    <p>{spot?.address}, {spot?.city}, {spot?.state}, {spot?.country}</p>
+                </div>
             </div>
+
             <div className="details-page-image-grid">
                 {spot?.images.map(({ image }, index) => (
                     <img className={`details-page-image-${index}`} src={image} onError={handleImage} key={index} alt="house">
                     </img>
                 ))}
             </div>
+
             <div>
                 <h2>Hosted By: {spot?.first} {spot?.last}</h2>
             </div>
+
             <div className="details-page-house-details">
                 <p>{spot?.guest} Guests {spot?.bathroom} Bathrooms {spot?.bedroom} Bedrooms</p>
-                {/* <p>{spot?.bathroom} Bathrooms</p>
-                <p>{spot?.bedroom} Bedrooms</p> */}
                 <div>
                     <p className="details-page-price-text">${spot?.price}/ Night</p>
                 </div>
             </div>
+
             <div className="details-page-description-container">
                 <h2>Description</h2>
-                <p>{spot?.description}</p>
+                <p className="details-page-description-text">{spot?.description}</p>
             </div>
+
             <div className="details-page-header-container">
                 <div className="details-page-header-title">
                     <h2 className="details-page-start-text"><i className="fa-solid fa-star"></i> {roundedAvg} </h2>
@@ -93,6 +100,7 @@ const SpotsDetailsPage = () => {
                 </div>
                 {user && spot?.user_id !== user?.id && <CreateReviewModal />}
             </div>
+            
             {filterReviews.length > 0 && <DisplayReviews />}
         </div>
     )
