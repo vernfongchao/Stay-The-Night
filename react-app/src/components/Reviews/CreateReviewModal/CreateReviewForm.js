@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addReview } from "../../../store/review";
 
+import './CreateReviewForm.css'
+
 const CreateReviewForm = ({ setShowModal }) => {
     const { id } = useParams()
     const dispatch = useDispatch()

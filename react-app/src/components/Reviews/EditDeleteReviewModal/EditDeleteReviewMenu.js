@@ -2,6 +2,8 @@ import React from 'react'
 import EditReviewModal from '../EditReviewModal'
 import ConfirmDeleteReviewModal from '../ConfirmDeleteReviewModal'
 
+import './EditDeleteReviewMenu.css'
+
 
 
 const EditDeleteReviewMenu = ({review,id}) => {

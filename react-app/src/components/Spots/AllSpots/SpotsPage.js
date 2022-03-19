@@ -32,7 +32,7 @@ const SpotsPage = () => {
                             <p>Bathrooms:{spot.bathroom} </p>
                         </div>
                         <div className='each-spot-price'>
-                            <p>Price: {spot.price}/ Night</p>
+                            <p>${spot.price}/ Night</p>
                         </div>
                     </div>
                 </div>
