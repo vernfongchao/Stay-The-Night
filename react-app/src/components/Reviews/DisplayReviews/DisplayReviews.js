@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import EditDeleteReviewModal from "../EditDeleteReviewModal";
+import './DisplayReviews.css'
 
 const DisplayReviews = () => {
     const { id } = useParams()
@@ -14,11 +15,11 @@ const DisplayReviews = () => {
             {filterReviews.map((review) => (
                 <div className="display-each-review-container">
                     <div className="review-username-edit-delete-container">
-                        <p>Username {review.username}</p>
-                        {user?.id === review.user_id && <EditDeleteReviewModal review={review} id={review.id}/>}
+                        <p>Review By: {review.username}</p>
+                        {user?.id === review.user_id && <EditDeleteReviewModal review={review} id={review.id} />}
                     </div>
-                    <p>Rating {review.rating}</p>
-                    <p>Review {review.review}</p>
+                    <p>Rating: {review.rating}</p>
+                    <p className="display-review-text">Review: {review.review}</p>
                 </div>
             ))}
 

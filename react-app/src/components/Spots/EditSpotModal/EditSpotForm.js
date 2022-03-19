@@ -81,10 +81,6 @@ const EditSpotForm = ({ setShowModal }) => {
     }, [imageFields, name, address, city, state, country, description])
 
 
-
-
-
-
     spot.images.forEach(({ image }) => {
         images.push({ image })
     })

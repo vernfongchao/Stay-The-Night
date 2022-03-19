@@ -11,10 +11,23 @@ const SpotsDetailsPage = () => {
     const user = useSelector(state => state.session.user)
     const spots = useSelector(state => state.spots)
     const reviews = Object.values(useSelector(state => state.reviews))
-    
-    const filterReviews = reviews.filter(({spot_id}) => spot_id === +id) 
-    console.log(filterReviews)
 
+    const filterReviews = reviews.filter(({ spot_id }) => spot_id === +id)
+    console.log(filterReviews)
+    let sum = 0;
+    filterReviews.forEach(({ rating }) => {
+        sum += rating
+    })
+
+    const reviewsAvg = sum / filterReviews.length
+
+    let roundedAvg = Math.round(reviewsAvg * 100) / 100
+
+    console.log(Number.isNaN(roundedAvg))
+
+    if (Number.isNaN(roundedAvg)) {
+        roundedAvg = "Unrated"
+    }
 
 
     const spot = spots[id]
@@ -30,41 +43,57 @@ const SpotsDetailsPage = () => {
     }
 
     return (
-        <div className="details-page-container">
-            <div>
-                <h3>{spot?.name}</h3>
+        <div className="details-spot-page-container">
+            <div className="details-spot-page-title">
+                <h1 className="details-spot-page-name">{spot?.name}</h1>
                 {user?.id === spot?.user_id && <EditDeleteModal />}
             </div>
-            <div>
-                <p>{}</p>
-                <p>{spot?.address}</p>
-                <p>{spot?.city}</p>
-                <p>{spot?.state}</p>
-                <p>{spot?.country}</p>
+            <div className="details-spot-address-detail">
+                <p className="details-page-start-text"><i className="fa-solid fa-star"></i>{roundedAvg}</p>
+                <p className="details-page-review-text">
+                    <li className="details-page-title-bullet">
+                        <span>
+                            {filterReviews.length} Reviews
+                        </span>
+                    </li>
+                </p>
+                <p>{spot?.address}, {spot?.city}, {spot?.state}, {spot?.country}</p>
             </div>
-            {spot?.images.map(({ image }) => (
-                <img src={image} onError={handleImage}>
-                </img>
-            ))}
-            <div>
-                <h3>Hosted By: {spot?.first} {spot?.last}</h3>
+            <div className="details-page-image-grid">
+                {spot?.images.map(({ image }, index) => (
+                    <img className={`details-page-image-${index}`} src={image} onError={handleImage} key={index} alt="house">
+                    </img>
+                ))}
             </div>
             <div>
-                <p>{spot?.guest} Guests</p>
-                <p>{spot?.bathroom} Bathrooms</p>
-                <p>{spot?.bedroom} Bedrooms</p>
+                <h2>Hosted By: {spot?.first} {spot?.last}</h2>
+            </div>
+            <div className="details-page-house-details">
+                <p>{spot?.guest} Guests {spot?.bathroom} Bathrooms {spot?.bedroom} Bedrooms</p>
+                {/* <p>{spot?.bathroom} Bathrooms</p>
+                <p>{spot?.bedroom} Bedrooms</p> */}
                 <div>
-                    <p>{spot?.price}</p>
+                    <p className="details-page-price-text">${spot?.price}/ Night</p>
                 </div>
             </div>
-            <div>
+            <div className="details-page-description-container">
+                <h2>Description</h2>
                 <p>{spot?.description}</p>
             </div>
-            <div>
-                <h3>Reviews</h3>
+            <div className="details-page-header-container">
+                <div className="details-page-header-title">
+                    <h2 className="details-page-start-text"><i className="fa-solid fa-star"></i> {roundedAvg} </h2>
+                    <h2 className="details-page-review-title-text">
+                        <li className="details-page-review-title-bullet">
+                            <span>
+                                {filterReviews.length} Reviews
+                            </span>
+                        </li>
+                    </h2>
+                </div>
                 {user && spot?.user_id !== user?.id && <CreateReviewModal />}
             </div>
-            <DisplayReviews />
+            {filterReviews.length > 0 && <DisplayReviews />}
         </div>
     )
 }

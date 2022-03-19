@@ -131,7 +131,7 @@ const SignUpForm = ({ setShowMenu }) => {
         ></input>
       </div>
       <div>
-
+        <p>{maxEmail}</p>
         <label>Email</label>
         <input
           type='text'

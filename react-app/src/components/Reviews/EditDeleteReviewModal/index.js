@@ -5,15 +5,15 @@ import EditDeleteReviewMenu from "./EditDeleteReviewMenu"
 export const EditDeleteReviewContext = createContext()
 export const useEditDeleteReviewModal = () => useContext(EditDeleteReviewContext)
 
-const EditDeleteReviewModal = ({review,id}) => {
+const EditDeleteReviewModal = ({ review, id }) => {
     const [editDeleteReviewModal, setEditDeleteReviewModal] = useState(false)
 
     return (
         <EditDeleteReviewContext.Provider
             value={{ editDeleteReviewModal, setEditDeleteReviewModal }}>
-            <div className="edit-delete-modal-container">
-                <div onClick={() => setEditDeleteReviewModal(true)}>
-                    <p>...</p>
+            <div className="edit-delete-review-modal-container">
+                <div className="edit-delete-review-modal-button" onClick={() => setEditDeleteReviewModal(true)}>
+                    <i class="fa-solid fa-ellipsis"></i>
                 </div>
                 {editDeleteReviewModal && (
                     <Modal onClose={() => setEditDeleteReviewModal(false)}>

@@ -2,6 +2,8 @@ import React, { createContext, useContext, useState } from "react"
 import { Modal } from '../../../context/Modal'
 import EditDeleteMenu from "./EditDeleteMenu"
 
+import './EditDeleteMenu.css'
+
 export const EditDeleteContext = createContext()
 export const useEditDeleteModal = () => useContext(EditDeleteContext)
 
@@ -12,9 +14,12 @@ const EditDeleteModal = () => {
         <EditDeleteContext.Provider
             value={{ editDeleteModal, setEditDeleteModal }}>
             <div className="edit-delete-modal-container">
-                <div onClick={() => setEditDeleteModal(true)}>
-                    <p>...</p>
+                <div className="edit-delete-button-container" onClick={() => setEditDeleteModal(true)}>
+                    <i class="fa-solid fa-ellipsis"></i>
                 </div>
+
+
+                
                 {editDeleteModal && (
                     <Modal onClose={() => setEditDeleteModal(false)}>
                         <EditDeleteMenu />
