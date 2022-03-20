@@ -35,7 +35,7 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
-.spot-form-max{
+.spot-form-max {
   color: red;
 }
 
@@ -47,21 +47,20 @@
   justify-content: space-between;
 }
 
-.spot-form-field{
+.spot-form-field {
   border: black solid 0.1em;
   border-radius: 10px;
   width: 80%;
   height: 30px;
 }
 
-.spot-form-field-textarea{
+.spot-form-field-textarea {
   border: black solid 0.1em;
   border-radius: 10px;
   width: 80%;
   height: 60px;
   resize: none;
 }
-
 
 .error-message {
   padding-left: 60px;
@@ -74,7 +73,7 @@
   padding-left: 170px;
 }
 
-.spot-form-remove-image{
+.spot-form-remove-image {
   cursor: pointer;
   background-color: lightblue;
   font-weight: bold;
@@ -91,8 +90,13 @@
 .spot-form-button {
   border-radius: 10px;
   border: 1px black solid;
-  background-color: white;
+  color: white;
+  background-color: black;
   height: 30px;
   cursor: pointer;
   font-size: medium;
+}
+
+.spot-form-button:hover {
+  background-color: gray;
 }

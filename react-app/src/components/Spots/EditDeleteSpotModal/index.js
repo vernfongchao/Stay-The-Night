@@ -15,7 +15,10 @@ const EditDeleteModal = () => {
             value={{ editDeleteModal, setEditDeleteModal }}>
             <div className="edit-delete-modal-container">
                 <div className="edit-delete-button-container" onClick={() => setEditDeleteModal(true)}>
-                    <i class="fa-solid fa-ellipsis"></i>
+
+
+                    <i className="fa-solid fa-ellipsis"></i>
+
                 </div>
 
                 {editDeleteModal && (

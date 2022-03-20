@@ -1,4 +1,4 @@
-import React,{ useState} from 'react'
+import React from 'react'
 import EditFormModal from '../EditSpotModal'
 import ConfirmDeleteSpotModal from '../ConfirmDeleteSpotModal'
 const EditDeleteMenu = () => {

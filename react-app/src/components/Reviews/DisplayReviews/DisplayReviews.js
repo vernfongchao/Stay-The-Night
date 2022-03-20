@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import EditDeleteReviewModal from "../EditDeleteReviewModal";
@@ -13,7 +13,7 @@ const DisplayReviews = () => {
     return (
         <div className="reviews-display-container">
             {filterReviews.map((review) => (
-                <div className="display-each-review-container">
+                <div className="display-each-review-container" key={review.id}>
                     <div className="review-username-edit-delete-container">
                         <p>Review By: {review.username}</p>
                         {user && user?.id === review.user_id && <EditDeleteReviewModal review={review} id={review.id} />}

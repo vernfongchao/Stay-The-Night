@@ -8,7 +8,7 @@ import './EditSpotForm.css'
 
 const EditSpotForm = ({ setShowModal }) => {
     const dispatch = useDispatch()
-    const { editDeleteModal, setEditDeleteModal } = useEditDeleteModal()
+    const { setEditDeleteModal } = useEditDeleteModal()
 
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
@@ -159,6 +159,14 @@ const EditSpotForm = ({ setShowModal }) => {
         }
     }
 
+    const handleExpress = (e) => {
+        if (e.key === 'e') return e.preventDefault()
+        if (e.key === 'E') return e.preventDefault()
+        if (e.key === '+') return e.preventDefault()
+        if (e.key === '-') return e.preventDefault()
+        if (e.key === '.') return e.preventDefault()
+    }
+    
     return (
         <div className="spot-edit-form-page">
 
@@ -167,8 +175,8 @@ const EditSpotForm = ({ setShowModal }) => {
             </div>
             <div className="spot-form-image-preview">
 
-                {imageFields?.map(({ image }) => (image.length !== 0 &&
-                    <img src={image}
+                {imageFields?.map(({ image }, i) => (image.length !== 0 &&
+                    <img src={image} key={i}
                         onError={(e) => e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"}
                         alt="House"
                         width="100px"
@@ -275,6 +283,7 @@ const EditSpotForm = ({ setShowModal }) => {
                         placeholder="Price"
                         name="price"
                         onChange={(e) => setPrice(e.target.value)}
+                        onKeyDown={handleExpress}
                     />
                 </div>
                 <div className="spot-edit-field-container">
@@ -286,6 +295,7 @@ const EditSpotForm = ({ setShowModal }) => {
                         placeholder="Guest"
                         name="guest"
                         onChange={(e) => setGuest(e.target.value)}
+                        onKeyDown={handleExpress}
                     />
                 </div>
 
@@ -298,6 +308,7 @@ const EditSpotForm = ({ setShowModal }) => {
                         placeholder="Bedrooms"
                         name="bedroom"
                         onChange={(e) => setBedroom(e.target.value)}
+                        onKeyDown={handleExpress}
                     />
                 </div>
 
@@ -310,6 +321,7 @@ const EditSpotForm = ({ setShowModal }) => {
                         placeholder="Bathrooms"
                         name="bathroom"
                         onChange={(e) => setBathroom(e.target.value)}
+                        onKeyDown={handleExpress}
                     />
                 </div>
 
@@ -328,7 +340,7 @@ const EditSpotForm = ({ setShowModal }) => {
 
                                 </input>
                                 <span className="spot-form-remove-image" onClick={handleRemoveUrl}>
-                                    <i class="fa-solid fa-minus"></i>
+                                    <i className="fa-solid fa-minus"></i>
                                 </span>
                             </div>
                         </div>

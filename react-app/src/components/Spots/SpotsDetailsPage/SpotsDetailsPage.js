@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import EditDeleteModal from "../EditDeleteSpotModal";
 import DisplayReviews from "../../Reviews/DisplayReviews/DisplayReviews";
@@ -8,12 +8,16 @@ import './SpotsDetails.css'
 
 const SpotsDetailsPage = () => {
     const { id } = useParams()
+    const history = useHistory()
     const user = useSelector(state => state.session.user)
     const spots = useSelector(state => state.spots)
     const reviews = Object.values(useSelector(state => state.reviews))
 
+    if (spots[id] === undefined){
+        history.push('/404-Page-Not-Found')
+    }
+
     const filterReviews = reviews.filter(({ spot_id }) => spot_id === +id)
-    console.log(filterReviews)
     let sum = 0;
     filterReviews.forEach(({ rating }) => {
         sum += rating
@@ -23,7 +27,6 @@ const SpotsDetailsPage = () => {
 
     let roundedAvg = Math.round(reviewsAvg * 100) / 100
 
-    console.log(Number.isNaN(roundedAvg))
 
     if (Number.isNaN(roundedAvg)) {
         roundedAvg = "Unrated"
@@ -66,7 +69,7 @@ const SpotsDetailsPage = () => {
 
             <div className="details-page-image-grid">
                 {spot?.images.map(({ image }, index) => (
-                    <img className={`details-page-image-${index}`} src={image} onError={handleImage} key={index} alt="house">
+                    <img  className={`details-page-image-${index}`} src={image} onError={handleImage} key={index} alt="house">
                     </img>
                 ))}
             </div>
@@ -100,7 +103,7 @@ const SpotsDetailsPage = () => {
                 </div>
                 {user && spot?.user_id !== user?.id && <CreateReviewModal />}
             </div>
-            
+
             {filterReviews.length > 0 && <DisplayReviews />}
         </div>
     )

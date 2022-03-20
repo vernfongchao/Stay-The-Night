@@ -54,3 +54,26 @@
   top: 70px;
   right: 285px;
 }
+
+.profile-link {
+  text-decoration: none;
+  color: black;
+}
+
+.profile-link:hover{
+  width: 100%;
+  background-color: rgb(229, 246, 252);
+}
+
+.logout-button{
+  height: 30px;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  border: 1px black solid;
+  cursor: pointer;
+  
+}
+.logout-button:hover{
+  background-color: gray;
+}

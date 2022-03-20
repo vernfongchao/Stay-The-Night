@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { editReview } from "../../../store/review"
 import { useEditDeleteReviewModal } from "../EditDeleteReviewModal"
 
+import './EditReviewForm.css'
+
 
 
 const EditReviewForm = ({ curr_review, setShowModal }) => {
@@ -24,7 +26,8 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
             rating,
             review,
         }
-        console.log(edit_review)
+
+
         const data = await dispatch(editReview(edit_review))
         if (data.errors) {
             setErrors(data.errors)
@@ -59,28 +62,39 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
         setErrors(vali_errors)
     }, [rating, review])
 
-
+    const handleExpress = (e) => {
+        if (e.key === 'e') return e.preventDefault()
+        if (e.key === 'E') return e.preventDefault()
+        if (e.key === '+') return e.preventDefault()
+        if (e.key === '-') return e.preventDefault()
+        if (e.key === '.') return e.preventDefault()
+    }
 
     return (
         <div className="review-edit-form-page">
-            {errors && (<div className="spot-error-form-container">
+            <div className='login-form-header-container'>
+                <h1 className='login-form-header-text'> Edit Your Review!</h1>
+            </div>
+            {errors && (<div className="review-form-error-container">
                 {errors?.map((error, ind) => (
                     <p className='error-message' key={ind}>{error}</p>
                 ))}
             </div>)}
-            <form>
-                <div>
+            <form className="review-edit-form-container">
+                <div className="review-edit-form-rating-container">
                     <label>Rating</label>
-                    <input type="number"
+                    <input className="review-edit-form-field"
+                        type="number"
                         value={rating}
                         placeholder="Rating"
                         name="rating"
                         onChange={(e) => setRating(e.target.value)}
+                        onKeyDown={handleExpress}
                     />
                 </div>
-                <div>
+                <div className="review-edit-form-review-container">
                     <label>Review</label>
-                    <textarea
+                    <textarea className="review-edit-form-field-textarea "
                         name='description'
                         value={review}
                         placeholder="Leave a review..."
@@ -90,7 +104,7 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
                         onChange={(e) => setReview(e.target.value)}
                     />
                 </div>
-                <button onClick={handleEdit}>
+                <button className="review-edit-form-submit-button" onClick={handleEdit}>
                     Submit Review
                 </button>
             </form>
