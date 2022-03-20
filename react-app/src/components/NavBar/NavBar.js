@@ -13,10 +13,10 @@ const NavBar = () => {
   return (
     <nav className='navbar-container'>
       <div>
-        <img src="../../images/Stay-The-Night-Logo.png">
-          <Link to='/spots'>
-          </Link>
-        </img>
+        <Link to='/spots'>
+          <img src="../../images/Stay-The-Night-Logo.png">
+          </img>
+        </Link>
       </div>
 
       <div className='navbar-right-container'>
