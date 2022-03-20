@@ -61,7 +61,6 @@ def edit_review(id):
 @review_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_review(id):
-    print("===========================", id)
     delete_review = Review.query.get(id)
     db.session.delete(delete_review)
     db.session.commit()

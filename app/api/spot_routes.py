@@ -20,7 +20,6 @@ def validation_errors_to_error_messages(validation_errors):
 @spot_routes.route('/')
 def get_spots():
     spots = Spot.query.all()
-    print(spots)
     return jsonify(
         [spot.to_dict() for spot in spots]
     )
@@ -63,7 +62,7 @@ def post_spot():
         images = request.get_json()['images']
 
         for single_image in images:
-            print("LENGTH ==============================================",len(single_image["image"]))
+        
             if (len(single_image["image"]) < 1):
                 errors.append("Missing Image Url Field input")
                 return {'errors': errors}, 400
@@ -81,7 +80,6 @@ def edit_spot(id):
 
 
         for image in images:
-            print("=================images",image)
             if (image["image"] == None):
                 continue
             if (len(image["image"]) < 1):
@@ -116,7 +114,6 @@ def edit_spot(id):
         images = request.get_json()['images']
 
         for single_image in images:
-            print("LENGTH ==============================================",len(single_image["image"]))
             if (len(single_image["image"]) < 1):
                 errors.append("Missing Image Url Field input")
                 return {'errors': errors}, 400

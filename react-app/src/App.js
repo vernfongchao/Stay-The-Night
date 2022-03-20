@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LandingPage from './components/LandingPage/LandingPage';
 import NavBar from './components/NavBar/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
 import SpotsPage from './components/Spots/AllSpots/SpotsPage';
 import SpotsDetailsPage from './components/Spots/SpotsDetailsPage/SpotsDetailsPage';
 import Footer from './components/Footer';
@@ -43,9 +42,9 @@ function App() {
         <Route path='/spots/:id'>
           <SpotsDetailsPage />
         </Route>
-        <ProtectedRoute path='/profiles/:id' exact={true} >
+        <Route path='/profiles/:id' exact={true} >
           <MySpots />
-        </ProtectedRoute>
+        </Route>
         <Route>
           <ErrorPage />
         </Route>
