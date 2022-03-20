@@ -12,9 +12,9 @@ const NavBar = () => {
 
   return (
     <nav className='navbar-container'>
-      <div>
+      <div className='navbar-logo-container'>
         <Link to='/spots'>
-          <img src="../../images/Stay-The-Night-Logo.png">
+          <img src="https://i.gyazo.com/7c928c3c9be068df01bc54a6fdd1b6e8.png">
           </img>
         </Link>
       </div>
