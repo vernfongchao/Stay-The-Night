@@ -6,14 +6,14 @@ const ConfirmDeleteSpotModal = () => {
     const [showModal, setShowModal] = useState(false)
 
     return (
-        <div className="create-spot-modal-container">
-            <button onClick={() => setShowModal(true)} >
-                Delete
-            </button>
+        <div className="delete-spot-modal-container">
+            <div className="delete-form-modal-button-container" onClick={() => setShowModal(true)}>
+                <p className="delete-form-modal-button">Delete</p>
+            </div>
             {
                 showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <ConfirmDeletePage setShowModal={setShowModal}/>
+                        <ConfirmDeletePage setShowModal={setShowModal} />
                     </Modal>
                 )
             }

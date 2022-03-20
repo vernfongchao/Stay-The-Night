@@ -19,24 +19,80 @@
   cursor: pointer;
 }
 
-.spot-form-page{
+.spot-form-page {
   border-radius: 10px;
-  height: 900px;
-  width: 600px;
+  min-height: 600px;
+  width: 900px;
 }
-
-
-
-.spot-form-container {
+.spot-form-image-preview {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
 
 .spot-error-form-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
 }
 
+.spot-form-max{
+  color: red;
+}
+
+.spot-form-container {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.spot-form-field{
+  border: black solid 0.1em;
+  border-radius: 10px;
+  width: 80%;
+  height: 30px;
+}
+
+.spot-form-field-textarea{
+  border: black solid 0.1em;
+  border-radius: 10px;
+  width: 80%;
+  height: 60px;
+  resize: none;
+}
+
+
 .error-message {
-  margin: 0;
+  padding-left: 60px;
+  /* margin: 0; */
+  color: red;
+}
+
+.spot-form-image-field {
+  width: 100%;
+  padding-left: 170px;
+}
+
+.spot-form-remove-image{
+  cursor: pointer;
+  background-color: lightblue;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.spot-form-button-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.spot-form-button {
+  border-radius: 10px;
+  border: 1px black solid;
+  background-color: white;
+  height: 30px;
+  cursor: pointer;
+  font-size: medium;
 }

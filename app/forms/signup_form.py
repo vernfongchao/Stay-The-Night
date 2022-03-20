@@ -28,7 +28,7 @@ class SignUpForm(FlaskForm):
     username = StringField(
         'Username', validators=[DataRequired(), Length(min=1, max=40, message='Username must be at least than 1 characters and no more than 40 characters'), username_exists])
     email = StringField('Email', validators=[DataRequired(), Email("Email must be valid"), Length(
-        min=1, max=50, message='Email must be at least than 1 characters and no more than 50 characters'), user_exists])
+        min=3, max=50, message='Email must be at least than 4 characters and no more than 50 characters'), user_exists])
     password = StringField('Password', validators=[DataRequired(), EqualTo(
         "confirm_password", message="Passwords must match")])
     confirm_password = StringField(
