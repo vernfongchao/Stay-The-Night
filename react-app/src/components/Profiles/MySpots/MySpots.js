@@ -10,9 +10,8 @@ const MySpots = () => {
     const user = useSelector(state => state.session.user)
     const spots = Object.values(useSelector(state => state.spots))
     const spotsFilter = spots.filter(({ user_id }) => user_id === +id)
-    console.log(spotsFilter)
 
-    if (user.id !== +id){
+    if (user?.id !== +id){
         history.push('/403-Unauthorized')
     }
 
