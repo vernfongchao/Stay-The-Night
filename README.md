@@ -5,4 +5,6 @@ Stay The Night is a loose clone of Air bnb allowing users to host their spot and
 ## Local Installation 
 
 1. Clone this repo 
-   - https://github.com/vernfongchao/Stay-The-Night.git
+   - `https://github.com/vernfongchao/Stay-The-Night.git`
+
+2. Instal dependencies for the back end
