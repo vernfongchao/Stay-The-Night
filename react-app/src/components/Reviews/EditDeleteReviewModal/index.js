@@ -13,7 +13,7 @@ const EditDeleteReviewModal = ({ review, id }) => {
             value={{ editDeleteReviewModal, setEditDeleteReviewModal }}>
             <div className="edit-delete-review-modal-container">
                 <div className="edit-delete-review-modal-button" onClick={() => setEditDeleteReviewModal(true)}>
-                    <i class="fa-solid fa-ellipsis"></i>
+                    <i className="fa-solid fa-ellipsis"></i>
                 </div>
                 {editDeleteReviewModal && (
                     <Modal onClose={() => setEditDeleteReviewModal(false)}>

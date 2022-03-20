@@ -18,9 +18,9 @@
   flex-direction: column;
 }
 
-.login-form-header-container h1{
-    margin: 15px 20px;
-    color: white;
+.login-form-header-container h1 {
+  margin: 15px 20px;
+  color: white;
 }
 
 .login-form-header-container {
@@ -43,20 +43,18 @@
   align-items: center;
 }
 
-
-.login-error-message{
-    color:red;
+.login-error-message {
+  color: red;
 }
 
-
 .login-form-field-container {
-    height: 150px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 3%;
+  height: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 3%;
 }
 
 .login-form-field {
@@ -66,21 +64,23 @@
   height: 30px;
 }
 
-
-
 .login-form-button-containers {
-
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
-.login-form-demo-button{
-    border-radius: 10px;
-    border: 1px black solid;
-    background-color: white;
-    height: 30px;
-    cursor: pointer;
-    font-size: medium;
+.login-form-demo-button {
+  border-radius: 10px;
+  border: 1px black solid;
+  color: white;
+  background-color: black;
+  height: 30px;
+  cursor: pointer;
+  font-size: medium;
+}
+
+.login-form-demo-button:hover {
+  background-color: gray;
 }

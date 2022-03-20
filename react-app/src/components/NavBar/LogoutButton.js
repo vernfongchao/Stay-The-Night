@@ -9,7 +9,7 @@ const LogoutButton = ({setShowMenu}) => {
     setShowMenu(false)
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button className='logout-button' onClick={onLogout}>Logout</button>;
 };
 
 export default LogoutButton;

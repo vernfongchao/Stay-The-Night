@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
@@ -21,11 +21,13 @@ const ProfileMenu = () => {
         profileMenu = (
             <div className="profile-drop-down-menu">
                 <div>
-                    <p>Hello {user?.username.length > 10 ? user?.username.slice(0, 10) : user?.username}</p>
+                    <p>Hello {user?.username.length > 10 ? `${user?.username.slice(0, 15)}...` : user?.username}</p>
                 </div>
                 <div>
-                    <Link to={`/profile/${user?.id}`}>
-                        My Profile
+                    <Link className="profile-link" to={`/profiles/${user?.id}`}>
+                        <span className="profile-link-text">
+                            My Profile
+                        </span>
                     </Link>
                 </div>
                 <div>

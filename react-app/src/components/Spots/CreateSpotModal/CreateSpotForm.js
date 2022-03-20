@@ -41,7 +41,7 @@ const CreateSpotForm = ({ setShowModal }) => {
         else if (imageFields.length <= 1) {
             setMaxImage("Must upload at least 1 picture")
         }
-        else if (imageFields.length >= 2 && imageFields.length <= 4 ){
+        else if (imageFields.length >= 2 && imageFields.length <= 4) {
             setMaxImage("")
         }
         if (name.length >= 100) {
@@ -129,10 +129,13 @@ const CreateSpotForm = ({ setShowModal }) => {
         }
     }
 
-    console.log(name.length)
-
-    console.log(maxName)
-
+    const handleExpress = (e) => {
+        if (e.key === 'e') return e.preventDefault()
+        if (e.key === 'E') return e.preventDefault()
+        if (e.key === '+') return e.preventDefault()
+        if (e.key === '-') return e.preventDefault()
+        if (e.key === '.') return e.preventDefault()
+    }
 
     return (
         <div className="spot-form-page">
@@ -141,8 +144,9 @@ const CreateSpotForm = ({ setShowModal }) => {
             </div>
 
             <div className="spot-form-image-preview">
-                {imageFields?.map(({ image }) => (image.length !== 0 &&
-                    <img src={image}
+                {imageFields?.map(({ image }, i) => (image.length !== 0 &&
+                    <img key={i}
+                        src={image}
                         onError={(e) => e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"}
                         alt="House"
                         width="100px"
@@ -226,6 +230,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                     placeholder="Price"
                     name="price"
                     onChange={(e) => setPrice(e.target.value)}
+                    onKeyDown={handleExpress}
                 />
 
 
@@ -236,6 +241,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                     placeholder="Guest"
                     name="guest"
                     onChange={(e) => setGuest(e.target.value)}
+                    onKeyDown={handleExpress}
                 />
 
                 <input className='spot-form-field'
@@ -245,6 +251,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                     placeholder="Bedrooms"
                     name="bedroom"
                     onChange={(e) => setBedroom(e.target.value)}
+                    onKeyDown={handleExpress}
                 />
                 <input className='spot-form-field'
                     type="number"
@@ -253,6 +260,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                     placeholder="Bathrooms"
                     name="bathroom"
                     onChange={(e) => setBathroom(e.target.value)}
+                    onKeyDown={handleExpress}
                 />
                 {maxImage && <p className="spot-form-max">{maxImage}</p>}
                 {imageFields.map((imageField, index) => (
@@ -266,7 +274,7 @@ const CreateSpotForm = ({ setShowModal }) => {
 
                         </input>
                         <span className="spot-form-remove-image" onClick={handleRemoveUrl}>
-                            <i class="fa-solid fa-minus"></i>
+                            <i className="fa-solid fa-minus"></i>
                         </span>
                     </div>
                 ))}

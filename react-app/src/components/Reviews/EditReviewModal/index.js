@@ -7,8 +7,8 @@ const EditReviewModal = ({review}) => {
 
     return (
         <div className="edit-review-modal-container">
-            <div onClick={() => setShowModal(true)}>
-                <p>Edit</p>
+            <div className="edit-review-modal-button-container" onClick={() => setShowModal(true)}>
+                <p className="edit-review-modal-button">Edit</p>
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

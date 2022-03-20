@@ -1,15 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useParams,useHistory } from "react-router-dom";
 import { deleteReview } from "../../../store/review";
 
-const ConfirmDeleteReview = ({id,setShowModal}) => {
+import './ConfirmDeleteReview.css'
+
+const ConfirmDeleteReview = ({ id, setShowModal }) => {
     const dispatch = useDispatch()
 
-    const handleDelete = async(e) => {
+    const handleDelete = async (e) => {
         e.preventDefault()
         const data = await dispatch(deleteReview(id))
-        if (data){
+        if (data) {
             setShowModal(false)
         }
     }
@@ -18,14 +19,20 @@ const ConfirmDeleteReview = ({id,setShowModal}) => {
 
 
 
-    return(
-        <div>
-            <button onClick={handleDelete}>
-                Confirm Delete
-            </button>
-            <button onClick={()=> setShowModal(false)}>
-                Cancel
-            </button>
+    return (
+        <div className="confirm-delete-page-container">
+            <div>
+                <p>Warning! This command will be irreversible, are you sure you want to delete? </p>
+            </div>
+            <div className="confirm-delete-button-container">
+                <button className="confirm-delete-button" onClick={handleDelete}>
+                    Confirm Delete
+                </button>
+                <button className="confirm-cancel-button" onClick={() => setShowModal(false)}>
+                    Cancel
+                </button>
+
+            </div>
         </div>
     )
 

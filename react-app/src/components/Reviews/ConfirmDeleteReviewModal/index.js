@@ -7,9 +7,9 @@ const ConfirmDeleteReviewModal = ({id}) => {
 
     return (
         <div className="create-spot-modal-container">
-            <button onClick={() => setShowModal(true)} >
-                Delete
-            </button>
+            <div className="delete-form-modal-button-container" onClick={() => setShowModal(true)}>
+                <p className="delete-form-modal-button">Delete</p>
+            </div>
             {
                 showModal && (
                     <Modal onClose={() => setShowModal(false)}>

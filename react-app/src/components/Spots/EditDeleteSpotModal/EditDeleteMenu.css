@@ -4,13 +4,30 @@
   margin: 21px 0px;
 }
 
-.edit-delete-button-container {
-  width: 50px;
-  font-size: 3rem;
-  cursor: pointer;
+.edit-delete-modal-container {
+  margin: 0px;
 }
 
-.edit-delete-modal-menu{
+.edit-delete-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  font-size: 3rem;
+  cursor: pointer;
+  margin: 0;
+  height: 30px;
+  
+}
+
+.edit-delete-button-container:hover{
+  border: black 1px solid;
+  border-radius: 20px;
+  background-color: gray;
+  color: white;
+}
+
+.edit-delete-modal-menu {
   width: 100px;
   height: 100px;
   display: flex;
@@ -18,3 +35,4 @@
   align-items: center;
   justify-content: space-evenly;
 }
+

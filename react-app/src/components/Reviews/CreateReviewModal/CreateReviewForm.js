@@ -55,28 +55,39 @@ const CreateReviewForm = ({ setShowModal }) => {
         setErrors(vali_errors)
     }, [rating, review])
 
-    console.log(rating % 10 === 3)
+    const handleExpress = (e) => {
+        if (e.key === 'e') return e.preventDefault()
+        if (e.key === 'E') return e.preventDefault()
+        if (e.key === '+') return e.preventDefault()
+        if (e.key === '-') return e.preventDefault()
+        if (e.key === '.') return e.preventDefault()
+    }
 
     return (
         <div className="review-form-page">
-            {errors && (<div className="spot-error-form-container">
+            <div className='login-form-header-container'>
+                <h1 className='login-form-header-text'> Leave a Review!</h1>
+            </div>
+            {errors && (<div className="review-form-error-container">
                 {errors?.map((error, ind) => (
-                    <p className='error-message' key={ind}>{error}</p>
+                    <p className='review-form-error-message' key={ind}>{error}</p>
                 ))}
             </div>)}
-            <form>
-                <div>
-                    <label>Rating</label>
-                    <input type="number"
+            <form className="review-form-container">
+                <div className="review-form-rating-container">
+                    <label>Please Rate from 1 to 5</label>
+                    <input className="review-form-field"
+                        type="number"
                         value={rating}
                         placeholder="Rating"
                         name="rating"
                         onChange={(e) => setRating(e.target.value)}
+                        onKeyDown={handleExpress}
                     />
                 </div>
-                <div>
+                <div className="review-form-review-container">
                     <label>Review</label>
-                    <textarea
+                    <textarea className="review-form-field-textarea"
                         name='description'
                         value={review}
                         placeholder="Leave a review..."
@@ -86,7 +97,7 @@ const CreateReviewForm = ({ setShowModal }) => {
                         onChange={(e) => setReview(e.target.value)}
                     />
                 </div>
-                <button onClick={handleSubmit}>
+                <button className="review-form-submit-button" onClick={handleSubmit}>
                     Submit Review
                 </button>
             </form>

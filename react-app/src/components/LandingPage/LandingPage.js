@@ -16,6 +16,7 @@ const LandingPage = () => {
         <div className="landing-page-container">
             <div className="landing-image-container">
                 <img className="landing-image"
+                alt="House"
                     src="https://a0.muscache.com/im/pictures/miso/Hosting-46898793/original/f0d2a57a-c3af-417b-bd77-5594c86889e0.jpeg?im_w=1200"
                     onError={handleError}
                 ></img>

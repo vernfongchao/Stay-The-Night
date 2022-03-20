@@ -57,8 +57,12 @@
 .signup-form-button {
   border-radius: 10px;
   border: 1px black solid;
-  background-color: white;
+  background-color: black;
+  color: white;
   height: 30px;
   cursor: pointer;
   font-size: medium;
+}
+.signup-form-button:hover {
+  background-color: gray;
 }
