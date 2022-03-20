@@ -31,11 +31,23 @@ const CreateReviewForm = ({ setShowModal }) => {
 
     useEffect(() => {
         const vali_errors = []
-        if (rating >= 5) {
-            setRating(5)
-        }
         if (rating <= 1) {
             setRating(1)
+        }
+        else if (rating % 10 === 1) {
+            setRating(1)
+        }
+        else if (rating % 10 === 2) {
+            setRating(2)
+        }
+        else if (rating % 10 === 3) {
+            setRating(3)
+        }
+        else if (rating % 10 === 4) {
+            setRating(4)
+        }
+        else if (rating >= 5) {
+            setRating(5)
         }
         if (review.length >= 1000) {
             vali_errors.push("Maximum Characters Reached")
@@ -43,6 +55,7 @@ const CreateReviewForm = ({ setShowModal }) => {
         setErrors(vali_errors)
     }, [rating, review])
 
+    console.log(rating % 10 === 3)
 
     return (
         <div className="review-form-page">

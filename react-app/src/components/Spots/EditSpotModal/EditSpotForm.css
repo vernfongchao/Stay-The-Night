@@ -1,4 +1,101 @@
+.edit-form-modal-container{
+  height: 25px;
+  cursor: pointer;
+}
+
+.edit-form-modal-button-container{
+
+}
+
+.edit-form-modal-button{
+  font-size: 1.1em;
+
+}
+.edit-form-modal-button:hover{
+  font-weight: bold;
+  background-color: rgb(209, 235, 243);
+
+}
+
+.spot-edit-form-page {
+  border-radius: 10px;
+  min-height: 600px;
+  width: 900px;
+  align-items: center;
+}
+
+.spot-form-image-preview {
+  display: flex;
+  justify-content: center;
+}
+
 .spot-edit-form-container {
   display: flex;
   flex-direction: column;
+}
+
+.spot-error-form-container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.spot-edit-form-container {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.error-spot-form-max {
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+.error-spot-form-label {
+}
+.spot-edit-field-container {
+  display: flex;
+  justify-content: space-between;
+  width: 88%;
+
+}
+
+.error-spot-form-textarea{
+  border: black solid 0.1em;
+  border-radius: 10px;
+  width: 80%;
+  height: 60px;
+  resize: none;
+}
+.error-spot-form-field {
+  border: black solid 0.1em;
+  border-radius: 10px;
+  width: 88%;
+  height: 30px;
+}
+
+.all-error-spot-image-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-spot-image-container {
+  padding-left: 110px;
+  display: flex;
+  width: 100%;
+}
+.edit-spot-field-button-container {
+  padding-left: 10px;
+  width: 80%;
+}
+
+.error-spot-form-image-field {
+  border: black solid 0.1em;
+  border-radius: 10px;
+  width: 96%;
+  height: 30px;
 }

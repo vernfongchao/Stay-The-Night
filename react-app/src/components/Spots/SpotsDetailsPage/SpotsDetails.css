@@ -70,26 +70,29 @@
   width: 100%;
 }
 .details-page-image-1 {
+
   grid-area: b;
-  height: 270px;
+  height: 267px;
   width: 100%;
 }
 
 .details-page-image-2 {
+
   grid-area: c;
-  height: 270px;
+  height: 267px;
   width: 100%;
 }
 
 .details-page-image-3 {
   grid-area: d;
-  height: 270px;
+  height: 267px;
   width: 100%;
 }
 
 .details-page-image-4 {
+
   grid-area: e;
-  height: 270px;
+  height: 267px;
   width: 100%;
 }
 

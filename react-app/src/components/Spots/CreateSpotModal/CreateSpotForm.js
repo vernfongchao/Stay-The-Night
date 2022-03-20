@@ -32,10 +32,17 @@ const CreateSpotForm = ({ setShowModal }) => {
         { image: "" }
     ])
 
+    const [maxImage, setMaxImage] = useState("");
+
     useEffect(() => {
-        const vali_errors = []
         if (imageFields.length >= 5) {
-            vali_errors.push(["Maximum pictures allowed met"])
+            setMaxImage("Maximum pictures allowed met")
+        }
+        else if (imageFields.length <= 1) {
+            setMaxImage("Must upload at least 1 picture")
+        }
+        else if (imageFields.length >= 2 && imageFields.length <= 4 ){
+            setMaxImage("")
         }
         if (name.length >= 100) {
             setMaxName("Maximum Characters Reached")
@@ -73,7 +80,6 @@ const CreateSpotForm = ({ setShowModal }) => {
         if (description.length < 1000) {
             setMaxDescription("")
         }
-        setErrors(vali_errors)
     }, [imageFields, name, address, city, state, country, description])
 
     const handleSubmit = async (e) => {
@@ -130,28 +136,31 @@ const CreateSpotForm = ({ setShowModal }) => {
 
     return (
         <div className="spot-form-page">
-
             <div className='login-form-header-container'>
                 <h1 className='login-form-header-text'> Host a Spot!</h1>
             </div>
-            {imageFields?.map(({ image }) => (image.length !== 0 &&
-                <img src={image}
-                    onError={(e) => e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"}
-                    alt="House"
-                    width="100px"
-                    height="100px">
-                </img>
-            ))}
+
+            <div className="spot-form-image-preview">
+                {imageFields?.map(({ image }) => (image.length !== 0 &&
+                    <img src={image}
+                        onError={(e) => e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"}
+                        alt="House"
+                        width="100px"
+                        height="100px">
+                    </img>
+                ))}
+            </div>
+
             {errors && (<div className="spot-error-form-container">
                 {errors?.map((error, ind) => (
                     <p className='error-message' key={ind}>{error}</p>
                 ))}
             </div>)}
+
             <form className="spot-form-container">
-
-
-                <p>{maxName}</p>
-                <input type="text"
+                <p className="spot-form-max">{maxName}</p>
+                <input className='spot-form-field'
+                    type="text"
                     label="Name"
                     value={name}
                     placeholder="Name"
@@ -159,8 +168,9 @@ const CreateSpotForm = ({ setShowModal }) => {
                     onChange={(e) => setName(e.target.value)}
                     maxLength="100"
                 />
-                <p>{maxAddress}</p>
-                <input type="text"
+                <p className="spot-form-max">{maxAddress}</p>
+                <input className='spot-form-field'
+                    type="text"
                     label="Address"
                     value={address}
                     placeholder="Address"
@@ -168,8 +178,9 @@ const CreateSpotForm = ({ setShowModal }) => {
                     onChange={(e) => setAddress(e.target.value)}
                     maxLength="50"
                 />
-                <p>{maxCity}</p>
-                <input type="text"
+                <p className="spot-form-max">{maxCity}</p>
+                <input className='spot-form-field'
+                    type="text"
                     label="City"
                     value={city}
                     placeholder="City"
@@ -177,8 +188,9 @@ const CreateSpotForm = ({ setShowModal }) => {
                     onChange={(e) => setCity(e.target.value)}
                     maxLength="50"
                 />
-                <p>{maxState}</p>
-                <input type="text"
+                <p className="spot-form-max">{maxState}</p>
+                <input className='spot-form-field'
+                    type="text"
                     label="State"
                     value={state}
                     placeholder="State"
@@ -186,8 +198,9 @@ const CreateSpotForm = ({ setShowModal }) => {
                     onChange={(e) => setState(e.target.value)}
                     maxLength="50"
                 />
-                <p>{maxCountry}</p>
-                <input type="text"
+                <p className="spot-form-max">{maxCountry}</p>
+                <input className='spot-form-field'
+                    type="text"
                     label="Country"
                     value={country}
                     placeholder="Country"
@@ -195,8 +208,8 @@ const CreateSpotForm = ({ setShowModal }) => {
                     onChange={(e) => setCountry(e.target.value)}
                     maxLength="50"
                 />
-                <p>{maxDescription}</p>
-                <textarea
+                <p className="spot-form-max">{maxDescription}</p>
+                <textarea className="spot-form-field-textarea"
                     name='description'
                     value={description}
                     placeholder="Give a description..."
@@ -206,7 +219,8 @@ const CreateSpotForm = ({ setShowModal }) => {
                     maxLength="1000"
                 />
 
-                <input type="number"
+                <input className='spot-form-field'
+                    type="number"
                     label="Price"
                     value={price}
                     placeholder="Price"
@@ -215,7 +229,8 @@ const CreateSpotForm = ({ setShowModal }) => {
                 />
 
 
-                <input type="number"
+                <input className='spot-form-field'
+                    type="number"
                     label="Guest"
                     value={guest}
                     placeholder="Guest"
@@ -223,33 +238,42 @@ const CreateSpotForm = ({ setShowModal }) => {
                     onChange={(e) => setGuest(e.target.value)}
                 />
 
-                <input type="number"
+                <input className='spot-form-field'
+                    type="number"
                     label="Bedroom"
                     value={bedroom}
                     placeholder="Bedrooms"
                     name="bedroom"
                     onChange={(e) => setBedroom(e.target.value)}
                 />
-                <input type="number"
+                <input className='spot-form-field'
+                    type="number"
                     label="Bathroom"
                     value={bathroom}
                     placeholder="Bathrooms"
                     name="bathroom"
                     onChange={(e) => setBathroom(e.target.value)}
                 />
+                {maxImage && <p className="spot-form-max">{maxImage}</p>}
                 {imageFields.map((imageField, index) => (
-                    <div key={index}>
-                        <label>Image URL</label>
-                        <input name="image" type="text" value={imageField.image} onChange={e => handleOnChange(index, e)}>
+                    <div className="spot-form-image-field" key={index}>
+                        <input
+                            className='spot-form-field'
+                            name="image" type="text"
+                            value={imageField.image}
+                            placeholder="Image URL"
+                            onChange={e => handleOnChange(index, e)}>
 
                         </input>
-                        <button type='button' onClick={(e) => handleRemoveUrl(index)}>-</button>
+                        <span className="spot-form-remove-image" onClick={handleRemoveUrl}>
+                            <i class="fa-solid fa-minus"></i>
+                        </span>
                     </div>
                 ))}
-                <button type='button' onClick={handleAddUrl}>Add Images</button>
 
                 <div className="spot-form-button-container">
-                    <button type="submit" onClick={handleSubmit}>
+                    <button className="spot-form-button" type='button' onClick={handleAddUrl}>Add Images</button>
+                    <button className="spot-form-button" type="submit" onClick={handleSubmit}>
                         Add a Spot
                     </button >
                 </div>

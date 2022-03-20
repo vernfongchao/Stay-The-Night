@@ -7,7 +7,7 @@ import { useEditDeleteReviewModal } from "../EditDeleteReviewModal"
 
 const EditReviewForm = ({ curr_review, setShowModal }) => {
     const dispatch = useDispatch()
-    const {setEditDeleteReviewModal} = useEditDeleteReviewModal()
+    const { setEditDeleteReviewModal } = useEditDeleteReviewModal()
 
     const user = useSelector(state => state.session.user)
 
@@ -35,11 +35,23 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
     }
     useEffect(() => {
         const vali_errors = []
-        if (rating >= 5) {
-            setRating(5)
-        }
         if (rating <= 1) {
             setRating(1)
+        }
+        else if (rating % 10 === 1) {
+            setRating(1)
+        }
+        else if (rating % 10 === 2) {
+            setRating(2)
+        }
+        else if (rating % 10 === 3) {
+            setRating(3)
+        }
+        else if (rating % 10 === 4) {
+            setRating(4)
+        }
+        else if (rating >= 5) {
+            setRating(5)
         }
         if (review.length >= 1000) {
             vali_errors.push("Maximum Characters Reached")

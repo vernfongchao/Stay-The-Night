@@ -1,0 +1,64 @@
+.signup-form-modal-container {
+}
+
+.signup-form-button-container:hover {
+  background-color: rgb(227, 241, 245);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.signup-form-button-text {
+  font-family: "Roboto", sans-serif;
+}
+
+.sign-form-page-container {
+  border-radius: 10px;
+  min-height: 500px;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-error-message {
+  color: red;
+}
+
+.signup-form-field-container {
+  margin-top: auto;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.signup-form-field-input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-form-field {
+  border: black solid 0.1em;
+  border-radius: 10px;
+  width: 80%;
+  height: 30px;
+}
+
+.signup-form-button {
+  border-radius: 10px;
+  border: 1px black solid;
+  background-color: white;
+  height: 30px;
+  cursor: pointer;
+  font-size: medium;
+}

@@ -7,8 +7,8 @@ const EditFormModal = () => {
 
     return (
         <div className= "edit-form-modal-container">
-            <div onClick={() => setShowModal(true)}>
-                <p>Edit</p>
+            <div className="edit-form-modal-button-container" onClick={() => setShowModal(true)}>
+                <p className="edit-form-modal-button">Edit</p>
             </div>
             {showModal && (
                 <Modal onClose={()=> setShowModal(false)}>

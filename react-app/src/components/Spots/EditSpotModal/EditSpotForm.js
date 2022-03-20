@@ -32,14 +32,20 @@ const EditSpotForm = ({ setShowModal }) => {
     const [bedroom, setBedroom] = useState(spot.bedroom);
     const [bathroom, setBathroom] = useState(spot.bathroom);
     const [errors, setErrors] = useState([])
+    const [maxImage, setMaxImage] = useState("");
 
     let images = []
     const [imageFields, setImageFields] = useState(images)
 
     useEffect(() => {
-        const vali_errors = []
         if (imageFields.length >= 5) {
-            vali_errors.push(["Maximum pictures allowed met"])
+            setMaxImage("Maximum pictures allowed met")
+        }
+        else if (imageFields.length <= 1) {
+            setMaxImage("Must upload at least 1 picture")
+        }
+        else if (imageFields.length >= 2 && imageFields.length <= 4) {
+            setMaxImage("")
         }
         if (name.length >= 100) {
             setMaxName("Maximum Characters Reached")
@@ -77,7 +83,6 @@ const EditSpotForm = ({ setShowModal }) => {
         if (description.length < 1000) {
             setMaxDescription("")
         }
-        setErrors(vali_errors)
     }, [imageFields, name, address, city, state, country, description])
 
 
@@ -160,36 +165,43 @@ const EditSpotForm = ({ setShowModal }) => {
             <div className='login-form-header-container'>
                 <h1 className='login-form-header-text'> Edit Your Spot!</h1>
             </div>
-            {imageFields?.map(({ image }) => (image.length !== 0 &&
-                <img src={image}
-                    onError={(e) => e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"}
-                    alt="House"
-                    width="100px"
-                    height="100px">
-                </img>
-            ))}
+            <div className="spot-form-image-preview">
+
+                {imageFields?.map(({ image }) => (image.length !== 0 &&
+                    <img src={image}
+                        onError={(e) => e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"}
+                        alt="House"
+                        width="100px"
+                        height="100px">
+                    </img>
+                ))}
+
+            </div>
             {errors && (<div className="spot-error-form-container">
                 {errors?.map((error, ind) => (
                     <p className='error-message' key={ind}>{error}</p>
                 ))}
             </div>)}
             <form className="spot-edit-form-container">
-                <div>
-                    <p>{maxName}</p>
-                    <label for="name">Name</label>
-                    <input type="text"
+                <p className="error-spot-form-max">{maxName}</p>
+                <div className="spot-edit-field-container">
+                    <label className="error-spot-form-label" for="name">Name</label>
+                    <input className="error-spot-form-field"
+                        type="text"
                         value={name}
                         placeholder="Name"
                         name="name"
                         onChange={(e) => setName(e.target.value)}
                         maxLength="100"
                     />
+
                 </div>
 
-                <div>
-                    <p>{maxAddress}</p>
-                    <label for="address">Address</label>
-                    <input type="text"
+                <p className="error-spot-form-max">{maxAddress}</p>
+                <div className="spot-edit-field-container">
+                    <label className="error-spot-form-label" for="address">Address</label>
+                    <input className="error-spot-form-field"
+                        type="text"
                         label="Address"
                         value={address}
                         placeholder="Address"
@@ -199,10 +211,11 @@ const EditSpotForm = ({ setShowModal }) => {
                     />
                 </div>
 
-                <div>
-                    <p>{maxCity}</p>
-                    <label for="city">City</label>
-                    <input type="text"
+                <p className="error-spot-form-max">{maxCity}</p>
+                <div className="spot-edit-field-container">
+                    <label className="error-spot-form-label" for="city">City</label>
+                    <input className="error-spot-form-field"
+                        type="text"
                         label="City"
                         value={city}
                         placeholder="City"
@@ -212,10 +225,11 @@ const EditSpotForm = ({ setShowModal }) => {
                     />
                 </div>
 
-                <div>
-                    <p>{maxState}</p>
-                    <label for="state">State</label>
-                    <input type="text"
+                <p className="error-spot-form-max">{maxState}</p>
+                <div className="spot-edit-field-container">
+                    <label className="error-spot-form-label" for="state">State</label>
+                    <input className="error-spot-form-field"
+                        type="text"
                         label="State"
                         value={state}
                         placeholder="State"
@@ -224,10 +238,11 @@ const EditSpotForm = ({ setShowModal }) => {
                         maxLength="50"
                     />
                 </div>
-                <div>
-                    <p>{maxCountry}</p>
-                    <label for="country">Country</label>
-                    <input type="text"
+                <p className="error-spot-form-max">{maxCountry}</p>
+                <div className="spot-edit-field-container">
+                    <label className="error-spot-form-label" for="country">Country</label>
+                    <input className="error-spot-form-field"
+                        type="text"
                         label="Country"
                         value={country}
                         placeholder="Country"
@@ -237,10 +252,10 @@ const EditSpotForm = ({ setShowModal }) => {
                     />
                 </div>
 
-                <div>
-                    <p>{maxDescription}</p>
-                    <label for='description'>Description</label>
-                    <textarea
+                <p className="error-spot-form-max">{maxDescription}</p>
+                <div className="spot-edit-field-container">
+                    <label className="error-spot-form-label" for='description'>Description</label>
+                    <textarea className="error-spot-form-textarea"
                         name='description'
                         value={description}
                         placeholder="Give a description..."
@@ -251,9 +266,10 @@ const EditSpotForm = ({ setShowModal }) => {
                     />
                 </div>
 
-                <div>
-                    <label for='price'>Price</label>
-                    <input type="number"
+                <div className="spot-edit-field-container">
+                    <label className="error-spot-form-label" for='price'>Price</label>
+                    <input className="error-spot-form-field"
+                        type="number"
                         label="Price"
                         value={price}
                         placeholder="Price"
@@ -261,9 +277,10 @@ const EditSpotForm = ({ setShowModal }) => {
                         onChange={(e) => setPrice(e.target.value)}
                     />
                 </div>
-                <div>
-                    <label for='guest'>Guests</label>
-                    <input type="number"
+                <div className="spot-edit-field-container">
+                    <label className="error-spot-form-label" for='guest'>Guests</label>
+                    <input className="error-spot-form-field"
+                        type="number"
                         label="Guest"
                         value={guest}
                         placeholder="Guest"
@@ -272,9 +289,10 @@ const EditSpotForm = ({ setShowModal }) => {
                     />
                 </div>
 
-                <div>
-                    <label for='bedroom'>Bedrooms</label>
-                    <input type="number"
+                <div className="spot-edit-field-container">
+                    <label className="error-spot-form-label" for='bedroom'>Bedrooms</label>
+                    <input className="error-spot-form-field"
+                        type="number"
                         label="Bedroom"
                         value={bedroom}
                         placeholder="Bedrooms"
@@ -283,9 +301,10 @@ const EditSpotForm = ({ setShowModal }) => {
                     />
                 </div>
 
-                <div>
-                    <label for='bathoom'>Bathrooms</label>
-                    <input type="number"
+                <div className="spot-edit-field-container">
+                    <label className="error-spot-form-label" for='bathoom'>Bathrooms</label>
+                    <input className="error-spot-form-field"
+                        type="number"
                         label="Bathroom"
                         value={bathroom}
                         placeholder="Bathrooms"
@@ -294,19 +313,32 @@ const EditSpotForm = ({ setShowModal }) => {
                     />
                 </div>
 
+                <div className="all-error-spot-image-container" >
+                    <p className="error-spot-form-max">{maxImage}</p>
+                    {imageFields.map((imageField, index) => (
 
-                {imageFields.map((imageField, index) => (
-                    <div key={index}>
-                        <label>Image URL</label>
-                        <input name="image" type="text" value={imageField.image} onChange={e => handleOnChange(index, e)}>
+                        <div className="edit-spot-image-container" key={index}>
+                            <label className="error-spot-form-label">Image URL</label>
+                            <div className="edit-spot-field-button-container">
+                                <input className="error-spot-form-image-field"
+                                    name="image"
+                                    type="text"
+                                    value={imageField.image}
+                                    onChange={e => handleOnChange(index, e)}>
 
-                        </input>
-                        <button type='button' onClick={() => handleRemoveUrl(index)}>-</button>
-                    </div>
-                ))}
+                                </input>
+                                <span className="spot-form-remove-image" onClick={handleRemoveUrl}>
+                                    <i class="fa-solid fa-minus"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                    ))}
+
+                </div>
                 <div className="spot-form-button-container">
-                    <button type='button' onClick={handleAddUrl}>Add Images</button>
-                    <button type="submit" onClick={handleSubmit}>
+                    <button className="spot-form-button" type='button' onClick={handleAddUrl}>Add Images</button>
+                    <button className="spot-form-button" type="submit" onClick={handleSubmit}>
                         Submit Edit
                     </button >
                 </div>

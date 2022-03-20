@@ -10,5 +10,11 @@
   cursor: pointer;
 }
 
-.fa-solid.fa-ellipsis {
+.edit-delete-modal-menu{
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }

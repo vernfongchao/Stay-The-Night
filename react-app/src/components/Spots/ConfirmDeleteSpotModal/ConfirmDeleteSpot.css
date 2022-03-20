@@ -1,0 +1,50 @@
+
+
+.delete-form-modal-button {
+  font-size: 1.1em;
+  cursor: pointer;
+}
+.delete-form-modal-button:hover {
+  font-weight: bold;
+  background-color: rgb(209, 235, 243);
+}
+
+
+.confirm-delete-page-container{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+}
+
+.confirm-delete-button-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.confirm-delete-button{
+    height: 30px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.confirm-delete-button:hover{
+    color: white;
+    background-color: red;
+}
+
+.confirm-cancel-button{
+    height: 30px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.confirm-cancel-button:hover{
+    color: white;
+    background-color: red;
+}

@@ -18,8 +18,6 @@ const EditDeleteModal = () => {
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
 
-
-                
                 {editDeleteModal && (
                     <Modal onClose={() => setEditDeleteModal(false)}>
                         <EditDeleteMenu />

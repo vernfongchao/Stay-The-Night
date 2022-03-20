@@ -7,8 +7,8 @@ const CreateReviewModal = () => {
 
     return (
         <div className="create-review-modal-container">
-            <button onClick={() => setShowModal(true)}>
-                Leave a Review
+            <button className="create-review-modal-button" onClick={() => setShowModal(true)}>
+                Leave a Review!
             </button>
             {showModal &&
                 <Modal onClose={() => setShowModal(false)}>
