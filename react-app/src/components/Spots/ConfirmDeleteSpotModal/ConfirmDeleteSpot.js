@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteSpot } from "../../../store/spot";
 
@@ -7,6 +7,7 @@ import './ConfirmDeleteSpot.css'
 
 const ConfirmDeletePage = ({ setShowModal }) => {
     const { id } = useParams()
+    const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -14,7 +15,7 @@ const ConfirmDeletePage = ({ setShowModal }) => {
         e.preventDefault()
         const data = await dispatch(deleteSpot(id))
         if (data) {
-            history.push('/spots')
+            history.push(`/profiles/${user.id}`)
             setShowModal(false)
         }
     }
