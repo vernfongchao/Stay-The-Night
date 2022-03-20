@@ -9,6 +9,11 @@ const ProfileMenu = () => {
     const user = useSelector(state => state.session.user)
     const [showMenu, setShowMenu] = useState(false)
 
+    const toggleMenu = (e) => {
+        setShowMenu(!showMenu)
+    }
+
+
     let profileMenu;
     if (!user) {
         profileMenu = (
@@ -24,7 +29,7 @@ const ProfileMenu = () => {
                     <p>Hello {user?.username.length > 10 ? `${user?.username.slice(0, 15)}...` : user?.username}</p>
                 </div>
                 <div>
-                    <Link className="profile-link" to={`/profiles/${user?.id}`}>
+                    <Link className="profile-link" to={`/profiles/${user?.id}`} onClick={toggleMenu} >
                         <span className="profile-link-text">
                             My Profile
                         </span>
@@ -37,9 +42,6 @@ const ProfileMenu = () => {
         )
     }
 
-    const toggleMenu = (e) => {
-        setShowMenu(!showMenu)
-    }
 
 
     return (
