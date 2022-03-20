@@ -21,6 +21,9 @@ const ConfirmDeleteReview = ({ id, setShowModal }) => {
 
     return (
         <div className="confirm-delete-page-container">
+            <div className='login-form-header-container'>
+                <h1 className='login-form-header-text'> Warning!</h1>
+            </div>
             <div>
                 <p>Warning! This command will be irreversible, are you sure you want to delete? </p>
             </div>

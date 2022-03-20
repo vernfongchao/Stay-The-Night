@@ -11,16 +11,23 @@
 
 
 .confirm-delete-page-container{
-    height: 100px;
+    height: 200px;
     display: flex;
     flex-direction: column;
-    justify-content:space-evenly;
+    align-items: center;
+
+}
+
+.login-form-header-container{
+    width: 100%;
 }
 
 .confirm-delete-button-container{
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: 10%;
 }
 
 .confirm-delete-button{
