@@ -4,7 +4,7 @@ Stay The Night is a loose clone of Air bnb allowing users to host their spot and
 
 ## Live Site
 
-A Live deployment is hosted on [Stay-The-Night](https://stay-the-night.herokuapp.com/)
+A Live deployment of [Stay-The-Night](https://stay-the-night.herokuapp.com/) is hosted on [heroku](https://heroku.com)
 
 ## Secren Shots
 
