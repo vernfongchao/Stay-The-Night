@@ -1,14 +1,14 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import './ErrorPage.css'
 
-const ErrorPage =() => {
+const ErrorPage = () => {
 
-    useEffect(()=>{
-        window.scrollTo(0,0)
-    },[])
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
-    return(
+    return (
         <div className="error-page-form-container">
             <div className="error-page-text-container">
                 <h1 className="error-page-header">Oops!</h1>
@@ -20,7 +20,9 @@ const ErrorPage =() => {
                 </Link>
             </div>
             <div>
-                <img className="error-page-picture" src="https://www.pngitem.com/pimgs/m/131-1316277_cartoon-royalty-free-clip-art-man-transprent-sad.png" alt="Sad Picture" >
+                <img className="error-page-picture"
+                    src="https://www.pngitem.com/pimgs/m/131-1316277_cartoon-royalty-free-clip-art-man-transprent-sad.png"
+                    alt="Sad" >
                 </img>
             </div>
 
