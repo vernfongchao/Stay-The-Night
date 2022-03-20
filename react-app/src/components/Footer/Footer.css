@@ -1,0 +1,25 @@
+.footer-page-container {
+  height: 40px;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-right: 50px;
+}
+
+.footer-page-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.team-member-github {
+  font-size: larger;
+}
+
+.linkedin-icon-container {
+  font-size: larger;
+}

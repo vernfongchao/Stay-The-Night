@@ -1,0 +1,35 @@
+.error-page-form-container{
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: antiquewhite;
+    height: 100%;
+
+}
+
+
+.error-page-text-container{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.error-page-header{
+    font-size: 3em;
+}
+
+.error-page-form-container p {
+ font-size: 2em;
+}
+
+.error-page-form-container a {
+    color: rgb(37, 197, 250);
+    text-decoration: none;
+
+}
+
+.error-page-picture{
+    height: 80%;
+}
