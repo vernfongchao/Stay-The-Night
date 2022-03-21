@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <div className="footer-page-container">
 
-            / Changing to portfolio once done
+            {/* Changing to portfolio once done */}
             
             {/* <div className="team-member-name">
                 <Link to={`/profiles/4`}>
