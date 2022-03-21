@@ -5,11 +5,11 @@ import './Footer.css'
 const Footer = () => {
     return (
         <div className="footer-page-container">
-            <div className="team-member-name">
+            {/* <div className="team-member-name">
                 <Link to={`/profiles/4`}>
                     Vern Chao
                 </Link>
-            </div>
+            </div> */}
             <div className="github-icon-container">
                 <a href="https://github.com/vernfongchao" target="_blank" rel="noopener noreferrer">
                     <div className="team-member-github">
