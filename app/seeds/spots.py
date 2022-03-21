@@ -16,6 +16,32 @@ def seed_spots():
         bedroom=2
     )
     spot2 = Spot(
+        user_id=2,
+        address="1616 Battle Ln",
+        city="Monroe",
+        state="North Carolina",
+        country="USA",
+        name="★The Black Chateau★ Springbreak| Heated Pool in Living Room!!! | ♛Royal Beds | Pool Table",
+        price=400,
+        description="Enjoy this 1800's home located conveniently near Historic downtown Monroe, NC. Monroe features a variety of activities for anyone looking for a weekend away from the city of Charlotte, NC. Enjoy wine tasting at local vineyards, shop antiques on the famous “Treasure Hunt”, or grab dinner downtown. Built in 1842, The Browning home place was once an inn for weary travelers! Come stay in the oldest standing structure in Monroe and enjoy a piece of history.",
+        guest=7,
+        bathroom=4,
+        bedroom=3
+    )
+    spot3 = Spot(
+        user_id=3,
+        address="221 Cherokee Dr",
+        city="Barnesville",
+        state="Georgia",
+        country="USA",
+        name="The Farm House",
+        price=49,
+        description="The Farm House is a primitive cottage and resides on 400 acres outside of Barnesville, Georgia. Bunn Ranch is a working cattle and sheep farm. This space is a two story primitive cottage with primitive artwork and a claw foot tub. Sit in your choice of antique rockers that have been collected over the years. The floors and stairs were salvaged from an old home that was here on the farm. Surrounded by rolling hills and close to town, come enjoy some time for YOU! We will consider STR students.",
+        guest=5,
+        bathroom=1,
+        bedroom=4
+    )
+    spot4 = Spot(
         user_id=1,
         address="8845 Valley View St.",
         city="Elgin",
@@ -28,7 +54,7 @@ def seed_spots():
         bathroom=1,
         bedroom=2
     )
-    spot3 = Spot(
+    spot5 = Spot(
         user_id=1,
         address="84 Mayfield St.",
         city="Richardson",
@@ -42,7 +68,7 @@ def seed_spots():
         bedroom=1
     )
 
-    spot4 = Spot(
+    spot6 = Spot(
         user_id=1,
         address="942 Edgewood Dr.",
         city="Stow",
@@ -54,33 +80,6 @@ def seed_spots():
         guest=4,
         bathroom=1,
         bedroom=2
-    )
-
-    spot5 = Spot(
-        user_id=2,
-        address="1616 Battle Ln",
-        city="Monroe",
-        state="North Carolina",
-        country="USA",
-        name="★The Black Chateau★ Springbreak| Heated Pool in Living Room!!! | ♛Royal Beds | Pool Table",
-        price=400,
-        description="Enjoy this 1800's home located conveniently near Historic downtown Monroe, NC. Monroe features a variety of activities for anyone looking for a weekend away from the city of Charlotte, NC. Enjoy wine tasting at local vineyards, shop antiques on the famous “Treasure Hunt”, or grab dinner downtown. Built in 1842, The Browning home place was once an inn for weary travelers! Come stay in the oldest standing structure in Monroe and enjoy a piece of history.",
-        guest=7,
-        bathroom=4,
-        bedroom=3
-    )
-    spot6 = Spot(
-        user_id=3,
-        address="221 Cherokee Dr",
-        city="Barnesville",
-        state="Georgia",
-        country="USA",
-        name="The Farm House",
-        price=49,
-        description="The Farm House is a primitive cottage and resides on 400 acres outside of Barnesville, Georgia. Bunn Ranch is a working cattle and sheep farm. This space is a two story primitive cottage with primitive artwork and a claw foot tub. Sit in your choice of antique rockers that have been collected over the years. The floors and stairs were salvaged from an old home that was here on the farm. Surrounded by rolling hills and close to town, come enjoy some time for YOU! We will consider STR students.",
-        guest=5,
-        bathroom=1,
-        bedroom=4
     )
 
     db.session.add_all([spot1, spot2, spot3, spot4, spot5, spot6])
