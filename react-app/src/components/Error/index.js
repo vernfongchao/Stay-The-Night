@@ -21,7 +21,7 @@ const ErrorPage = () => {
             </div>
             <div>
                 <img className="error-page-picture"
-                    src="https://www.pngitem.com/pimgs/m/131-1316277_cartoon-royalty-free-clip-art-man-transprent-sad.png"
+                    src="../../../static/sad.png"
                     alt="Sad" >
                 </img>
             </div>

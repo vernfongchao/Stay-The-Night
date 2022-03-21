@@ -10,7 +10,7 @@ const SpotsPage = () => {
 
 
     const handleImage = (e) => {
-        e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"
+        e.target.src = "../../../../static/house.jpg"
     }
 
     return (

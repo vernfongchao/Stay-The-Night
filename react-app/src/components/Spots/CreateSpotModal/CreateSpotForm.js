@@ -147,7 +147,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                 {imageFields?.map(({ image }, i) => (image.length !== 0 &&
                     <img key={i}
                         src={image}
-                        onError={(e) => e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"}
+                        onError={(e) => e.target.src = "../../../../static/house.jpg"}
                         alt="House"
                         width="100px"
                         height="100px">
