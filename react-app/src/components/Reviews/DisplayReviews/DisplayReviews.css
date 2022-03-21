@@ -5,7 +5,6 @@
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 30px;
   grid-row-gap: 30px;
-  /* overflow-wrap: break-word; */
 }
 
 .display-each-review-container {

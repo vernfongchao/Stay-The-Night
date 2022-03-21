@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import './Footer.css'
 
 const Footer = () => {
     return (
         <div className="footer-page-container">
+
+            / Changing to portfolio once done
+            
             {/* <div className="team-member-name">
                 <Link to={`/profiles/4`}>
                     Vern Chao

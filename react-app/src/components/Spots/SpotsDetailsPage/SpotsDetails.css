@@ -21,7 +21,6 @@
 .details-spot-address-detail-container {
   display: flex;
   width: 100%;
-  /* justify-content: space-between; */
 }
 .details-page-star-text {
   max-width: 70px;
@@ -37,7 +36,6 @@
 
 .details-spot-address-detail {
   display: flex;
-  /* overflow-x: auto; */
   overflow-wrap: break-word;
   max-width: 900px;
 }
@@ -101,7 +99,6 @@ h2 {
 .details-page-house-details {
   display: flex;
   justify-content: space-between;
-  /* overflow-wrap: anywhere; */
 }
 .details-page-house-details p {
   overflow-wrap: anywhere;

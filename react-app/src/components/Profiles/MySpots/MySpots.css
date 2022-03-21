@@ -3,7 +3,6 @@
   margin-top: 100px;
   height: 100%;
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
 }
@@ -17,9 +16,7 @@
 }
 .my-all-spots-container {
   display: flex;
-  /* align-items: center; */
   max-width: 1800px;
-  /* justify-content: space-between; */
   flex-wrap: wrap;
 }
 

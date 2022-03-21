@@ -1,5 +1,4 @@
 .navbar-container {
-  /* border-bottom: 1px black solid; */
   top: 0;
   position: fixed;
   background-color: black;
@@ -20,7 +19,6 @@
 
 .navbar-right-container {
   display: flex;
-  /* justify-content: center; */
   justify-content: space-between;
   align-items: center;
   margin-left: auto;
