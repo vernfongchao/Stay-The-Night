@@ -28,6 +28,7 @@
 }
 
 .each-spot-name {
+  margin-top: 0;
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
   overflow-wrap: break-word;

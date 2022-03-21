@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import db, Spot, Image
 from app.forms import SpotForm
+import re
 
 spot_routes = Blueprint('spots', __name__)
 
@@ -37,6 +38,12 @@ def post_spot():
         for image in images:
             if (len(image["image"]) < 1):
                 return {'errors': ["Missing Image Url Field input"]}, 400
+            else:
+                url = image["image"]
+                match = re.search(
+                    r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
+                if match == None:
+                    return {'errors': ["Must be valid image url ending in png, jpg, jpeg or gif"]}, 400
 
         spot = Spot()
 
@@ -62,12 +69,21 @@ def post_spot():
         images = request.get_json()['images']
 
         for single_image in images:
-        
+
             if (len(single_image["image"]) < 1):
                 errors.append("Missing Image Url Field input")
                 return {'errors': errors}, 400
+            else:
+                url = single_image["image"]
+                match = re.search(
+                    r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
+                if match == None:
+                    errors.append(
+                        "Must be valid Image url ending in png, jpg, jpeg or gif")
+                    return {'errors': errors}, 400
 
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
 
 @spot_routes.route('/<int:id>', methods=["PUT"])
 @login_required
@@ -78,12 +94,17 @@ def edit_spot(id):
         data = request.get_json()
         images = data["images"]
 
-
         for image in images:
             if (image["image"] == None):
                 continue
             if (len(image["image"]) < 1):
                 return {'errors': ["Missing Image Url Field input"]}, 400
+            else:
+                url = image["image"]
+                match = re.search(
+                    r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
+                if match == None:
+                    return {'errors': ["Must be valid image url ending in png, jpg, jpeg or gif"]}, 400
 
         spot = Spot.query.get(id)
 
@@ -117,6 +138,14 @@ def edit_spot(id):
             if (len(single_image["image"]) < 1):
                 errors.append("Missing Image Url Field input")
                 return {'errors': errors}, 400
+            else:
+                url = single_image["image"]
+                match = re.search(
+                    r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
+                if match == None:
+                    errors.append(
+                        "Must be valid Image url ending in png, jpg, jpeg or gif")
+                    return {'errors': errors}, 400
 
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 

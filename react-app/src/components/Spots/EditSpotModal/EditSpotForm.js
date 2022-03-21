@@ -150,7 +150,7 @@ const EditSpotForm = ({ setShowModal }) => {
         setImageFields([...imageFields, { image: "" }])
     }
 
-    const handleRemoveUrl = (index) => {
+    const handleRemoveUrl = (index,e) => {
         if (imageFields.length <= 1) return
         else {
             const array = [...imageFields]
@@ -339,7 +339,7 @@ const EditSpotForm = ({ setShowModal }) => {
                                     onChange={e => handleOnChange(index, e)}>
 
                                 </input>
-                                <span className="spot-form-remove-image" onClick={handleRemoveUrl}>
+                                <span className="spot-form-remove-image" onClick={(e) => handleRemoveUrl(index,e)}>
                                     <i className="fa-solid fa-minus"></i>
                                 </span>
                             </div>

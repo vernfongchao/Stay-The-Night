@@ -18,6 +18,7 @@ const SpotsDetailsPage = () => {
     }
 
     const filterReviews = reviews.filter(({ spot_id }) => spot_id === +id)
+    
     let sum = 0;
     filterReviews.forEach(({ rating }) => {
         sum += rating

@@ -80,6 +80,7 @@ const CreateSpotForm = ({ setShowModal }) => {
         if (description.length < 1000) {
             setMaxDescription("")
         }
+
     }, [imageFields, name, address, city, state, country, description])
 
     const handleSubmit = async (e) => {
@@ -273,7 +274,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                             onChange={e => handleOnChange(index, e)}>
 
                         </input>
-                        <span className="spot-form-remove-image" onClick={handleRemoveUrl}>
+                        <span className="spot-form-remove-image" onClick={(e)=>handleRemoveUrl(index,e)}>
                             <i className="fa-solid fa-minus"></i>
                         </span>
                     </div>
