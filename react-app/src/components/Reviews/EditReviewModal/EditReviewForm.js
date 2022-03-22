@@ -105,7 +105,7 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
                     />
                 </div>
                 <button className="review-edit-form-submit-button" onClick={handleEdit}>
-                    Submit Review
+                    Submit Edit
                 </button>
             </form>
 
