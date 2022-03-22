@@ -77,12 +77,12 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
             </div>
             {errors && (<div className="review-form-error-container">
                 {errors?.map((error, ind) => (
-                    <p className='error-message' key={ind}>{error}</p>
+                    <p className='review-form-error-message' key={ind}>{error}</p>
                 ))}
             </div>)}
             <form className="review-edit-form-container">
                 <div className="review-edit-form-rating-container">
-                    <label>Rating</label>
+                    <label>Please Rate from 1 to 5</label>
                     <input className="review-edit-form-field"
                         type="number"
                         value={rating}
