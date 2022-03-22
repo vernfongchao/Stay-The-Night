@@ -164,121 +164,170 @@ const CreateSpotForm = ({ setShowModal }) => {
 
             <form className="spot-form-container">
                 <p className="spot-form-max">{maxName}</p>
-                <input className='spot-form-field'
-                    type="text"
-                    label="Name"
-                    value={name}
-                    placeholder="Name"
-                    name="name"
-                    onChange={(e) => setName(e.target.value)}
-                    maxLength="100"
-                />
+                <div className="spot-form-field-container">
+
+                    <label className="spot-form-label" for="name">Name</label>
+                    <input className='spot-form-field'
+                        type="text"
+                        label="Name"
+                        value={name}
+                        placeholder="Name"
+                        name="name"
+                        onChange={(e) => setName(e.target.value)}
+                        maxLength="100"
+                    />
+                </div>
                 <p className="spot-form-max">{maxAddress}</p>
-                <input className='spot-form-field'
-                    type="text"
-                    label="Address"
-                    value={address}
-                    placeholder="Address"
-                    name="address"
-                    onChange={(e) => setAddress(e.target.value)}
-                    maxLength="50"
-                />
-                <p className="spot-form-max">{maxCity}</p>
-                <input className='spot-form-field'
-                    type="text"
-                    label="City"
-                    value={city}
-                    placeholder="City"
-                    name="city"
-                    onChange={(e) => setCity(e.target.value)}
-                    maxLength="50"
-                />
+
+                <div className="spot-form-field-container">
+                    <label className="error-spot-form-label" for="address">Address</label>
+                    <input className='spot-form-field'
+                        type="text"
+                        label="Address"
+                        value={address}
+                        placeholder="Address"
+                        name="address"
+                        onChange={(e) => setAddress(e.target.value)}
+                        maxLength="50"
+                    />
+                </div>
+
+
+
+                <div className="spot-form-field-container">
+
+                    <label className="error-spot-form-label" for="city">City</label>
+                    <input className='spot-form-field'
+                        type="text"
+                        label="City"
+                        value={city}
+                        placeholder="City"
+                        name="city"
+                        onChange={(e) => setCity(e.target.value)}
+                        maxLength="50"
+                    />
+                </div>
+
                 <p className="spot-form-max">{maxState}</p>
-                <input className='spot-form-field'
-                    type="text"
-                    label="State"
-                    value={state}
-                    placeholder="State"
-                    name="state"
-                    onChange={(e) => setState(e.target.value)}
-                    maxLength="50"
-                />
+
+
+                <div className="spot-form-field-container">
+                    <label className="error-spot-form-label" for="state">State</label>
+                    <input className='spot-form-field'
+                        type="text"
+                        label="State"
+                        value={state}
+                        placeholder="State"
+                        name="state"
+                        onChange={(e) => setState(e.target.value)}
+                        maxLength="50"
+                    />
+                </div>
                 <p className="spot-form-max">{maxCountry}</p>
-                <input className='spot-form-field'
-                    type="text"
-                    label="Country"
-                    value={country}
-                    placeholder="Country"
-                    name="country"
-                    onChange={(e) => setCountry(e.target.value)}
-                    maxLength="50"
-                />
+
+                <div className="spot-form-field-container">
+                    <label className="error-spot-form-label" for="state">Country</label>
+                    <input className='spot-form-field'
+                        type="text"
+                        label="Country"
+                        value={country}
+                        placeholder="Country"
+                        name="country"
+                        onChange={(e) => setCountry(e.target.value)}
+                        maxLength="50"
+                    />
+                </div>
+
                 <p className="spot-form-max">{maxDescription}</p>
-                <textarea className="spot-form-field-textarea"
-                    name='description'
-                    value={description}
-                    placeholder="Give a description..."
-                    row="40"
-                    column="50"
-                    onChange={(e) => setDescription(e.target.value)}
-                    maxLength="1000"
-                />
 
-                <input className='spot-form-field'
-                    type="number"
-                    label="Price"
-                    value={price}
-                    placeholder="Price"
-                    name="price"
-                    onChange={(e) => setPrice(e.target.value)}
-                    onKeyDown={handleExpress}
-                />
+                <div className="spot-form-field-container">
+                    <label className="error-spot-form-label" for="state">Description</label>
+                    <textarea className="spot-form-field-textarea"
+                        name='description'
+                        value={description}
+                        placeholder="Give a description..."
+                        row="40"
+                        column="50"
+                        onChange={(e) => setDescription(e.target.value)}
+                        maxLength="1000"
+                    />
+                </div>
+
+                <div className="spot-form-field-container">
+                    <label className="error-spot-form-label" for="state">Price</label>
+                    <input className='spot-form-field'
+                        type="number"
+                        label="Price"
+                        value={price}
+                        placeholder="Price"
+                        name="price"
+                        onChange={(e) => setPrice(e.target.value)}
+                        onKeyDown={handleExpress}
+                    />
+                </div>
 
 
-                <input className='spot-form-field'
-                    type="number"
-                    label="Guest"
-                    value={guest}
-                    placeholder="Guest"
-                    name="guest"
-                    onChange={(e) => setGuest(e.target.value)}
-                    onKeyDown={handleExpress}
-                />
+                <div className="spot-form-field-container">
+                    <label className="error-spot-form-label" for="state">Guest</label>
+                    <input className='spot-form-field'
+                        type="number"
+                        label="Guest"
+                        value={guest}
+                        placeholder="Guest"
+                        name="guest"
+                        onChange={(e) => setGuest(e.target.value)}
+                        onKeyDown={handleExpress}
+                    />
+                </div>
 
-                <input className='spot-form-field'
-                    type="number"
-                    label="Bedroom"
-                    value={bedroom}
-                    placeholder="Bedrooms"
-                    name="bedroom"
-                    onChange={(e) => setBedroom(e.target.value)}
-                    onKeyDown={handleExpress}
-                />
-                <input className='spot-form-field'
-                    type="number"
-                    label="Bathroom"
-                    value={bathroom}
-                    placeholder="Bathrooms"
-                    name="bathroom"
-                    onChange={(e) => setBathroom(e.target.value)}
-                    onKeyDown={handleExpress}
-                />
-                {maxImage && <p className="spot-form-max">{maxImage}</p>}
-                {imageFields.map((imageField, index) => (
-                    <div className="spot-form-image-field" key={index}>
-                        <input
-                            className='spot-form-field'
-                            name="image" type="text"
-                            value={imageField.image}
-                            placeholder="Image URL"
-                            onChange={e => handleOnChange(index, e)}>
+                <div className="spot-form-field-container">
+                    <label className="error-spot-form-label" for="state">Bedrooms</label>
+                    <input className='spot-form-field'
+                        type="number"
+                        label="Bedroom"
+                        value={bedroom}
+                        placeholder="Bedrooms"
+                        name="bedroom"
+                        onChange={(e) => setBedroom(e.target.value)}
+                        onKeyDown={handleExpress}
+                    />
+                </div>
 
-                        </input>
-                        <span className="spot-form-remove-image" onClick={(e)=>handleRemoveUrl(index,e)}>
-                            <i className="fa-solid fa-minus"></i>
-                        </span>
-                    </div>
-                ))}
+                <div className="spot-form-field-container">
+                    <label className="error-spot-form-label" for="state">Bathroom</label>
+                    <input className='spot-form-field'
+                        type="number"
+                        label="Bathroom"
+                        value={bathroom}
+                        placeholder="Bathrooms"
+                        name="bathroom"
+                        onChange={(e) => setBathroom(e.target.value)}
+                        onKeyDown={handleExpress}
+                    />
+                </div>
+
+                <div className="spot-form-image-container">
+
+                    {maxImage && <p className="spot-form-max">{maxImage}</p>}
+                    {imageFields.map((imageField, index) => (
+                        <div className="spot-form-inner-image-field" key={index}>
+                            <label className="error-spot-form-label">Image URL</label>
+                            <div className="spot-form-field-button-container">
+                                <input
+                                    className='spot-form-image-field'
+                                    name="image" type="text"
+                                    value={imageField.image}
+                                    placeholder="Image URL"
+                                    onChange={e => handleOnChange(index, e)}>
+
+                                </input>
+                                <span className="spot-form-remove-image" onClick={(e) => handleRemoveUrl(index, e)}>
+                                    <i className="fa-solid fa-minus"></i>
+                                </span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
 
                 <div className="spot-form-button-container">
                     <button className="spot-form-button" type='button' onClick={handleAddUrl}>Add Images</button>

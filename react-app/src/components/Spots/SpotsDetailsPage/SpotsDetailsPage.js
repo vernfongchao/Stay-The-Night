@@ -13,12 +13,12 @@ const SpotsDetailsPage = () => {
     const spots = useSelector(state => state.spots)
     const reviews = Object.values(useSelector(state => state.reviews))
 
-    if (spots[id] === undefined){
+    if (spots[id] === undefined) {
         history.push('/404-Page-Not-Found')
     }
 
     const filterReviews = reviews.filter(({ spot_id }) => spot_id === +id)
-    
+
     let sum = 0;
     filterReviews.forEach(({ rating }) => {
         sum += rating
@@ -43,7 +43,6 @@ const SpotsDetailsPage = () => {
 
     const handleImage = (e) => {
         e.target.src = "../../../../static/house.jpg"
-
     }
 
     return (
@@ -64,23 +63,23 @@ const SpotsDetailsPage = () => {
                     </li>
                 </p>
                 <div className="details-spot-address-detail">
-                    <p>{spot?.address}, {spot?.city}, {spot?.state}, {spot?.country}</p>
+                    <p className="first-name">{spot?.address}, {spot?.city}, {spot?.state}, {spot?.country}</p>
                 </div>
             </div>
 
             <div className="details-page-image-grid">
                 {spot?.images.map(({ image }, index) => (
-                    <img  className={`details-page-image-${index}`} src={image} onError={handleImage} key={index} alt="house">
+                    <img className={`details-page-image-${index}`} src={image} onError={handleImage} key={index} alt="house">
                     </img>
                 ))}
             </div>
 
             <div>
-                <h2>Hosted By: {spot?.first} {spot?.last}</h2>
+                <h2>Hosted By: <span className="first-name">{spot?.first} {spot?.last} </span> </h2>
             </div>
 
             <div className="details-page-house-details">
-                <p>{spot?.guest} Guests {spot?.bathroom} Bathrooms {spot?.bedroom} Bedrooms</p>
+                <p >{spot?.guest} Guests {spot?.bathroom} Bathrooms {spot?.bedroom} Bedrooms</p>
                 <div>
                     <p className="details-page-price-text">${spot?.price}/ Night</p>
                 </div>

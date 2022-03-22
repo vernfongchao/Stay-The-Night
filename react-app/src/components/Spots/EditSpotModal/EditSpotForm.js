@@ -193,7 +193,7 @@ const EditSpotForm = ({ setShowModal }) => {
             <form className="spot-edit-form-container">
                 <p className="error-spot-form-max">{maxName}</p>
                 <div className="spot-edit-field-container">
-                    <label className="error-spot-form-label" for="name">Name</label>
+                    <label className="edit-spot-form-label" for="name">Name</label>
                     <input className="error-spot-form-field"
                         type="text"
                         value={name}

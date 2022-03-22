@@ -46,3 +46,7 @@
   margin-left: auto;
   margin-top: auto;
 }
+
+.first-name{
+  text-transform: capitalize;
+}

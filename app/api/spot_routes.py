@@ -41,9 +41,11 @@ def post_spot():
             else:
                 url = image["image"]
                 match = re.search(
-                    r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
+                    r'\w+\.(png|jpg|jpeg|gif)$', url)
+                # match = re.search(
+                #     r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
                 if match == None:
-                    return {'errors': ["Must be valid image url ending in png, jpg, jpeg or gif"]}, 400
+                    return {'errors': ["Image url must end in .png, .jpg, .jpeg or .gif"]}, 400
 
         spot = Spot()
 
@@ -76,10 +78,12 @@ def post_spot():
             else:
                 url = single_image["image"]
                 match = re.search(
-                    r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
+                    r'\w+\.(png|jpg|jpeg|gif)$', url)
+                # match = re.search(
+                #     r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
                 if match == None:
                     errors.append(
-                        "Must be valid Image url ending in png, jpg, jpeg or gif")
+                        "Image url must end in .png, .jpg, .jpeg or .gif")
                     return {'errors': errors}, 400
 
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
@@ -102,9 +106,11 @@ def edit_spot(id):
             else:
                 url = image["image"]
                 match = re.search(
-                    r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
+                    r'\w+\.(png|jpg|jpeg|gif)$', url)
+                # match = re.search(
+                #     r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
                 if match == None:
-                    return {'errors': ["Must be valid image url ending in png, jpg, jpeg or gif"]}, 400
+                    return {'errors': ["Image url must end in .png, .jpg, .jpeg or .gif"]}, 400
 
         spot = Spot.query.get(id)
 
@@ -141,10 +147,12 @@ def edit_spot(id):
             else:
                 url = single_image["image"]
                 match = re.search(
-                    r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
+                    r'\w+\.(png|jpg|jpeg|gif)$', url)
+                # match = re.search(
+                #     r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
                 if match == None:
                     errors.append(
-                        "Must be valid Image url ending in png, jpg, jpeg or gif")
+                        "Must be valid Image url ending in .png, .jpg, .jpeg or .gif")
                     return {'errors': errors}, 400
 
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400

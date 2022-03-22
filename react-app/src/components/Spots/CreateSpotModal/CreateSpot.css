@@ -47,18 +47,24 @@
   justify-content: space-between;
 }
 
+.spot-form-field-container {
+  display: flex;
+  justify-content: space-between;
+  width: 88%;
+}
+
 .spot-form-field {
   border: black solid 0.1em;
   border-radius: 10px;
-  width: 80%;
+  width: 88%;
   height: 30px;
 }
 
 .spot-form-field-textarea {
   border: black solid 0.1em;
   border-radius: 10px;
-  width: 80%;
-  height: 60px;
+  width: 88%;
+  height: 55px;
   resize: none;
 }
 
@@ -67,16 +73,52 @@
   color: red;
 }
 
-.spot-form-image-field {
+.spot-form-image-container {
   width: 100%;
-  padding-left: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spot-form-image-field {
+  display: flex;
+  width: 100%;
+}
+
+.edit-form-field-button-container {
+  padding-left: 10px;
+  width: 80%;
 }
 
 .spot-form-remove-image {
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   background-color: lightblue;
   font-weight: bold;
   font-size: larger;
+}
+
+.spot-form-inner-image-field {
+  padding-left: 110px;
+  display: flex;
+  width: 100%;
+}
+
+.spot-form-field-button-container {
+  display: flex;
+  padding-left: 20px;
+  width: 100%;
+  align-items: center;
+}
+
+.spot-form-image-field {
+  border: black solid 0.1em;
+  border-radius: 10px;
+  width: 86%;
+  height: 30px;
 }
 
 .spot-form-button-container {
@@ -85,6 +127,8 @@
   justify-content: space-between;
   margin-bottom: 15px;
 }
+
+
 
 .spot-form-button {
   border-radius: 10px;
