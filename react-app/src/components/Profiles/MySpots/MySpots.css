@@ -18,6 +18,7 @@
   display: flex;
   max-width: 1800px;
   flex-wrap: wrap;
+  /* justify-content: space-evenly; */
 }
 
 .my-each-spot-container {

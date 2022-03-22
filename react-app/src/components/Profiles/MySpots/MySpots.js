@@ -55,7 +55,6 @@ const MySpots = () => {
                         </div>
                     ))}
                 </div>}
-
         </div>
     )
 }

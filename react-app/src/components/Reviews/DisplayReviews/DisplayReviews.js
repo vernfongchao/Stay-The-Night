@@ -10,6 +10,8 @@ const DisplayReviews = () => {
     const reviews = useSelector(state => state.reviews)
     const reviewArr = Object.values(reviews)
     const filterReviews = reviewArr?.filter(({ spot_id }) => spot_id === +id)
+
+
     return (
         <div className="reviews-display-container">
             {filterReviews.map((review) => (
@@ -22,7 +24,6 @@ const DisplayReviews = () => {
                     <p className="display-review-text">Review: {review.review}</p>
                 </div>
             ))}
-
         </div>
     )
 }

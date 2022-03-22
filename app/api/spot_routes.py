@@ -41,7 +41,7 @@ def post_spot():
             else:
                 url = image["image"]
                 match = re.search(
-                    r'\w+\.(png|jpg|jpeg|gif)$', url)
+                    r'.+\.(png|jpg|jpeg|gif)$', url)
                 # match = re.search(
                 #     r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
                 if match == None:
@@ -78,7 +78,7 @@ def post_spot():
             else:
                 url = single_image["image"]
                 match = re.search(
-                    r'\w+\.(png|jpg|jpeg|gif)$', url)
+                    r'.+\.(png|jpg|jpeg|gif)$', url)
                 # match = re.search(
                 #     r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
                 if match == None:
@@ -106,7 +106,7 @@ def edit_spot(id):
             else:
                 url = image["image"]
                 match = re.search(
-                    r'\w+\.(png|jpg|jpeg|gif)$', url)
+                    r'.+\.(png|jpg|jpeg|gif)$', url)
                 # match = re.search(
                 #     r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
                 if match == None:
@@ -147,7 +147,7 @@ def edit_spot(id):
             else:
                 url = single_image["image"]
                 match = re.search(
-                    r'\w+\.(png|jpg|jpeg|gif)$', url)
+                    r'.+\.(png|jpg|jpeg|gif)$', url)
                 # match = re.search(
                 #     r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
                 if match == None:
