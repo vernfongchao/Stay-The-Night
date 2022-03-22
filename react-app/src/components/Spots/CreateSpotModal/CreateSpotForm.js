@@ -192,7 +192,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                     />
                 </div>
 
-
+                <p className="spot-form-max">{maxCity}</p>
 
                 <div className="spot-form-field-container">
 

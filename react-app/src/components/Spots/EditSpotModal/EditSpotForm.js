@@ -37,6 +37,10 @@ const EditSpotForm = ({ setShowModal }) => {
     let images = []
     const [imageFields, setImageFields] = useState(images)
 
+    spot.images.forEach(({ image }) => {
+        images.push({ image })
+    })
+
     useEffect(() => {
         if (imageFields.length >= 5) {
             setMaxImage("Maximum pictures allowed met")
@@ -85,10 +89,6 @@ const EditSpotForm = ({ setShowModal }) => {
         }
     }, [imageFields, name, address, city, state, country, description])
 
-
-    spot.images.forEach(({ image }) => {
-        images.push({ image })
-    })
 
     const handleSubmit = async (e) => {
         e.preventDefault()
