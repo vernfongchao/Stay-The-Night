@@ -1,6 +1,6 @@
 # Stay-The-Night
 
-Stay The Night is a loose clone of Air bnb allowing users to host their spot and allow others to book and review.
+Stay The Night is a loose clone of [Airbnb](https://www.airbnb.com/) allowing users to host their spot and allow others to book and review.
 
 ## Live Site
 
