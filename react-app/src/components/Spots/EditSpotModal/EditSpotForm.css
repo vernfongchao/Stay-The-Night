@@ -90,6 +90,8 @@
 .edit-spot-field-button-container {
   padding-left: 10px;
   width: 80%;
+  display: flex; 
+  align-items: center;
 }
 
 .error-spot-form-image-field {
