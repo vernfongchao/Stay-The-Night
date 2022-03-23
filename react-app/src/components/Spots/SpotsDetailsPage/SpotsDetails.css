@@ -103,11 +103,18 @@ h2 {
   font-weight: 500;
 }
 
+.first-name{
+  text-transform: capitalize;
+  /* overflow: hidden; */
+  word-break: break-all;
+}
+
 .details-page-house-details {
   display: flex;
   justify-content: space-between;
 }
 .details-page-house-details p {
+  word-break: break-all;
   overflow-wrap: anywhere;
 }
 

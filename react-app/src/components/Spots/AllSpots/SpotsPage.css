@@ -18,8 +18,9 @@
 .each-spot-image {
   /* max-width: 80%; */
   max-height: 500px;
-  min-width: 300px;
-  max-width: min(80%, 500px);
+  max-width: min(80%,500px);
+  /* width: 500px; */
+  min-width: min(33vw, 500px);
 }
 
 .each-spot-details-container {
@@ -51,8 +52,4 @@
   font-weight: bold;
   margin-left: auto;
   margin-top: auto;
-}
-
-.first-name{
-  text-transform: capitalize;
 }

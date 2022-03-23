@@ -10,7 +10,7 @@ const SpotsPage = () => {
 
 
     const handleImage = (e) => {
-        e.target.src = "../../../../static/house.jpg"
+        e.target.src = "../../../../static/house1.jpg"
     }
 
     return (

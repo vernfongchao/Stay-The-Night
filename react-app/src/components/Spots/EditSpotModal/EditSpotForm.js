@@ -177,7 +177,7 @@ const EditSpotForm = ({ setShowModal }) => {
 
                 {imageFields?.map(({ image }, i) => (image.length !== 0 &&
                     <img src={image} key={i}
-                        onError={(e) => e.target.src = "../../../../static/house.jpg"}
+                        onError={(e) => e.target.src = "../../../../static/house1.jpg"}
                         alt="House"
                         width="100px"
                         height="100px">
