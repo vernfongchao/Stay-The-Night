@@ -8,7 +8,7 @@ const MySpots = () => {
     const { id } = useParams()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
-    const spots = Object.values(useSelector(state => state.spots))
+    const spots = Object.values(useSelector(state => state.spots)).reverse()
     const spotsFilter = spots.filter(({ user_id }) => user_id === +id)
 
     if (user?.id !== +id){
@@ -21,7 +21,7 @@ const MySpots = () => {
     }, [])
 
     const handleImage = (e) => {
-        e.target.src = "https://i.gyazo.com/675f7585181d00e0dfc6f2654c8e2969.jpg"
+        e.target.src = "../../../../static/house1.jpg"
     }
 
     return (
