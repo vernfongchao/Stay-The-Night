@@ -6,7 +6,7 @@ import './SpotsPage.css'
 
 const SpotsPage = () => {
     const spots = useSelector(state => state.spots)
-    const spotsArr = Object.values(spots)
+    const spotsArr = Object.values(spots).reverse()
 
 
     const handleImage = (e) => {
