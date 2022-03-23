@@ -24,9 +24,15 @@ const SpotsPage = () => {
                     <div className='each-spot-details-container'>
                         <h3 className='each-spot-name'>{spot.name}</h3>
                         <div className='each-spot-basic-info'>
-                            <p>Guests: {spot.guest} </p>
-                            <p>Bedrooms: {spot.bedroom} </p>
-                            <p>Bathrooms:{spot.bathroom} </p>
+                            <div>
+                                <p>Guests: {spot.guest} </p>
+                            </div>
+                            <div>
+                                <p>Bedrooms: {spot.bedroom} </p>
+                            </div>
+                            <div>
+                                <p>Bathrooms:{spot.bathroom} </p>
+                            </div>
                         </div>
                         <div className='each-spot-price'>
                             <p>${spot.price}/ Night</p>

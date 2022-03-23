@@ -26,7 +26,7 @@ const ProfileMenu = () => {
         profileMenu = (
             <div className="profile-drop-down-menu">
                 <div>
-                    <p>Hello {user?.username.length > 10 ? `${user?.username.slice(0, 15)}...` : user?.username}</p>
+                    <p>Hello {user?.username.length > 15 ? `${user?.username.slice(0, 15)}...` : user?.username}</p>
                 </div>
                 <div>
                     <Link className="profile-link" to={`/profiles/${user?.id}`} onClick={toggleMenu} >

@@ -16,13 +16,17 @@
 }
 
 .each-spot-image {
+  /* max-width: 80%; */
   max-height: 500px;
-  max-width: 500px;
+  min-width: 300px;
+  max-width: min(80%, 400px);
 }
 
 .each-spot-details-container {
-  width: 50%;
-  margin-left: auto;
+  /* width: 50%; */
+  min-width: min(50%, 700px);
+  /* max-width: min(50%,500px); */
+  margin-left: 50px;
   display: flex;
   flex-direction: column;
 }
@@ -38,7 +42,9 @@
   font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: space-between;
-  width: 55%;
+  flex-wrap: wrap;
+  min-width: 50%;
+  max-width: 350px;
 }
 
 .each-spot-price {
