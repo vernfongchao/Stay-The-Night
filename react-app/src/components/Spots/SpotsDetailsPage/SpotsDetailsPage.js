@@ -58,7 +58,7 @@ const SpotsDetailsPage = () => {
                 <p className="details-page-review-text">
                     <li className="details-page-title-bullet">
                         <span>
-                            {filterReviews.length} Reviews
+                            {filterReviews.length} {filterReviews.length === 1 ? 'Review' : 'Reviews'}
                         </span>
                     </li>
                 </p>
@@ -96,7 +96,7 @@ const SpotsDetailsPage = () => {
                     <h2 className="details-page-review-title-text">
                         <li className="details-page-review-title-bullet">
                             <span>
-                                {filterReviews.length} Reviews
+                                {filterReviews.length} {filterReviews.length === 1 ? 'Review' : 'Reviews'}
                             </span>
                         </li>
                     </h2>

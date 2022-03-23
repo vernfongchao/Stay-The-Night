@@ -8,6 +8,7 @@ import SpotsDetailsPage from './components/Spots/SpotsDetailsPage/SpotsDetailsPa
 import Footer from './components/Footer';
 import MySpots from './components/Profiles/MySpots/MySpots';
 import ErrorPage from './components/Error';
+import ErrorPage403 from './components/Error/403';
 import { authenticate } from './store/session';
 import { getSpots } from './store/spot'
 import { getReviews } from './store/review';
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route path='/profiles/:id' exact={true} >
           <MySpots />
+        </Route>
+        <Route path='/403-Unauthorized' >
+          <ErrorPage403 />
         </Route>
         <Route>
           <ErrorPage />
