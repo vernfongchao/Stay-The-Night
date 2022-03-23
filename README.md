@@ -29,7 +29,7 @@ A Live deployment of [Stay-The-Night](https://stay-the-night.herokuapp.com/) is 
 
 ![image](https://user-images.githubusercontent.com/91238232/159443700-e0933879-4a2e-472b-934a-72b80ca42ecd.png)
 
-## Techical Details
+## Technical Details
 
 The Most difficult challenge was finishing the Update feature for spots. The difficulty was cause by allowing users to upload multiple images with a many to one relationship with a single spot. I allowed the functionality to allow users to delete all but 1 picture or allow users to add more images at most 5 when editting their spot. This cause alot of issues, not only do you have to reassign the image.id back to the image object to be queried for update but also return image Url as None-Types instead of an empty string because an empty string would vialate my validators.
 
