@@ -5,23 +5,23 @@ from wtforms.validators import DataRequired, NumberRange, Length
 
 class SpotForm(FlaskForm):
     user_id = IntegerField("user_id", validators=[DataRequired()])
-    name = StringField('name', validators=[DataRequired(), Length(
+    name = StringField('name', validators=[DataRequired("Please enter a name for this spot"), Length(
         min=1, max=100, message='Name must be at least than 1 characters and no more than 100 characters')])
-    address = StringField('address', validators=[DataRequired(), Length(
+    address = StringField('address', validators=[DataRequired("Please enter an address"), Length(
         min=1, max=50, message='Address must be at least than 1 characters and no more than 50 characters')])
-    city = StringField('city', validators=[DataRequired(), Length(
+    city = StringField('city', validators=[DataRequired("Please enter a city"), Length(
         min=1, max=50, message='City must be at least than 1 characters and no more than 50 characters')])
-    state = StringField('state', validators=[DataRequired(), Length(
+    state = StringField('state', validators=[DataRequired("Please enter a state"), Length(
         min=1, max=50, message='State must be at least than 1 characters and no more than 50 characters')])
-    country = StringField('country', validators=[DataRequired(), Length(
+    country = StringField('country', validators=[DataRequired("Please enter a country"), Length(
         min=1, max=50, message='Country must be at least than 1 characters and no more than 50 characters')])
-    description = StringField('description', validators=[DataRequired(), Length(
+    description = StringField('description', validators=[DataRequired("Please enter a description"), Length(
         min=1, max=1000, message='Description name must be at least than 1 characters and no more than 1000 characters')])
-    price = IntegerField('price', validators=[DataRequired(), NumberRange(
-        min=1, max=1000000, message='Number must be between 1 and 1000000')])
-    guest = IntegerField('guests', validators=[DataRequired(), NumberRange(
-        min=1, max=1000, message='Number must be between 1 and 1000')])
-    bedroom = IntegerField('bedrooms', validators=[DataRequired(), NumberRange(
-        min=1, max=1000, message='Number must be between 1 and 1000')])
-    bathroom = IntegerField('bathrooms', validators=[DataRequired(), NumberRange(
-        min=1, max=1000, message='Number must be between 1 and 1000')])
+    price = IntegerField('price', validators=[DataRequired("Please give a price"), NumberRange(
+        min=1, max=1000000, message='Price must be between 1 and 1000000')])
+    guest = IntegerField('guests', validators=[DataRequired("Please enter the number of guests"), NumberRange(
+        min=1, max=1000, message='Guest must be between 1 and 1000')])
+    bedroom = IntegerField('bedrooms', validators=[DataRequired("Please enter the number of bedrooms"), NumberRange(
+        min=1, max=1000, message=' Bedroom be between 1 and 1000')])
+    bathroom = IntegerField('bathrooms', validators=[DataRequired("Please enter the number of bathrooms"), NumberRange(
+        min=1, max=1000, message='Bathroom must be between 1 and 1000')])
