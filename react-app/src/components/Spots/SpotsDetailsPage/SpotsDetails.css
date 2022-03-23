@@ -44,6 +44,7 @@
 }
 
 .details-page-title-bullet span {
+  z-index: -1;
   border-bottom: 0.01rem black solid;
   position: relative;
   left: -10px;
@@ -94,7 +95,7 @@
 
 .details-page-image-4 {
   grid-area: e;
-  height: 267px;
+  /* height: 267px; */
   /* height: 100%; */
   width: 100%;
 }
