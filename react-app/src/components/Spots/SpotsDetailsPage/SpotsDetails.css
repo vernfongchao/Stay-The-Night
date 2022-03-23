@@ -75,7 +75,7 @@
 .details-page-image-1 {
   grid-area: b;
   height: 267px;
-  /* height: 100%; */
+  /* height: min(100%,267px); */
   width: 100%;
 }
 
@@ -95,7 +95,7 @@
 
 .details-page-image-4 {
   grid-area: e;
-  /* height: 267px; */
+  height: 267px;
   /* height: 100%; */
   width: 100%;
 }
