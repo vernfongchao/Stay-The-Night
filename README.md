@@ -6,7 +6,7 @@ Stay The Night is a loose clone of [Airbnb](https://www.airbnb.com/) allowing us
 
 A Live deployment of [Stay-The-Night](https://stay-the-night.herokuapp.com/) is hosted on [heroku](https://heroku.com)
 
-## Secren Shots
+## Screenshots
 
 ### Welcome:
 
@@ -33,7 +33,7 @@ A Live deployment of [Stay-The-Night](https://stay-the-night.herokuapp.com/) is 
 
 The Most difficult challenge was finishing the Update feature for spots. The difficulty was cause by allowing users to upload multiple images with a many to one relationship with a single spot. I allowed the functionality to allow users to delete all but 1 picture or allow users to add more images at most 5 when editting their spot. This cause alot of issues, not only do you have to reassign the image.id back to the image object to be queried for update but also return image Url as None-Types instead of an empty string because an empty string would vialate my validators.
 
-### Screen Shots
+### Screenshots
 
 ![image](https://user-images.githubusercontent.com/91238232/159190831-aed62a13-b1f0-4fcf-ba00-d04c8b533d88.png)
 
