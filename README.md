@@ -70,7 +70,7 @@ The Most difficult challenge was finishing the Update feature for spots. The dif
    https://github.com/vernfongchao/Stay-The-Night.git
    ```
 
-2. Instal dependencies for the back end
+2. Install dependencies for the back end
 
    ```bash
    pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
