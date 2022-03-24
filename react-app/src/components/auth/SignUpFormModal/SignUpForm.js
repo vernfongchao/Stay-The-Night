@@ -110,14 +110,18 @@ const SignUpForm = ({ setShowMenu }) => {
             {maxFirst &&
               <p className='signup-error-message'>{maxFirst}</p>
             }
-            <input className='signup-form-field'
-              type='text'
-              name='username'
-              onChange={updateFirst}
-              value={first}
-              maxLength="100"
-              placeholder='First Name'
-            ></input>
+            <div className='signup-form-label-field'>
+              <label>First Name</label>
+              <input className='signup-form-field'
+                type='text'
+                name='first'
+                onChange={updateFirst}
+                value={first}
+                maxLength="100"
+                placeholder='First Name'
+              ></input>
+
+            </div>
 
           </div>
 
@@ -125,61 +129,75 @@ const SignUpForm = ({ setShowMenu }) => {
             {maxLast &&
               <p className='signup-error-message'>{maxLast}</p>
             }
-            <input className='signup-form-field'
-              type='text'
-              name='username'
-              onChange={updateLast}
-              value={last}
-              maxLength="100"
-              placeholder='Last Name'
-            ></input>
-          </div>
+            <div className='signup-form-label-field'>
 
+              <label>Last Name</label>
+              <input className='signup-form-field'
+                type='text'
+                name='last'
+                onChange={updateLast}
+                value={last}
+                maxLength="100"
+                placeholder='Last Name'
+              ></input>
+            </div>
+          </div>
 
           <div className='signup-form-field-input-container'>
             {maxUsername &&
               <p className='signup-error-message'>{maxUsername}</p>
             }
-            <input className='signup-form-field'
-              type='text'
-              name='username'
-              onChange={updateUsername}
-              value={username}
-              maxLength="40"
-              placeholder='Username'
-            ></input>
+            <div className='signup-form-label-field'>
+              <label>Username</label>
+              <input className='signup-form-field'
+                type='text'
+                name='username'
+                onChange={updateUsername}
+                value={username}
+                maxLength="40"
+                placeholder='Username'
+              ></input>
+            </div>
           </div>
 
           <div className='signup-form-field-input-container'>
             {maxEmail &&
               <p className='signup-error-message'>{maxEmail}</p>
             }
+            <div className='signup-form-label-field'>
+              <label>Email</label>
+              <input className='signup-form-field'
+                type='text'
+                name='email'
+                onChange={updateEmail}
+                value={email}
+                maxLength="50"
+                placeholder='Email'
+              ></input>
+            </div>
+          </div>
+
+          <div className='signup-form-label-field'>
+            <label>Password</label>
             <input className='signup-form-field'
-              type='text'
-              name='email'
-              onChange={updateEmail}
-              value={email}
-              maxLength="50"
-              placeholder='Email'
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+              placeholder="Password"
             ></input>
           </div>
 
-
-          <input className='signup-form-field'
-            type='password'
-            name='password'
-            onChange={updatePassword}
-            value={password}
-            placeholder="Password"
-          ></input>
-
-          <input className='signup-form-field'
-            type='password'
-            name='repeat_password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            placeholder="Confirm Password"
-          ></input>
+          <div className='signup-form-label-field'>
+            <label className='signup-form-confirm-label'>Confirm Password</label>
+            <input className='signup-form-field'
+              type='password'
+              name='repeat_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              placeholder="Confirm Password"
+            ></input>
+          </div>
         </div>
         <button className="signup-form-button" type='submit'>Sign Up</button>
         <div className='login-form-button-containers'>

@@ -45,9 +45,9 @@ const EditSpotForm = ({ setShowModal }) => {
         if (imageFields.length >= 5) {
             setMaxImage("Maximum pictures allowed met")
         }
-        else if (imageFields.length <= 1) {
-            setMaxImage("Must upload at least 1 picture")
-        }
+        // else if (imageFields.length <= 1) {
+        //     setMaxImage("Must upload at least 1 picture")
+        // }
         else if (imageFields.length >= 2 && imageFields.length <= 4) {
             setMaxImage("")
         }
@@ -151,7 +151,7 @@ const EditSpotForm = ({ setShowModal }) => {
     }
 
     const handleRemoveUrl = (index,e) => {
-        if (imageFields.length <= 1) return
+        if (imageFields.length <= 1) return setMaxImage("Must upload at least 1 Picture")
         else {
             const array = [...imageFields]
             array.splice(index, 1)

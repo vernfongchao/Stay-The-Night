@@ -18,12 +18,13 @@ def password_matches(form, field):
     email = form.data['email']
     user = User.query.filter(User.email == email).first()
     if not user:
-        raise ValidationError('Incorrect Credentials.')
+        raise ValidationError('Password incorrect for this Email')
     if not user.check_password(password):
         raise ValidationError('Password was incorrect.')
 
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired("Email is required!"), user_exists])
+    email = StringField('email', validators=[
+                        DataRequired("Email is required!"), user_exists])
     password = StringField('password', validators=[
                            DataRequired("Password is required!"), password_matches])

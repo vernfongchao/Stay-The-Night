@@ -14,7 +14,7 @@
 .sign-form-page-container {
   border-radius: 10px;
   min-height: 500px;
-  min-width: 400px;
+  min-width: 500px;
   display: flex;
   flex-direction: column;
 }
@@ -47,12 +47,23 @@
   align-items: center;
 }
 
+
+.signup-form-label-field{
+  display: flex;
+  width: 85%;
+  align-items:  center;
+  justify-content: space-between;
+}
 .signup-form-field {
   border: black solid 0.1em;
   border-radius: 10px;
-  width: 80%;
+  width: 70%;
   height: 30px;
 }
+.signup-form-confirm-label{
+  width: 50px;
+}
+
 
 .signup-form-button {
   border-radius: 10px;
