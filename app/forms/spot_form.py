@@ -17,11 +17,11 @@ class SpotForm(FlaskForm):
         min=1, max=50, message='Country must be at least than 1 characters and no more than 50 characters')])
     description = StringField('description', validators=[DataRequired("Please enter a description"), Length(
         min=1, max=1000, message='Description name must be at least than 1 characters and no more than 1000 characters')])
-    price = IntegerField('price', validators=[DataRequired("Please give a price"), NumberRange(
+    price = IntegerField('price', validators=[DataRequired("Please enter a number for price"), NumberRange(
         min=1, max=1000000, message='Price must be between 1 and 1000000')])
-    guest = IntegerField('guests', validators=[DataRequired("Please enter the number of guests"), NumberRange(
+    guest = IntegerField('guests', validators=[DataRequired("Please enter a number for guests"), NumberRange(
         min=1, max=1000, message='Guest must be between 1 and 1000')])
-    bedroom = IntegerField('bedrooms', validators=[DataRequired("Please enter the number of bedrooms"), NumberRange(
+    bedroom = IntegerField('bedrooms', validators=[DataRequired("Please enter a number for bedrooms"), NumberRange(
         min=1, max=1000, message=' Bedroom be between 1 and 1000')])
-    bathroom = IntegerField('bathrooms', validators=[DataRequired("Please enter the number of bathrooms"), NumberRange(
+    bathroom = IntegerField('bathrooms', validators=[DataRequired("Please enter a number for bathrooms"), NumberRange(
         min=1, max=1000, message='Bathroom must be between 1 and 1000')])
