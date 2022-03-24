@@ -11,6 +11,7 @@ const SpotsDetailsPage = () => {
     const history = useHistory()
     const user = useSelector(state => state.session.user)
     const spots = useSelector(state => state.spots)
+    console.log(spots)
     const reviews = Object.values(useSelector(state => state.reviews))
 
     if (spots[id] === undefined) {
@@ -79,7 +80,8 @@ const SpotsDetailsPage = () => {
             </div>
 
             <div className="details-page-house-details">
-                <p >{spot?.guest} Guests {spot?.bathroom} Bathrooms {spot?.bedroom} Bedrooms</p>
+                <p >{spot?.guest === 1 ? `${spot?.guest} Guest` : `${spot?.guest} Guests`} {spot?.bathroom === 1 ? `${spot?.bathroom} Bathroom` : `${spot?.bathroom} Bathrooms`}  {spot?.bedroom === 1 ? `${spot?.bedroom} Bedroom` : `${spot?.bedroom} Bedrooms`} 
+                </p>
                 <div>
                     <p className="details-page-price-text">${spot?.price}/ Night</p>
                 </div>
