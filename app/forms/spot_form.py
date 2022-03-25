@@ -20,7 +20,7 @@ class SpotForm(FlaskForm):
     price = IntegerField('price', validators=[DataRequired("Price: Please enter a number for price"), NumberRange(
         min=1, max=1000000, message='Price must be a Integer between 1 and 1000000')])
     guest = IntegerField('guests', validators=[DataRequired("Guest: Please enter a number for guests"), NumberRange(
-        min=1, max=1000, message='Guest must be a Integerbetween 1 and 1000')])
+        min=1, max=1000, message='Guest must be a Integer between 1 and 1000')])
     bedroom = IntegerField('bedrooms', validators=[DataRequired("Bedroom: Please enter a number for bedrooms"), NumberRange(
         min=1, max=1000, message=' Bedroom be between a Integer 1 and 1000')])
     bathroom = IntegerField('bathrooms', validators=[DataRequired("Bathroom: Please enter a number for bathrooms"), NumberRange(
