@@ -30,8 +30,10 @@
 }
 
 .spot-error-form-container {
+  padding-left: 53px;
+  padding-right: 53px;
   display: grid;
-  width: 100%;
+  width: 88%;
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -69,7 +71,8 @@
 }
 
 .error-message {
-  padding-left: 60px;
+  /* padding-left: 50px;
+  padding-right: 50px; */
   color: red;
 }
 

@@ -33,11 +33,6 @@
   flex-direction: column;
 }
 
-.spot-error-form-container {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(3, 1fr);
-}
 
 .spot-edit-form-container {
   min-height: 500px;
