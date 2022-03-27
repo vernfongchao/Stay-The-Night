@@ -26,7 +26,7 @@
 .each-spot-details-container {
   /* width: 50%; */
   min-width: min(50%, 700px);
-  /* max-width: min(50%,500px); */
+  max-width: 670px;
   margin-left: 50px;
   display: flex;
   flex-direction: column;

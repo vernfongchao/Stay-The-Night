@@ -45,8 +45,8 @@ const MySpots = () => {
                             </Link>
                             <div className="my-spots-basic-container">
                                 <div className="my-spots-">
-                                    <span>{spot.state.length > 10 ? `${spot.state.slice(0, 15)}` : spot.state},</span>
-                                    <span>{spot.country.length > 10 ? `${spot.country.slice(0, 15)}` : spot.country}</span>
+                                    <span>{spot.state.length > 15 ? `${spot.state.slice(0, 15)}` : spot.state},</span>
+                                    <span>{spot.country.length > 10 ? `${spot.country.slice(0, 10)}` : spot.country}</span>
                                 </div>
                                 <div>
                                     <span>${spot.price}/ Night</span>
