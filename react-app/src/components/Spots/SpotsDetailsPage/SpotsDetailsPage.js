@@ -11,7 +11,6 @@ const SpotsDetailsPage = () => {
     const history = useHistory()
     const user = useSelector(state => state.session.user)
     const spots = useSelector(state => state.spots)
-    console.log(spots)
     const reviews = Object.values(useSelector(state => state.reviews))
 
     if (spots[id] === undefined) {

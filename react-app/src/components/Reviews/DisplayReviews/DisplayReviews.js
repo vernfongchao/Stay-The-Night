@@ -8,7 +8,7 @@ const DisplayReviews = () => {
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
     const reviews = useSelector(state => state.reviews)
-    const reviewArr = Object.values(reviews)
+    const reviewArr = Object.values(reviews).reverse()
     const filterReviews = reviewArr?.filter(({ spot_id }) => spot_id === +id)
 
 
