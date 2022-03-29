@@ -67,7 +67,6 @@ def post_spot():
         return spot.to_dict()
 
     else:
-        print(form.errors)
         errors = validation_errors_to_error_messages(form.errors)
         images = request.get_json()['images']
 
