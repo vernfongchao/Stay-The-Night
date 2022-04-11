@@ -39,7 +39,6 @@ const SpotsPage = () => {
                         </div>
                     </div>
                 </div>
-
             ))}
         </div>
     )

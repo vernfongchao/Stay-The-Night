@@ -3,7 +3,7 @@ from app.models import db, Spot
 
 def seed_spots():
     spot1 = Spot(
-        user_id=1,
+        host_id=1,
         address="18453 Martin Ave",
         city="Homewood",
         state="Illinois",
@@ -16,7 +16,7 @@ def seed_spots():
         bedroom=2
     )
     spot2 = Spot(
-        user_id=2,
+        host_id=2,
         address="1616 Battle Ln",
         city="Monroe",
         state="North Carolina",
@@ -29,7 +29,7 @@ def seed_spots():
         bedroom=3
     )
     spot3 = Spot(
-        user_id=3,
+        host_id=3,
         address="221 Cherokee Dr",
         city="Barnesville",
         state="Georgia",
@@ -42,7 +42,7 @@ def seed_spots():
         bedroom=4
     )
     spot4 = Spot(
-        user_id=1,
+        host_id=1,
         address="8845 Valley View St.",
         city="Elgin",
         state="Illinois",
@@ -55,7 +55,7 @@ def seed_spots():
         bedroom=2
     )
     spot5 = Spot(
-        user_id=1,
+        host_id=1,
         address="84 Mayfield St.",
         city="Richardson",
         state="TX",
@@ -69,7 +69,7 @@ def seed_spots():
     )
 
     spot6 = Spot(
-        user_id=1,
+        host_id=1,
         address="942 Edgewood Dr.",
         city="Stow",
         state="OH",

@@ -50,7 +50,7 @@ const SpotsDetailsPage = () => {
 
             <div className="details-spot-page-title">
                 <h1 className="details-spot-page-name">{spot?.name}</h1>
-                {user?.id === spot?.user_id && <EditDeleteModal />}
+                {user?.id === spot?.host_id && <EditDeleteModal />}
             </div>
 
             <div className="details-spot-address-detail-container">
@@ -102,7 +102,7 @@ const SpotsDetailsPage = () => {
                         </li>
                     </h2>
                 </div>
-                {user && spot?.user_id !== user?.id && <CreateReviewModal />}
+                {user && spot?.host_id !== user?.id && <CreateReviewModal />}
             </div>
 
             {filterReviews.length > 0 && <DisplayReviews />}
