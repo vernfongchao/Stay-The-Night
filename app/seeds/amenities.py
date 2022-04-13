@@ -16,7 +16,7 @@ def seed_amenities():
         smoking=True,
         toilet_paper=True,
         soap=True,
-        first_extinguisher=True,
+        fire_extinguisher=True,
     )
     amenity2 = Amenity(
         spot_id=2,
@@ -32,7 +32,7 @@ def seed_amenities():
         smoking=True,
         toilet_paper=True,
         soap=True,
-        first_extinguisher=True,
+        fire_extinguisher=True,
     )
     amenity3 = Amenity(
         spot_id=3,
@@ -48,7 +48,7 @@ def seed_amenities():
         smoking=True,
         toilet_paper=True,
         soap=True,
-        first_extinguisher=True,
+        fire_extinguisher=True,
     )
     amenity4 = Amenity(
         spot_id=4,
@@ -64,7 +64,7 @@ def seed_amenities():
         smoking=True,
         toilet_paper=True,
         soap=True,
-        first_extinguisher=True,
+        fire_extinguisher=True,
     )
     amenity5 = Amenity(
         spot_id=5,
@@ -80,7 +80,7 @@ def seed_amenities():
         smoking=True,
         toilet_paper=True,
         soap=True,
-        first_extinguisher=True,
+        fire_extinguisher=True,
     )
     amenity6 = Amenity(
         spot_id=6,
@@ -96,7 +96,7 @@ def seed_amenities():
         smoking=True,
         toilet_paper=True,
         soap=True,
-        first_extinguisher=True,
+        fire_extinguisher=True,
     )
     db.session.add_all([amenity1,amenity2,amenity3,amenity4,amenity5,amenity6])
     db.session.commit()
