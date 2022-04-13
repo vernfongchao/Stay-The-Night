@@ -256,8 +256,8 @@ const CreateSpotForm = ({ setShowModal }) => {
                             <div className="spot-form-select-field-city-input-container">
                                 <select className="spot-form-select-field-state" value={state} onChange={(e) => setState(e.target.value)}>
                                     <option value="">Select a State</option>
-                                    {states?.map(({ name }) => (
-                                        <option value={name}>{name}</option>
+                                    {states?.map(({ name },i) => (
+                                        <option key={i} value={name}>{name}</option>
                                     ))}
                                 </select>
                             </div>
@@ -267,8 +267,8 @@ const CreateSpotForm = ({ setShowModal }) => {
                             <div className="spot-form-select-field-city-input-container">
                                 <select className="spot-form-select-field-state" value={country} onChange={(e) => setCountry(e.target.value)}>
                                     <option value="">Select a Country</option>
-                                    {countries?.map(({ name }) => (
-                                        <option value={name}>{name}</option>
+                                    {countries?.map(({ name },i) => (
+                                        <option key={i} value={name}>{name}</option>
                                     ))}
                                 </select>
                             </div>

@@ -10,7 +10,6 @@ import './EditSpotForm.css'
 
 const EditSpotForm = ({ setShowModal }) => {
     const { countries, states, amenities } = useLocations()
-    console.log(states)
     const { setEditDeleteModal } = useEditDeleteModal()
 
     const dispatch = useDispatch()
@@ -182,8 +181,8 @@ const EditSpotForm = ({ setShowModal }) => {
             </div>
             <div className="spot-form-image-preview">
 
-                {imageFields?.map(({ image }, i) => (image.length !== 0 &&
-                    <img src={image} key={i}
+                {imageFields?.map(({ image }, idx) => (image.length !== 0 &&
+                    <img src={image} key={idx}
                         onError={(e) => e.target.src = "../../../../static/not-found.png"}
                         alt="House"
                         width="100px"
@@ -269,8 +268,8 @@ const EditSpotForm = ({ setShowModal }) => {
                                     value={state}
                                     onChange={(e) => setState(e.target.value)}>
                                     <option value="">Select a State</option>
-                                    {states?.map(({ name }) => (
-                                        <option value={name}>{name}</option>
+                                    {states?.map(({ name },idx) => (
+                                        <option key={idx} value={name}>{name}</option>
                                     ))}
                                 </select>
 
@@ -284,8 +283,8 @@ const EditSpotForm = ({ setShowModal }) => {
                             <div className="spot-form-select-field-city-input-container">
                                 <select className="spot-form-select-field-state" value={country} onChange={(e) => setCountry(e.target.value)}>
                                     <option value="">Select a Country</option>
-                                    {countries?.map(({ name }) => (
-                                        <option value={name}>{name}</option>
+                                    {countries?.map(({ name },idx) => (
+                                        <option key={idx} value={name}>{name}</option>
                                     ))}
                                 </select>
                             </div>

@@ -65,8 +65,8 @@ const SpotsDetailsPage = () => {
             </div>
 
             <div className="details-page-image-grid">
-                {spot?.images.map(({ image }, index) => (
-                    <img className={`details-page-image-${index}`} src={image} onError={handleImage} key={index} alt="house">
+                {spot?.images.map(({ image }, idx) => (
+                    <img className={`details-page-image-${idx}`} src={image} onError={handleImage} key={idx} alt="house">
                     </img>
                 ))}
             </div>

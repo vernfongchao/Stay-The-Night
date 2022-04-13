@@ -10,7 +10,6 @@ const MySpots = () => {
     const user = useSelector(state => state.session.user)
     const spots = Object.values(useSelector(state => state.spots)).reverse()
     const spotsFilter = spots.filter(({ host_id }) => host_id === +id)
-    console.log(spotsFilter)
 
     if (user?.id !== +id){
         history.push('/403-Unauthorized')
@@ -34,7 +33,7 @@ const MySpots = () => {
             {spotsFilter &&
                 <div className="my-all-spots-container">
                     {spotsFilter.map(spot => (
-                        <div className="my-each-spot-container">
+                        <div className="my-each-spot-container" key = {spot.id}>
                             <Link to={`/spots/${spot.id}`} spot={spot} id={`image-spots-${spot.id}`}>
                                 <img
                                     className="my-each-spot-image"
