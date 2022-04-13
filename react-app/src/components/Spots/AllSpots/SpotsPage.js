@@ -35,7 +35,8 @@ const SpotsPage = () => {
                                 <p>Bathrooms:{spot.bathroom} </p>
                             </div>
                         </div>
-                        <div><span>Amenities</span></div>
+                            <span className='each-spot-amenities-header'>Amenities</span>
+
                         {spot.amenities.length && <Amenities amenities={spot.amenities} />}
                         <div className='each-spot-price'>
                             <p>${spot.price}/ Night</p>

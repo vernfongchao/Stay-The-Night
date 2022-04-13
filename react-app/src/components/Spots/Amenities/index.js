@@ -12,7 +12,7 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-square-parking"></i>
                             </span>
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
@@ -24,7 +24,7 @@ const Amenities = ({ amenities }) => {
                                 <i className="fa-solid fa-kitchen-set"></i>
                             </span>
 
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
@@ -35,8 +35,8 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
 
                                 <i className="fa-solid fa-person-swimming"></i>
-                            </span>
-                            <span >
+                            </span >
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>)}
@@ -46,7 +46,7 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-hot-tub-person"></i>
                             </span>
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
@@ -57,7 +57,7 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-wifi"></i>
                             </span>
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
@@ -67,7 +67,7 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-fan"></i>
                             </span>
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
@@ -77,7 +77,7 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-user-check"></i>
                             </span>
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
@@ -87,7 +87,7 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-dog"></i>
                             </span>
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
@@ -97,7 +97,7 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-briefcase-medical"></i>
                             </span>
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
@@ -107,7 +107,7 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-fire-extinguisher"></i>
                             </span>
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
@@ -118,7 +118,7 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-smoking"></i>
                             </span>
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
@@ -128,7 +128,7 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-toilet-paper"></i>
                             </span>
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
@@ -138,7 +138,7 @@ const Amenities = ({ amenities }) => {
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-pump-soap"></i>
                             </span>
-                            <span>
+                            <span className='each-spot-amenities-label'>
                                 {label}
                             </span>
                         </div>
