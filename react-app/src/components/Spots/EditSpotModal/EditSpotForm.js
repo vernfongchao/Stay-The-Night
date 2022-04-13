@@ -37,6 +37,7 @@ const EditSpotForm = ({ setShowModal }) => {
     const [errors, setErrors] = useState([])
     const [maxImage, setMaxImage] = useState("");
     const [amenitiesSelected, setAmenitiesSelected] = useState([])
+    console.log(spot.amenities)
 
     let images = []
     const [imageFields, setImageFields] = useState(images)
@@ -366,6 +367,7 @@ const EditSpotForm = ({ setShowModal }) => {
                         // onSelect={function noRefCheck() { }}
                         placeholder="Amenities"
                         options={amenities}
+                        selectedValues={spot.amenities}
                         style={{
                             inputField: {},
                             optionContainer: {},

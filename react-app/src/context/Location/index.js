@@ -51,7 +51,7 @@ const LocationProvider = (props) => {
             boolean: true
         },
         {
-            label: "A.C",
+            label: "A.C.",
             value: 'ac',
             boolean: true
         },
@@ -71,8 +71,8 @@ const LocationProvider = (props) => {
             boolean: true
         },
         {
-            label: "First-extinguisher",
-            value: 'first_extinguisher',
+            label: "Fire-extinguisher",
+            value: 'fire_extinguisherr',
             boolean: true
         },
         {

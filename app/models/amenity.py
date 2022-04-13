@@ -13,7 +13,7 @@ class Amenity(db.Model):
     self_check_in = db.Column(db.Boolean, default=False, nullable=False)
     pets= db.Column(db.Boolean, default=False, nullable=False)
     first_aid = db.Column(db.Boolean, default=False, nullable=False)
-    first_extinguisher = db.Column(db.Boolean, default=False, nullable=False)
+    fire_extinguisher = db.Column(db.Boolean, default=False, nullable=False)
     smoking = db.Column(db.Boolean, default=False, nullable=False)
     toilet_paper = db.Column(db.Boolean, default=False, nullable=False)
     soap = db.Column(db.Boolean, default=False, nullable=False)

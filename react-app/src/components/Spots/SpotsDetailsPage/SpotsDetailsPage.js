@@ -89,6 +89,7 @@ const SpotsDetailsPage = () => {
             </div>
 
             <div>
+                <h2>Amenities</h2>
                 <Amenities amenities={spot.amenities}/>
             </div>
 

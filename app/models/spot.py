@@ -28,7 +28,6 @@ class Spot(db.Model):
         'Image', back_populates='spot', cascade="all,delete")
     reviews = db.relationship(
         "Review", back_populates='spot', cascade="all,delete")
-    
 
     def to_dict(self):
 
@@ -48,19 +47,20 @@ class Spot(db.Model):
             'reviews': [{'id': review.id, 'rating': review.rating} for review in self.reviews],
             # 'parking': self.amenities.parking,
             'amenities': [
-                {"parking":self.amenities.parking},
-                {"kitchen": self.amenities.kitchen},
-                {"pool": self.amenities.pool},
-                {"hottub": self.amenities.hottub},
-                {"wifi": self.amenities.wifi},
-                {"ac": self.amenities.ac},
-                {"self_check_in": self.amenities.self_check_in},
-                {"pets": self.amenities.parking},
-                {"first_aid": self.amenities.parking},
-                {"fire_extinguisher": self.amenities.parking},
-                {"smoking": self.amenities.parking},
-                {"toilet_paper": self.amenities.parking},
-                {"soap": self.amenities.parking},
+                {"label": "Parking", "parking": self.amenities.parking},
+                {"label": "Kitchen", "kitchen": self.amenities.kitchen},
+                {"label": "Pool", "pool": self.amenities.pool},
+                {"label": "Hot-tub", "hottub": self.amenities.hottub},
+                {"label": "Wifi","wifi": self.amenities.wifi},
+                {"label": "A.C.", "ac": self.amenities.ac},
+                {"label": "Self Check-in","self_check_in": self.amenities.self_check_in},
+                {"label": "Pets","pets": self.amenities.parking},
+                {"label":"First-Aid","first_aid": self.amenities.parking},
+                {"label": "Fire-extinguisher",
+                    "fire_extinguisher": self.amenities.parking},
+                {"label": "Smoking", "smoking": self.amenities.parking},
+                {"label": "Toilet-Paper", "toilet_paper": self.amenities.parking},
+                {"label": "Soap", "soap": self.amenities.parking},
             ],
             'first': self.host.user.first_name,
             'last': self.host.user.last_name,
