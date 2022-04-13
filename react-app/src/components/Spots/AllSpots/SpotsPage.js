@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Amenities from '../Amenities';
 
 import './SpotsPage.css'
 
@@ -34,6 +35,8 @@ const SpotsPage = () => {
                                 <p>Bathrooms:{spot.bathroom} </p>
                             </div>
                         </div>
+                        <div><span>Amenities</span></div>
+                        {spot.amenities.length && <Amenities amenities={spot.amenities} />}
                         <div className='each-spot-price'>
                             <p>${spot.price}/ Night</p>
                         </div>

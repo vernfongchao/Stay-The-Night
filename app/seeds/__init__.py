@@ -4,6 +4,7 @@ from .spots import seed_spots,undo_spots
 from .images import seed_images,undo_images
 from .reviews import seed_reviews, undo_reviews
 from .hosts import seed_hosts,undo_hosts
+from .amenities import seed_amenities, undo_amenities
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -18,6 +19,7 @@ def seed():
     seed_spots()
     seed_images()
     seed_reviews()
+    seed_amenities()
     # Add other seed functions here
 
 
@@ -29,4 +31,5 @@ def undo():
     undo_spots()
     undo_images()
     undo_reviews()
+    undo_amenities
     # Add other undo functions here

@@ -5,15 +5,16 @@ import EditDeleteModal from "../EditDeleteSpotModal";
 import DisplayReviews from "../../Reviews/DisplayReviews/DisplayReviews";
 import CreateReviewModal from '../../Reviews/CreateReviewModal'
 import './SpotsDetails.css'
+import Amenities from "../Amenities";
 
 const SpotsDetailsPage = () => {
     const { id } = useParams()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
-    const spots = useSelector(state => state.spots)
+    const spot = useSelector(state => state.spots[id])
     const reviews = Object.values(useSelector(state => state.reviews))
 
-    if (spots[id] === undefined) {
+    if (spot === undefined) {
         history.push('/404-Page-Not-Found')
     }
 
@@ -33,10 +34,6 @@ const SpotsDetailsPage = () => {
         roundedAvg = "Unrated"
     }
 
-
-    const spot = spots[id]
-
-
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -50,7 +47,7 @@ const SpotsDetailsPage = () => {
 
             <div className="details-spot-page-title">
                 <h1 className="details-spot-page-name">{spot?.name}</h1>
-                {user?.id === spot?.host_id && <EditDeleteModal />}
+                {user?.host_id === spot?.host_id && <EditDeleteModal />}
             </div>
 
             <div className="details-spot-address-detail-container">
@@ -91,6 +88,10 @@ const SpotsDetailsPage = () => {
                 <p className="details-page-description-text">{spot?.description}</p>
             </div>
 
+            <div>
+                <Amenities amenities={spot.amenities}/>
+            </div>
+
             <div className="details-page-header-container">
                 <div className="details-page-header-title">
                     <h2 className="details-page-start-text"><i className="fa-solid fa-star"></i> {roundedAvg} </h2>
@@ -102,7 +103,7 @@ const SpotsDetailsPage = () => {
                         </li>
                     </h2>
                 </div>
-                {user && spot?.host_id !== user?.id && <CreateReviewModal />}
+                {user && spot?.host_id !== user?.host_id && <CreateReviewModal />}
             </div>
 
             {filterReviews.length > 0 && <DisplayReviews />}

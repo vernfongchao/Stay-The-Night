@@ -11,6 +11,8 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
+
+
 const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
@@ -24,7 +26,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
@@ -40,8 +42,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -70,22 +72,22 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (first,second,username, email, password,confirm_password) => async (dispatch) => {
+export const signUp = (first, second, username, email, password, confirm_password) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      first_name:first,
-      last_name:second,
+      first_name: first,
+      last_name: second,
       username,
       email,
       password,
       confirm_password,
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -97,6 +99,26 @@ export const signUp = (first,second,username, email, password,confirm_password) 
     }
   } else {
     return ['An error occurred. Please try again.']
+  }
+}
+
+export const beHost = (payload) => async dispatch => {
+  const response = await fetch('/api/users/host', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload)
+  })
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data))
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
   }
 }
 

@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import configureStore from './store';
 import { ModalProvider } from './context/Modal'
+import LocationProvider from './context/Location';
 
 const store = configureStore();
 
@@ -13,9 +14,11 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter >
-        <ModalProvider >
-          <App />
-        </ModalProvider>
+        <LocationProvider>
+          <ModalProvider >
+            <App />
+          </ModalProvider>
+        </LocationProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

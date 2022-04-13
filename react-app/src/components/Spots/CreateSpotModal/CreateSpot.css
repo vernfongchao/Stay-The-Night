@@ -52,7 +52,42 @@
 .spot-form-field-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 88%;
+}
+
+.spot-form-select-field-container{
+ display: flex; 
+ flex-direction: column;
+ width: 88%;
+}
+.spot-form-select-field-input-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.spot-form-select-field-city-container{
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.spot-form-select-field-city-input-container{
+  padding-left: 5px;
+}
+
+.spot-form-select-field-state{
+      border: black solid 0.1em;
+      border-radius: 10px;
+      height: 35px;
+}
+
+
+.spot-form-select-input-field{
+
+    border: black solid 0.1em;
+    border-radius: 10px;
+    width: 80%;
+    height: 30px;
 }
 
 .spot-form-field {
@@ -69,6 +104,33 @@
   height: 55px;
   resize: none;
 }
+
+.spot-form-integer-field-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 88%;
+}
+
+.spot-form-integer-field-input-container{
+  display: flex;
+  align-items: center;
+}
+
+.spot-form-integer-field-input{
+    border: black solid 0.1em;
+    border-radius: 10px;
+    width: 95%;
+    height: 30px;
+}
+
+.spot-form-amenities-select-input-container{
+  width: 88%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 .error-message {
   /* padding-left: 50px;
