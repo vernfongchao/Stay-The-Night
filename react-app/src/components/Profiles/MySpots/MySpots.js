@@ -9,7 +9,8 @@ const MySpots = () => {
     const history = useHistory()
     const user = useSelector(state => state.session.user)
     const spots = Object.values(useSelector(state => state.spots)).reverse()
-    const spotsFilter = spots.filter(({ user_id }) => user_id === +id)
+    const spotsFilter = spots.filter(({ host_id }) => host_id === +id)
+    console.log(spotsFilter)
 
     if (user?.id !== +id){
         history.push('/403-Unauthorized')
@@ -24,8 +25,8 @@ const MySpots = () => {
         e.target.src = "../../../../static/house1.jpg"
     }
 
-    return (
-        <div className="my-spots-page-container">
+    return ( user?.host_id? 
+        (<div className="my-spots-page-container">
 
             <div className="my-spots-header-container">
                 <h1>My Spots</h1>
@@ -55,6 +56,10 @@ const MySpots = () => {
                         </div>
                     ))}
                 </div>}
+        </div>)
+        : 
+        <div className="my-spots-page-container">
+            <h1>You are not yet a Host, Please become a host to access your listings</h1>
         </div>
     )
 }

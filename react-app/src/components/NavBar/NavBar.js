@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileMenu from './ProfileMenu';
 import CreateSpotModal from '../Spots/CreateSpotModal';
+import BecomeHostModal from '../Host/BecomeHostModal';
 
 import './NavBar.css'
+
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
@@ -21,7 +23,7 @@ const NavBar = () => {
 
       <div className='navbar-right-container'>
 
-        {user && <CreateSpotModal />}
+        {user && (user.host_id ? <CreateSpotModal /> : <BecomeHostModal />)}
         <ProfileMenu />
       </div>
 

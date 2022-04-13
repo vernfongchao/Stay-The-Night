@@ -1,8 +1,9 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Spot, Image
+from app.models import db, Spot, Image, Amenity
 from app.forms import SpotForm
 import re
+from operator import itemgetter
 
 spot_routes = Blueprint('spots', __name__)
 
@@ -31,10 +32,10 @@ def get_spots():
 def post_spot():
     form = SpotForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
         data = request.get_json()
         images = data["images"]
-
         for image in images:
             if (len(image["image"]) < 1):
                 return {'errors': ["Missing Image Url Field input"]}, 400
@@ -61,6 +62,18 @@ def post_spot():
                 image=image["image"]
             )
             db.session.add(new_image)
+
+        amenity = Amenity(
+            spot_id=spot.id,
+            # parking=amenities.value
+        )
+        db.session.add(amenity)
+        db.session.commit()
+        # amenity = Amenity()
+        for amen in data["amenities"]:
+            value = amen["value"]
+            setattr(amenity, value, amen["boolean"])
+            # amenity[value] = amen["boolean"]
 
         db.session.commit()
 

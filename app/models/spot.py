@@ -1,10 +1,11 @@
 from app.models.db import db
 
+
 class Spot(db.Model):
     __tablename__ = 'spots'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    host_id = db.Column(db.Integer, db.ForeignKey("hosts.id"), nullable=False)
     address = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
     state = db.Column(db.String, nullable=False)
@@ -15,17 +16,25 @@ class Spot(db.Model):
     guest = db.Column(db.BigInteger, nullable=False)
     bathroom = db.Column(db.BigInteger, nullable=False)
     bedroom = db.Column(db.BigInteger, nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), server_onupdate=db.func.now())
+    created_at = db.Column(db.DateTime, nullable=False,
+                           server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, nullable=False,
+                           server_default=db.func.now(), server_onupdate=db.func.now())
 
-    user = db.relationship("User", back_populates="spots", lazy='subquery')
-    images = db.relationship('Image', back_populates='spot',cascade = "all,delete")
-    reviews = db.relationship("Review",back_populates='spot',cascade = "all,delete")
+    host = db.relationship("Host", back_populates="spots", lazy='subquery')
+    amenities = db.relationship(
+        'Amenity', back_populates='spot', cascade="all,delete", uselist=False)
+    images = db.relationship(
+        'Image', back_populates='spot', cascade="all,delete")
+    reviews = db.relationship(
+        "Review", back_populates='spot', cascade="all,delete")
+    
 
     def to_dict(self):
+
         return {
-            'id':self.id,
-            'user_id':self.user_id,
+            'id': self.id,
+            'host_id': self.host_id,
             'address': self.address,
             'city': self.city,
             'state': self.state,
@@ -36,9 +45,24 @@ class Spot(db.Model):
             'guest': self.guest,
             'bathroom': self.bathroom,
             'bedroom': self.bedroom,
-            'reviews': [{'id':review.id,'rating':review.rating} for review in self.reviews],
-            'first': self.user.first_name,
-            'last': self.user.last_name,
-            'images': [{'id':image.id,"image":image.image} for image in self.images]
+            'reviews': [{'id': review.id, 'rating': review.rating} for review in self.reviews],
+            # 'parking': self.amenities.parking,
+            'amenities': [
+                {"parking":self.amenities.parking},
+                {"kitchen": self.amenities.kitchen},
+                {"pool": self.amenities.pool},
+                {"hottub": self.amenities.hottub},
+                {"wifi": self.amenities.wifi},
+                {"ac": self.amenities.ac},
+                {"self_check_in": self.amenities.self_check_in},
+                {"pets": self.amenities.parking},
+                {"first_aid": self.amenities.parking},
+                {"fire_extinguisher": self.amenities.parking},
+                {"smoking": self.amenities.parking},
+                {"toilet_paper": self.amenities.parking},
+                {"soap": self.amenities.parking},
+            ],
+            'first': self.host.user.first_name,
+            'last': self.host.user.last_name,
+            'images': [{'id': image.id, "image": image.image} for image in self.images]
         }
-
