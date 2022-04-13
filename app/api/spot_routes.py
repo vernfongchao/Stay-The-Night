@@ -146,6 +146,14 @@ def edit_spot(id):
                     edit_image.image = image["image"]
 
         db.session.commit()
+        amenity = Amenity.query.get(data["amenities_id"])
+        for amen in data["amenities"]:
+            print(amen)
+            value = amen["value"]
+            setattr(amenity, value, amen["boolean"])
+
+        db.session.commit()
+
 
         return spot.to_dict()
 

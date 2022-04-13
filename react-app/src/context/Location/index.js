@@ -66,13 +66,13 @@ const LocationProvider = (props) => {
             boolean: true
         },
         {
-            label: "First-Aid",
+            label: "First-aid",
             value: 'first_aid',
             boolean: true
         },
         {
-            label: "Fire-extinguisher",
-            value: 'fire_extinguisherr',
+            label: "Fire Extinguisher",
+            value: 'fire_extinguisher',
             boolean: true
         },
         {

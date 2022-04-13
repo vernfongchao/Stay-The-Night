@@ -5,19 +5,19 @@ import './Amenities.css'
 const Amenities = ({ amenities }) => {
     return (
         <div className='amenities-container'>
-            {amenities.map((object,idx) => (
+            {amenities.map(({label,value,boolean},idx) => (
                 <div key={idx}>
-                    {object.parking && (
+                    {(value==="parking") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-square-parking"></i>
                             </span>
                             <span>
-                                Parking
+                                {label}
                             </span>
                         </div>
                     )}
-                    {object.kitchen && (
+                    {(value === "kitchen") && boolean && (
 
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
@@ -25,129 +25,125 @@ const Amenities = ({ amenities }) => {
                             </span>
 
                             <span>
-                                Kitchen
+                                {label}
                             </span>
                         </div>
 
                     )}
-                    {object.pool && (
+                    {(value === "pool") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
 
                                 <i className="fa-solid fa-person-swimming"></i>
                             </span>
                             <span >
-                                Pool
+                                {label}
                             </span>
                         </div>)}
 
-                    {object.hottub && (
+                    {(value === "hottub") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-hot-tub-person"></i>
                             </span>
                             <span>
-                                Hot-tub
+                                {label}
                             </span>
                         </div>
                     )}
 
-                    {object.wifi && (
+                    {(value === "wifi") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-wifi"></i>
                             </span>
                             <span>
-                                Wifi
+                                {label}
                             </span>
                         </div>
                     )}
-                    {object.ac && (
+                    {(value === "ac") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-fan"></i>
                             </span>
                             <span>
-                                A.C
+                                {label}
                             </span>
                         </div>
                     )}
-                    {object.self_check_in && (
+                    {(value === "self_check_in") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-user-check"></i>
                             </span>
                             <span>
-                                Self Check-in
+                                {label}
                             </span>
                         </div>
                     )}
-                    {object.pets && (
+                    {(value === "pets") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-dog"></i>
                             </span>
                             <span>
-                                Pets
+                                {label}
                             </span>
                         </div>
                     )}
-                    {object.first_aid && (
+                    {(value === "first_aid") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-briefcase-medical"></i>
                             </span>
                             <span>
-                                First-Aid
+                                {label}
                             </span>
                         </div>
                     )}
-                    {object.fire_extinguisher && (
+                    {(value === "fire_extinguisher") && boolean &&(
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-fire-extinguisher"></i>
                             </span>
                             <span>
-                                First Extinguisher
+                                {label}
                             </span>
                         </div>
                     )}
 
-                    {object.smoking && (
+                    {(value === "smoking") && boolean &&  (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-smoking"></i>
                             </span>
                             <span>
-                                Smoking
+                                {label}
                             </span>
                         </div>
                     )}
-                    {object.toilet_paper && (
+                    {(value === "toilet_paper") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-toilet-paper"></i>
                             </span>
                             <span>
-                                Toilet Paper
+                                {label}
                             </span>
                         </div>
                     )}
-                    {object.soap && (
+                    {(value === "soap") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-pump-soap"></i>
                             </span>
                             <span>
-                                Soap
+                                {label}
                             </span>
                         </div>
                     )}
                 </div>
-
-
-
-
             ))}
         </div>
     )

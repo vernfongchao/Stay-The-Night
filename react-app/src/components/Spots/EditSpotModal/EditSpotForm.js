@@ -36,8 +36,12 @@ const EditSpotForm = ({ setShowModal }) => {
     const [bathroom, setBathroom] = useState(spot.bathroom);
     const [errors, setErrors] = useState([])
     const [maxImage, setMaxImage] = useState("");
-    const [amenitiesSelected, setAmenitiesSelected] = useState([])
-    console.log(spot.amenities)
+    const filteredAmenities= spot.amenities.filter(({boolean})=>(
+        boolean
+    ))
+
+    const [amenitiesSelected, setAmenitiesSelected] = useState(filteredAmenities)
+
 
     let images = []
     const [imageFields, setImageFields] = useState(images)
@@ -120,6 +124,24 @@ const EditSpotForm = ({ setShowModal }) => {
                 }
             })
         }
+        let set = new Set()
+        let newAmenities = [...amenitiesSelected]
+
+        amenitiesSelected.forEach(({value})=>{
+            if(!set.has(value)){
+                set.add(value)
+            }
+        })
+
+        amenities.forEach(({value})=>{
+            if(!set.has(value)){
+                newAmenities.push({
+                    value,
+                    boolean: false
+                })
+            }
+        })
+
 
         const edit_spot = {
             spot_id: id,
@@ -134,9 +156,11 @@ const EditSpotForm = ({ setShowModal }) => {
             guest,
             bedroom,
             bathroom,
-            amenities: amenitiesSelected,
+            amenities_id: spot.amenities_id,
+            amenities: newAmenities,
             images,
         }
+        console.log(edit_spot)
         const data = await dispatch(editSpot(edit_spot))
         if (data.errors) {
             setErrors(data.errors)
@@ -265,7 +289,6 @@ const EditSpotForm = ({ setShowModal }) => {
                             <label className="error-spot-form-label" for="state">State</label>
                             <div className="spot-form-select-field-city-input-container">
                                 <select className="spot-form-select-field-state"
-                                    defaultValue={spot.state}
                                     value={state}
                                     onChange={(e) => setState(e.target.value)}>
                                     <option value="">Select a State</option>
@@ -367,7 +390,7 @@ const EditSpotForm = ({ setShowModal }) => {
                         // onSelect={function noRefCheck() { }}
                         placeholder="Amenities"
                         options={amenities}
-                        selectedValues={spot.amenities}
+                        selectedValues={filteredAmenities}
                         style={{
                             inputField: {},
                             optionContainer: {},
