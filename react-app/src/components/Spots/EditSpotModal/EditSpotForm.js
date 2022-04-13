@@ -10,7 +10,6 @@ import './EditSpotForm.css'
 
 const EditSpotForm = ({ setShowModal }) => {
     const { countries, states, amenities } = useLocations()
-    console.log(states)
     const { setEditDeleteModal } = useEditDeleteModal()
 
     const dispatch = useDispatch()
@@ -37,7 +36,12 @@ const EditSpotForm = ({ setShowModal }) => {
     const [bathroom, setBathroom] = useState(spot.bathroom);
     const [errors, setErrors] = useState([])
     const [maxImage, setMaxImage] = useState("");
-    const [amenitiesSelected, setAmenitiesSelected] = useState([])
+    const filteredAmenities= spot.amenities.filter(({boolean})=>(
+        boolean
+    ))
+
+    const [amenitiesSelected, setAmenitiesSelected] = useState(filteredAmenities)
+
 
     let images = []
     const [imageFields, setImageFields] = useState(images)
@@ -120,6 +124,23 @@ const EditSpotForm = ({ setShowModal }) => {
                 }
             })
         }
+        let set = new Set()
+        let newAmenities = [...amenitiesSelected]
+
+        amenitiesSelected.forEach(({value})=>{
+            if(!set.has(value)){
+                set.add(value)
+            }
+        })
+
+        amenities.forEach(({value})=>{
+            if(!set.has(value)){
+                newAmenities.push({
+                    value,
+                    boolean: false
+                })
+            }
+        })
 
         const edit_spot = {
             spot_id: id,
@@ -134,9 +155,11 @@ const EditSpotForm = ({ setShowModal }) => {
             guest,
             bedroom,
             bathroom,
-            amenities: amenitiesSelected,
+            amenities_id: spot.amenities_id,
+            amenities: newAmenities,
             images,
         }
+        console.log(edit_spot)
         const data = await dispatch(editSpot(edit_spot))
         if (data.errors) {
             setErrors(data.errors)
@@ -182,8 +205,8 @@ const EditSpotForm = ({ setShowModal }) => {
             </div>
             <div className="spot-form-image-preview">
 
-                {imageFields?.map(({ image }, i) => (image.length !== 0 &&
-                    <img src={image} key={i}
+                {imageFields?.map(({ image }, idx) => (image.length !== 0 &&
+                    <img src={image} key={idx}
                         onError={(e) => e.target.src = "../../../../static/not-found.png"}
                         alt="House"
                         width="100px"
@@ -265,12 +288,11 @@ const EditSpotForm = ({ setShowModal }) => {
                             <label className="error-spot-form-label" for="state">State</label>
                             <div className="spot-form-select-field-city-input-container">
                                 <select className="spot-form-select-field-state"
-                                    defaultValue={spot.state}
                                     value={state}
                                     onChange={(e) => setState(e.target.value)}>
                                     <option value="">Select a State</option>
-                                    {states?.map(({ name }) => (
-                                        <option value={name}>{name}</option>
+                                    {states?.map(({ name },idx) => (
+                                        <option key={idx} value={name}>{name}</option>
                                     ))}
                                 </select>
 
@@ -284,8 +306,8 @@ const EditSpotForm = ({ setShowModal }) => {
                             <div className="spot-form-select-field-city-input-container">
                                 <select className="spot-form-select-field-state" value={country} onChange={(e) => setCountry(e.target.value)}>
                                     <option value="">Select a Country</option>
-                                    {countries?.map(({ name }) => (
-                                        <option value={name}>{name}</option>
+                                    {countries?.map(({ name },idx) => (
+                                        <option key={idx} value={name}>{name}</option>
                                     ))}
                                 </select>
                             </div>
@@ -367,6 +389,7 @@ const EditSpotForm = ({ setShowModal }) => {
                         // onSelect={function noRefCheck() { }}
                         placeholder="Amenities"
                         options={amenities}
+                        selectedValues={filteredAmenities}
                         style={{
                             inputField: {},
                             optionContainer: {},

@@ -48,6 +48,11 @@
   max-width: 350px;
 }
 
+.each-spot-amenities-header{
+  margin-top: 5px;
+  font-family: "Roboto",sans-serif;
+}
+
 .each-spot-price {
   font-weight: bold;
   margin-left: auto;
