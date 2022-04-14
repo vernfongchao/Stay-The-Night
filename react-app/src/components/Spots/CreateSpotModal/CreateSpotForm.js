@@ -363,11 +363,12 @@ const CreateSpotForm = ({ setShowModal }) => {
                                 color: 'red'
                             },
                             searchBox: {
-                                // border: 'none',
+                                border: 'none',
+                                borderRadius:"0px",
                                 minWidth: "703px",
                                 minHeight: " 35px",
-                                border: '1px solid black',
-                                borderRadius: '10px'
+                                borderBottom: '1px solid black',
+                                // borderRadius: '10px'
                             }
                         }}
                     />

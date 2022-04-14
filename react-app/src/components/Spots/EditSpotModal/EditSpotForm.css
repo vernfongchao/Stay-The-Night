@@ -18,8 +18,11 @@
 }
 
 .spot-edit-form-page {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
   border-radius: 10px;
-  min-height: 600px;
+  min-height: 800px;
   width: 900px;
 }
 
@@ -31,11 +34,12 @@
 .spot-edit-form-container {
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
 }
 
 
 .spot-edit-form-container {
-  min-height: 500px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,6 +55,7 @@
   
 }
 .spot-edit-field-container {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   width: 88%;
@@ -65,34 +70,46 @@
   resize: none;
 }
 .error-spot-form-field {
-  border: black solid 0.1em;
+  border: none;
+  /* border-bottom: black solid 0.1em; */
   border-radius: 10px;
   width: 88%;
   height: 30px;
 }
 
-.all-error-spot-image-container {
+.edit-spot-image-container {
+  margin-top: 10px;
   width: 100%;
   display: flex;
   flex-direction: column;
+  /* justify-content: space-between; */
   align-items: center;
 }
 
-.edit-spot-image-container {
-  padding-left: 110px;
+.edit-spot-each-image-container {  
   display: flex;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  display: flex;
+  width: 96%;
+}
+.edit-spot-form-image-field-container{
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  width: 80%;
 }
 .edit-spot-field-button-container {
-  padding-left: 10px;
   width: 80%;
   display: flex; 
-  align-items: center;
+  justify-content: space-between;
 }
 
-.error-spot-form-image-field {
-  border: black solid 0.1em;
-  border-radius: 10px;
-  width: 96%;
+.edit-spot-form-image-field {
+  border: none;
+  border-bottom: black solid 0.1em;
+  /* border-radius: 10px; */
+  width: 100%;
   height: 30px;
 }
