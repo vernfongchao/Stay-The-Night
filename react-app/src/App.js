@@ -12,50 +12,52 @@ import ErrorPage403 from './components/Error/403';
 import { authenticate } from './store/session';
 import { getSpots } from './store/spot'
 import { getReviews } from './store/review';
+import { getBookings }from './store/booking'
 
 function App() {
-  const [loaded, setLoaded] = useState(false);
-  const dispatch = useDispatch();
+    const [loaded, setLoaded] = useState(false);
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    (async () => {
-      await dispatch(authenticate());
-      await dispatch(getSpots())
-      await dispatch(getReviews())
-      setLoaded(true);
-    })();
-  }, [dispatch]);
+    useEffect(() => {
+      (async () => {
+        await dispatch(authenticate());
+        await dispatch(getSpots())
+        await dispatch(getReviews())
+        await dispatch(getBookings())
+        setLoaded(true);
+      })();
+    }, [dispatch]);
 
-  if (!loaded) {
-    return null;
+    if (!loaded) {
+      return null;
+    }
+
+    return (
+      <>
+        <NavBar />
+        <Switch>
+          <Route exact path='/'>
+            <LandingPage />
+          </Route>
+          <Route exact path='/spots'>
+            <SpotsPage />
+          </Route>
+          <Route path='/spots/:id'>
+            <SpotsDetailsPage />
+          </Route>
+          <Route path='/profiles/:id' exact={true} >
+            <MySpots />
+          </Route>
+          <Route path='/403-Unauthorized' >
+            <ErrorPage403 />
+          </Route>
+          <Route>
+            <ErrorPage />
+          </Route>
+        </Switch>
+        <Footer />
+      </>
+    );
   }
-
-  return (
-    <>
-      <NavBar />
-      <Switch>
-        <Route exact path='/'>
-          <LandingPage />
-        </Route>
-        <Route exact path='/spots'>
-          <SpotsPage />
-        </Route>
-        <Route path='/spots/:id'>
-          <SpotsDetailsPage />
-        </Route>
-        <Route path='/profiles/:id' exact={true} >
-          <MySpots />
-        </Route>
-        <Route path='/403-Unauthorized' >
-          <ErrorPage403 />
-        </Route>
-        <Route>
-          <ErrorPage />
-        </Route>
-      </Switch>
-      <Footer />
-    </>
-  );
-}
 
 export default App;

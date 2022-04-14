@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
                            server_default=db.func.now(), server_onupdate=db.func.now())
 
     host = db.relationship("Host", back_populates='user', uselist=False)
+    bookings = db.relationship("Booking", back_populates='user')
     reviews = db.relationship("Review", back_populates='user')
 
     @property
