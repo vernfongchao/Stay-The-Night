@@ -57,6 +57,7 @@
 }
 
 .spot-form-select-field-container{
+  margin-top: 1px;
  display: flex; 
  flex-direction: column;
  width: 88%;
@@ -76,36 +77,40 @@ align-items: center;
 }
 
 .spot-form-select-field-state{
-      border: black solid 0.1em;
-      border-radius: 10px;
+  border: none;
+      border-bottom: black solid 0.1em;
+      /* border-radius: 10px; */
       height: 35px;
 }
 
 
 .spot-form-select-input-field{
-
-    border: black solid 0.1em;
-    border-radius: 10px;
+    border: none;
+    border-bottom: black solid 0.1em;
+    /* border-radius: 10px; */
     width: 80%;
     height: 30px;
 }
 
 .spot-form-field {
-  border: black solid 0.1em;
-  border-radius: 10px;
+  border: none;
+  border-bottom: black solid 0.1em;
+  /* border-radius: 10px; */
   width: 88%;
   height: 30px;
 }
 
 .spot-form-field-textarea {
-  border: black solid 0.1em;
-  border-radius: 10px;
+  border:none;
+  border-bottom: black solid 0.1em;
+  /* border-radius: 10px; */
   width: 88%;
   height: 55px;
   resize: none;
 }
 
 .spot-form-integer-field-container{
+    margin-top: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,8 +123,9 @@ align-items: center;
 }
 
 .spot-form-integer-field-input{
-    border: black solid 0.1em;
-    border-radius: 10px;
+    border: none;
+    border-bottom: black solid 0.1em;
+    /* border-radius: 10px; */
     width: 95%;
     height: 30px;
 }
@@ -143,11 +149,6 @@ align-items: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.spot-form-image-field {
-  display: flex;
-  width: 100%;
 }
 
 .edit-form-field-button-container {
@@ -178,15 +179,21 @@ align-items: center;
   width: 100%;
   align-items: center;
 }
+/* .spot-form-image-field {
+  display: flex;
+  width: 100%;
+} */
 
 .spot-form-image-field {
-  border: black solid 0.1em;
-  border-radius: 10px;
+  border: none;
+  border-bottom: black solid 0.1em;
+  /* border-radius: 10px; */
   width: 86%;
   height: 30px;
 }
 
 .spot-form-button-container {
+  padding-top: 10px;
   width: 80%;
   display: flex;
   justify-content: space-between;
@@ -196,7 +203,7 @@ align-items: center;
 
 
 .spot-form-button {
-  border-radius: 10px;
+  border-radius:25px;
   border: 1px black solid;
   color: white;
   background-color: black;
