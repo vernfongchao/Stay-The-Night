@@ -22,6 +22,12 @@ def get_bookings():
     bookings = Booking.query.all()
     return jsonify([booking.to_dict() for booking in bookings])
 
+@booking_routes.route('/users/<int:id>')
+def get_user_bookings(id):
+    bookings = Booking.query.filter(Booking.user_id == id)
+    return jsonify([booking.to_dict() for booking in bookings])
+
+
 
 @booking_routes.route('/spot/<int:id>', methods=["POST"])
 @login_required

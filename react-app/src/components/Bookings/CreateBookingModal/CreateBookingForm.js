@@ -19,12 +19,6 @@ const CreateBookingForm = ({ setShowModal }) => {
     const { id } = useParams()
     const history = useHistory()
     const dispatch = useDispatch()
-    // let today = new Date().toLocaleDateString()
-    // let ISO = new Date().toISOString().slice(0, 10)
-
-    // console.log(today)
-    // console.log(ISO)
-
 
     const user = useSelector(state => state.session.user)
     const spot = useSelector(state => state.spots[id])
@@ -82,7 +76,6 @@ const CreateBookingForm = ({ setShowModal }) => {
 
             <form className='create-booking-form-container' onSubmit={handleSubmit}>
                 <div>
-
                     <DateRangePicker
                         startDate={startDate}
                         startDateId="fgdhdfghdfghadfgzxcgcvb"

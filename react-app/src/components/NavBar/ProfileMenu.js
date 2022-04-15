@@ -69,8 +69,8 @@ const ProfileMenu = () => {
 
     return (
         <div className="profile-menu-container"  >
-            <div className="profile-menu-button-container" >
-                <button className="profile-menu-button" id="profile-menu" onClick={toggleMenu} onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)}  >
+            <div className="profile-menu-button-container" onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)} >
+                <button className="profile-menu-button" id="profile-menu" onClick={toggleMenu}  >
                     <i className="fa-solid fa-user" id="profile-menu"></i>
                 </button>
             </div>

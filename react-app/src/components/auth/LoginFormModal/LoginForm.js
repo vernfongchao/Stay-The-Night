@@ -3,15 +3,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 import SignUpFormModal from '../SignUpFormModal';
+import SignUpForm from '../SignUpFormModal/SignUpForm';
 
 import './LoginForm.css'
 
-const LoginForm = ({ setShowMenu, setShowLoginModal}) => {
+const LoginForm = ({ setShowMenu }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const [isLogin, setIsLogin] = useState(true)
 
 
 
@@ -53,10 +56,12 @@ const LoginForm = ({ setShowMenu, setShowLoginModal}) => {
     return <Redirect to='/' />;
   }
 
-  return (
-    <div className='login-form-page-container'>
+
+
+  return (isLogin ?
+    (<div className='login-form-page-container'>
       <div className='login-form-header-container'>
-      <i className="fa-solid fa-user"></i>
+        <i className="fa-solid fa-user"></i>
         <h1 className='login-form-header-text'> LOGIN</h1>
       </div>
       <form className='login-form-container' onSubmit={onLogin}>
@@ -85,17 +90,16 @@ const LoginForm = ({ setShowMenu, setShowLoginModal}) => {
 
         <div className='login-form-button-containers'>
           <button className='login-form-demo-button' type='button' onClick={onDemo}>Demo</button>
-          <button className='login-form-demo-button'type='submit'>Login</button>
+          <button className='login-form-demo-button' type='submit'>Login</button>
         </div>
       </form>
-
-        {/* <div>
-           <span>
-            Dont have an account? signup here
-           </span>
-        {<SignUpFormModal setShowLoginModal={setShowLoginModal}/>}
-        </div> */}
-    </div>
+      <div>
+        <span>
+          Don?t have an account? <span onClick={() => setIsLogin(false)}>Sign-Up</span> here
+        </span>
+      </div>
+    </div>)
+    : (!isLogin && <SignUpForm />)
   );
 };
 

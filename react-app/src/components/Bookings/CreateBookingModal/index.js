@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Modal } from '../../../context/Modal'
 import CreateBookingForm from './CreateBookingForm'
+import LoginForm from '../../auth/LoginFormModal/LoginForm'
 
 const CreateBookingModal = () => {
     const [showModal, setShowModal] = useState(false)
+    const user = useSelector(state=>state.session.user)
 
 
     
@@ -17,7 +20,7 @@ const CreateBookingModal = () => {
             {
                 showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CreateBookingForm setShowModal={setShowModal} />
+                    {user ? <CreateBookingForm setShowModal={setShowModal} /> : <LoginForm />}
                     </Modal>
                 )
             }
