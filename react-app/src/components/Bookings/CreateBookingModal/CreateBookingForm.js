@@ -67,14 +67,14 @@ const CreateBookingForm = ({ setShowModal }) => {
 
 
     return (
-        <div>
-            <div>
-                <h1>
+        <div className="create-booking-form-page-container">
+            <div className='login-form-header-container'>
+                <h1 className="login-form-header-text">
                     Book This Spot!
                 </h1>
             </div>
 
-            {errors && (<div className="spot-error-form-container">
+            {errors && (<div className="">
                 {errors?.map((error, ind) => (
                     <p className='error-message' key={ind}>{error}</p>
                 ))}
