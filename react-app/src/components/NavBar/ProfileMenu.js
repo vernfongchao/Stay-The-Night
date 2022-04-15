@@ -40,14 +40,14 @@ const ProfileMenu = () => {
     let profileMenu;
     if (!user) {
         profileMenu = (
-            <div className="profile-drop-down-menu">
+            <div className="profile-drop-down-menu" onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)} >
                 <LoginFormModal setShowMenu={setShowMenu}/>
                 <SignUpFormModal setShowMenu={setShowMenu} />
             </div>
         )
     } else if (user) {
         profileMenu = (
-            <div className="profile-drop-down-menu" onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)} >
+            <div className="profile-drop-down-menu" onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)}  >
                 <div>
                     <p>Hello {user?.username.length > 15 ? `${user?.username.slice(0, 15)}...` : user?.username}</p>
                 </div>
@@ -68,9 +68,9 @@ const ProfileMenu = () => {
 
 
     return (
-        <div className="profile-menu-container" onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)} >
+        <div className="profile-menu-container"  >
             <div className="profile-menu-button-container" >
-                <button className="profile-menu-button" id="profile-menu" onClick={toggleMenu} >
+                <button className="profile-menu-button" id="profile-menu" onClick={toggleMenu} onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)}  >
                     <i className="fa-solid fa-user" id="profile-menu"></i>
                 </button>
             </div>

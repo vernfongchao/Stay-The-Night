@@ -1,0 +1,34 @@
+.create-booking-form-container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.CalendarDay__selected_span {
+    background: #56B4E9;
+    color: white; 
+    border: 2px solid black; 
+}
+
+/* // Will edit selected date or the endpoints of a range of dates */
+.CalendarDay__selected {
+    border: 2px solid black;
+    background: #0072B2;
+    color: white;
+}
+
+/* // Will edit when hovered over. _span style also has this property */
+.CalendarDay__selected:hover {
+    border: 3px solid red;
+    background: #009E73;
+    color: white;
+}
+
+/* // Will edit when the second date (end date) in a range of dates */
+/* // is not yet selected. Edits the dates between your mouse and said date */
+.CalendarDay__hovered_span:hover,
+.CalendarDay__hovered_span {
+        border: 3px solid red;
+        background: #009E73;
+        color: white;
+}

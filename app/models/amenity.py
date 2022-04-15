@@ -1,7 +1,8 @@
 from app.models.db import db
 
+
 class Amenity(db.Model):
-    __tablename__= 'amenities'
+    __tablename__ = 'amenities'
     id = db.Column(db.Integer, primary_key=True)
     spot_id = db.Column(db.Integer, db.ForeignKey("spots.id"), nullable=False)
     parking = db.Column(db.Boolean, default=False, nullable=False)
@@ -11,7 +12,7 @@ class Amenity(db.Model):
     wifi = db.Column(db.Boolean, default=False, nullable=False)
     ac = db.Column(db.Boolean, default=False, nullable=False)
     self_check_in = db.Column(db.Boolean, default=False, nullable=False)
-    pets= db.Column(db.Boolean, default=False, nullable=False)
+    pets = db.Column(db.Boolean, default=False, nullable=False)
     first_aid = db.Column(db.Boolean, default=False, nullable=False)
     fire_extinguisher = db.Column(db.Boolean, default=False, nullable=False)
     smoking = db.Column(db.Boolean, default=False, nullable=False)
@@ -22,6 +23,9 @@ class Amenity(db.Model):
     # parking = db.Column(db.Boolean, default=False, nullable=False)
     # parking = db.Column(db.Boolean, default=False, nullable=False)
     # parking = db.Column(db.Boolean, default=False, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False,
+                           server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, nullable=False,
+                           server_default=db.func.now(), server_onupdate=db.func.now())
 
-    spot = db.relationship("Spot",back_populates="amenities")
-
+    spot = db.relationship("Spot", back_populates="amenities")

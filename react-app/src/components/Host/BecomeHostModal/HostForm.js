@@ -13,12 +13,14 @@ const HostForm = ({ setShowModal }) => {
     const [maxCity, setMaxCity] = useState("")
     const [maxState, setMaxState] = useState("")
     const [errors, setErrors] = useState([])
+    // const [host,setHost]= useState(false)
 
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         const host = {
+            // isHost: host 
             user_id: user.id,
             bio,
             city,

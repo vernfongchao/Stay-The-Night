@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import EditDeleteModal from "../EditDeleteSpotModal";
 import DisplayReviews from "../../Reviews/DisplayReviews/DisplayReviews";
 import CreateReviewModal from '../../Reviews/CreateReviewModal'
+import CreateBookingModal from "../../Bookings/CreateBookingModal";
 import './SpotsDetails.css'
 import Amenities from "../Amenities";
 
@@ -13,6 +14,7 @@ const SpotsDetailsPage = () => {
     const user = useSelector(state => state.session.user)
     const spot = useSelector(state => state.spots[id])
     const reviews = Object.values(useSelector(state => state.reviews))
+
 
     if (spot === undefined) {
         history.push('/404-Page-Not-Found')
@@ -48,6 +50,7 @@ const SpotsDetailsPage = () => {
             <div className="details-spot-page-title">
                 <h1 className="details-spot-page-name">{spot?.name}</h1>
                 {user?.host_id === spot?.host_id && <EditDeleteModal />}
+                {(user?.host_id !== spot?.host_id) && <CreateBookingModal />}
             </div>
 
             <div className="details-spot-address-detail-container">
@@ -76,7 +79,7 @@ const SpotsDetailsPage = () => {
             </div>
 
             <div className="details-page-house-details">
-                <p >{spot?.guest === 1 ? `${spot?.guest} Guest` : `${spot?.guest} Guests`} {spot?.bathroom === 1 ? `${spot?.bathroom} Bathroom` : `${spot?.bathroom} Bathrooms`}  {spot?.bedroom === 1 ? `${spot?.bedroom} Bedroom` : `${spot?.bedroom} Bedrooms`} 
+                <p >{spot?.guest === 1 ? `${spot?.guest} Guest` : `${spot?.guest} Guests`} {spot?.bathroom === 1 ? `${spot?.bathroom} Bathroom` : `${spot?.bathroom} Bathrooms`}  {spot?.bedroom === 1 ? `${spot?.bedroom} Bedroom` : `${spot?.bedroom} Bedrooms`}
                 </p>
                 <div>
                     <p className="details-page-price-text">${spot?.price}/ Night</p>
@@ -90,7 +93,7 @@ const SpotsDetailsPage = () => {
 
             <div>
                 <h2>Amenities</h2>
-                <Amenities amenities={spot.amenities}/>
+                <Amenities amenities={spot.amenities} />
             </div>
 
             <div className="details-page-header-container">
