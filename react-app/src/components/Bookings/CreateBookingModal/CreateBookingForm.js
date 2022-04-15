@@ -74,7 +74,7 @@ const CreateBookingForm = ({ setShowModal }) => {
                 </h1>
             </div>
 
-            {errors && (<div className="">
+            {errors && (<div className="create-booking-form-error-container">
                 {errors?.map((error, ind) => (
                     <p className='error-message' key={ind}>{error}</p>
                 ))}
@@ -93,13 +93,16 @@ const CreateBookingForm = ({ setShowModal }) => {
                         onFocusChange={rangeFocus}
                     />
                 </div>
-                <div>
+                <div className='create-booking-form-guest-container'>
                     <label htmlFor='Guests'>Guests</label>
+                    <div>
+
                     <select defaultValue={guests} onChange={(e) => setGuests(e.target.value)}>
                         {[...Array(spot.guest).keys()].map((number, i) => (
                             <option key={i}>{number + 1}</option>
                         ))}
                     </select>
+                    </div>
                 </div>
 
                 <div>

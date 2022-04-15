@@ -25,11 +25,13 @@
   width: 900px;
 }
 .spot-form-image-preview {
+  padding-top: 10px;
   display: flex;
   justify-content: center;
 }
 
 .spot-error-form-container {
+  padding-top: 10px;
   padding-left: 53px;
   padding-right: 53px;
   display: grid;
