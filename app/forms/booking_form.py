@@ -5,13 +5,6 @@ from wtforms.validators import DataRequired, ValidationError
 from datetime import date
 from app.models import Booking
 
-# def past_date(form,field):
-#     start_date = field.data
-#     today = date.today()
-#     print(start_date)
-#     print(today)
-
-
 def valid_booking(form, field):
     spot_id = field.data
     booking = form.data
@@ -31,6 +24,11 @@ def valid_booking(form, field):
 
     bookings = Booking.query.filter_by(spot_id=spot_id).all()
 
+    if(True):
+        bookings = Booking.query.filter_by(spot_id=spot_id).filter(Booking.id != 1).all()
+
+    print ("==================",bookings)
+
     if bookings:
         for booking in bookings:
             booking_start_date = booking.start_date.strftime('%Y-%m-%d')
@@ -48,30 +46,59 @@ def valid_booking(form, field):
                     and (int(start_date_day) >= int(booking_start_date_day))):
                 if(int(start_date_year) < int(booking_end_date_year)):
                     raise ValidationError(
-                        "This Spot is already Booked for these Dates")
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
                 if((start_date_year == booking_end_date_year) and
                         (int(start_date_month) < int(booking_end_date_month))):
                     raise ValidationError(
-                        "This Spot is already Booked for these Dates")
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
                 if((start_date_year == booking_end_date_year) and (start_date_month == booking_end_date_month) and (int(start_date_day) <= int(booking_end_date_day))):
                     raise ValidationError(
-                        "This Spot is already Booked for these Dates")
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
 
             if ((end_date_year == booking_start_date_year)
                     and (end_date_month == booking_start_date_month)
                     and (int(end_date_day) >= int(booking_start_date_day))):
                 if(int(end_date_year) < int(booking_end_date_year)):
                     raise ValidationError(
-                        "This Spot is already Booked for these Dates")
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
                 if((end_date_year == booking_end_date_year) and
                         (int(end_date_month) < int(booking_end_date_month))):
                     raise ValidationError(
-                        "This Spot is already Booked for these Dates")
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
                 if((end_date_year == booking_end_date_year) and (end_date_month == booking_end_date_month) and (int(end_date_day) <= int(booking_end_date_day))):
                     raise ValidationError(
-                        "This Spot is already Booked for these Dates")
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
+
+            if ((booking_start_date_year == start_date_year)
+                    and (booking_start_date_month == start_date_month)
+                    and (int(booking_start_date_day) >= int(start_date_day))):
+                if(int(booking_start_date_year) < int(end_date_year)):
+                    raise ValidationError(
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
+                if((booking_start_date_year == end_date_year) and
+                        (int(booking_start_date_month) < int(end_date_month))):
+                    raise ValidationError(
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
+                if((booking_start_date_year == end_date_year) and (booking_start_date_month == end_date_month) and (int(booking_start_date_day) <= int(end_date_day))):
+                    raise ValidationError(
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
+
+            if ((booking_end_date_year == start_date_year)
+                    and (booking_end_date_month == start_date_month)
+                    and (int(booking_end_date_day) >= int(start_date_day))):
+                if(int(booking_end_date_year) < int(end_date_year)):
+                    raise ValidationError(
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
+                if((booking_end_date_year == end_date_year) and
+                        (int(booking_end_date_month) < int(end_date_month))):
+                    raise ValidationError(
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
+                if((booking_end_date_year == end_date_year) and (booking_end_date_month == end_date_month) and (int(booking_end_date_day) <= int(end_date_day))):
+                    raise ValidationError(
+                        f"This spot is already booked from {booking_start_date} and {booking_end_date}")
 
 class BookingForm(FlaskForm):
+    id = IntegerField("Booking Id")
     user_id = IntegerField('User Id', validators=[DataRequired()])
     spot_id = IntegerField('User Id', validators=[
         DataRequired(), valid_booking])

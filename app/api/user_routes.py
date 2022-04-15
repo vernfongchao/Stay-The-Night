@@ -33,6 +33,15 @@ def user(id):
 @user_routes.route('/host', methods=["POST"])
 @login_required
 def host():
+    # data = request.get_json()
+    # data["user_id"]
+    # data["isHost"]
+
+    # user = User.query.get(data["user_id"])
+    #user.host = data["isHost"]
+    # db.session.commit()
+    # return user.to_dict()
+
     form = HostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
