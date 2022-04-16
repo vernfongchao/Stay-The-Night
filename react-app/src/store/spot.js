@@ -55,7 +55,7 @@ export const addSpot = (payload) => async dispatch => {
 }
 
 export const editSpot = (payload) => async dispatch => {
-    const response = await fetch(`/api/spots/${payload.spot_id}`, {
+    const response = await fetch(`/api/spots/${payload.id}`, {
         method: 'PUT',
         headers: {
             "Content-Type": "application/json"

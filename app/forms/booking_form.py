@@ -25,7 +25,7 @@ def valid_booking(form, field):
     bookings = Booking.query.filter_by(spot_id=spot_id).all()
 
     if(booking["id"]):
-        bookings = Booking.query.filter_by(spot_id=spot_id).filter(Booking.id != booking.id).all()
+        bookings = Booking.query.filter_by(spot_id=spot_id).filter(Booking.id != booking["id"]).all()
 
     if bookings:
         for booking in bookings:

@@ -1,0 +1,13 @@
+.edit-booking-form-button {
+    border-radius: 20px;
+    border: 1px black solid;
+    color: white;
+    background-color: black;
+    height: 30px;
+    cursor: pointer;
+    font-size: medium;
+}
+
+.edit-booking-form-button:hover {
+    background-color: gray;
+}

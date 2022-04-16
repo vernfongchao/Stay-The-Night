@@ -22,11 +22,11 @@ def get_bookings():
     bookings = Booking.query.all()
     return jsonify([booking.to_dict() for booking in bookings])
 
+
 @booking_routes.route('/users/<int:id>')
 def get_user_bookings(id):
     bookings = Booking.query.filter(Booking.user_id == id)
     return jsonify([booking.to_dict() for booking in bookings])
-
 
 
 @booking_routes.route('/spot/<int:id>', methods=["POST"])
@@ -45,6 +45,21 @@ def create_booking(id):
         return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 
+@booking_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_booking(id):
+    form = BookingForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        booking = Booking.query.get(id)
+        form.populate_obj(booking)
+        db.session.commit()
+
+        return booking.to_dict()
+    else:
+        return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+
 @booking_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_booking(id):
@@ -52,12 +67,3 @@ def delete_booking(id):
     db.session.delete(delete_booking)
     db.session.commit()
     return delete_booking.to_dict()
-
-
-# @booking_routes.route('/<int:id>', methods=['DELETE'])
-# @login_required
-# def delete_spot(id):
-#     delete_spot = Booking.query.get(id)
-#     db.session.delete(delete_spot)
-#     db.session.commit()
-#     return delete_spot.to_dict()

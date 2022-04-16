@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from '../../../context/Modal'
-// import EditBookingForm from './EditBookingForm'
+import EditBookingForm from "./EditBookingForm";
 
 const EditBookingModal = ({ booking}) => {
     const [showModal, setShowModal] = useState(false)
@@ -12,7 +12,7 @@ const EditBookingModal = ({ booking}) => {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    {/* <EditSpotForm setShowModal={setShowModal} booking={booking} /> */}
+                    <EditBookingForm setShowModal={setShowModal} booking={booking} />
                 </Modal>
             )}
         </div>

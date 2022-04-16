@@ -47,10 +47,10 @@ const MyBookings = () => {
                                 </Link>
                                 <div className="my-spots-basic-container">
                                     <div>
-                                        <span>Start Date {moment(booking.start_date).format('MMMM D YYYY')}</span>
+                                        <span>Start Date {moment(booking.start_date).utcOffset(7).format('MMMM D YYYY')}</span>
                                     </div>
                                     <div>
-                                        <span>End Date {moment(booking.end_date).format('MMMM D YYYY')}</span>
+                                        <span>End Date {moment(booking.end_date).utcOffset(7).format('MMMM D YYYY')}</span>
                                     </div>
                                 </div>
                             </div>

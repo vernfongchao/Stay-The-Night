@@ -63,6 +63,28 @@ export const addBooking = (payload) => async dispatch => {
     }
 }
 
+export const editBooking = (payload) => async dispatch => {
+    const response = await fetch(`/api/bookings/${payload.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        const booking = await response.json()
+        dispatch(loadBooking(booking))
+        return booking
+    } else if (response.status < 500) {
+        const data = await response.json()
+        if (data) {
+            return data
+        }
+    }
+}
+
+
+
 export const deleteBooking = (id) => async dispatch => {
     const response = await fetch(`/api/bookings/${id}`, {
         method: 'DELETE'
