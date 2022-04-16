@@ -20,9 +20,7 @@ def validation_errors_to_error_messages(validation_errors):
 @user_routes.route('/')
 def users():
     users = User.query.all()
-    return jsonify(
-        [user.to_dict() for user in users]
-    )
+    return jsonify([user.to_dict() for user in users])
 
 
 @user_routes.route('/<int:id>')

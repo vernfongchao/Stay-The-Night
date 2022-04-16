@@ -11,8 +11,8 @@ const CreateBookingModal = () => {
 
     
     return (
-        <div>
-            <button onClick={() => setShowModal(true)}>
+        <div className='create-booking-modal-page-container'>
+            <button className="create-booking-modal-button"onClick={() => setShowModal(true)}>
                 <span>
                     Book!
                 </span>

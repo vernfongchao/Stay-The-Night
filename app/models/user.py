@@ -37,16 +37,20 @@ class User(db.Model, UserMixin):
             return {
                 'id': self.id,
                 'first': self.first_name,
-                'second': self.last_name,
+                'last': self.last_name,
                 'username': self.username,
                 'email': self.email,
-                'host_id': self.host.id
+                'host_id': self.host.id,
+                'bio': self.host.bio,
+                'city': self.host.city,
+                'state': self.host.state,
+                'country': self.host.country,
             }
         else:
             return {
                 'id': self.id,
                 'first': self.first_name,
-                'second': self.last_name,
+                'last': self.last_name,
                 'username': self.username,
                 'email': self.email,
             }

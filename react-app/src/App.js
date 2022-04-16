@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
+import { useDispatch,useSelector} from 'react-redux';
 import LandingPage from './components/LandingPage/LandingPage';
 import NavBar from './components/NavBar/NavBar';
 import SpotsPage from './components/Spots/AllSpots/SpotsPage';
@@ -16,12 +16,20 @@ import { authenticate } from './store/session';
 import { getSpots } from './store/spot'
 import { getReviews } from './store/review';
 import { getUsers } from './store/user';
+import { getUserBookings } from './store/booking';
 
 
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const user = useSelector(state=> state.session.user)
+  
+  useEffect(()=> {
+    (async () => {
+      await dispatch(getUserBookings(user?.id))
+    })();
+  },[dispatch,user])
 
   useEffect(() => {
     (async () => {

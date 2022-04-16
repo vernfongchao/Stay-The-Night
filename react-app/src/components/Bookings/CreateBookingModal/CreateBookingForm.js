@@ -98,9 +98,9 @@ const CreateBookingForm = ({ setShowModal }) => {
                     </div>
                 </div>
 
-                <div>
+                <div className='create-booking-form-button-container'>
 
-                    <button>
+                    <button className='create-booking-form-button'>
                         Book!
                     </button>
                 </div>

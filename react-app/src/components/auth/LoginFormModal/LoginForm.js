@@ -65,7 +65,7 @@ const LoginForm = ({ setShowMenu }) => {
         <h1 className='login-form-header-text'> LOGIN</h1>
       </div>
       <form className='login-form-container' onSubmit={onLogin}>
-        <div>
+        <div className='login-form-error-container'>
           {errors.map((error, ind) => (
             <div className='login-error-message' key={ind}>{error}</div>
           ))}
@@ -93,9 +93,9 @@ const LoginForm = ({ setShowMenu }) => {
           <button className='login-form-demo-button' type='submit'>Login</button>
         </div>
       </form>
-      <div>
+      <div className='login-form-to-signup-container'>
         <span>
-          Don?t have an account? <span onClick={() => setIsLogin(false)}>Sign-Up</span> here
+          Don't have an account? <span className='login-form-to-signup-text' onClick={() => setIsLogin(false)}>Sign-Up</span> here
         </span>
       </div>
     </div>)

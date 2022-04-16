@@ -26,6 +26,10 @@
   align-items: center;
 }
 
+.signup-form-error-container{
+  padding-top: 10px;
+}
+
 .signup-error-message {
   color: red;
 }
@@ -55,8 +59,9 @@
   justify-content: space-between;
 }
 .signup-form-field {
-  border: black solid 0.1em;
-  border-radius: 10px;
+  border: none;
+  border-bottom: black solid 0.1em;
+  /* border-radius: 10px; */
   width: 70%;
   height: 30px;
 }
@@ -66,7 +71,8 @@
 
 
 .signup-form-button {
-  border-radius: 10px;
+  border-radius: 25px;
+  width: 75px;
   border: 1px black solid;
   background-color: black;
   color: white;
@@ -76,4 +82,19 @@
 }
 .signup-form-button:hover {
   background-color: gray;
+}
+
+.signup-form-to-login-container{
+  display: flex;
+  justify-content: center;
+  width:100%;
+  padding-bottom: 10px;
+}
+
+.signup-form-to-login-text{
+  color: red;
+}
+
+.signup-form-to-login-text:hover {
+  cursor: pointer;
 }

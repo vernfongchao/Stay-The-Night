@@ -15,7 +15,7 @@ const ConfirmDeletePage = ({ setShowModal }) => {
         e.preventDefault()
         const data = await dispatch(deleteSpot(id))
         if (data) {
-            history.push(`/profiles/${user?.id}`)
+            history.push(`/profiles/${user?.id}/spots`)
             setShowModal(false)
         }
     }

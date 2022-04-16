@@ -9,6 +9,7 @@ class Host(db.Model):
     bio = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
     state = db.Column(db.String, nullable=False)
+    country = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), server_onupdate=db.func.now())
 
@@ -21,5 +22,6 @@ class Host(db.Model):
             'user_id': self.user_id,
             'bio': self.bio,
             'city': self.city,
-            'state': self.state
+            'state': self.state,
+            'country':self.country,
         }

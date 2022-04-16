@@ -1,3 +1,21 @@
+.create-booking-modal-page-container{
+    margin-top: auto;
+}
+.create-booking-modal-button{
+    border-radius: 20px;
+    border: 1px black solid;
+    color: white;
+    background-color: black;
+    width: 70px;
+    height: 30px;
+    cursor: pointer;
+    font-size: medium;
+}
+.create-booking-modal-button:hover{
+    cursor: pointer;
+}
+
+
 .create-booking-form-page-container{
     width: 325px;
 }
@@ -16,6 +34,28 @@
     padding: 10px;
     display: flex;
 }
+
+.create-booking-form-button-container{
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-booking-form-button{
+    border-radius: 20px;
+    border: 1px black solid;
+    color: white;
+    background-color: black;
+    width: 70px;
+    height: 30px;
+    cursor: pointer;
+    font-size: medium;
+}
+
+.create-booking-form-button:hover{
+    background-color: gray;
+}
+
 
 
 .CalendarDay__selected_span {

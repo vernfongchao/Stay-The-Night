@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { getUserBookings } from "../../../store/booking";
 
 import moment from "moment";
 
@@ -23,8 +22,7 @@ const MyBookings = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        dispatch(getUserBookings(user?.id))
-    }, [dispatch,user])
+    }, [dispatch])
 
     return (
         <div className="my-bookings-page-container">

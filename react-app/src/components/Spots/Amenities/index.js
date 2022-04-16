@@ -5,7 +5,7 @@ import './Amenities.css'
 const Amenities = ({ amenities }) => {
     return (
         <div className='amenities-container'>
-            {amenities.map(({label,value,boolean},idx) => (
+            {amenities?.map(({label,value,boolean},idx) => (
                 <div key={idx}>
                     {(value==="parking") && boolean && (
                         <div className='each-spot-each-amenities-container'>
