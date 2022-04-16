@@ -23,3 +23,17 @@
 .linkedin-icon-container {
   font-size: larger;
 }
+
+.portfolio-link:hover 
+ {
+  color: pink;
+}
+
+.team-member-github:hover {
+  color: pink;
+}
+
+.linkedin-icon-container:hover{
+color: pink;
+}
+
