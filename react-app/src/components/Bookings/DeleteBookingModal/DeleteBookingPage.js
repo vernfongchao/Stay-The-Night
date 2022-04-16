@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 import { useEditDeleteBookingModal } from '../EditDeleteBookingModal'
 
 import { deleteBooking } from '../../../store/booking'
@@ -8,7 +7,6 @@ import { deleteBooking } from '../../../store/booking'
 const DeleteBookingPage = ({setShowModal,booking}) => {
     const dispatch = useDispatch()
     const { setEditDeleteModal } = useEditDeleteBookingModal()
-    console.log(booking)
 
     const handleDelete = async (e) => {
         e.preventDefault()

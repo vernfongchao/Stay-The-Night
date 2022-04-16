@@ -159,7 +159,6 @@ const EditSpotForm = ({ setShowModal }) => {
             amenities: newAmenities,
             images,
         }
-        console.log(edit_spot)
         const data = await dispatch(editSpot(edit_spot))
         if (data.errors) {
             setErrors(data.errors)

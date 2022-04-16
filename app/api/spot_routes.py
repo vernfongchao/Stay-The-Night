@@ -148,7 +148,6 @@ def edit_spot(id):
         db.session.commit()
         amenity = Amenity.query.get(data["amenities_id"])
         for amen in data["amenities"]:
-            print(amen)
             value = amen["value"]
             setattr(amenity, value, amen["boolean"])
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { addBooking } from '../../../store/booking'
@@ -29,7 +29,6 @@ const CreateBookingForm = ({ setShowModal }) => {
     const [focusedInput, setFocusedInput] = useState(null);
     const [errors, setErrors] = useState([])
 
-    console.log(startDate.format('YYYY-MM-DD'))
 
     const rangeDate = ({ startDate, endDate }) => {
         setStartDate(moment(startDate));

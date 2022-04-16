@@ -11,9 +11,6 @@ const MyProfile = () => {
     const user = useSelector(state => state.session.user)
     const users = useSelector(state => state.users)
 
-    console.log(user?.id)
-    console.log(users[id]?.id)
-
     if (!users[id]) {
         history.push('/403-Unauthorized')
     }

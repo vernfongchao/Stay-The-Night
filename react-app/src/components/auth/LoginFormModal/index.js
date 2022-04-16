@@ -19,7 +19,7 @@ const LoginFormModal = ({ setShowMenu}) => {
                     setShowMenu(false)
                 }
                     }>
-                    {<LoginForm setShowMenu={setShowMenu} setShowLoginModal={setShowModal}/>}
+                    {<LoginForm setShowMenu={setShowMenu}/>}
                 </Modal>
             )}
         </div>

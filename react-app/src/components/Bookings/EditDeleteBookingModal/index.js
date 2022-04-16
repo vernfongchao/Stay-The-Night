@@ -2,7 +2,6 @@ import React, { createContext, useContext, useState } from "react"
 import EditDeleteBookingMenu from "./EditDeleteBookingMenu"
 
 import { Modal } from '../../../context/Modal'
-import * as VscIcons from 'react-icons/vsc'
 import * as BsIcons from 'react-icons/bs'
 
 import './EditDeleteBookingModal.css'

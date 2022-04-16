@@ -15,9 +15,6 @@ import { DateRangePicker } from 'react-dates';
 const EditBookingForm = ({ setShowModal, booking }) => {
     const { setEditDeleteModal } = useEditDeleteBookingModal()
     const dispatch = useDispatch()
-    console.log(booking)
-
-
 
     const [startDate, setStartDate] = useState(moment(booking.start_date).utcOffset(7))
     const [endDate, setEndDate] = useState(moment(booking.end_date).utcOffset(7))

@@ -21,9 +21,7 @@ const CreateSpotForm = ({ setShowModal }) => {
     const [city, setCity] = useState("")
     const [maxCity, setMaxCity] = useState("")
     const [state, setState] = useState("");
-    // const [maxState, setMaxState] = useState("")
     const [country, setCountry] = useState("");
-    // const [maxCountry, setMaxCountry] = useState("")
     const [description, setDescription] = useState("");
     const [maxDescription, setMaxDescription] = useState("");
     const [price, setPrice] = useState("");
@@ -37,16 +35,6 @@ const CreateSpotForm = ({ setShowModal }) => {
 
     const [amenitiesSelected, setAmenitiesSelected] = useState([])
 
-    // const [parking, setParking] = useState(false);
-    // const [kitchen, setKitchen] = useState(false);
-    // const [pool, setPool] = useState(false);
-    // const [hottub, setHottub] = useState(false);
-    // const [wifi, setWifi] = useState(false);
-    // const [ac, setAc] = useState(false);
-    // const [self, setSelf] = useState(false);
-    // const [pet, setPet] = useState(false);
-
-
 
     const [maxImage, setMaxImage] = useState("");
 
@@ -58,9 +46,7 @@ const CreateSpotForm = ({ setShowModal }) => {
         if (imageFields.length >= 5) {
             setMaxImage("Maximum pictures allowed met")
         }
-        // else if (imageFields.length <= 1) {
-        //     setMaxImage("Must upload at least 1 picture")
-        // }
+
         else if (imageFields.length >= 2 && imageFields.length <= 4) {
             setMaxImage("")
         }
@@ -82,18 +68,6 @@ const CreateSpotForm = ({ setShowModal }) => {
         if (city.length < 20) {
             setMaxCity("")
         }
-        // if (state.length >= 50) {
-        //     setMaxState("Maximum Characters Reached")
-        // }
-        // if (state.length < 50) {
-        //     setMaxState("")
-        // }
-        // if (country.length >= 50) {
-        //     setMaxCountry("Maximum Characters Reached")
-        // }
-        // if (country.length < 50) {
-        //     setMaxCountry("")
-        // }
         if (description.length >= 1000) {
             setMaxDescription("Maximum Characters Reached")
         }
@@ -249,7 +223,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                             </div>
                         </div>
 
-                        {/* <p className="spot-form-max">{maxState}</p> */}
+
                         <div className="spot-form-select-field-city-container">
                             <label className="error-spot-form-label" for="state">State</label>
                             <div className="spot-form-select-field-city-input-container">
@@ -278,7 +252,6 @@ const CreateSpotForm = ({ setShowModal }) => {
 
                 <div className="spot-form-integer-field-container">
 
-                    {/* <div className="spot-form-integer-field-input-container"> */}
                     <label className="error-spot-form-label" for="state">Price</label>
                     <div className="spot-form-select-field-city-input-container">
                         <input className='spot-form-integer-field-input'
@@ -291,9 +264,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                             onKeyDown={handleExpress}
                         />
                     </div>
-                    {/* </div> */}
 
-                    {/* <div className=""> */}
                     <label className="error-spot-form-label" for="state">Guests</label>
                     <div className="spot-form-select-field-city-input-container">
                         <input className='spot-form-integer-field-input'
@@ -306,9 +277,6 @@ const CreateSpotForm = ({ setShowModal }) => {
                             onKeyDown={handleExpress}
                         />
                     </div>
-                    {/* </div> */}
-
-                    {/* <div className=""> */}
                     <label className="error-spot-form-label" for="state">Bedrooms</label>
                     <div className="spot-form-select-field-city-input-container">
                         <input className='spot-form-integer-field-input'
@@ -321,9 +289,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                             onKeyDown={handleExpress}
                         />
                     </div>
-                    {/* </div> */}
 
-                    {/* <div className=""> */}
                     <label className="error-spot-form-label" for="state">Bathrooms</label>
                     <div className="spot-form-select-field-city-input-container">
                         <input className='spot-form-integer-field-input'
@@ -347,7 +313,6 @@ const CreateSpotForm = ({ setShowModal }) => {
                         onRemove={(e) => setAmenitiesSelected(e)}
                         onSearch={function noRefCheck() { }}
                         onSelect={(e) => setAmenitiesSelected(e)}
-                        // onSelect={function noRefCheck() { }}
                         placeholder="Amenities"
                         options={amenities}
                         style={{
@@ -372,57 +337,6 @@ const CreateSpotForm = ({ setShowModal }) => {
                         }}
                     />
                 </div>
-
-
-                {/* <div className="spot-form-amenities-container">
-                    <Checkbox
-                        label="Parking"
-                        value={parking}
-                        onChange={() => (setParking(!parking))}
-                    ></Checkbox>
-
-                    <Checkbox
-                        label="Kitchen"
-                        value={kitchen}
-                        onChange={() => (setKitchen(!kitchen))}
-                    ></Checkbox>
-
-                    <Checkbox
-                        label="Pool"
-                        value={pool}
-                        onChange={() => (setPool(!pool))}
-                    ></Checkbox>
-
-                    <Checkbox
-                        label="Hot-Tub"
-                        value={hottub}
-                        onChange={() => (setHottub(!hottub))}
-                    ></Checkbox>
-
-                    <Checkbox
-                        label="Wifi"
-                        value={wifi}
-                        onChange={() => (setWifi(!wifi))}
-                    ></Checkbox>
-
-                    <Checkbox
-                        label="AC"
-                        value={ac}
-                        onChange={() => (setAc(!ac))}
-                    ></Checkbox>
-
-                    <Checkbox
-                        label="Self Check-in"
-                        value={self}
-                        onChange={() => (setSelf(!self))}
-                    ></Checkbox>
-
-                    <Checkbox
-                        label="Pets"
-                        value={pet}
-                        onChange={() => (setPet(!pet))}
-                    ></Checkbox>
-                </div> */}
 
                 <div className="spot-form-image-container">
 
@@ -459,13 +373,5 @@ const CreateSpotForm = ({ setShowModal }) => {
     )
 }
 
-const Checkbox = ({ label, value, onChange }) => {
-    return (
-        <label>
-            {label}
-            <input type="checkbox" checked={value} onChange={onChange} />
-        </label>
-    );
-};
 
 export default CreateSpotForm

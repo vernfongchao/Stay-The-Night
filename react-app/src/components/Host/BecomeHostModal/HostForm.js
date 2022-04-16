@@ -6,7 +6,7 @@ import { useLocations } from "../../../context/Location";
 import './HostForm.css'
 
 const HostForm = ({ setShowModal }) => {
-    const { countries, states, amenities } = useLocations()
+    const { countries, states} = useLocations()
     const user = useSelector(state => state.session.user)
     const [bio, setBio] = useState("")
     const [city, setCity] = useState("")
@@ -15,14 +15,12 @@ const HostForm = ({ setShowModal }) => {
     const [maxBio, setMaxBio] = useState("")
     const [maxCity, setMaxCity] = useState("")
     const [errors, setErrors] = useState([])
-    // const [host,setHost]= useState(false)
 
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         const host = {
-            // isHost: host 
             user_id: user.id,
             bio,
             city,
@@ -102,7 +100,6 @@ const HostForm = ({ setShowModal }) => {
                             </div>
                         </div>
 
-                        {/* <p className="spot-form-max">{maxState}</p> */}
                         <div className="spot-form-select-field-city-container">
                             <label className="error-spot-form-label" for="state">State</label>
                             <div className="spot-form-select-field-city-input-container">

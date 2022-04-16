@@ -1,4 +1,4 @@
-import React, { useState,useEffect, useRef } from "react";
+import React, { useState} from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
@@ -9,33 +9,9 @@ const ProfileMenu = () => {
     const user = useSelector(state => state.session.user)
     const [showMenu, setShowMenu] = useState(false)
 
-    // let ref = useRef()
-
-    // useEffect(()=>{
-    //     const click = e => {
-    //         if(!ref.current.contains(e.target)){
-    //             console.log("clicked")
-    //             setShowMenu(false)
-    //         }
-    //     }
-    //     // document.addEventListener("mousedown",(e) => {
-    //     //     if(!ref.current.contains(e.target)){
-    //     //         setShowMenu(false)
-    //     //     }
-    //     // })
-    //     document.addEventListener("mousedown",click)
-    //     // document.addEventListener("mousedown",click)
-    //     return()=>{
-    //         document.removeEventListener("mousedown", click)
-    //     }
-    // },[showMenu])
-
-
     const toggleMenu = (e) => {
         setShowMenu(!showMenu)
     }
-
-    // onMouseEnter = {() => setShowMenu(true)} onMouseLeave = {() => setShowMenu(false)} 
 
     let profileMenu;
     if (!user) {
