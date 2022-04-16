@@ -143,7 +143,7 @@ const EditSpotForm = ({ setShowModal }) => {
         })
 
         const edit_spot = {
-            spot_id: id,
+            id: id,
             host_id: user.host_id,
             name,
             address,

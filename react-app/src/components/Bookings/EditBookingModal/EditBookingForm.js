@@ -1,36 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
-import { addBooking } from '../../../store/booking'
+import { useEditDeleteBookingModal } from '../EditDeleteBookingModal'
+import { editBooking } from '../../../store/booking'
+
 import moment from 'moment'
 
-
+import './EditBookingForm.css'
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import './react_dates_overrides.css'
 
 
 import { DateRangePicker } from 'react-dates';
 
-
-const CreateBookingForm = ({ setShowModal }) => {
-    const tomorrow = moment().add('days', 1)
-    const defaultEnd = moment(tomorrow).add('days', 2)
-    const { id } = useParams()
-    const history = useHistory()
+const EditBookingForm = ({ setShowModal, booking }) => {
+    const { setEditDeleteModal } = useEditDeleteBookingModal()
     const dispatch = useDispatch()
+    console.log(booking)
 
-    const user = useSelector(state => state.session.user)
-    const spot = useSelector(state => state.spots[id])
 
-    const [startDate, setStartDate] = useState(tomorrow)
-    const [endDate, setEndDate] = useState(defaultEnd)
-    const [guests, setGuests] = useState(1)
+
+    const [startDate, setStartDate] = useState(moment(booking.start_date).utcOffset(7))
+    const [endDate, setEndDate] = useState(moment(booking.end_date).utcOffset(7))
+    const [guests, setGuests] = useState(booking.guests)
     const [focusedInput, setFocusedInput] = useState(null);
     const [errors, setErrors] = useState([])
-
-    console.log(startDate.format('YYYY-MM-DD'))
-
+    const spot = useSelector(state => state.spots[booking.spot_id])
     const rangeDate = ({ startDate, endDate }) => {
         setStartDate(moment(startDate));
         setEndDate(moment(endDate))
@@ -40,30 +34,31 @@ const CreateBookingForm = ({ setShowModal }) => {
         setFocusedInput(focusedInput);
     }
 
-    const handleSubmit = async (e) => {
+    const handleEdit = async (e) => {
         e.preventDefault()
-        const booking = {
+        const edit_booking = {
+            id: booking.id,
             spot_id: spot.id,
-            user_id: user.id,
+            user_id: booking.user_id,
             guests: parseInt(guests),
             start_date: startDate.format('YYYY-MM-DD'),
-            end_date: endDate.format('YYYY-MM-DD')
+            end_date: endDate.format('YYYY-MM-DD'),
         }
-        const data = await dispatch(addBooking(booking))
+        const data = await dispatch(editBooking(edit_booking))
         if (data.errors) {
             setErrors(data.errors)
         } else if (data) {
-            history.push(`/profiles/${user.id}/bookings`)
             setShowModal(false)
+            setEditDeleteModal(false)
         }
-    }
 
+    }
 
     return (
         <div className="create-booking-form-page-container">
             <div className='login-form-header-container'>
                 <h1 className="login-form-header-text">
-                    Book This Spot!
+                    Edit Booking!
                 </h1>
             </div>
 
@@ -73,7 +68,7 @@ const CreateBookingForm = ({ setShowModal }) => {
                 ))}
             </div>)}
 
-            <form className='create-booking-form-container' onSubmit={handleSubmit}>
+            <form className='create-booking-form-container' onSubmit={handleEdit}>
                 <div>
                     <DateRangePicker
                         startDate={startDate}
@@ -89,18 +84,18 @@ const CreateBookingForm = ({ setShowModal }) => {
                     <label htmlFor='Guests'>Guests</label>
                     <div>
 
-                    <select defaultValue={guests} onChange={(e) => setGuests(e.target.value)}>
-                        {[...Array(spot.guest).keys()].map((number, i) => (
-                            <option key={i}>{number + 1}</option>
-                        ))}
-                    </select>
+                        <select defaultValue={guests} onChange={(e) => setGuests(e.target.value)}>
+                            {[...Array(spot.guest).keys()].map((number, i) => (
+                                <option key={i}>{number + 1}</option>
+                            ))}
+                        </select>
                     </div>
                 </div>
 
                 <div className='create-booking-form-button-container'>
 
-                    <button className='create-booking-form-button'>
-                        Book!
+                    <button className='edit-booking-form-button'>
+                        Submit Edit
                     </button>
                 </div>
             </form>
@@ -108,4 +103,4 @@ const CreateBookingForm = ({ setShowModal }) => {
     )
 }
 
-export default CreateBookingForm
+export default EditBookingForm
