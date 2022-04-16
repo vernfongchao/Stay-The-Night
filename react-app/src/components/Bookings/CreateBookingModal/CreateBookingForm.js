@@ -53,7 +53,7 @@ const CreateBookingForm = ({ setShowModal }) => {
         if (data.errors) {
             setErrors(data.errors)
         } else if (data) {
-            // history.push(`/spots/${data.id}`)
+            history.push(`/profiles/${user.id}/bookings`)
             setShowModal(false)
             // history.push(`/profiles/${user.id}`)
         }

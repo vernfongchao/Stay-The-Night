@@ -26,9 +26,8 @@ const MySpots = () => {
 
     return ( user?.host_id? 
         (<div className="my-spots-page-container">
-
             <div className="my-spots-header-container">
-                <h1>My Spots</h1>
+                {spotsFilter.length ? <h1>My Spots</h1> : <h1>No Spots Hosted</h1>}
             </div>
             {spotsFilter &&
                 <div className="my-all-spots-container">
@@ -59,7 +58,7 @@ const MySpots = () => {
         )
         : 
         <div className="my-spots-page-container">
-            <h1>You are not yet a Host, Please become a host to access your listings</h1>
+            <h1>You are not yet a Host, Please become a host to access your listings!</h1>
         </div>
     )
 }

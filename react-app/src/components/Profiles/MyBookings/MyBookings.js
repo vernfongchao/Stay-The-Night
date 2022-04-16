@@ -20,7 +20,9 @@ const MyBookings = () => {
         history.push('/403-Unauthorized')
     }
 
+
     useEffect(() => {
+        window.scrollTo(0, 0)
         dispatch(getUserBookings(user.id))
     }, [dispatch])
 
