@@ -97,9 +97,12 @@ const CreateReviewForm = ({ setShowModal }) => {
                         onChange={(e) => setReview(e.target.value)}
                     />
                 </div>
-                <button className="review-form-submit-button" onClick={handleSubmit}>
-                    Submit Review
-                </button>
+                <div className="review-form-submit-button-container">
+                    <button className="review-form-submit-button" onClick={handleSubmit}>
+                        Submit Review
+                    </button>
+
+                </div>
             </form>
         </div>
     )

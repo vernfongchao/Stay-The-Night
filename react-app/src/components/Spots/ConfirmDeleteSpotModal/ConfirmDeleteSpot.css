@@ -22,6 +22,10 @@
     width: 100%;
 }
 
+.confirm-delete-warning-text-container{
+    padding: 10px;
+}
+
 .confirm-delete-button-container{
     width: 80%;
     display: flex;

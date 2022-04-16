@@ -25,7 +25,7 @@ const ConfirmDeletePage = ({ setShowModal }) => {
             <div className='login-form-header-container'>
                 <h1 className='login-form-header-text'> Warning!</h1>
             </div>
-            <div>
+            <div className="confirm-delete-warning-text-container">
                 <p>Warning! This command will be irreversible, are you sure you want to delete? </p>
             </div>
             <div className="confirm-delete-button-container">
