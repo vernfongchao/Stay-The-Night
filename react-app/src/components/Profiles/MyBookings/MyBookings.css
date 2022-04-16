@@ -1,0 +1,15 @@
+.my-bookings-page-container{
+    box-sizing: border-box;
+    margin-top: 100px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.my-bookings-header-container{
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    max-width: 1600px;
+    justify-content: space-evenly;
+}

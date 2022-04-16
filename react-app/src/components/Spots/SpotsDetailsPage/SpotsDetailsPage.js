@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory,Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import EditDeleteModal from "../EditDeleteSpotModal";
 import DisplayReviews from "../../Reviews/DisplayReviews/DisplayReviews";
@@ -75,7 +75,7 @@ const SpotsDetailsPage = () => {
             </div>
 
             <div>
-                <h2>Hosted By: <span className="first-name">{spot?.first} {spot?.last} </span> </h2>
+                <h2>Hosted By: <Link to={`/profiles/${spot?.user_id}`}><span className="first-name">{spot?.first} {spot?.last} </span> </Link> </h2>
             </div>
 
             <div className="details-page-house-details">

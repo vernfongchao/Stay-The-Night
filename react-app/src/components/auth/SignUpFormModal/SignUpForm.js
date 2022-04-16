@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
+import LoginForm from '../LoginFormModal/LoginForm';
 
 import './SignUpForm.css'
 
@@ -18,6 +19,8 @@ const SignUpForm = ({ setShowMenu }) => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
+  const [isSignup, setIsSignup] = useState(true)
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -61,7 +64,7 @@ const SignUpForm = ({ setShowMenu }) => {
         setRepeatPassword("")
       }
     } else {
-      setShowMenu(false)
+      if (setShowMenu) setShowMenu(false)
     }
   };
   const updateFirst = (e) => {
@@ -92,8 +95,8 @@ const SignUpForm = ({ setShowMenu }) => {
     return <Redirect to='/' />;
   }
 
-  return (
-    <div className='sign-form-page-container'>
+  return (isSignup ?
+    (<div className='sign-form-page-container'>
       <div className='login-form-header-container'>
         <i className="fa-solid fa-user"></i>
         <h1 className='login-form-header-text'> Sign Up</h1>
@@ -203,7 +206,13 @@ const SignUpForm = ({ setShowMenu }) => {
         <div className='login-form-button-containers'>
         </div>
       </form>
-    </div>
+      <div>
+        <span>
+          Have an account? <span onClick={() => setIsSignup(false)}>Login</span> here
+        </span>
+      </div>
+    </div>) :
+    (!isSignup && <LoginForm setShowMenu={setShowMenu} />)
   );
 };
 

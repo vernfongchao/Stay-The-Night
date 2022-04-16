@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link, useParams, useHistory } from "react-router-dom";
+import {Link, useParams, useHistory } from "react-router-dom";
 
 import './MySpots.css'
 
@@ -26,14 +26,13 @@ const MySpots = () => {
 
     return ( user?.host_id? 
         (<div className="my-spots-page-container">
-
             <div className="my-spots-header-container">
-                <h1>My Spots</h1>
+                {spotsFilter.length ? <h1>My Spots</h1> : <h1>No Spots Hosted</h1>}
             </div>
             {spotsFilter &&
                 <div className="my-all-spots-container">
                     {spotsFilter.map(spot => (
-                        <div className="my-each-spot-container" key = {spot.id}>
+                        <div className="my-each-spot-container" key={spot.id}>
                             <Link to={`/spots/${spot.id}`} spot={spot} id={`image-spots-${spot.id}`}>
                                 <img
                                     className="my-each-spot-image"
@@ -55,10 +54,11 @@ const MySpots = () => {
                         </div>
                     ))}
                 </div>}
-        </div>)
+        </div>
+        )
         : 
         <div className="my-spots-page-container">
-            <h1>You are not yet a Host, Please become a host to access your listings</h1>
+            <h1>You are not yet a Host, Please become a host to access your listings!</h1>
         </div>
     )
 }

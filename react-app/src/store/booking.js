@@ -24,6 +24,16 @@ export const getBookings = () => async dispatch => {
     return response
 }
 
+export const getUserBookings = (id) => async dispatch => {
+    const response = await fetch(`/api/bookings/users/${id}`)
+    if (response.ok) {
+        const bookings = await response.json()
+        dispatch(loadBookings(bookings))
+    }
+    return response
+}
+
+
 export const addBooking = (payload) => async dispatch => {
     const response = await fetch(`/api/bookings/spot/${payload.spot_id}`, {
         method: 'POST',
@@ -50,7 +60,7 @@ const bookingReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case LOAD_BOOKINGS: {
-            newState = { ...state };
+            newState = {};
             action.bookings.forEach(booking => newState[booking.id] = booking);
             return newState
         }
