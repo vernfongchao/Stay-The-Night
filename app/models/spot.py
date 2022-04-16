@@ -37,6 +37,7 @@ class Spot(db.Model):
         return {
             'id': self.id,
             'host_id': self.host_id,
+            'user_id':self.host.user.id,
             'address': self.address,
             'city': self.city,
             'state': self.state,

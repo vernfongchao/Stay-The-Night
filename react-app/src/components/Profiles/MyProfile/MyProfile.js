@@ -21,9 +21,13 @@ const MyProfile = () => {
         }
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <div className='profile-page-container'>
-            <div>
+            <div className='profile-page-header-container'>
                 {user?.id === +id ? 
                 <h1>My Profile</h1>
                 : <h1>User Profile</h1> }

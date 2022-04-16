@@ -64,7 +64,7 @@ const SignUpForm = ({ setShowMenu }) => {
         setRepeatPassword("")
       }
     } else {
-      setShowMenu(false)
+      if (setShowMenu) setShowMenu(false)
     }
   };
   const updateFirst = (e) => {
