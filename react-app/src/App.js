@@ -12,6 +12,7 @@ import ErrorPage403 from './components/Error/403';
 import ProfileNavigation from './components/Profiles/NavBar';
 import MyBookings from './components/Profiles/MyBookings/MyBookings';
 import MyProfile from './components/Profiles/MyProfile/MyProfile';
+import MyFavorites from './components/Profiles/MyFavorites/MyFavorites';
 import { authenticate } from './store/session';
 import { getSpots } from './store/spot'
 import { getReviews } from './store/review';
@@ -72,6 +73,7 @@ function App() {
         </Route>
         <Route path='/profiles/:id/favorites'>
           <ProfileNavigation />
+          <MyFavorites />
         </Route>
         <Route path='/403-Unauthorized' >
           <ErrorPage403 />
