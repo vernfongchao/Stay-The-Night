@@ -19,6 +19,14 @@
     width: 100%;
 }
 
-.display-review-text{
+.display-ratings-container{
+  padding-top: 10px;
+}
 
+.display-rating-icons{
+  font-size: 1.5rem;
+}
+
+.display-review-text{
+  padding-top: 10px;
 }

@@ -40,6 +40,22 @@
   justify-content: center;
   align-items: center;
 }
+
+.review-form-rating-radio-buttons{
+  display: none;
+}
+
+.review-form-rating-icons{
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.review-form-rating-field-container{
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
 .review-form-rating-container {
   padding-top: 10px;
   display: flex;

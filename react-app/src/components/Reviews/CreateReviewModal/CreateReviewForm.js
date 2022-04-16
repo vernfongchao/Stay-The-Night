@@ -3,13 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addReview } from "../../../store/review";
 
+import * as FAIcons from 'react-icons/fa'
+
 import './CreateReviewForm.css'
 
 const CreateReviewForm = ({ setShowModal }) => {
     const { id } = useParams()
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    const [rating, setRating] = useState(1)
+    const [rating, setRating] = useState(0)
+    const [hover, setHover] = useState(null)
     const [review, setReview] = useState("")
     const [errors, setErrors] = useState([])
 
@@ -31,24 +34,6 @@ const CreateReviewForm = ({ setShowModal }) => {
 
     useEffect(() => {
         const vali_errors = []
-        if (rating <= 1) {
-            setRating(1)
-        }
-        else if (rating % 10 === 1) {
-            setRating(1)
-        }
-        else if (rating % 10 === 2) {
-            setRating(2)
-        }
-        else if (rating % 10 === 3) {
-            setRating(3)
-        }
-        else if (rating % 10 === 4) {
-            setRating(4)
-        }
-        else if (rating >= 5) {
-            setRating(5)
-        }
         if (review.length >= 1000) {
             vali_errors.push("Maximum Characters Reached")
         }
@@ -65,6 +50,8 @@ const CreateReviewForm = ({ setShowModal }) => {
 
     return (
         <div className="review-form-page">
+
+
             <div className='login-form-header-container'>
                 <h1 className='login-form-header-text'> Leave a Review!</h1>
             </div>
@@ -74,16 +61,27 @@ const CreateReviewForm = ({ setShowModal }) => {
                 ))}
             </div>)}
             <form className="review-form-container">
+
                 <div className="review-form-rating-container">
                     <label>Please Rate from 1 to 5</label>
-                    <input className="review-form-field"
-                        type="number"
-                        value={rating}
-                        placeholder="Rating"
-                        name="rating"
-                        onChange={(e) => setRating(e.target.value)}
-                        onKeyDown={handleExpress}
-                    />
+                    <div className="review-form-rating-field-container">
+                        {[...Array(5)].map((star, i) => (
+                            <label>
+                                <input className="review-form-rating-radio-buttons"
+                                    type="radio"
+                                    value={rating}
+                                    onClick={() => setRating(i + 1)}
+                                />
+                                <FAIcons.FaStar
+                                    color={(i + 1) <= (hover || rating) ? "red" : "lightgray"}
+                                    className="review-form-rating-icons"
+                                    onMouseEnter={() => setHover(i + 1)}
+                                    onMouseLeave={() => setHover(null)}
+                                />
+                            </label>
+                        ))}
+                    </div>
+
                 </div>
                 <div className="review-form-review-container">
                     <label>Review</label>

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { editReview } from "../../../store/review"
 import { useEditDeleteReviewModal } from "../EditDeleteReviewModal"
 
+import * as FAIcons from 'react-icons/fa'
+
 import './EditReviewForm.css'
 
 
@@ -14,6 +16,7 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
     const user = useSelector(state => state.session.user)
 
     const [rating, setRating] = useState(curr_review.rating)
+    const [hover, setHover] = useState(null)
     const [review, setReview] = useState(curr_review.review)
     const [errors, setErrors] = useState([])
 
@@ -38,24 +41,6 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
     }
     useEffect(() => {
         const vali_errors = []
-        if (rating <= 1) {
-            setRating(1)
-        }
-        else if (rating % 10 === 1) {
-            setRating(1)
-        }
-        else if (rating % 10 === 2) {
-            setRating(2)
-        }
-        else if (rating % 10 === 3) {
-            setRating(3)
-        }
-        else if (rating % 10 === 4) {
-            setRating(4)
-        }
-        else if (rating >= 5) {
-            setRating(5)
-        }
         if (review.length >= 1000) {
             vali_errors.push("Maximum Characters Reached")
         }
@@ -83,14 +68,23 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
             <form className="review-edit-form-container">
                 <div className="review-edit-form-rating-container">
                     <label>Please Rate from 1 to 5</label>
-                    <input className="review-edit-form-field"
-                        type="number"
-                        value={rating}
-                        placeholder="Rating"
-                        name="rating"
-                        onChange={(e) => setRating(e.target.value)}
-                        onKeyDown={handleExpress}
-                    />
+                    <div className="review-form-rating-field-container">
+                        {[...Array(5)].map((star, i) => (
+                            <label>
+                                <input className="review-form-rating-radio-buttons"
+                                    type="radio"
+                                    value={rating}
+                                    onClick={() => setRating(i + 1)}
+                                />
+                                <FAIcons.FaStar
+                                    color={(i + 1) <= (hover || rating) ? "red" : "lightgray"}
+                                    className="review-form-rating-icons"
+                                    onMouseEnter={() => setHover(i + 1)}
+                                    onMouseLeave={() => setHover(null)}
+                                />
+                            </label>
+                        ))}
+                    </div>
                 </div>
                 <div className="review-edit-form-review-container">
                     <label>Review</label>
