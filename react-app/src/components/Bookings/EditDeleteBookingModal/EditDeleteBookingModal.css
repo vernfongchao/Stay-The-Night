@@ -1,0 +1,23 @@
+.edit-delete-booking-modal-container{
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.edit-delete-booking-modal-button-container{
+        position: relative;
+        right: 15px;
+        top: 50px;
+}
+
+
+.edit-delete-booking-modal-button{
+    color: black;
+    font-size: xx-large;
+    /* background-color: grey; */
+}
+.edit-delete-booking-modal-button:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}

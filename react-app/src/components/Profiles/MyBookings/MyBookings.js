@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams, useHistory } from "react-router-dom";
+import EditDeleteBookingModal from "../../Bookings/EditDeleteBookingModal";
 
 import moment from "moment";
 
@@ -27,13 +28,14 @@ const MyBookings = () => {
     return (
         <div className="my-bookings-page-container">
             <div className="my-bookings-header-container">
-                <h1>My Bookings</h1>
+                {bookings.length ? <h1>My Bookings</h1> : <h1>No Bookings Made</h1>}
             </div>
             {bookings &&
                 <div className="my-all-spots-container">
                     {
                         bookings.map((booking) => (
                             <div className="my-each-spot-container" key={booking.id}>
+                                <EditDeleteBookingModal booking={booking} />
                                 <Link to={`/spots/${spots[booking.spot_id].id}`}>
                                     <img
                                         className="my-each-spot-image"
@@ -56,8 +58,6 @@ const MyBookings = () => {
                     }
                 </div>
             }
-
-
         </div>
     )
 }

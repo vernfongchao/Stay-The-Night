@@ -43,3 +43,21 @@ def create_booking(id):
         return new_booking.to_dict()
     else:
         return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+
+@booking_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_booking(id):
+    delete_booking = Booking.query.get(id)
+    db.session.delete(delete_booking)
+    db.session.commit()
+    return delete_booking.to_dict()
+
+
+# @booking_routes.route('/<int:id>', methods=['DELETE'])
+# @login_required
+# def delete_spot(id):
+#     delete_spot = Booking.query.get(id)
+#     db.session.delete(delete_spot)
+#     db.session.commit()
+#     return delete_spot.to_dict()
