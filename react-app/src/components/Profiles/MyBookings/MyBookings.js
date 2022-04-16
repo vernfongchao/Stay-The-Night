@@ -23,8 +23,8 @@ const MyBookings = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        dispatch(getUserBookings(user.id))
-    }, [dispatch])
+        dispatch(getUserBookings(user?.id))
+    }, [dispatch,user])
 
     return (
         <div className="my-bookings-page-container">

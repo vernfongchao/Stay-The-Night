@@ -3,6 +3,8 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 
+import './MyProfile.css'
+
 const MyProfile = () => {
     const { id } = useParams()
     const history = useHistory()
@@ -11,7 +13,7 @@ const MyProfile = () => {
 
 
     if ((user?.id !== users[id]?.id) && !users[id]?.host_id) {
-        if (user.id === +id) {
+        if (user?.id === +id) {
 
         }
         else {
@@ -20,9 +22,11 @@ const MyProfile = () => {
     }
 
     return (
-        <div>
+        <div className='profile-page-container'>
             <div>
-                <h1>User Profile</h1>
+                {user?.id === +id ? 
+                <h1>My Profile</h1>
+                : <h1>User Profile</h1> }
             </div>
 
         </div>
