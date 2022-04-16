@@ -59,6 +59,7 @@
     left:0;
     transition: 350ms;
 }
+
 .nav-text {
     display: flex;
     justify-content: flex-start;

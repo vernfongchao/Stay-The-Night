@@ -115,6 +115,8 @@ export const beHost = (payload) => async dispatch => {
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
+    dispatch(loadUser(data))
+
     return null;
   } else if (response.status < 500) {
     const data = await response.json();

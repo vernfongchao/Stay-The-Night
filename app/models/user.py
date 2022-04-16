@@ -44,6 +44,7 @@ class User(db.Model, UserMixin):
                 'bio': self.host.bio,
                 'city': self.host.city,
                 'state': self.host.state,
+                'country': self.host.country,
             }
         else:
             return {

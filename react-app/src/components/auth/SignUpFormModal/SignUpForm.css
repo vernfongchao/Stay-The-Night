@@ -71,7 +71,8 @@
 
 
 .signup-form-button {
-  border-radius: 10px;
+  border-radius: 25px;
+  width: 75px;
   border: 1px black solid;
   background-color: black;
   color: white;

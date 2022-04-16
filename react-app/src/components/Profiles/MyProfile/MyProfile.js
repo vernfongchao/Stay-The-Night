@@ -17,7 +17,7 @@ const MyProfile = () => {
     if (!users[id]) {
         history.push('/403-Unauthorized')
     }
-    if ((user?.id !== +id) && !users[id].host_id) {
+    if ((user?.id !== +id) && !users[id]?.host_id) {
         history.push('/403-Unauthorized')
     }
 
@@ -32,23 +32,23 @@ const MyProfile = () => {
                     <h1>My Profile</h1>
                     : <h1>User Profile</h1>}
             </div>
-            <div>
-                <h1 className="first-name">
+            <div className='profile-page-name-container'>
+                <h2 className="first-name">
                     Name: {users[id]?.first} {users[id]?.last}
-                </h1>
+                </h2>
             </div>
-            <div>
+            <div className='profile-page-email-container'>
                 {(users[id]?.id === user?.id) && <h2>
                     My Email : {users[id]?.email}
                 </h2>}
             </div>
             {users[id]?.host_id && (
-                <div>
+                <div className='profile-page-host-container'>
                     <h2>
                         Bio : {users[id]?.bio}
                     </h2>
                     <h2 className="first-name">
-                        From : {users[id]?.city} {users[id]?.state}
+                        From : {users[id]?.city} {users[id]?.state}, {users[id]?.country}
                     </h2>
                     {(users[id]?.id !== user?.id) && <h2>
                         Contact : {users[id].email}
