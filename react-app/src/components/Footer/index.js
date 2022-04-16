@@ -6,11 +6,9 @@ const Footer = () => {
     return (
         <div className="footer-page-container">
 
-            {/* Changing to portfolio once done */}
-            
             <div className="team-member-name">
-                <a className="portfolio-link" href="https://vernfongchao.github.io" target="_blank" rel="noopener noreferrer">
-                    © Vern Fong Chao 
+                © <a className="portfolio-link" href="https://vernfongchao.github.io" target="_blank" rel="noopener noreferrer">
+                    Vern Fong Chao 
                 </a> 2022
                 
             </div>
