@@ -10,7 +10,7 @@ class SpotForm(FlaskForm):
     address = StringField('address', validators=[DataRequired("Address: Please enter an address"), Length(
         min=1, max=50, message='Address must be at least than 1 characters and no more than 50 characters')])
     city = StringField('city', validators=[DataRequired("City: Please enter a city"), Length(
-        min=1, max=50, message='City must be at least than 1 characters and no more than 50 characters')])
+        min=1, max=20, message='City must be at least than 1 characters and no more than 20 characters')])
     state = StringField('state', validators=[DataRequired("State: Please enter a state"), Length(
         min=1, max=50, message='State must be at least than 1 characters and no more than 50 characters')])
     country = StringField('country', validators=[DataRequired("Country: Please enter a country"), Length(

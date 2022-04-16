@@ -2,11 +2,10 @@
   background-color: black;
   border: 0;
   width: 100px;
-
   height: 30px;
 }
 
-.create-spot-button span {
+.create-spot-button-text{
   color: white;
   font-weight: 500px;
   font-family: "Roboto", sans-serif;

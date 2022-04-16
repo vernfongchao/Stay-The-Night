@@ -11,14 +11,14 @@ const MyProfile = () => {
     const user = useSelector(state => state.session.user)
     const users = useSelector(state => state.users)
 
+    console.log(user?.id)
+    console.log(users[id]?.id)
 
-    if ((user?.id !== users[id]?.id) && !users[id]?.host_id) {
-        if (user?.id === +id) {
-
-        }
-        else {
-            history.push('/403-Unauthorized')
-        }
+    if (!users[id]) {
+        history.push('/403-Unauthorized')
+    }
+    if ((user?.id !== +id) && !users[id].host_id) {
+        history.push('/403-Unauthorized')
     }
 
     useEffect(() => {
@@ -28,10 +28,33 @@ const MyProfile = () => {
     return (
         <div className='profile-page-container'>
             <div className='profile-page-header-container'>
-                {user?.id === +id ? 
-                <h1>My Profile</h1>
-                : <h1>User Profile</h1> }
+                {user?.id === +id ?
+                    <h1>My Profile</h1>
+                    : <h1>User Profile</h1>}
             </div>
+            <div>
+                <h1 className="first-name">
+                    Name: {users[id]?.first} {users[id]?.last}
+                </h1>
+            </div>
+            <div>
+                {(users[id]?.id === user?.id) && <h2>
+                    My Email : {users[id]?.email}
+                </h2>}
+            </div>
+            {users[id]?.host_id && (
+                <div>
+                    <h2>
+                        Bio : {users[id]?.bio}
+                    </h2>
+                    <h2 className="first-name">
+                        From : {users[id]?.city} {users[id]?.state}
+                    </h2>
+                    {(users[id]?.id !== user?.id) && <h2>
+                        Contact : {users[id].email}
+                    </h2>}
+                </div>
+            )}
 
         </div>
     )

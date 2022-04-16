@@ -103,7 +103,7 @@ const SignUpForm = ({ setShowMenu }) => {
       </div>
 
       <form className='signup-form-container' onSubmit={onSignUp}>
-        <div>
+        <div className='signup-form-error-container'>
           {errors.map((error, ind) => (
             <div className='signup-error-message' key={ind}>{error}</div>
           ))}
@@ -202,13 +202,14 @@ const SignUpForm = ({ setShowMenu }) => {
             ></input>
           </div>
         </div>
-        <button className="signup-form-button" type='submit'>Sign Up</button>
         <div className='login-form-button-containers'>
+          <button className="signup-form-button" type='button'>Demo</button>
+          <button className="signup-form-button" type='submit'>Sign Up</button>
         </div>
       </form>
-      <div>
+      <div className='signup-form-to-login-container'>
         <span>
-          Have an account? <span onClick={() => setIsSignup(false)}>Login</span> here
+          Have an account? <span className='signup-form-to-login-text' onClick={() => setIsSignup(false)}>Login</span> here
         </span>
       </div>
     </div>) :

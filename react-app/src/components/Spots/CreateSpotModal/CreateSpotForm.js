@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { useLocations } from "../../../context/Location";
 import { useDispatch, useSelector } from "react-redux"
-import { addSpot } from "../../../store/spot"
 import { useHistory } from "react-router-dom"
+import { addSpot } from "../../../store/spot"
+import { useLocations } from "../../../context/Location";
 import Multiselect from 'multiselect-react-dropdown';
 
 import './CreateSpot.css'
@@ -247,7 +247,6 @@ const CreateSpotForm = ({ setShowModal }) => {
                                     maxLength="20"
                                 />
                             </div>
-
                         </div>
 
                         {/* <p className="spot-form-max">{maxState}</p> */}

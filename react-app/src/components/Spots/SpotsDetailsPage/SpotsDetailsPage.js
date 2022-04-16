@@ -93,7 +93,7 @@ const SpotsDetailsPage = () => {
 
             <div>
                 <h2>Amenities</h2>
-                <Amenities amenities={spot.amenities} />
+                <Amenities amenities={spot?.amenities} />
             </div>
 
             <div className="details-page-header-container">

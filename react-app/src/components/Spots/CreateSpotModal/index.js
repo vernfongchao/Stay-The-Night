@@ -10,7 +10,6 @@ const CreateSpotModal = () => {
             <button className="create-spot-button" onClick={() => setShowModal(true)} >
                 <span className="create-spot-button-text">
                     Add a Spot!
-
                 </span>
             </button>
             {

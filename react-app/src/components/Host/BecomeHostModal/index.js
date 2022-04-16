@@ -8,8 +8,8 @@ const BecomeHostModal = () => {
     return (
         <div className="become-host-modal-container">
             <button className="become-host-button" onClick={() => setShowModal(true)}>
-                <span className="create-spot-button-text">
-                    Become a Host!
+                <span className="become-spot-button-text">
+                    Become a Host
                 </span>
             </button>
             {
