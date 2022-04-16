@@ -24,9 +24,7 @@ const ProfileNavigation = () => {
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} onClick={showSideBar}>
                 <ul className='nav-menu-items' >
                     <li className='nav-bar-toggle'>
-                        <div className="menu-link" >
-                            <AiIcons.AiOutlineClose className='menu-link' />
-                        </div>
+                        <AiIcons.AiOutlineClose className='menu-link' />
                     </li>
                     <li className='nav-text'>
                         <NavLink exact to={`/profiles/${id}`} className="menu-link" activeClassName="selected" >

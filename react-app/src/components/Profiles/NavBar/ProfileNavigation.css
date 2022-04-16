@@ -17,7 +17,6 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     position: fixed;
     top: 0px;
     left: -100%;
@@ -32,21 +31,21 @@
 }
 .nav-bar-toggle{
         display: flex;
-        justify-content: start;
+        justify-content: center;
         align-items: center;
-        /* padding:8px 0px 8px 16px; */
         list-style:none;
         height: 60px;
+        cursor: pointer;
 }
 
-.nav-bar-toggle a {
-    /* background-color:  ; */
+.nav-bar-toggle:hover {
+    background-color: #1a83ff;
+    color: red;
     width: 100%;
     height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 16px;
     border-radius: 4px;
 }
 .nav-bar-toggle a:hover{
