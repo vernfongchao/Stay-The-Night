@@ -28,7 +28,7 @@ function App() {
       await dispatch(authenticate());
       await dispatch(getSpots())
       await dispatch(getReviews())
-      // await dispatch(getUsers())
+      await dispatch(getUsers())
       setLoaded(true);
     })();
   }, [dispatch]);
