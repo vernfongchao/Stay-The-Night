@@ -95,7 +95,7 @@ const LoginForm = ({ setShowMenu }) => {
       </form>
       <div className='login-form-to-signup-container'>
         <span>
-          Don?t have an account? <span className='login-form-to-signup-text' onClick={() => setIsLogin(false)}>Sign-Up</span> here
+          Don't have an account? <span className='login-form-to-signup-text' onClick={() => setIsLogin(false)}>Sign-Up</span> here
         </span>
       </div>
     </div>)
