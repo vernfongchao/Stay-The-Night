@@ -10,10 +10,12 @@ import MySpots from './components/Profiles/MySpots/MySpots';
 import ErrorPage from './components/Error';
 import ErrorPage403 from './components/Error/403';
 import ProfileNavigation from './components/Profiles/NavBar';
+import MyBookings from './components/Profiles/MyBookings/MyBookings';
+import MyProfile from './components/Profiles/MyProfile/MyProfile';
 import { authenticate } from './store/session';
 import { getSpots } from './store/spot'
 import { getReviews } from './store/review';
-import MyBookings from './components/Profiles/MyBookings/MyBookings';
+import { getUsers } from './store/user';
 
 
 
@@ -26,6 +28,7 @@ function App() {
       await dispatch(authenticate());
       await dispatch(getSpots())
       await dispatch(getReviews())
+      await dispatch(getUsers())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -49,6 +52,7 @@ function App() {
         </Route>
         <Route path='/profiles/:id' exact={true} >
           <ProfileNavigation />
+          <MyProfile />
         </Route>
         <Route path='/profiles/:id/spots'>
           <ProfileNavigation />

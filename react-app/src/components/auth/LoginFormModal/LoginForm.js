@@ -99,7 +99,7 @@ const LoginForm = ({ setShowMenu }) => {
         </span>
       </div>
     </div>)
-    : (!isLogin && <SignUpForm />)
+    : (!isLogin && <SignUpForm  setShowMenu={setShowMenu}/>)
   );
 };
 

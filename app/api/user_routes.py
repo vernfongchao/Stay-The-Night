@@ -1,7 +1,7 @@
-from flask import Blueprint, jsonify,session,request
+from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
 from app.forms import HostForm
-from app.models import User, Host,db
+from app.models import User, Host, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -18,10 +18,11 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 @user_routes.route('/')
-@login_required
 def users():
     users = User.query.all()
-    return {'users': [user.to_dict() for user in users]}
+    return jsonify(
+        [user.to_dict() for user in users]
+    )
 
 
 @user_routes.route('/<int:id>')
@@ -29,6 +30,7 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
 
 @user_routes.route('/host', methods=["POST"])
 @login_required
@@ -55,6 +57,3 @@ def host():
         return user.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
-
-

@@ -212,7 +212,7 @@ const SignUpForm = ({ setShowMenu }) => {
         </span>
       </div>
     </div>) :
-    (!isSignup && <LoginForm />)
+    (!isSignup && <LoginForm setShowMenu={setShowMenu} />)
   );
 };
 
