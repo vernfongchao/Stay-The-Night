@@ -27,7 +27,7 @@ function App() {
   
   useEffect(()=> {
     (async () => {
-      await dispatch(getUserBookings(user?.id))
+      if(user) await dispatch(getUserBookings(user?.id))
     })();
   },[dispatch,user])
 
