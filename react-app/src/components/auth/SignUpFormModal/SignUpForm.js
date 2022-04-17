@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
+import { login } from '../../../store/session';
 import LoginForm from '../LoginFormModal/LoginForm';
 
 import './SignUpForm.css'
@@ -67,6 +68,19 @@ const SignUpForm = ({ setShowMenu }) => {
       if (setShowMenu) setShowMenu(false)
     }
   };
+
+  const onDemo = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(data);
+    }
+    else { setShowMenu && setShowMenu(false) }
+  };
+
+
+
+
   const updateFirst = (e) => {
     setFirst(e.target.value);
   };
@@ -203,7 +217,7 @@ const SignUpForm = ({ setShowMenu }) => {
           </div>
         </div>
         <div className='login-form-button-containers'>
-          <button className="signup-form-button" type='button'>Demo</button>
+          <button className="signup-form-button" type='button' onClick={onDemo}>Demo</button>
           <button className="signup-form-button" type='submit'>Sign Up</button>
         </div>
       </form>
