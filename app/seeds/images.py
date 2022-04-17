@@ -143,6 +143,51 @@ def seed_images():
         image="https://a0.muscache.com/im/pictures/ebc69a04-4db4-4409-ad3f-c37f6259cf0d.jpg"
     )
 
+    image31 = Image(
+        spot_id=7,
+        image="https://a0.muscache.com/im/pictures/483a6a33-ec21-4060-b63e-03a96eec038f.jpg"
+    )
+    image32 = Image(
+        spot_id=7,
+        image="https://a0.muscache.com/im/pictures/17eec33f-0805-4597-bc7a-3742f1c598a6.jpg"
+    )
+    image33 = Image(
+        spot_id=7,
+        image="https://a0.muscache.com/im/pictures/70930799-d79f-4645-92ab-24040b8b453f.jpg"
+    )
+    image34 = Image(
+        spot_id=7,
+        image="https://a0.muscache.com/im/pictures/a6acab93-c1fd-4239-8d3e-bb08202dae94.jpg"
+    )
+
+    image35 = Image(
+        spot_id=7,
+        image="https://a0.muscache.com/im/pictures/28ceef24-80f9-4f89-aab1-fdda51d368c0.jpg"
+    )
+
+    image36 = Image(
+        spot_id=8,
+        image="https://a0.muscache.com/im/pictures/9414c51c-8546-4945-81bc-b1a81668f1ec.jpg"
+    )
+    image37 = Image(
+        spot_id=8,
+        image="https://a0.muscache.com/im/pictures/aaa88527-7fe0-461f-8a4f-e08899241aff.jpg"
+    )
+    image38 = Image(
+        spot_id=8,
+        image="https://a0.muscache.com/im/pictures/d8e76fed-6145-480a-9c5c-1cf21fdc5e14.jpg"
+    )
+    image39 = Image(
+        spot_id=8,
+        image="https://a0.muscache.com/im/pictures/fd6dbf74-2700-4112-b89d-ca62d94f9967.jpg"
+    )
+
+    image40 = Image(
+        spot_id=8,
+        image="https://a0.muscache.com/im/pictures/ebc69a04-4db4-4409-ad3f-c37f6259cf0d.jpg"
+    )
+
+
 
     db.session.add_all([image1, image2, image3, image4, image5])
     db.session.add_all([image6, image7, image8, image9, image10])
@@ -150,6 +195,8 @@ def seed_images():
     db.session.add_all([image16, image17, image18, image19, image20])
     db.session.add_all([image21, image22, image23, image24, image25])
     db.session.add_all([image26, image27, image28, image29, image30])
+    db.session.add_all([image31, image32, image33, image34, image35])
+    db.session.add_all([image36, image37, image38, image39, image40])
 
     db.session.commit()
 

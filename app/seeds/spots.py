@@ -82,7 +82,37 @@ def seed_spots():
         bedroom=2
     )
 
-    db.session.add_all([spot1, spot2, spot3, spot4, spot5, spot6])
+    spot7 = Spot(
+        host_id=2,
+        address="7247 Mill Pond St",
+        city="Newnan",
+        state="Georgia",
+        country="United States",
+        name="Quiet Guest House",
+        price=85,
+        description="Enjoy our quiet, lovely guest home. This 1 bedroom (1 king bed) 1 full bath house come with stainless steel appliances, dishwasher, microwave, coffee maker, and washer/dryer. One TV in the living room, wifi, cable and ceiling fans throughout the house. Entire house has laminate flooring (no carpet). The back yard is equipped with a small table and chairs for smokers. You will enjoy the convenience of keyless entry and parking in the driveway. The guest house is fully furnished including a washer/dryer. Outside lounge area available.",
+        guest=2,
+        bathroom=1,
+        bedroom=1,
+    )
+
+    spot8 = Spot(
+        host_id=3,
+        address="7056 Ridge Ave",
+        city="Hickory",
+        state="North Carolina",
+        country="United States",
+        name="Southern Charm - Historic 2 bed 1 bath in Hickory",
+        price=101,
+        description="Historical charm, incredible downtown location, and remarkable details make this home a rare find for your short-term lodging needs. Built in 1929, Southern Charm is a cozy craftsman style home nestled in the middle of the desirable Oakwood-Hillcrest neighborhood in Hickory North Carolina. Southern Charm is located conveniently near downtown restaurants and attractions, Lenoir-Rhyne University, and Frye Hospital with easy access to US-321 and I-40. Our home is a 2 bd/1ba and a sofa bed.",
+        guest=4,
+        bathroom=2,
+        bedroom=2
+    )
+
+
+
+    db.session.add_all([spot1, spot2, spot3, spot4, spot5, spot6,spot7,spot8])
 
     db.session.commit()
 

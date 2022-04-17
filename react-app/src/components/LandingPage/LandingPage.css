@@ -48,18 +48,19 @@
 .landing-page-slides {
   position: absolute;
   opacity: 0;
-  transition: opacity ease-in-out 400ms;
-  transition-delay: 400ms;
+  transition: opacity ease-in-out 1000ms;
+  /* left: -100%; */
+}
+
+.slide-animation{
+  opacity: 1;
+  /* left: 0; */
 }
 
 .landing-image {
   height: 85vh;
   width: 80vw;
   border-radius: 10px;
-}
-
-.slide-animation{
-  opacity: 1;
 }
 
 .dots-container{
