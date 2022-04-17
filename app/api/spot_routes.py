@@ -39,6 +39,8 @@ def post_spot():
         for image in images:
             if (len(image["image"]) < 1):
                 return {'errors': ["Missing Image Url Field input"]}, 400
+            elif(len(image["image"]) > 1000):
+                return {'errors': ["Image Url must be shorter than 1000 characters"]}, 400
             else:
                 url = image["image"]
                 match = re.search(
@@ -88,6 +90,9 @@ def post_spot():
             if (len(single_image["image"]) < 1):
                 errors.append("Missing Image Url Field input")
                 return {'errors': errors}, 400
+            elif(len(single_image["image"]) > 1000):
+                errors.append("Image Url must be shorter than 1000 characters")
+                return {'errors': errors}, 400
             else:
                 url = single_image["image"]
                 match = re.search(
@@ -116,6 +121,8 @@ def edit_spot(id):
                 continue
             if (len(image["image"]) < 1):
                 return {'errors': ["Missing Image Url Field input"]}, 400
+            if(len(image["image"]) > 1000):
+                return {'errors': ["Image Url must be shorter than 1000 characters"]}, 400
             else:
                 url = image["image"]
                 match = re.search(
@@ -153,7 +160,6 @@ def edit_spot(id):
 
         db.session.commit()
 
-
         return spot.to_dict()
 
     else:
@@ -163,6 +169,9 @@ def edit_spot(id):
         for single_image in images:
             if (len(single_image["image"]) < 1):
                 errors.append("Missing Image Url Field input")
+                return {'errors': errors}, 400
+            elif(len(single_image["image"]) > 1000):
+                errors.append("Image Url must be shorter than 1000 characters")
                 return {'errors': errors}, 400
             else:
                 url = single_image["image"]
