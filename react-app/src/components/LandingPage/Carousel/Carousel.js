@@ -14,7 +14,6 @@ const Carousel = () => {
 
     const [slideIndex, setSlideIndex] = useState(1)
     useEffect(() => {
-        console.log(slideIndex)
         let timer = setInterval(() => setSlideIndex(slideIndex + 1), 3000)
         if (slideIndex > 4) {
             setSlideIndex(1)
