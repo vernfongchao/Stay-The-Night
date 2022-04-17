@@ -1,5 +1,5 @@
 .landing-page-container {
-  height: 89.8%;
+  height: 100%;
   padding-top: 100px;
   display: flex;
   flex-direction: column;
@@ -13,26 +13,74 @@
   );
 }
 
-.landing-image-container {
-  /* min-width: 600px;
-  min-height: 300px; */
-  height: 42vw;
-  width: 65vw;
+.landing-page-carousel-slider{
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+
+.carousel-direction-button-container{
+  position: relative;
+  top: 40vh;
+  width: 55vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel-button{
+    font-size: xx-large;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.carousel-button.next:hover{
+  color: pink;
+}
+
+.carousel-button.prev:hover {
+  color: pink;
+}
+
+.landing-page-slides {
+  position: absolute;
+  opacity: 0;
+  transition: opacity ease-in-out 400ms;
+  transition-delay: 400ms;
+}
+
 .landing-image {
-  height: 100%;
-  width: 100%;
+  height: 85vh;
+  width: 80vw;
   border-radius: 10px;
 }
+
+.slide-animation{
+  opacity: 1;
+}
+
+.dots-container{
+  top: min(750px, 80vh);
+  position: relative;
+  display: flex;
+  width: 30%;
+  justify-content: space-evenly;
+  z-index: 1;
+
+}
+.dot{
+  cursor: pointer;
+  font-size: xx-large;
+}
+
 
 .flexible-container {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  padding-top: 25vw;
+  position: relative;
+  bottom: 25%;
   justify-content: center;
   align-items: center;
   margin: auto;

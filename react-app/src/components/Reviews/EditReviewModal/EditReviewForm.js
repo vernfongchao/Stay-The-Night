@@ -47,14 +47,6 @@ const EditReviewForm = ({ curr_review, setShowModal }) => {
         setErrors(vali_errors)
     }, [rating, review])
 
-    const handleExpress = (e) => {
-        if (e.key === 'e') return e.preventDefault()
-        if (e.key === 'E') return e.preventDefault()
-        if (e.key === '+') return e.preventDefault()
-        if (e.key === '-') return e.preventDefault()
-        if (e.key === '.') return e.preventDefault()
-    }
-
     return (
         <div className="review-edit-form-page">
             <div className='login-form-header-container'>

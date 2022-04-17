@@ -40,14 +40,6 @@ const CreateReviewForm = ({ setShowModal }) => {
         setErrors(vali_errors)
     }, [rating, review])
 
-    const handleExpress = (e) => {
-        if (e.key === 'e') return e.preventDefault()
-        if (e.key === 'E') return e.preventDefault()
-        if (e.key === '+') return e.preventDefault()
-        if (e.key === '-') return e.preventDefault()
-        if (e.key === '.') return e.preventDefault()
-    }
-
     return (
         <div className="review-form-page">
 
