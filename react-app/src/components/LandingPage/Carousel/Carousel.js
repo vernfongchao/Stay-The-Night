@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CarouselButtons from "./CarouselButtons";
+// import CarouselButtons from "./CarouselButtons";
 
 import * as IoIcons from 'react-icons/io5'
 
@@ -25,21 +25,21 @@ const Carousel = () => {
         }
     }, [slideIndex])
 
-    const nextSlide = () => {
-        if (slideIndex >= 4) {
-            setSlideIndex(1)
-        } else {
-            setSlideIndex(slideIndex + 1)
-        }
-    }
+    // const nextSlide = () => {
+    //     if (slideIndex >= 4) {
+    //         setSlideIndex(1)
+    //     } else {
+    //         setSlideIndex(slideIndex + 1)
+    //     }
+    // }
 
-    const prevSlide = () => {
-        if (slideIndex <= 1) {
-            setSlideIndex(4)
-        } else {
-            setSlideIndex(slideIndex - 1)
-        }
-    }
+    // const prevSlide = () => {
+    //     if (slideIndex <= 1) {
+    //         setSlideIndex(4)
+    //     } else {
+    //         setSlideIndex(slideIndex - 1)
+    //     }
+    // }
 
     return (
         <div className="landing-page-carousel-slider">
@@ -47,28 +47,28 @@ const Carousel = () => {
                 <CarouselButtons moveSlide={prevSlide} direction={"prev"} />
                 <CarouselButtons moveSlide={nextSlide} direction={"next"} />
             </div> */}
-            <div className={slideIndex === 1 ? 'landing-page-slides slide-animation one' : 'landing-page-slides'}>
+            <div className={slideIndex === 1 ? 'landing-page-slides slide-animation' : 'landing-page-slides'}>
                 <img className="landing-image"
                     alt="House"
                     src="https://a0.muscache.com/im/pictures/miso/Hosting-46898793/original/f0d2a57a-c3af-417b-bd77-5594c86889e0.jpeg?im_w=1200"
                     onError={handleError}
                 ></img>
             </div>
-            <div className={slideIndex === 2 ? 'landing-page-slides slide-animation two' : 'landing-page-slides'}>
+            <div className={slideIndex === 2 ? 'landing-page-slides slide-animation' : 'landing-page-slides'}>
                 <img className="landing-image"
                     alt="House"
                     src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-13222447/original/01907cdf-4ce7-4b12-b449-53c32f28af45.jpeg?im_w=1200"
                     onError={handleError}
                 ></img>
             </div>
-            <div className={slideIndex === 3 ? 'landing-page-slides slide-animation three' : 'landing-page-slides'}>
+            <div className={slideIndex === 3 ? 'landing-page-slides slide-animation' : 'landing-page-slides'}>
                 <img className="landing-image"
                     alt="House"
                     src="https://a0.muscache.com/im/pictures/00370466-e3f6-4213-aaff-10b2a51a7e15.jpg?im_w=1200"
                     onError={handleError}
                 ></img>
             </div>
-            <div className={slideIndex === 4 ? 'landing-page-slides slide-animation four' : 'landing-page-slides'}>
+            <div className={slideIndex === 4 ? 'landing-page-slides slide-animation' : 'landing-page-slides'}>
                 <img className="landing-image"
                     alt="House"
                     src="https://a0.muscache.com/im/pictures/monet/Luxury-53719772/original/0ce8eafd-51a0-456a-b35c-cbe3a723be31?im_w=1440"

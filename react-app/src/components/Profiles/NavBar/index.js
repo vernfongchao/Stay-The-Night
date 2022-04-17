@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import * as FAIcons from 'react-icons/fa'
@@ -9,6 +9,7 @@ import './ProfileNavigation.css'
 
 const ProfileNavigation = () => {
     const { id } = useParams()
+    let ref = useRef()
     const [sidebar, setSideBar] = useState(false)
     const user = useSelector(state => state.session.user)
 
@@ -16,8 +17,22 @@ const ProfileNavigation = () => {
         setSideBar(!sidebar)
     }
 
+    useEffect(() => {
+        let handler = (e) => {
+            if (!ref.current.contains(e.target)) {
+                setSideBar(false)
+            }
+        }
+        document.addEventListener("mousedown", handler)
+
+        return () => {
+            document.removeEventListener('mousedown', handler)
+        }
+    }, [])
+
+
     return (user?.id === +id &&
-        <div className='profile-navigation-page-container'>
+        <div className='profile-navigation-page-container' ref={ref}>
             <div className='profile-navigation-menu-icon'>
                 <FAIcons.FaBars onClick={showSideBar} className='menu-link' />
             </div>

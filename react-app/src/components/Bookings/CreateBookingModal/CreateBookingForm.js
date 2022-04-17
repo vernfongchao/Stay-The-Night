@@ -57,6 +57,10 @@ const CreateBookingForm = ({ setShowModal }) => {
         }
     }
 
+    // const isDayBlocked = day => {
+    //     const availableDates = [moment().format('YYYY-MM-DD')]
+    //     return !availableDates.some(date => day.isSame(date), 'day')
+    // }
 
     return (
         <div className="create-booking-form-page-container">
@@ -88,11 +92,11 @@ const CreateBookingForm = ({ setShowModal }) => {
                     <label htmlFor='Guests'>Guests</label>
                     <div>
 
-                    <select defaultValue={guests} onChange={(e) => setGuests(e.target.value)}>
-                        {[...Array(spot.guest).keys()].map((number, i) => (
-                            <option key={i}>{number + 1}</option>
-                        ))}
-                    </select>
+                        <select defaultValue={guests} onChange={(e) => setGuests(e.target.value)}>
+                            {[...Array(spot.guest).keys()].map((number, i) => (
+                                <option key={i}>{number + 1}</option>
+                            ))}
+                        </select>
                     </div>
                 </div>
 
