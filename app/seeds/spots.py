@@ -106,7 +106,7 @@ def seed_spots():
         price=101,
         description="Historical charm, incredible downtown location, and remarkable details make this home a rare find for your short-term lodging needs. Built in 1929, Southern Charm is a cozy craftsman style home nestled in the middle of the desirable Oakwood-Hillcrest neighborhood in Hickory North Carolina. Southern Charm is located conveniently near downtown restaurants and attractions, Lenoir-Rhyne University, and Frye Hospital with easy access to US-321 and I-40. Our home is a 2 bd/1ba and a sofa bed.",
         guest=4,
-        bathroom=2,
+        bathroom=1,
         bedroom=2
     )
 
