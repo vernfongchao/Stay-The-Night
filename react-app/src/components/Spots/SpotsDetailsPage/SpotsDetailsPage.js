@@ -75,7 +75,7 @@ const SpotsDetailsPage = () => {
             </div>
 
             <div>
-                <h2>Hosted By: <Link to={`/profiles/${spot?.user_id}`}><span className="first-name">{spot?.first} {spot?.last} </span> </Link> </h2>
+                <h2>Hosted By: <Link to={`/profiles/${spot?.user_id}`} className="first-last-name"><span className="first-name">{spot?.first} {spot?.last} </span> </Link> </h2>
             </div>
 
             <div className="details-page-house-details">

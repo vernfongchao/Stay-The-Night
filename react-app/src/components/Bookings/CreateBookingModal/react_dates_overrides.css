@@ -13,6 +13,7 @@
 }
 .create-booking-modal-button:hover{
     cursor: pointer;
+    background-color: grey;
 }
 
 .create-booking-form-page-container{
