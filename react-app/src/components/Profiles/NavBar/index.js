@@ -19,7 +19,7 @@ const ProfileNavigation = () => {
 
     useEffect(() => {
         let handler = (e) => {
-            if (!ref.current.contains(e.target)) {
+            if (!ref.current?.contains(e.target)) {
                 setSideBar(false)
             }
         }

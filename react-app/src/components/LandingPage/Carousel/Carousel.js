@@ -75,9 +75,9 @@ const Carousel = () => {
                 ></img>
             </div>
             <div className="dots-container">
-                {[...Array(4)].map((slide, i) => (
-                    <div className="dot" onClick={() => setSlideIndex(i + 1)}>
-                        {slideIndex === (i + 1) ? <IoIcons.IoRadioButtonOnSharp /> : <IoIcons.IoRadioButtonOffSharp />}
+                {[...Array(4)].map((slide, idx) => (
+                    <div key={idx} className="dot" onClick={() => setSlideIndex(idx + 1)}>
+                        {slideIndex === (idx + 1) ? <IoIcons.IoRadioButtonOnSharp /> : <IoIcons.IoRadioButtonOffSharp />}
                     </div>
                 ))}
 
