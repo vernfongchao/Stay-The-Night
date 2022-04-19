@@ -19,11 +19,12 @@ A Live deployment of [Stay-The-Night](https://stay-the-night.herokuapp.com/) is 
 ### Spots Details Page:
 
 ![image](https://user-images.githubusercontent.com/91238232/159190722-d903a69d-8d43-44b4-8224-93c89e6711f1.png)
-![image](https://user-images.githubusercontent.com/91238232/159190731-3b654096-a12f-4bdd-983a-0f277ae04038.png)
+![image](https://user-images.githubusercontent.com/91238232/163907497-50473044-f7d5-40f3-b717-fa09875fc350.png)
 
-### My Spots:
-
-![image](https://user-images.githubusercontent.com/91238232/159190787-d7917222-11dc-4372-9d37-c3cb11df5354.png)
+### Profile:
+![image](https://user-images.githubusercontent.com/91238232/163907608-e8663910-1f48-4fbe-bb0c-8ed2a5a5a090.png)
+![image](https://user-images.githubusercontent.com/91238232/163907645-b43c4f62-1b60-43f5-a787-c4666b90c911.png)
+![image](https://user-images.githubusercontent.com/91238232/163907689-a856b905-da1f-42dc-ab9c-33ae9b8399d0.png)
 
 ### 404
 
@@ -43,15 +44,17 @@ The Most difficult challenge was finishing the Update feature for spots. The dif
 
 - Full CRUD Features for Spots
 - Full CRUD Features for reviews on a Spot
+- Users can access Full CRUD features for booking
 - Users can see their own listings of spots but not others.
+- Users can become a Host
+- Spots refractored to only allow Hosts to post a Spot.
 
 ### Future Features
 
-- Users can become a Host
-- Spots refractored to only allow Hosts to post a Spot.
-- Users can access Full CRUD features for booking
 - Users can search for a spot by name,city,state and price,
 - Users can favorite a spot.
+- Setup AWS to allow users to upload and delete images off of their spots.
+- Users can favorite their spot.
 
 ## Technologies Used
 
