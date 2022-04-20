@@ -13,28 +13,6 @@ const DisplayReviews = () => {
     const reviewArr = Object.values(reviews).reverse()
     const filterReviews = reviewArr?.filter(({ spot_id }) => spot_id === +id)
 
-    // < div className = "review-form-rating-field-container" >
-    // {
-    //     [...Array(5)].map((star, i) => (
-    //         <label>
-    //             <input className="review-form-rating-radio-buttons"
-    //                 type="radio"
-    //                 value={rating}
-    //                 onClick={() => setRating(i + 1)}
-    //             />
-    //             <FAIcons.FaStar
-    //                 size={40}
-    //                 color={(i + 1) <= (hover || rating) ? "red" : "lightgray"}
-    //                 className="review-form-rating-icons"
-    //                 onMouseEnter={() => setHover(i + 1)}
-    //                 onMouseLeave={() => setHover(null)}
-    //             />
-    //         </label>
-    //     ))
-    // }
-    //             </div >
-
-
     return (
         <div className="reviews-display-container">
             {filterReviews.map((review) => (

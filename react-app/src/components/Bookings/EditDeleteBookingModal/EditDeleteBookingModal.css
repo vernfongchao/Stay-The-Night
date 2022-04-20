@@ -1,13 +1,13 @@
 .edit-delete-booking-modal-container{
-    display: flex;
-    justify-content: flex-end;
+
+    position: absolute
 
 }
 
 .edit-delete-booking-modal-button-container{
         position: relative;
-        right: 15px;
-        top: 50px;
+    top: 20px;
+    left: 350px;
         /* z-index: 1; */
 }
 
