@@ -1,5 +1,6 @@
 import React  from 'react'
 import { useSelector} from 'react-redux'
+import { useParams,useHistory} from 'react-router-dom'
 
 import EachFavorite from './EachFavorite'
 
@@ -7,8 +8,14 @@ import EachFavorite from './EachFavorite'
 import './MyFavorites.css'
 
 const MyFavorites = () => {
-
+    const { id } = useParams()
+    const history = useHistory()
+    const user = useSelector(state=> state.session.user)
     const favorites = Object.values(useSelector(state => state.favorites.user))
+
+    if (user?.id !== +id) {
+        history.push('/403-Unauthorized')
+    }
 
 
     return (
