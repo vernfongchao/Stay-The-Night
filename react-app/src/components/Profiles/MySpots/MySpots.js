@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {Link, useParams, useHistory } from "react-router-dom";
 
@@ -11,22 +11,27 @@ const MySpots = () => {
     const user = useSelector(state => state.session.user)
     const spots = Object.values(useSelector(state => state.spots)).reverse()
     const spotsFilter = spots.filter(({ host_id }) => host_id === +id)
+    const [hidden, setHidden] = useState(false)
 
     if (user?.id !== +id){
         history.push('/403-Unauthorized')
     }
-
-
     useEffect(() => {
         window.scrollTo(0, 0)
+        let timer = setTimeout(() => setHidden(true), 50)
+
+        return () => {
+            clearTimeout(timer)
+        }
     }, [])
+
 
     const handleImage = (e) => {
         e.target.src = "../../../../static/house1.jpg"
     }
 
     return ( user?.host_id? 
-        (<motion.div className="my-spots-page-container"
+        (<motion.div className={hidden ? "my-spots-page-container my-spots-page-container-active" : "my-spots-page-container"}
 
 
             >

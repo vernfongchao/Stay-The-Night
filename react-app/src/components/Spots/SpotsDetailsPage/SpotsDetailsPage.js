@@ -28,6 +28,16 @@ const SpotsDetailsPage = () => {
     const favoriteExists = userFavorites.filter(({ spot_id }) => spot_id === +id)
 
     const [hover,setHover] = useState(false)
+    const [hidden, setHidden] = useState(false)
+
+    useEffect(() => {
+        let timer = setTimeout(() => setHidden(true), 50)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [])
+
 
 
     if (spot === undefined) {
@@ -79,7 +89,7 @@ const SpotsDetailsPage = () => {
     }
 
     return (
-        <motion.div className="details-spot-page-container"
+        <motion.div className={hidden ? "details-spot-page-container details-spot-page-container-active" : "details-spot-page-container"}
          >
             <div className="details-spot-page-title">
                 <h1 className="details-spot-page-name">{spot?.name}</h1>

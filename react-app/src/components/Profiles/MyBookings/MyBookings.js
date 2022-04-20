@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams, useHistory } from "react-router-dom";
 import EditDeleteBookingModal from "../../Bookings/EditDeleteBookingModal";
@@ -27,13 +27,23 @@ const MyBookings = () => {
         e.target.src = "../../../../static/house1.jpg"
     }
 
+    const [hidden, setHidden] = useState(false)
+
+    useEffect(() => {
+        let timer = setTimeout(() => setHidden(true), 50)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [])
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [dispatch])
 
     return (
         <motion.div
-            className="my-bookings-page-container"
+            className={hidden ? "my-bookings-page-container my-bookings-page-container-active" : "my-bookings-page-container"}
             // intial={{ opacity: 0 }}
             // animate={{ opacity:1 ,transition: {
             //     duration: 1

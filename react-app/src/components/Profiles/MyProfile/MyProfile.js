@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,useState } from 'react'
 
 import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
@@ -11,6 +11,7 @@ const MyProfile = () => {
     const history = useHistory()
     const user = useSelector(state => state.session.user)
     const users = useSelector(state => state.users)
+    const [hidden, setHidden] = useState(false)
 
     if (!users[id]) {
         history.push('/403-Unauthorized')
@@ -21,13 +22,18 @@ const MyProfile = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
+        let timer = setTimeout(() => setHidden(true), 50)
+
+        return () => {
+            clearTimeout(timer)
+        }
     }, [])
 
 
     return (
         <motion.div
-            className='profile-page-container'
-        >
+            className={hidden ? 'profile-page-container profile-page-container-active' : 'profile-page-container' }
+            >
             <div className='profile-page-header-container'>
                 {user?.id === +id ?
                     <h1>My Profile</h1>

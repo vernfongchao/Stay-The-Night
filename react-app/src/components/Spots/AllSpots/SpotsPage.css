@@ -4,6 +4,12 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 40px;
+  opacity: 0;
+}
+
+.spots-page-container-active{
+  opacity: 1;
+  transition: opacity ease-in-out 500ms;
 }
 
 .each-spot-container {

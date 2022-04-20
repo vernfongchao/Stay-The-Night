@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Amenities from '../Amenities';
@@ -10,6 +10,15 @@ import './SpotsPage.css'
 const SpotsPage = () => {
     const spots = useSelector(state => state.spots)
     const spotsArr = Object.values(spots).reverse()
+    const [hidden,setHidden] = useState(false)
+
+    useEffect(() => {
+        let timer = setTimeout(() => setHidden(true), 50)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [])
 
 
     const handleImage = (e) => {
@@ -17,7 +26,7 @@ const SpotsPage = () => {
     }
 
     return (
-        <motion.div className='spots-page-container'
+        <motion.div className={hidden ? 'spots-page-container spots-page-container-active' : 'spots-page-container'}
             >
             {spotsArr?.map(spot => (
                 <div key={spot.id} className='each-spot-container'>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 
@@ -17,11 +17,18 @@ const MyFavorites = () => {
         history.push('/403-Unauthorized')
     }
 
+    const [hidden, setHidden] = useState(false)
+
+    useEffect(() => {
+        let timer = setTimeout(() => setHidden(true), 50)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [])
 
     return (
-        <motion.div className='my-bookings-page-container'
-
-
+        <motion.div className={hidden ? "my-bookings-page-container my-bookings-page-container-active" : "my-bookings-page-container"}
         >
             <div className="my-bookings-header-container">
                 {favorites.length ? <h1>My Favorited Spots</h1> : <h1>No Spots Favorited</h1>}
