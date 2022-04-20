@@ -31,7 +31,8 @@ const CreateBookingForm = ({ setShowModal }) => {
 
 
     const rangeDate = ({ startDate, endDate }) => {
-        setStartDate(moment(startDate));
+
+        setStartDate(!startDate?  tomorrow : startDate);
         setEndDate(moment(endDate))
     }
 

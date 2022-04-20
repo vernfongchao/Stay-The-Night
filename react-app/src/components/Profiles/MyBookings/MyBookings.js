@@ -5,6 +5,7 @@ import EditDeleteBookingModal from "../../Bookings/EditDeleteBookingModal";
 
 import moment from "moment";
 
+import { motion } from 'framer-motion/dist/framer-motion'
 import './MyBookings.css'
 
 const MyBookings = () => {
@@ -31,7 +32,11 @@ const MyBookings = () => {
     }, [dispatch])
 
     return (
-        <div className="my-bookings-page-container">
+        <motion.div
+            className="my-bookings-page-container"
+
+
+        >
             <div className="my-bookings-header-container">
                 {bookings.length ? <h1>My Bookings</h1> : <h1>No Bookings Made</h1>}
             </div>
@@ -96,7 +101,7 @@ const MyBookings = () => {
                     }
                 </div>
             }
-        </div>
+        </motion.div>
     )
 }
 export default MyBookings

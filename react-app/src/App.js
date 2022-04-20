@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { useDispatch,useSelector} from 'react-redux';
+import { Route, Switch, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import LandingPage from './components/LandingPage/LandingPage';
 import NavBar from './components/NavBar/NavBar';
 import SpotsPage from './components/Spots/AllSpots/SpotsPage';
@@ -20,21 +20,24 @@ import { getUsers } from './store/user';
 import { getUserBookings } from './store/booking';
 import { getUserFavorites } from './store/favorite';
 
+import { AnimatePresence } from 'framer-motion/dist/framer-motion'
+
 
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  const user = useSelector(state=> state.session.user)
-  
-  useEffect(()=> {
+  const user = useSelector(state => state.session.user)
+  const location = useLocation()
+
+  useEffect(() => {
     (async () => {
-      if(user) {
+      if (user) {
         await dispatch(getUserBookings(user?.id))
         await dispatch(getUserFavorites(user?.id))
       }
     })();
-  },[dispatch,user])
+  }, [dispatch, user])
 
   useEffect(() => {
     (async () => {
@@ -53,39 +56,41 @@ function App() {
   return (
     <>
       <NavBar />
-      <Switch>
-        <Route exact path='/'>
-          <LandingPage />
-        </Route>
-        <Route exact path='/spots'>
-          <SpotsPage />
-        </Route>
-        <Route path='/spots/:id'>
-          <SpotsDetailsPage />
-        </Route>
-        <Route path='/profiles/:id' exact={true} >
-          <ProfileNavigation />
-          <MyProfile />
-        </Route>
-        <Route path='/profiles/:id/spots'>
-          <ProfileNavigation />
-          <MySpots />
-        </Route>
-        <Route path='/profiles/:id/bookings'>
-          <ProfileNavigation />
-          <MyBookings/>
-        </Route>
-        <Route path='/profiles/:id/favorites'>
-          <ProfileNavigation />
-          <MyFavorites />
-        </Route>
-        <Route path='/403-Unauthorized' >
-          <ErrorPage403 />
-        </Route>
-        <Route>
-          <ErrorPage />
-        </Route>
-      </Switch>
+      <AnimatePresence>
+        <Switch location={location} key={location.pathname}>
+          <Route exact path='/'>
+            <LandingPage />
+          </Route>
+          <Route exact path='/spots'>
+            <SpotsPage />
+          </Route>
+          <Route path='/spots/:id'>
+            <SpotsDetailsPage />
+          </Route>
+          <Route exact path='/profiles/:id' >
+            <ProfileNavigation />
+            <MyProfile />
+          </Route>
+          <Route exact path='/profiles/:id/spots'>
+            <ProfileNavigation />
+            <MySpots />
+          </Route>
+          <Route exact path='/profiles/:id/bookings'>
+            <ProfileNavigation />
+            <MyBookings />
+          </Route>
+          <Route exact path='/profiles/:id/favorites'>
+            <ProfileNavigation />
+            <MyFavorites />
+          </Route>
+          <Route path='/403-Unauthorized' >
+            <ErrorPage403 />
+          </Route>
+          <Route>
+            <ErrorPage />
+          </Route>
+        </Switch>
+      </AnimatePresence>
       <Footer />
     </>
   );

@@ -12,11 +12,11 @@ import { addUserFavorites } from "../../../store/favorite";
 import { deleteUserFavorites } from "../../../store/favorite";
 import LoginHeartModal from "../../auth/LoginFormModal/LoginHeart";
 
-
+import { motion } from 'framer-motion/dist/framer-motion'
 import * as  AiIcons from 'react-icons/ai'
-
 import './SpotsDetails.css'
-
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const SpotsDetailsPage = () => {
     const { id } = useParams()
@@ -47,7 +47,6 @@ const SpotsDetailsPage = () => {
 
     let roundedAvg = Math.round(reviewsAvg * 100) / 100
 
-
     if (Number.isNaN(roundedAvg)) {
         roundedAvg = "Unrated"
     }
@@ -56,6 +55,11 @@ const SpotsDetailsPage = () => {
         window.scrollTo(0, 0)
         dispatch(getSpotFavorites(spot?.id))
     }, [dispatch, spot])
+    useEffect(()=>{
+        Aos.init({
+            duration:1000
+        })
+        },[])
 
     const handleImage = (e) => {
         e.target.src = "../../../../static/house1.jpg"
@@ -81,8 +85,9 @@ const SpotsDetailsPage = () => {
     }
 
     return (
-        <div className="details-spot-page-container">
-
+        <motion.div className="details-spot-page-container"
+            data-aos="fade-in"
+         >
             <div className="details-spot-page-title">
                 <h1 className="details-spot-page-name">{spot?.name}</h1>
                 {user?.host_id === spot?.host_id && <EditDeleteModal />}
@@ -158,7 +163,7 @@ const SpotsDetailsPage = () => {
             </div>
 
             <DisplayReviews />
-        </div>
+        </motion.div>
     )
 }
 

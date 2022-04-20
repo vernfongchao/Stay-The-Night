@@ -1,7 +1,11 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Amenities from '../Amenities';
+
+import { motion } from 'framer-motion/dist/framer-motion'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 import './SpotsPage.css'
 
@@ -14,8 +18,16 @@ const SpotsPage = () => {
         e.target.src = "../../../../static/house1.jpg"
     }
 
+    useEffect(() => {
+        Aos.init({
+            duration: 1000
+        })
+    })
+
     return (
-        <div className='spots-page-container'>
+        <motion.div className='spots-page-container'
+
+            >
             {spotsArr?.map(spot => (
                 <div key={spot.id} className='each-spot-container'>
                     <Link to={`/spots/${spot.id}`} spot={spot} id={`image-spots-${spot.id}`}>
@@ -35,7 +47,7 @@ const SpotsPage = () => {
                                 <p>Bathrooms:{spot.bathroom} </p>
                             </div>
                         </div>
-                            <span className='each-spot-amenities-header'>Amenities</span>
+                        <span className='each-spot-amenities-header'>Amenities</span>
 
                         {spot.amenities.length && <Amenities amenities={spot.amenities} />}
                         <div className='each-spot-price'>
@@ -44,7 +56,7 @@ const SpotsPage = () => {
                     </div>
                 </div>
             ))}
-        </div>
+        </motion.div>
     )
 }
 

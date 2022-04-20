@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import {Link, useParams, useHistory } from "react-router-dom";
 
+import { motion } from 'framer-motion/dist/framer-motion'
 import './MySpots.css'
 
 const MySpots = () => {
@@ -25,7 +26,14 @@ const MySpots = () => {
     }
 
     return ( user?.host_id? 
-        (<div className="my-spots-page-container">
+        (<motion.div className="my-spots-page-container"
+            // intial={{ opacity: 0 }}
+            // animate={{ opacity:1 ,transition: {
+            //     duration: 1
+            // } }}
+            // exit={{ opacity: 0 }}
+
+            >
             <div className="my-spots-header-container">
                 {spotsFilter.length ? <h1>My Spots</h1> : <h1>No Spots Hosted</h1>}
             </div>
@@ -53,7 +61,7 @@ const MySpots = () => {
                         </div>
                     ))}
                 </div>}
-        </div>
+        </motion.div>
         )
         : 
         <div className="my-spots-page-container">

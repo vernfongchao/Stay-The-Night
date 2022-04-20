@@ -9,6 +9,9 @@ def valid_booking(form, field):
     spot_id = field.data
     booking = form.data
 
+    if(booking["start_date"] == None):
+        return {'errors': ["Please Select an Start Date"]}
+
     start_date = booking["start_date"].strftime('%Y-%m-%d')
     start_date_year = start_date[0:4]
     start_date_month = start_date[5:7]
@@ -97,10 +100,11 @@ def valid_booking(form, field):
 
 class BookingForm(FlaskForm):
     id = IntegerField("Booking Id")
+    end_date = DateField('End Date', validators=[
+                         DataRequired("Please Select an End Date")])
+    start_date = DateField('Start Date', validators=[
+                           DataRequired("Please Select an Start Date")])
     user_id = IntegerField('User Id', validators=[DataRequired()])
     spot_id = IntegerField('User Id', validators=[
         DataRequired(), valid_booking])
-    end_date = DateField('End Date', validators=[
-                         DataRequired("Please Select an End Date")])
-    start_date = DateField('Start Date', validators=[DataRequired()])
     guests = IntegerField('Guests', validators=[DataRequired()])

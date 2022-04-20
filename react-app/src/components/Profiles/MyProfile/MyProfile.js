@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 
 import './MyProfile.css'
+import { motion } from 'framer-motion/dist/framer-motion'
 
 const MyProfile = () => {
     const { id } = useParams()
@@ -22,8 +23,11 @@ const MyProfile = () => {
         window.scrollTo(0, 0)
     }, [])
 
+
     return (
-        <div className='profile-page-container'>
+        <motion.div
+            className='profile-page-container'
+        >
             <div className='profile-page-header-container'>
                 {user?.id === +id ?
                     <h1>My Profile</h1>
@@ -53,7 +57,7 @@ const MyProfile = () => {
                 </div>
             )}
 
-        </div>
+        </motion.div>
     )
 }
 

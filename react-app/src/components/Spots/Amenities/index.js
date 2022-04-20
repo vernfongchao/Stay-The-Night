@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import './Amenities.css'
+import { motion } from 'framer-motion/dist/framer-motion'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Amenities = ({ amenities }) => {
+
+    useEffect(()=>{
+        Aos.init({
+            duration:1000
+        })
+    })
+
     return (
-        <div className='amenities-container'>
-            {amenities?.map(({label,value,boolean},idx) => (
+        <motion.div className='amenities-container'
+        data-aos='fade-in'
+        >
+            {amenities?.map(({ label, value, boolean }, idx) => (
                 <div key={idx}>
-                    {(value==="parking") && boolean && (
+                    {(value === "parking") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-square-parking"></i>
@@ -102,7 +114,7 @@ const Amenities = ({ amenities }) => {
                             </span>
                         </div>
                     )}
-                    {(value === "fire_extinguisher") && boolean &&(
+                    {(value === "fire_extinguisher") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-fire-extinguisher"></i>
@@ -113,7 +125,7 @@ const Amenities = ({ amenities }) => {
                         </div>
                     )}
 
-                    {(value === "smoking") && boolean &&  (
+                    {(value === "smoking") && boolean && (
                         <div className='each-spot-each-amenities-container'>
                             <span className='each-spot-ameniities-icon'>
                                 <i className="fa-solid fa-smoking"></i>
@@ -145,7 +157,7 @@ const Amenities = ({ amenities }) => {
                     )}
                 </div>
             ))}
-        </div>
+        </motion.div>
     )
 }
 
