@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import Amenities from '../Amenities';
 
 import { motion } from 'framer-motion/dist/framer-motion'
-import Aos from 'aos'
-import 'aos/dist/aos.css'
 
 import './SpotsPage.css'
 
@@ -17,12 +15,6 @@ const SpotsPage = () => {
     const handleImage = (e) => {
         e.target.src = "../../../../static/house1.jpg"
     }
-
-    useEffect(() => {
-        Aos.init({
-            duration: 1000
-        })
-    })
 
     return (
         <motion.div className='spots-page-container'

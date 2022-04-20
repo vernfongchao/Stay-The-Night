@@ -2,20 +2,11 @@ import React, { useEffect } from 'react'
 
 import './Amenities.css'
 import { motion } from 'framer-motion/dist/framer-motion'
-import Aos from 'aos'
-import 'aos/dist/aos.css'
 
 const Amenities = ({ amenities }) => {
 
-    useEffect(()=>{
-        Aos.init({
-            duration:1000
-        })
-    })
-
     return (
         <motion.div className='amenities-container'
-        data-aos='fade-in'
         >
             {amenities?.map(({ label, value, boolean }, idx) => (
                 <div key={idx}>

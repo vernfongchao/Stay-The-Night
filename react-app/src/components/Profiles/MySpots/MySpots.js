@@ -27,11 +27,7 @@ const MySpots = () => {
 
     return ( user?.host_id? 
         (<motion.div className="my-spots-page-container"
-            // intial={{ opacity: 0 }}
-            // animate={{ opacity:1 ,transition: {
-            //     duration: 1
-            // } }}
-            // exit={{ opacity: 0 }}
+
 
             >
             <div className="my-spots-header-container">
