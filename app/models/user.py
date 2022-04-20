@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from app.models.favorite import favorites
 
 
 class User(db.Model, UserMixin):
@@ -20,6 +21,7 @@ class User(db.Model, UserMixin):
     host = db.relationship("Host", back_populates='user', uselist=False)
     bookings = db.relationship("Booking", back_populates='user')
     reviews = db.relationship("Review", back_populates='user')
+    spots = db.relationship('Spot',secondary=favorites,backref='user')
 
     @property
     def password(self):
@@ -54,3 +56,7 @@ class User(db.Model, UserMixin):
                 'username': self.username,
                 'email': self.email,
             }
+
+    def to_favorite_dict(self):
+        return [{'spot_id': spot.id} for spot in self.spots]
+        

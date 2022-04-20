@@ -32,6 +32,9 @@ class Spot(db.Model):
         "Booking", back_populates="spot",cascade="all,delete"
     )
 
+    # user = db.relationship(
+    #     'Spots', secondary=favorites, back_populates='user')
+
     def to_dict(self):
 
         return {
@@ -49,24 +52,8 @@ class Spot(db.Model):
             'bathroom': self.bathroom,
             'bedroom': self.bedroom,
             'reviews': [{'id': review.id, 'rating': review.rating} for review in self.reviews],
-            # 'parking': self.amenities.parking,
-            'amenities_id': self.amenities.id,
-            # 'amenities': [
-            #     {"label": "Parking", "parking": self.amenities.parking},
-            #     {"label": "Kitchen", "kitchen": self.amenities.kitchen},
-            #     {"label": "Pool", "pool": self.amenities.pool},
-            #     {"label": "Hot-tub", "hottub": self.amenities.hottub},
-            #     {"label": "Wifi","wifi": self.amenities.wifi},
-            #     {"label": "A.C.", "ac": self.amenities.ac},
-            #     {"label": "Self Check-in","self_check_in": self.amenities.self_check_in},
-            #     {"label": "Pets","pets": self.amenities.pets},
-            #     {"label":"First-Aid","first_aid": self.amenities.first_aid},
-            #     {"label": "Fire-extinguisher",
-            #         "fire_extinguisher": self.amenities.fire_extinguisher},
-            #     {"label": "Smoking", "smoking": self.amenities.smoking},
-            #     {"label": "Toilet-Paper", "toilet_paper": self.amenities.toilet_paper},
-            #     {"label": "Soap", "soap": self.amenities.soap},
-            # ],
+
+            # 'amenities_id': self.amenities.id,
 
             'amenities': [
                 {"label": "Parking", "value": "parking",
@@ -98,3 +85,6 @@ class Spot(db.Model):
             'last': self.host.user.last_name,
             'images': [{'id': image.id, "image": image.image} for image in self.images]
         }
+
+    def to_favorite_dict(self):
+        return[{'user_id': user.id} for user in self.user]

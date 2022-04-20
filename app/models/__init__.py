@@ -6,3 +6,4 @@ from .amenity import Amenity
 from .image import Image
 from .review import Review
 from .booking import Booking
+from .favorite import favorites

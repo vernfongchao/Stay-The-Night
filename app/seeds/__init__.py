@@ -6,6 +6,7 @@ from .reviews import seed_reviews, undo_reviews
 from .hosts import seed_hosts,undo_hosts
 from .amenities import seed_amenities, undo_amenities
 from .bookings import seed_bookings, undo_bookings
+from .favorites import seed_favorites, undo_favorites
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -22,6 +23,7 @@ def seed():
     seed_reviews()
     seed_amenities()
     seed_bookings()
+    seed_favorites()
     # Add other seed functions here
 
 
@@ -35,4 +37,5 @@ def undo():
     undo_reviews()
     undo_amenities()
     undo_bookings()
+    undo_favorites()
     # Add other undo functions here

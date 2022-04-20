@@ -100,6 +100,7 @@
   width: 100%;
 }
 
+
 h2 {
   font-weight: 500;
 } 
@@ -112,6 +113,26 @@ h2 {
 .first-name{
   text-transform: capitalize;
   word-break: break-all;
+}
+
+.details-page-host-heart-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-page-favorite-spot-number-container{
+  display: flex;
+  align-items: center;
+}
+.details-page-favorite-spot-number{
+  color: red;
+}
+
+.details-page-heart-button{
+  font-size: xx-large;
+  cursor: pointer;
+  color: red;
 }
 
 .details-page-house-details {

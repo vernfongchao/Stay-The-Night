@@ -18,6 +18,7 @@ import { getSpots } from './store/spot'
 import { getReviews } from './store/review';
 import { getUsers } from './store/user';
 import { getUserBookings } from './store/booking';
+import { getUserFavorites } from './store/favorite';
 
 
 
@@ -28,7 +29,10 @@ function App() {
   
   useEffect(()=> {
     (async () => {
-      if(user) await dispatch(getUserBookings(user?.id))
+      if(user) {
+        await dispatch(getUserBookings(user?.id))
+        await dispatch(getUserFavorites(user?.id))
+      }
     })();
   },[dispatch,user])
 

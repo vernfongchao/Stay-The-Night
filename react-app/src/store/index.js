@@ -5,6 +5,7 @@ import spotReducer from './spot';
 import reviewReducer from './review';
 import bookings from './booking'
 import users from './user'
+import favorites from './favorite'
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   reviews:reviewReducer,
   bookings,
   users,
+  favorites,
 });
 
 

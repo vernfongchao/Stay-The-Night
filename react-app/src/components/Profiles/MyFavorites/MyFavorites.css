@@ -1,5 +1,17 @@
-.favorites-spots-page-container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.my-favorites-heart-position-container{
+        display: flex;
+        justify-content: flex-end;
+}
+.my-favorites-heart-container{
+            position: relative;
+            right: 15px;
+            top: 50px;
+}
+
+.my-favorites-heart-icon{
+        display: flex;
+        justify-content: flex-end;
+    font-size: xx-large;
+    color: red;
+    cursor: pointer;
 }
