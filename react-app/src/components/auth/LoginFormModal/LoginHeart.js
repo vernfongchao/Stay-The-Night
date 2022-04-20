@@ -7,8 +7,8 @@ const LoginHeartModal = () => {
     const [showModal, setShowModal] = useState(false)
 
     return (
-        <div className="login-form-modal-container">
-            <div className="login-form-button-container"
+        <div >
+            <div
                 onClick={() => {
                     setShowModal(true)
                 }}>

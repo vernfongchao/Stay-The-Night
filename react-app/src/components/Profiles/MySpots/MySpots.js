@@ -45,7 +45,6 @@ const MySpots = () => {
                             <div className="my-spots-basic-container">
                                 <div className="my-spots-">
                                     <span>{spot.state}, {spot.country}</span>
-                                    {/* <span>{spot.country}</span> */}
                                 </div>
                                 <div>
                                     <span>${spot.price}/ Night</span>

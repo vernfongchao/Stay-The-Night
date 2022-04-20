@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import EditDeleteModal from "../EditDeleteSpotModal";
@@ -12,7 +12,6 @@ import { addUserFavorites } from "../../../store/favorite";
 import { deleteUserFavorites } from "../../../store/favorite";
 import LoginHeartModal from "../../auth/LoginFormModal/LoginHeart";
 
-// import Log
 
 import * as  AiIcons from 'react-icons/ai'
 
@@ -29,7 +28,9 @@ const SpotsDetailsPage = () => {
     const userFavorites = Object.values(useSelector(state => state.favorites.user))
     const spotFavorites = Object.values(useSelector(state => state.favorites.spot))
     const favoriteExists = userFavorites.filter(({ spot_id }) => spot_id === +id)
-    console.log(favoriteExists)
+
+    const [hover,setHover] = useState(false)
+
 
     if (spot === undefined) {
         history.push('/404-Page-Not-Found')
@@ -67,6 +68,7 @@ const SpotsDetailsPage = () => {
             spot_id: spot.id
         }
         dispatch(addUserFavorites(newFavorite))
+        setHover(false)
     }
 
     const deleteFavorites = (e) => {
@@ -111,11 +113,15 @@ const SpotsDetailsPage = () => {
             <div className="details-page-host-heart-container">
                 <h2>Hosted By: <Link to={`/profiles/${spot?.user_id}`} className="first-last-name"><span className="first-name">{spot?.first} {spot?.last} </span> </Link></h2>
                 <div className="details-page-favorite-spot-number-container">
-                <h2 className="details-page-favorite-spot-number">{spotFavorites.length}</h2>
+                    <h2 className="details-page-favorite-spot-number">{spotFavorites.length}</h2>
                     {!user && <LoginHeartModal />}
                     {user && user?.host_id !== spot.host_id && (favoriteExists.length ?
                         <AiIcons.AiTwotoneHeart className="details-page-heart-button" onClick={deleteFavorites} />
-                        : <AiIcons.AiOutlineHeart className="details-page-heart-button" onClick={addFavorites} />)}
+                        : (hover ? <AiIcons.AiTwotoneHeart className="details-page-heart-button" onClick={addFavorites} onMouseLeave={() => setHover(false)} />
+                            : <AiIcons.AiOutlineHeart className="details-page-heart-button" onMouseEnter={() => setHover(true)} />
+                        )
+                        // <AiIcons.AiOutlineHeart className="details-page-heart-button" onClick={addFavorites} />
+                    )}
                 </div>
             </div>
 
@@ -151,7 +157,7 @@ const SpotsDetailsPage = () => {
                 {user && spot?.host_id !== user?.host_id && <CreateReviewModal />}
             </div>
 
-            {filterReviews.length > 0 && <DisplayReviews />}
+            <DisplayReviews />
         </div>
     )
 }

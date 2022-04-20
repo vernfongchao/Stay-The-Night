@@ -44,7 +44,7 @@ const DisplayReviews = () => {
                         {user && user?.id === review.user_id && <EditDeleteReviewModal review={review} id={review.id} />}
                     </div>
                     <p className="display-ratings-container"> Rating: {[...Array(5)].map((star, i) => (
-                        <FAIcons.FaStar
+                        <FAIcons.FaStar key={i}
                             className="display-rating-icons"
                             color={(i + 1) <= review.rating ? "red" : "lightgray"}
                         />
