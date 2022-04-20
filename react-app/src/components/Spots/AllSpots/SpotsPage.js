@@ -26,7 +26,6 @@ const SpotsPage = () => {
 
     return (
         <motion.div className='spots-page-container'
-
             >
             {spotsArr?.map(spot => (
                 <div key={spot.id} className='each-spot-container'>

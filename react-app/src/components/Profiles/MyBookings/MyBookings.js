@@ -34,7 +34,11 @@ const MyBookings = () => {
     return (
         <motion.div
             className="my-bookings-page-container"
-
+            // intial={{ opacity: 0 }}
+            // animate={{ opacity:1 ,transition: {
+            //     duration: 1
+            // } }}
+            // exit={{ opacity: 0 }}
 
         >
             <div className="my-bookings-header-container">
