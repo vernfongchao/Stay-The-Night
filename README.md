@@ -1,10 +1,33 @@
 # Stay-The-Night
 
-Stay The Night is a loose clone of [Airbnb](https://www.airbnb.com/) allowing users to host their spot and allow others to book and review.
+Stay-The-Night, an [Airbnb](https://www.airbnb.com/) influenced app, is a bookings place for people to rent out a home for many nights instead of a hotel or motel as if they never left their home.
 
 ## Live Site
 
 A Live deployment of [Stay-The-Night](https://stay-the-night.herokuapp.com/) is hosted on [heroku](https://heroku.com)
+
+## Wiki
+
+### [Feature List](https://github.com/vernfongchao/Stay-The-Night/wiki/MVP-Feature-List)
+
+List of features needed for the Minimum Viable Product (MVP) and its CRUD features
+
+### [User Stories](https://github.com/vernfongchao/Stay-The-Night/wiki/User-Stories)
+
+List of user stories for each MVP
+
+### [Database Schema](https://github.com/vernfongchao/Stay-The-Night/wiki/Database-Schema)
+
+Schema of how our PostgreSQL database will be set up
+
+### [API Documentation](https://github.com/vernfongchao/Stay-The-Night/wiki/API-Documentation)
+
+API routes that will be used by our backend server
+
+### [Wireframes](https://github.com/vernfongchao/Stay-The-Night/wiki/Wireframes)
+
+Barebones structure of Stay-The-Night
+
 
 ## Screenshots
 
