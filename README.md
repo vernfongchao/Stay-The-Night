@@ -8,23 +8,23 @@ A Live deployment of [Stay-The-Night](https://stay-the-night.herokuapp.com/) is 
 
 ## Wiki
 
-## [Feature List](https://github.com/vernfongchao/Stay-The-Night/wiki/MVP-Feature-List)
+### [Feature List](https://github.com/vernfongchao/Stay-The-Night/wiki/MVP-Feature-List)
 
 List of features needed for the Minimum Viable Product (MVP) and its CRUD features
 
-## [User Stories](https://github.com/vernfongchao/Stay-The-Night/wiki/User-Stories)
+### [User Stories](https://github.com/vernfongchao/Stay-The-Night/wiki/User-Stories)
 
 List of user stories for each MVP
 
-## [Database Schema](https://github.com/vernfongchao/Stay-The-Night/wiki/Database-Schema)
+### [Database Schema](https://github.com/vernfongchao/Stay-The-Night/wiki/Database-Schema)
 
 Schema of how our PostgreSQL database will be set up
 
-## [API Documentation](https://github.com/vernfongchao/Stay-The-Night/wiki/API-Documentation)
+### [API Documentation](https://github.com/vernfongchao/Stay-The-Night/wiki/API-Documentation)
 
 API routes that will be used by our backend server
 
-## [Wireframes](https://github.com/vernfongchao/Stay-The-Night/wiki/Wireframes)
+### [Wireframes](https://github.com/vernfongchao/Stay-The-Night/wiki/Wireframes)
 
 Barebones structure of Stay-The-Night
 
