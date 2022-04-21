@@ -30,8 +30,9 @@ const MySpots = () => {
     }
 
     return ( user?.host_id? 
-        (<motion.div className={hidden ? "my-spots-page-container my-spots-page-container-active" : "my-spots-page-container"}
-
+        (<motion.div className={hidden ? 
+            "my-spots-page-container my-spots-page-container-active" : 
+            "my-spots-page-container"}
 
             >
             <div className="my-spots-header-container">
