@@ -16,8 +16,9 @@ const MyBookings = () => {
     const spots = useSelector(state => state.spots)
     const bookings = Object.values(useSelector(state => state.bookings)).reverse()
 
-    const pastBookings = bookings?.filter(({ start_date }) => moment(start_date).utcOffset(7) <= moment().utcOffset(7)).sort((a, b) => moment(a.end_date).valueOf() > moment(b.end_date).valueOf())
-    const futureBookings = bookings?.filter(({ start_date }) => moment(start_date).utcOffset(7) > moment().utcOffset(7)).sort((a, b) => moment(a.start_date).valueOf() - moment(b.start_date).valueOf())
+
+    const pastBookings = bookings?.filter(({ start_date }) => moment(start_date).add('days', 1) < moment().utcOffset(-7)).sort((a, b) => moment(a.end_date).valueOf() > moment(b.end_date).valueOf())
+    const futureBookings = bookings?.filter(({ start_date }) => moment(start_date).add('days', 1) > moment().utcOffset(-7)).sort((a, b) => moment(a.start_date).valueOf() - moment(b.start_date).valueOf())
 
     if (user?.id !== +id) {
         history.push('/403-Unauthorized')
@@ -74,10 +75,10 @@ const MyBookings = () => {
                                 </Link>
                                 <div className="my-spots-basic-container">
                                     <div>
-                                        <span>Start Date {moment(booking.start_date).utcOffset(7).format('MMMM D YYYY')}</span>
+                                        <span>Start Date {moment(booking.start_date).add('days', 1).format('MMMM D YYYY')}</span>
                                     </div>
                                     <div>
-                                        <span>End Date {moment(booking.end_date).utcOffset(7).format('MMMM D YYYY')}</span>
+                                        <span>End Date {moment(booking.end_date).add('days', 1).format('MMMM D YYYY')}</span>
                                     </div>
                                 </div>
                             </div>
@@ -104,10 +105,10 @@ const MyBookings = () => {
                                 </Link>
                                 <div className="my-spots-basic-container">
                                     <div>
-                                        <span>Start Date {moment(booking.start_date).utcOffset(7).format('MMMM D YYYY')}</span>
+                                        <span>Start Date {moment(booking.start_date).add('days', 1).format('MMMM D YYYY')}</span>
                                     </div>
                                     <div>
-                                        <span>End Date {moment(booking.end_date).utcOffset(7).format('MMMM D YYYY')}</span>
+                                        <span>End Date {moment(booking.end_date).add('days', 1).format('MMMM D YYYY')}</span>
                                     </div>
                                 </div>
                             </div>

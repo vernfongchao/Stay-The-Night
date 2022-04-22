@@ -30,6 +30,11 @@ const SpotsDetailsPage = () => {
     const [hover,setHover] = useState(false)
     const [hidden, setHidden] = useState(false)
 
+    if (spot === undefined) {
+        history.push('/404-Page-Not-Found')
+    }
+
+
     useEffect(() => {
         let timer = setTimeout(() => setHidden(true), 50)
 
@@ -37,12 +42,6 @@ const SpotsDetailsPage = () => {
             clearTimeout(timer)
         }
     }, [])
-
-
-
-    if (spot === undefined) {
-        history.push('/404-Page-Not-Found')
-    }
 
     const filterReviews = reviews.filter(({ spot_id }) => spot_id === +id)
 
@@ -125,9 +124,9 @@ const SpotsDetailsPage = () => {
                     <h2 className="details-page-favorite-spot-number">{spotFavorites.length}</h2>
                     {!user && <LoginHeartModal />}
                     {user && user?.host_id !== spot.host_id && (favoriteExists.length ?
-                        <AiIcons.AiTwotoneHeart className="details-page-heart-button" onClick={deleteFavorites} onMouseLeave={() => setHover(false)} />
+                        <AiIcons.AiTwotoneHeart className="details-page-heart-button" onClick={deleteFavorites} onMouseLeave={() => setHover(false)}/>
                         : (hover ? <AiIcons.AiTwotoneHeart className="details-page-heart-button" onClick={addFavorites} onMouseLeave={() => setHover(false)} />
-                            : <AiIcons.AiOutlineHeart className="details-page-heart-button" onMouseEnter={() => setHover(true)} />
+                            : <AiIcons.AiOutlineHeart className="details-page-heart-button" onMouseEnter={() => setHover(true)} onM />
                         )
                         // <AiIcons.AiOutlineHeart className="details-page-heart-button" onClick={addFavorites} />
                     )}

@@ -38,8 +38,8 @@ const EditBookingForm = ({ setShowModal, booking }) => {
             spot_id: spot.id,
             user_id: booking.user_id,
             guests: parseInt(guests),
-            start_date: startDate.format('YYYY-MM-DD'),
-            end_date: endDate.format('YYYY-MM-DD'),
+            start_date: startDate.utcOffset(7).format('YYYY-MM-DD'),
+            end_date: endDate.utcOffset(7).format('YYYY-MM-DD'),
         }
         const data = await dispatch(editBooking(edit_booking))
         if (data.errors) {
