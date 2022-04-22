@@ -39,16 +39,16 @@ def post_spot():
         for image in images:
             if (len(image["image"]) < 1):
                 return {'errors': ["Missing Image Url Field input"]}, 400
-            elif(len(image["image"]) > 1000):
-                return {'errors': ["Image Url must be shorter than 1000 characters"]}, 400
-            else:
-                url = image["image"]
-                match = re.search(
-                    r'.+\.(png|jpg|jpeg|gif)$', url)
-                # match = re.search(
-                #     r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
-                if match == None:
-                    return {'errors': ["Image url must end in .png, .jpg, .jpeg or .gif"]}, 400
+            # elif(len(image["image"]) > 1000):
+            #     return {'errors': ["Image Url must be shorter than 1000 characters"]}, 400
+            # else:
+            #     url = image["image"]
+            #     match = re.search(
+            #         r'.+\.(png|jpg|jpeg|gif)$', url)
+            #     # match = re.search(
+            #     #     r'http[s]?\:\/\/.*\.(png|jpg|jpeg|gif)$', url)
+            #     if match == None:
+            #         return {'errors': ["Image url must end in .png, .jpg, .jpeg or .gif"]}, 400
 
         spot = Spot()
 
