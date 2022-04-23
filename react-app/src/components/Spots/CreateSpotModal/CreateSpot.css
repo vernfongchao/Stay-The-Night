@@ -159,7 +159,7 @@ align-items: center;
 .spot-form-integer-field-container{
     margin-top: 2px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 88%;
 }
