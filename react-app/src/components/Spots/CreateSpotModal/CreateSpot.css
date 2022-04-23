@@ -6,6 +6,7 @@
 }
 
 .create-spot-button-text{
+  text-decoration: none;
   color: white;
   font-weight: 500px;
   font-family: "Roboto", sans-serif;

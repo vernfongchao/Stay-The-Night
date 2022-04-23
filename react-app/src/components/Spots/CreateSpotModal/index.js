@@ -9,8 +9,8 @@ const CreateSpotModal = () => {
     return (
         <div className="create-spot-modal-container"  >
             <button className="create-spot-button" onClick={() => setShowModal(true)} >
-                <Link to='/spots/add/new'>
-                    <span className="create-spot-button-text">
+                <Link to='/spots/add/new' className="create-spot-button-text">
+                    <span >
                         Add a Spot!
                     </span>
                 </Link>

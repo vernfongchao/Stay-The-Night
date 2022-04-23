@@ -401,7 +401,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                     <div className="spot-form-button-container">
                         <button className="spot-form-button" type='button' onClick={addImageFiles}>Add Images</button>
                         <button className="spot-form-button" type="submit">
-                            Add a Spot
+                            Add Spot
                         </button >
                     </div>
                 </form >
