@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { useEditDeleteModal } from "../EditDeleteSpotModal"
 import { editSpot } from "../../../store/spot"
+import { getSpot } from "../../../store/spot"
 import { useLocations } from "../../../context/Location";
 import Multiselect from 'multiselect-react-dropdown';
 
@@ -11,6 +12,7 @@ import './EditSpotForm.css'
 const EditSpotForm = ({ setShowModal }) => {
     const { countries, states, amenities } = useLocations()
     const { setEditDeleteModal } = useEditDeleteModal()
+    const imageInputRef = useRef()
 
     const dispatch = useDispatch()
 
@@ -25,9 +27,7 @@ const EditSpotForm = ({ setShowModal }) => {
     const [city, setCity] = useState(spot.city)
     const [maxCity, setMaxCity] = useState("")
     const [state, setState] = useState(spot.state);
-    // const [maxState, setMaxState] = useState("")
     const [country, setCountry] = useState(spot.country);
-    // const [maxCountry, setMaxCountry] = useState("")
     const [description, setDescription] = useState(spot.description);
     const [maxDescription, setMaxDescription] = useState("");
     const [price, setPrice] = useState(spot.price);
@@ -35,30 +35,30 @@ const EditSpotForm = ({ setShowModal }) => {
     const [bedroom, setBedroom] = useState(spot.bedroom);
     const [bathroom, setBathroom] = useState(spot.bathroom);
     const [errors, setErrors] = useState([])
+
+    const [images, setImages] = useState(spot.images)
+    const [imagesPreview, setImagesPreview] = useState(spot.images)
+
+    const [imageLoading, setImageLoading] = useState(false)
+
+    const [imagesToDelete, setImagesToDelete] = useState([]);
+
+
+
+    const [amenitiesSelected, setAmenitiesSelected] = useState([])
+
+
     const [maxImage, setMaxImage] = useState("");
+
+
+
     const filteredAmenities = spot.amenities.filter(({ boolean }) => (
         boolean
     ))
 
-    const [amenitiesSelected, setAmenitiesSelected] = useState(filteredAmenities)
-
-
-    let images = []
-    const [imageFields, setImageFields] = useState(images)
-
-
-    spot.images.forEach(({ image }) => {
-        images.push({ image })
-    })
 
     useEffect(() => {
-        if (imageFields.length >= 5) {
-            setMaxImage("Maximum pictures allowed met")
-        }
-        // else if (imageFields.length <= 1) {
-        //     setMaxImage("Must upload at least 1 picture")
-        // }
-        else if (imageFields.length >= 2 && imageFields.length <= 4) {
+        if (imagesPreview.length > 0 && imagesPreview.length <= 4) {
             setMaxImage("")
         }
         if (name.length >= 100) {
@@ -79,51 +79,19 @@ const EditSpotForm = ({ setShowModal }) => {
         if (city.length < 20) {
             setMaxCity("")
         }
-        // if (state.length >= 50) {
-        //     setMaxState("Maximum Characters Reached")
-        // }
-        // if (state.length < 50) {
-        //     setMaxState("")
-        // }
-        // if (country.length >= 50) {
-        //     setMaxCountry("Maximum Characters Reached")
-        // }
-        // if (country.length < 50) {
-        //     setMaxCountry("")
-        // }
+
         if (description.length >= 1000) {
             setMaxDescription("Maximum Characters Reached")
         }
         if (description.length < 1000) {
             setMaxDescription("")
         }
-    }, [imageFields, name, address, city, state, country, description])
+    }, [imagesPreview, name, address, city, state, country, description])
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const edit_images = [...imageFields]
 
-        if (edit_images.length > images.length) {
-            edit_images.forEach((image, index) => {
-                if (spot.images[index]) {
-                    image["id"] = spot.images[index].id
-                } else {
-                    image["id"] = null
-                }
-            })
-            images = edit_images
-        } else {
-            images.forEach((image, index) => {
-                if (imageFields[index] !== undefined) {
-                    image["image"] = imageFields[index].image
-                    image["id"] = spot.images[index].id
-                } else {
-                    image.image = null
-                    image["id"] = spot.images[index].id
-                }
-            })
-        }
         let set = new Set()
         let newAmenities = [...amenitiesSelected]
 
@@ -142,7 +110,7 @@ const EditSpotForm = ({ setShowModal }) => {
             }
         })
 
-        const edit_spot = {
+        const edit_spot = await dispatch(editSpot({
             id: id,
             host_id: user.host_id,
             name,
@@ -158,34 +126,99 @@ const EditSpotForm = ({ setShowModal }) => {
             amenities_id: spot.amenities_id,
             amenities: newAmenities,
             images,
+        }))
+        if (edit_spot.errors) {
+            setErrors(edit_spot.errors)
+            return
         }
-        const data = await dispatch(editSpot(edit_spot))
-        if (data.errors) {
-            setErrors(data.errors)
-        } else if (data) {
+
+        imagesToDelete.forEach (async (image) =>{
+            const formData = new FormData();
+            formData.append('image',image.image)
+            const res = await fetch(`/api/spots/images/${image.id}`,{
+                method: 'DELETE',
+                body: formData,
+            })
+            if(res.ok){
+                await res.json()
+                await dispatch(getSpot(spot.id))
+            }
+            else {
+                const errors = res.json();
+                setErrors(() => errors);
+            }
+        })
+
+
+        if (images.length > 0) {
+            setImageLoading(true)
+            images.forEach(async (image, i) => {
+                if (image.id) {
+                    return
+                }
+                const formData = new FormData()
+                formData.append('image', image);
+                formData.append('spot_id', spot.id)
+
+                const res = await fetch('/api/spots/images', {
+                    method: 'POST',
+                    body: formData
+                })
+                if (res.ok) {
+                    await res.json();
+                    await dispatch(getSpot(spot.id))
+                    setImageLoading(false);
+                } else {
+                    setImageLoading(false);
+                    const errors = res.json()
+                    setErrors(errors.errors)
+                }
+            })
+        }
+        if (!edit_spot.errors){
             setShowModal(false)
             setEditDeleteModal(false)
         }
     }
 
-    const handleOnChange = (index, e) => {
-        const array = [...imageFields]
-        array[index][e.target.name] = e.target.value
-        setImageFields(array)
-    }
 
-    const handleAddUrl = () => {
-        if (imageFields.length >= 5) return
-        setImageFields([...imageFields, { image: "" }])
-    }
 
-    const handleRemoveUrl = (index, e) => {
-        if (imageFields.length <= 1) return setMaxImage("Must upload at least 1 Picture")
-        else {
-            const array = [...imageFields]
-            array.splice(index, 1)
-            setImageFields(array)
+
+    const addImageFiles = (e) => {
+        if (imagesPreview.length >= 5) {
+            return setMaxImage("Maximum pictures allowed met")
         }
+        else {
+            return imageInputRef.current.click()
+        }
+    }
+
+    const onChangeImageFiles = (e) => {
+        const file = e.target.files[0]
+        if (file && file.type.substr(0, 5) === "image") {
+            const imageArray = [...images]
+            const imagesPreviewArray = [...imagesPreview]
+            const imagePreview = URL.createObjectURL(file)
+            imageArray.push(file)
+            imagesPreviewArray.push(imagePreview)
+            setImages(imageArray)
+            setImagesPreview(imagesPreviewArray)
+        }
+        return
+    }
+
+    const removeImage = (e, index) => {
+        const array = [...images]
+        const arrayPreview = [...imagesPreview]
+        array.splice(index, 1)
+        const deleteImage = arrayPreview.splice(index, 1)
+        if (deleteImage[0].id) {
+            const deletedImages = [...imagesToDelete]
+            deletedImages.push(...deleteImage)
+            setImagesToDelete(deletedImages)
+        }
+        setImages(array)
+        setImagesPreview(arrayPreview)
     }
 
     const handleExpress = (e) => {
@@ -204,13 +237,19 @@ const EditSpotForm = ({ setShowModal }) => {
             </div>
             <div className="spot-form-image-preview">
 
-                {imageFields?.map(({ image }, idx) => (image.length !== 0 &&
-                    <img src={image} key={idx}
-                        onError={(e) => e.target.src = "../../../../static/not-found.png"}
-                        alt="House"
-                        width="100px"
-                        height="100px">
-                    </img>
+                {imagesPreview?.map((image, index) => (image.length !== 0 &&
+                    <div key={index} >
+                        <button onClick={(e) => removeImage(e, index)}>
+                            x
+                        </button>
+                        <img
+                            src={image?.image || image}
+                            onError={(e) => e.target.src = "../../../../static/not-found.png"}
+                            alt="House"
+                            width="100px"
+                            height="100px">
+                        </img>
+                    </div>
                 ))}
 
             </div>
@@ -282,7 +321,6 @@ const EditSpotForm = ({ setShowModal }) => {
 
                         </div>
 
-                        {/* <p className="spot-form-max">{maxState}</p> */}
                         <div className="spot-form-select-field-city-container">
                             <label className="error-spot-form-label" for="state">State</label>
                             <div className="spot-form-select-field-city-input-container">
@@ -316,7 +354,6 @@ const EditSpotForm = ({ setShowModal }) => {
 
                 <div className="spot-form-integer-field-container">
 
-                    {/* <div className="spot-form-integer-field-input-container"> */}
                     <label className="error-spot-form-label" for="state">Price</label>
                     <div className="spot-form-select-field-city-input-container">
                         <input className='spot-form-integer-field-input'
@@ -329,9 +366,7 @@ const EditSpotForm = ({ setShowModal }) => {
                             onKeyDown={handleExpress}
                         />
                     </div>
-                    {/* </div> */}
 
-                    {/* <div className=""> */}
                     <label className="error-spot-form-label" for="state">Guests</label>
                     <div className="spot-form-select-field-city-input-container">
                         <input className='spot-form-integer-field-input'
@@ -344,9 +379,7 @@ const EditSpotForm = ({ setShowModal }) => {
                             onKeyDown={handleExpress}
                         />
                     </div>
-                    {/* </div> */}
 
-                    {/* <div className=""> */}
                     <label className="error-spot-form-label" for="state">Bedrooms</label>
                     <div className="spot-form-select-field-city-input-container">
                         <input className='spot-form-integer-field-input'
@@ -359,9 +392,7 @@ const EditSpotForm = ({ setShowModal }) => {
                             onKeyDown={handleExpress}
                         />
                     </div>
-                    {/* </div> */}
 
-                    {/* <div className=""> */}
                     <label className="error-spot-form-label" for="state">Bathrooms</label>
                     <div className="spot-form-select-field-city-input-container">
                         <input className='spot-form-integer-field-input'
@@ -374,7 +405,7 @@ const EditSpotForm = ({ setShowModal }) => {
                             onKeyDown={handleExpress}
                         />
                     </div>
-                    {/* </div> */}
+
                 </div>
 
                 <div className="spot-form-amenities-select-input-container">
@@ -385,7 +416,6 @@ const EditSpotForm = ({ setShowModal }) => {
                         onRemove={(e) => setAmenitiesSelected(e)}
                         onSearch={function noRefCheck() { }}
                         onSelect={(e) => setAmenitiesSelected(e)}
-                        // onSelect={function noRefCheck() { }}
                         placeholder="Amenities"
                         options={amenities}
                         selectedValues={filteredAmenities}
@@ -411,31 +441,25 @@ const EditSpotForm = ({ setShowModal }) => {
                     />
                 </div>
 
+                <div>
+                    <input
+                        type="file"
+                        style={{ display: 'none' }}
+                        ref={imageInputRef}
+                        onChange={onChangeImageFiles}
+                        accept="image/*"
+
+                    />
+                </div>
+
                 <div className="edit-spot-image-container" >
                     <p className="error-spot-form-max">{maxImage}</p>
-                    {imageFields.map((imageField, index) => (
-
-                        <div className="edit-spot-each-image-container" key={index}>
-                            <label className="error-spot-form-label">Image URL</label>
-                            <div className="edit-spot-form-image-field-container">
-                                <input className="edit-spot-form-image-field"
-                                    name="image"
-                                    type="text"
-                                    value={imageField.image}
-                                    onChange={e => handleOnChange(index, e)}>
-
-                                </input>
-                                <span className="spot-form-remove-image" onClick={(e) => handleRemoveUrl(index, e)}>
-                                    <i className="fa-solid fa-minus"></i>
-                                </span>
-                            </div>
-                        </div>
-
-                    ))}
-
                 </div>
+
+                {imageLoading && <h5>Images are loading please wait</h5>}
+
                 <div className="spot-form-button-container">
-                    <button className="spot-form-button" type='button' onClick={handleAddUrl}>Add Images</button>
+                    <button className="spot-form-button" type='button' onClick={addImageFiles}>Add Images</button>
                     <button className="spot-form-button" type="submit" onClick={handleSubmit}>
                         Submit Edit
                     </button >

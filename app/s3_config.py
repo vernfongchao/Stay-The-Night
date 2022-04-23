@@ -41,3 +41,7 @@ def upload_file_to_s3(file, acl="public-read"):
         return {"errors": str(e)}
 
     return {"url": f"{S3_LOCATION}{file.filename}"}
+
+
+def delete_image_from_s3(filename):
+    s3.delete_object(Bucket=BUCKET_NAME, Key=filename)

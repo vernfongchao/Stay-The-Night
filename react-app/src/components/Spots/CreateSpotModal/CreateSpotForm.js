@@ -5,7 +5,7 @@ import { addSpot } from "../../../store/spot"
 import { useLocations } from "../../../context/Location";
 import Multiselect from 'multiselect-react-dropdown';
 
-import { getSpots } from "../../../store/spot";
+import { getSpot } from "../../../store/spot";
 
 import './CreateSpot.css'
 
@@ -33,7 +33,10 @@ const CreateSpotForm = ({ setShowModal }) => {
     const [bathroom, setBathroom] = useState("");
     const [errors, setErrors] = useState([])
 
-    const [imageLoading,setImageLoading] = useState(false)
+    const [images, setImages] = useState([])
+    const [imagesPreview, setImagesPreview] = useState([])
+
+    const [imageLoading, setImageLoading] = useState(false)
 
 
     const [amenitiesSelected, setAmenitiesSelected] = useState([])
@@ -43,6 +46,9 @@ const CreateSpotForm = ({ setShowModal }) => {
 
 
     useEffect(() => {
+        if (images.length > 0 && images.length <= 4) {
+            setMaxImage("")
+        }
         if (name.length >= 100) {
             setMaxName("Maximum Characters Reached")
         }
@@ -68,7 +74,7 @@ const CreateSpotForm = ({ setShowModal }) => {
             setMaxDescription("")
         }
 
-    }, [name, address, city, country, description])
+    }, [images, name, address, city, country, description])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -93,21 +99,21 @@ const CreateSpotForm = ({ setShowModal }) => {
             return
         }
 
-        if(images.length > 0){
+        if (images.length > 0) {
             setImageLoading(true)
-            images.forEach(async(image,i) => {
+            images.forEach(async (image, i) => {
                 const formData = new FormData()
-                formData.append('image',image);
-                formData.append('spot_id',spot.id )
+                formData.append('image', image);
+                formData.append('spot_id', spot.id)
 
-                const res = await fetch ('/api/spots/images', {
+                const res = await fetch('/api/spots/images', {
                     method: 'POST',
                     body: formData
                 })
-                if (res.ok){
+                if (res.ok) {
                     await res.json();
                     setImageLoading(false);
-                    await dispatch(getSpots())
+                    await dispatch(getSpot(spot.id))
                     history.push(`/spots/${spot.id}`)
                     setShowModal(false)
                 } else {
@@ -117,6 +123,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                 }
             })
         }
+        
     }
 
     const handleExpress = (e) => {
@@ -127,9 +134,6 @@ const CreateSpotForm = ({ setShowModal }) => {
         if (e.key === '.') return e.preventDefault()
     }
 
-    const [images, setImages] = useState([])
-    console.log(images.length)
-    const [imagesPreview, setImagesPreview] = useState([])
 
     const addImageFiles = (e) => {
         if (images.length >= 5) {
@@ -154,9 +158,7 @@ const CreateSpotForm = ({ setShowModal }) => {
         return
     }
 
-    const removeImage = (e,index) => {
-        console.log(e)
-        console.log(index)
+    const removeImage = (e, index) => {
         const array = [...images]
         const arrayPreview = [...imagesPreview]
         array.splice(index, 1)
@@ -172,12 +174,12 @@ const CreateSpotForm = ({ setShowModal }) => {
                 <h1 className='login-form-header-text'> Host a Spot!</h1>
             </div>
             <div className="spot-form-image-preview">
-                {imagesPreview?.map((image,index) => (image.length !== 0 &&
+                {imagesPreview?.map((image, index) => (image.length !== 0 &&
                     <div key={index} >
-                        <button onClick={(e) => removeImage(e,index)}>
+                        <button onClick={(e) => removeImage(e, index)}>
                             x
                         </button>
-                        <img 
+                        <img
                             src={image}
                             onError={(e) => e.target.src = "../../../../static/not-found.png"}
                             alt="House"
@@ -389,7 +391,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                     {maxImage && <p className="spot-form-max">{maxImage}</p>}
                 </div>
 
-                {imageLoading && <h1>Images are loading please wait</h1>}
+                {imageLoading && <h5>Images are loading please wait</h5>}
 
                 <div className="spot-form-button-container">
                     <button className="spot-form-button" type='button' onClick={addImageFiles}>Add Images</button>

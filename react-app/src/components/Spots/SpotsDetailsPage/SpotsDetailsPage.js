@@ -62,7 +62,6 @@ const SpotsDetailsPage = () => {
         window.scrollTo(0, 0)
         dispatch(getSpotFavorites(spot?.id))
     }, [dispatch, spot])
-    console.log(spotFavorites)
 
 
     const handleImage = (e) => {

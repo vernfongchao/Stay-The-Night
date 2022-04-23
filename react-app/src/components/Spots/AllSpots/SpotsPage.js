@@ -30,8 +30,8 @@ const SpotsPage = () => {
             >
             {spotsArr?.map(spot => (
                 <div key={spot.id} className='each-spot-container'>
-                    <Link to={`/spots/${spot.id}`} spot={spot} id={`image-spots-${spot.id}`}>
-                        <img className="each-spot-image" onError={handleImage} src={spot.images[0]?.image} alt={`spots #${spot.id}`}>
+                    <Link to={`/spots/${spot?.id}`} spot={spot} id={`all-spots-each-image`}>
+                        <img className="each-spot-image" onError={handleImage} src={spot?.images[0]?.image} alt={`spots #${spot.id}`}>
                         </img>
                     </Link>
                     <div className='each-spot-details-container'>

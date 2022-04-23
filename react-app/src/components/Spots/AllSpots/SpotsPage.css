@@ -21,9 +21,17 @@
   display: flex;
 }
 
+#all-spots-each-image{
+  height: 375px;
+    max-width: min(80%, 500px);
+    /* width: 500px; */
+    min-width: min(33vw, 500px);
+}
+
 .each-spot-image {
   /* max-width: 80%; */
-  max-height: 500px;
+  height: 375px;
+  /* max-height: 500px; */
   max-width: min(80%,500px);
   /* width: 500px; */
   min-width: min(33vw, 500px);

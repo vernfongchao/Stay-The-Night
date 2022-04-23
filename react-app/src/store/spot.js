@@ -34,6 +34,17 @@ export const getSpots = () => async dispatch => {
     return response
 }
 
+export const getSpot = (id) => async dispatch => {
+    const response = await fetch(`/api/spots/${id}`)
+    if (response.ok) {
+        const spots = await response.json()
+        dispatch(loadSpot(spots))
+        return null
+    }
+    return response
+}
+
+
 export const addSpot = (payload) => async dispatch => {
     const response = await fetch('/api/spots/', {
         method: 'POST',
