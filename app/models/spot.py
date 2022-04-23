@@ -53,7 +53,7 @@ class Spot(db.Model):
             'bedroom': self.bedroom,
             'reviews': [{'id': review.id, 'rating': review.rating} for review in self.reviews],
 
-            # 'amenities_id': self.amenities.id,
+            'amenities_id': self.amenities.id,
 
             'amenities': [
                 {"label": "Parking", "value": "parking",

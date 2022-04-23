@@ -123,7 +123,7 @@ const SpotsDetailsPage = () => {
                 <div className="details-page-favorite-spot-number-container">
                     <h2 className="details-page-favorite-spot-number">{spotFavorites.length}</h2>
                     {!user && <LoginHeartModal />}
-                    {user && user?.host_id !== spot.host_id && (favoriteExists.length ?
+                    {user && user?.host_id !== spot?.host_id && (favoriteExists.length ?
                         <AiIcons.AiTwotoneHeart className="details-page-heart-button" onClick={deleteFavorites} onMouseLeave={() => setHover(false)}/>
                         : (hover ? <AiIcons.AiTwotoneHeart className="details-page-heart-button" onClick={addFavorites} onMouseLeave={() => setHover(false)} />
                             : <AiIcons.AiOutlineHeart className="details-page-heart-button" onMouseEnter={() => setHover(true)} onM />
