@@ -5,6 +5,8 @@ import { addSpot } from "../../../store/spot"
 import { useLocations } from "../../../context/Location";
 import Multiselect from 'multiselect-react-dropdown';
 
+import { getSpots } from "../../../store/spot";
+
 import './CreateSpot.css'
 
 
@@ -30,12 +32,8 @@ const CreateSpotForm = ({ setShowModal }) => {
     const [bedroom, setBedroom] = useState("");
     const [bathroom, setBathroom] = useState("");
     const [errors, setErrors] = useState([])
-    const [imageFields, setImageFields] = useState([
-        { image: "" }
-    ])
 
-
-
+    const [imageLoading,setImageLoading] = useState(false)
 
 
     const [amenitiesSelected, setAmenitiesSelected] = useState([])
@@ -45,13 +43,6 @@ const CreateSpotForm = ({ setShowModal }) => {
 
 
     useEffect(() => {
-        if (imageFields.length >= 5) {
-            setMaxImage("Maximum pictures allowed met")
-        }
-
-        else if (imageFields.length >= 2 && imageFields.length <= 4) {
-            setMaxImage("")
-        }
         if (name.length >= 100) {
             setMaxName("Maximum Characters Reached")
         }
@@ -77,11 +68,11 @@ const CreateSpotForm = ({ setShowModal }) => {
             setMaxDescription("")
         }
 
-    }, [imageFields, name, address, city, country, description])
+    }, [name, address, city, country, description])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const spot = {
+        const spot = await dispatch(addSpot({
             host_id: user.host_id,
             name,
             address,
@@ -94,36 +85,37 @@ const CreateSpotForm = ({ setShowModal }) => {
             bedroom,
             bathroom,
             amenities: amenitiesSelected,
-            images: imagesPreview,
+            images,
+        }))
+
+        if (spot.errors) {
+            setErrors(spot.errors)
+            return
         }
-        const data = await dispatch(addSpot(spot))
-        if (data.errors) {
-            setErrors(data.errors)
-        } else if (data) {
-            history.push(`/spots/${data.id}`)
-            setShowModal(false)
-        }
-    }
 
+        if(images.length > 0){
+            setImageLoading(true)
+            images.forEach(async(image,i) => {
+                const formData = new FormData()
+                formData.append('image',image);
+                formData.append('spot_id',spot.id )
 
-
-    const handleOnChange = (index, e) => {
-        const array = [...imageFields]
-        array[index][e.target.name] = e.target.value
-        setImageFields(array)
-    }
-
-    const handleAddUrl = () => {
-        if (imageFields.length >= 5) return
-        setImageFields([...imageFields, { image: "" }])
-    }
-
-    const handleRemoveUrl = (index) => {
-        if (imageFields.length <= 1) return setMaxImage("Must upload at least 1 Picture")
-        else {
-            const array = [...imageFields]
-            array.splice(index, 1)
-            setImageFields(array)
+                const res = await fetch ('/api/spots/images', {
+                    method: 'POST',
+                    body: formData
+                })
+                if (res.ok){
+                    await res.json();
+                    setImageLoading(false);
+                    await dispatch(getSpots())
+                    history.push(`/spots/${spot.id}`)
+                    setShowModal(false)
+                } else {
+                    setImageLoading(false);
+                    const errors = res.json()
+                    setErrors(errors.errors)
+                }
+            })
         }
     }
 
@@ -136,22 +128,8 @@ const CreateSpotForm = ({ setShowModal }) => {
     }
 
     const [images, setImages] = useState([])
+    console.log(images.length)
     const [imagesPreview, setImagesPreview] = useState([])
-
-    // useEffect(() => {
-    //     if (images) {
-    //         images.forEach((image) => {
-    //             const reader = new FileReader();
-    //             reader.readAsDataURL(image)
-    //             reader.onloadend = () => {
-    //                 const imagesPreviewArray = [...imagesPreview]
-    //                 imagesPreviewArray.push(reader.result)
-    //                 setImagesPreview(imagesPreviewArray)
-
-    //             }
-    //         })
-    //     }
-    // }, [images])
 
     const addImageFiles = (e) => {
         if (images.length >= 5) {
@@ -165,18 +143,13 @@ const CreateSpotForm = ({ setShowModal }) => {
     const onChangeImageFiles = (e) => {
         const file = e.target.files[0]
         if (file && file.type.substr(0, 5) === "image") {
-            const reader = new FileReader();
             const imageArray = [...images]
             const imagesPreviewArray = [...imagesPreview]
+            const imagePreview = URL.createObjectURL(file)
             imageArray.push(file)
+            imagesPreviewArray.push(imagePreview)
             setImages(imageArray)
-            reader.readAsDataURL(file)
-            reader.onloadend = () => {
-                imagesPreviewArray.push({image:reader.result})
-                
-                setImagesPreview(imagesPreviewArray)
-
-            }
+            setImagesPreview(imagesPreviewArray)
         }
         return
     }
@@ -185,11 +158,9 @@ const CreateSpotForm = ({ setShowModal }) => {
         console.log(e)
         console.log(index)
         const array = [...images]
-        // console.log(array[i])
         const arrayPreview = [...imagesPreview]
-        const slice = array.splice(index, 1)
+        array.splice(index, 1)
         arrayPreview.splice(index, 1)
-        // console.log(arrayPreview)
         setImages(array)
         setImagesPreview(arrayPreview)
     }
@@ -214,19 +185,6 @@ const CreateSpotForm = ({ setShowModal }) => {
                             height="100px">
                         </img>
                     </div>
-                ))}
-            </div>
-
-
-            <div className="spot-form-image-preview">
-                {imageFields?.map(({ image }, i) => (image.length !== 0 &&
-                    <img key={i}
-                        src={image}
-                        onError={(e) => e.target.src = "../../../../static/not-found.png"}
-                        alt="House"
-                        width="100px"
-                        height="100px">
-                    </img>
                 ))}
             </div>
 
@@ -381,7 +339,6 @@ const CreateSpotForm = ({ setShowModal }) => {
                             onKeyDown={handleExpress}
                         />
                     </div>
-                    {/* </div> */}
                 </div>
 
                 <div className="spot-form-amenities-select-input-container">
@@ -421,7 +378,6 @@ const CreateSpotForm = ({ setShowModal }) => {
                     <input
                         type="file"
                         style={{ display: 'none' }}
-                        // multiple
                         ref={imageInputRef}
                         onChange={onChangeImageFiles}
                         accept="image/*"
@@ -430,32 +386,13 @@ const CreateSpotForm = ({ setShowModal }) => {
                 </div>
 
                 <div className="spot-form-image-container">
-
                     {maxImage && <p className="spot-form-max">{maxImage}</p>}
-                    {imageFields.map((imageField, index) => (
-                        <div className="spot-form-inner-image-field" key={index}>
-                            <label className="error-spot-form-label">Image URL</label>
-                            <div className="spot-form-field-button-container">
-                                <input
-                                    className='spot-form-image-field'
-                                    name="image" type="text"
-                                    placeholder="Image URL"
-                                    value={imageField.image}
-                                    onChange={e => handleOnChange(index, e)}
-                                >
-
-                                </input>
-                                <span className="spot-form-remove-image" onClick={(e) => handleRemoveUrl(index, e)}>
-                                    <i className="fa-solid fa-minus"></i>
-                                </span>
-                            </div>
-                        </div>
-                    ))}
                 </div>
+
+                {imageLoading && <h1>Images are loading please wait</h1>}
 
                 <div className="spot-form-button-container">
                     <button className="spot-form-button" type='button' onClick={addImageFiles}>Add Images</button>
-                    {/* <button className="spot-form-button" type='button' onClick={handleAddUrl}>Add Images</button> */}
                     <button className="spot-form-button" type="submit">
                         Add a Spot
                     </button >
