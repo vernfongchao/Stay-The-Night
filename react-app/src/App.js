@@ -13,6 +13,7 @@ import ProfileNavigation from './components/Profiles/NavBar';
 import MyBookings from './components/Profiles/MyBookings/MyBookings';
 import MyProfile from './components/Profiles/MyProfile/MyProfile';
 import MyFavorites from './components/Profiles/MyFavorites/MyFavorites';
+import CreateSpotForm from './components/Spots/CreateSpotModal/CreateSpotForm';
 import { authenticate } from './store/session';
 import { getSpots } from './store/spot'
 import { getReviews } from './store/review';
@@ -64,8 +65,12 @@ function App() {
           <Route exact path='/spots'>
             <SpotsPage />
           </Route>
-          <Route path='/spots/:id'>
+          <Route exact path='/spots/:id'>
             <SpotsDetailsPage />
+          </Route>
+          <Route exact path='/spots/add/new'>
+            <ProfileNavigation />
+            <CreateSpotForm />
           </Route>
           <Route exact path='/profiles/:id' >
             <ProfileNavigation />

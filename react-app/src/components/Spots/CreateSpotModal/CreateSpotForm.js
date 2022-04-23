@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom"
 import { addSpot } from "../../../store/spot"
 import { useLocations } from "../../../context/Location";
 import Multiselect from 'multiselect-react-dropdown';
+import * as AiIcons from 'react-icons/ai'
 
 import { getSpot } from "../../../store/spot";
 
@@ -123,7 +124,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                 }
             })
         }
-        
+
     }
 
     const handleExpress = (e) => {
@@ -169,237 +170,243 @@ const CreateSpotForm = ({ setShowModal }) => {
 
 
     return (
-        <div className="spot-form-page">
-            <div className='login-form-header-container'>
-                <h1 className='login-form-header-text'> Host a Spot!</h1>
-            </div>
-            <div className="spot-form-image-preview">
-                {imagesPreview?.map((image, index) => (image.length !== 0 &&
-                    <div key={index} >
-                        <button onClick={(e) => removeImage(e, index)}>
-                            x
-                        </button>
-                        <img
-                            src={image}
-                            onError={(e) => e.target.src = "../../../../static/not-found.png"}
-                            alt="House"
-                            width="100px"
-                            height="100px">
-                        </img>
+        <div className="spot-form-page-container">
+            <div className="spot-form-page">
+                <div className='spot-form-header-container'>
+                    <h1 className='login-form-header-text'> Host a Spot!</h1>
+                </div>
+                <div className="spot-form-image-preview">
+                    {imagesPreview?.map((image, index) => (image.length !== 0 &&
+                        <div key={index} className='spot-form-each-image-container' >
+                            <img
+                                src={image}
+                                onError={(e) => e.target.src = "../../../../static/not-found.png"}
+                                alt="House"
+                                width="150px"
+                                height="150px">
+                            </img>
+                            <div className="spot-form-image-remove-preview-container">
+                                <div className="spot-form-image-remove-preview-position">
+                                    <AiIcons.AiFillCloseSquare onClick={(e) => removeImage(e, index)} className='spot-form-image-remove-button' />
+                                </div>
+
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {errors && (<div className="spot-error-form-container">
+                    {errors?.map((error, ind) => (
+                        <p className='error-message' key={ind}>{error}</p>
+                    ))}
+                </div>)}
+
+                <form className="spot-form-container" onSubmit={handleSubmit}>
+                    <p className="spot-form-max">{maxName}</p>
+                    <div className="spot-form-field-container">
+
+                        <label className="spot-form-label" for="name">Name</label>
+                        <input className='spot-form-field'
+                            type="text"
+                            label="Name"
+                            placeholder="Name"
+                            name="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            maxLength="100"
+                        />
                     </div>
-                ))}
-            </div>
 
-            {errors && (<div className="spot-error-form-container">
-                {errors?.map((error, ind) => (
-                    <p className='error-message' key={ind}>{error}</p>
-                ))}
-            </div>)}
+                    <p className="spot-form-max">{maxDescription}</p>
 
-            <form className="spot-form-container" onSubmit={handleSubmit}>
-                <p className="spot-form-max">{maxName}</p>
-                <div className="spot-form-field-container">
+                    <div className="spot-form-field-container">
+                        <label className="error-spot-form-label" for="state">Description</label>
+                        <textarea className="spot-form-field-textarea"
+                            name='description'
+                            value={description}
+                            placeholder="Give a description..."
+                            row="40"
+                            column="50"
+                            onChange={(e) => setDescription(e.target.value)}
+                            maxLength="1000"
+                        />
+                    </div>
+                    <p className="spot-form-max">{maxAddress}</p>
 
-                    <label className="spot-form-label" for="name">Name</label>
-                    <input className='spot-form-field'
-                        type="text"
-                        label="Name"
-                        placeholder="Name"
-                        name="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        maxLength="100"
-                    />
-                </div>
-
-                <p className="spot-form-max">{maxDescription}</p>
-
-                <div className="spot-form-field-container">
-                    <label className="error-spot-form-label" for="state">Description</label>
-                    <textarea className="spot-form-field-textarea"
-                        name='description'
-                        value={description}
-                        placeholder="Give a description..."
-                        row="40"
-                        column="50"
-                        onChange={(e) => setDescription(e.target.value)}
-                        maxLength="1000"
-                    />
-                </div>
-                <p className="spot-form-max">{maxAddress}</p>
-
-                <div className="spot-form-field-container">
-                    <label className="error-spot-form-label" for="address">Address</label>
-                    <input className='spot-form-field'
-                        type="text"
-                        label="Address"
-                        value={address}
-                        placeholder="Address"
-                        name="address"
-                        onChange={(e) => setAddress(e.target.value)}
-                        maxLength="50"
-                    />
-                </div>
+                    <div className="spot-form-field-container">
+                        <label className="error-spot-form-label" for="address">Address</label>
+                        <input className='spot-form-field'
+                            type="text"
+                            label="Address"
+                            value={address}
+                            placeholder="Address"
+                            name="address"
+                            onChange={(e) => setAddress(e.target.value)}
+                            maxLength="50"
+                        />
+                    </div>
 
 
-                <div className="spot-form-select-field-container">
+                    <div className="spot-form-select-field-container">
+                        <div>
+                            <p className="spot-form-max">{maxCity}</p>
+                        </div>
+                        <div className="spot-form-select-field-input-container">
+                            <div className="spot-form-select-field-city-container">
+                                <label className="spot-form-select-field-city-label" for="city">City</label>
+                                <div className="spot-form-select-field-city-input-container">
+                                    <input className='spot-form-select-input-field'
+                                        type="text"
+                                        label="City"
+                                        value={city}
+                                        placeholder="City"
+                                        name="city"
+                                        onChange={(e) => setCity(e.target.value)}
+                                        maxLength="20"
+                                    />
+                                </div>
+                            </div>
+
+
+                            <div className="spot-form-select-field-city-container">
+                                <label className="error-spot-form-label" for="state">State</label>
+                                <div className="spot-form-select-field-city-input-container">
+                                    <select className="spot-form-select-field-state" value={state} onChange={(e) => setState(e.target.value)}>
+                                        <option value="">Select a State</option>
+                                        {states?.map(({ name }, i) => (
+                                            <option key={i} value={name}>{name}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="spot-form-select-field-city-container">
+                                <label className="error-spot-form-label" for="state">Country</label>
+                                <div className="spot-form-select-field-city-input-container">
+                                    <select className="spot-form-select-field-state" value={country} onChange={(e) => setCountry(e.target.value)}>
+                                        <option value="">Select a Country</option>
+                                        {countries?.map(({ name }, i) => (
+                                            <option key={i} value={name}>{name}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="spot-form-integer-field-container">
+
+                        <label className="error-spot-form-label" for="state">Price</label>
+                        <div className="spot-form-select-field-city-input-container">
+                            <input className='spot-form-integer-field-input'
+                                type="number"
+                                label="Price"
+                                value={price}
+                                placeholder="Price"
+                                name="price"
+                                onChange={(e) => setPrice(e.target.value)}
+                                onKeyDown={handleExpress}
+                            />
+                        </div>
+
+                        <label className="error-spot-form-label" for="state">Guests</label>
+                        <div className="spot-form-select-field-city-input-container">
+                            <input className='spot-form-integer-field-input'
+                                type="number"
+                                label="Guest"
+                                value={guest}
+                                placeholder="Guests"
+                                name="guest"
+                                onChange={(e) => setGuest(e.target.value)}
+                                onKeyDown={handleExpress}
+                            />
+                        </div>
+                        <label className="error-spot-form-label" for="state">Bedrooms</label>
+                        <div className="spot-form-select-field-city-input-container">
+                            <input className='spot-form-integer-field-input'
+                                type="number"
+                                label="Bedroom"
+                                value={bedroom}
+                                placeholder="Bedrooms"
+                                name="bedroom"
+                                onChange={(e) => setBedroom(e.target.value)}
+                                onKeyDown={handleExpress}
+                            />
+                        </div>
+
+                        <label className="error-spot-form-label" for="state">Bathrooms</label>
+                        <div className="spot-form-select-field-city-input-container">
+                            <input className='spot-form-integer-field-input'
+                                type="number"
+                                label="Bathroom"
+                                value={bathroom}
+                                placeholder="Bathrooms"
+                                name="bathroom"
+                                onChange={(e) => setBathroom(e.target.value)}
+                                onKeyDown={handleExpress}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="spot-form-amenities-select-input-container">
+                        <label className="error-spot-form-label" for="state">Amenities</label>
+                        <Multiselect
+                            displayValue="label"
+                            onKeyPressFn={function noRefCheck() { }}
+                            onRemove={(e) => setAmenitiesSelected(e)}
+                            onSearch={function noRefCheck() { }}
+                            onSelect={(e) => setAmenitiesSelected(e)}
+                            placeholder="Amenities"
+                            options={amenities}
+                            style={{
+                                inputField: {},
+                                optionContainer: {},
+                                option: {},
+                                groupHeading: {},
+                                chips: {
+                                    background: 'rgb(250, 147, 164)'
+                                },
+                                multiselectContainer: {
+                                    color: 'red'
+                                },
+                                searchBox: {
+                                    border: 'none',
+                                    borderRadius: "0px",
+                                    width: "850px",
+                                    minHeight: " 35px",
+                                    borderBottom: '1px solid black',
+                                    // borderRadius: '10px'
+                                }
+                            }}
+                        />
+                    </div>
+
                     <div>
-                        <p className="spot-form-max">{maxCity}</p>
-                    </div>
-                    <div className="spot-form-select-field-input-container">
-                        <div className="spot-form-select-field-city-container">
-                            <label className="spot-form-select-field-city-label" for="city">City</label>
-                            <div className="spot-form-select-field-city-input-container">
-                                <input className='spot-form-select-input-field'
-                                    type="text"
-                                    label="City"
-                                    value={city}
-                                    placeholder="City"
-                                    name="city"
-                                    onChange={(e) => setCity(e.target.value)}
-                                    maxLength="20"
-                                />
-                            </div>
-                        </div>
+                        <input
+                            type="file"
+                            style={{ display: 'none' }}
+                            ref={imageInputRef}
+                            onChange={onChangeImageFiles}
+                            accept="image/*"
 
-
-                        <div className="spot-form-select-field-city-container">
-                            <label className="error-spot-form-label" for="state">State</label>
-                            <div className="spot-form-select-field-city-input-container">
-                                <select className="spot-form-select-field-state" value={state} onChange={(e) => setState(e.target.value)}>
-                                    <option value="">Select a State</option>
-                                    {states?.map(({ name }, i) => (
-                                        <option key={i} value={name}>{name}</option>
-                                    ))}
-                                </select>
-                            </div>
-                        </div>
-                        <div className="spot-form-select-field-city-container">
-                            <label className="error-spot-form-label" for="state">Country</label>
-                            <div className="spot-form-select-field-city-input-container">
-                                <select className="spot-form-select-field-state" value={country} onChange={(e) => setCountry(e.target.value)}>
-                                    <option value="">Select a Country</option>
-                                    {countries?.map(({ name }, i) => (
-                                        <option key={i} value={name}>{name}</option>
-                                    ))}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className="spot-form-integer-field-container">
-
-                    <label className="error-spot-form-label" for="state">Price</label>
-                    <div className="spot-form-select-field-city-input-container">
-                        <input className='spot-form-integer-field-input'
-                            type="number"
-                            label="Price"
-                            value={price}
-                            placeholder="Price"
-                            name="price"
-                            onChange={(e) => setPrice(e.target.value)}
-                            onKeyDown={handleExpress}
                         />
                     </div>
 
-                    <label className="error-spot-form-label" for="state">Guests</label>
-                    <div className="spot-form-select-field-city-input-container">
-                        <input className='spot-form-integer-field-input'
-                            type="number"
-                            label="Guest"
-                            value={guest}
-                            placeholder="Guests"
-                            name="guest"
-                            onChange={(e) => setGuest(e.target.value)}
-                            onKeyDown={handleExpress}
-                        />
-                    </div>
-                    <label className="error-spot-form-label" for="state">Bedrooms</label>
-                    <div className="spot-form-select-field-city-input-container">
-                        <input className='spot-form-integer-field-input'
-                            type="number"
-                            label="Bedroom"
-                            value={bedroom}
-                            placeholder="Bedrooms"
-                            name="bedroom"
-                            onChange={(e) => setBedroom(e.target.value)}
-                            onKeyDown={handleExpress}
-                        />
+                    <div className="spot-form-image-container">
+                        {maxImage && <p className="spot-form-max">{maxImage}</p>}
                     </div>
 
-                    <label className="error-spot-form-label" for="state">Bathrooms</label>
-                    <div className="spot-form-select-field-city-input-container">
-                        <input className='spot-form-integer-field-input'
-                            type="number"
-                            label="Bathroom"
-                            value={bathroom}
-                            placeholder="Bathrooms"
-                            name="bathroom"
-                            onChange={(e) => setBathroom(e.target.value)}
-                            onKeyDown={handleExpress}
-                        />
+                    {imageLoading && <h5>Images are loading please wait</h5>}
+
+                    <div className="spot-form-button-container">
+                        <button className="spot-form-button" type='button' onClick={addImageFiles}>Add Images</button>
+                        <button className="spot-form-button" type="submit">
+                            Add a Spot
+                        </button >
                     </div>
-                </div>
+                </form >
 
-                <div className="spot-form-amenities-select-input-container">
-                    <label className="error-spot-form-label" for="state">Amenities</label>
-                    <Multiselect
-                        displayValue="label"
-                        onKeyPressFn={function noRefCheck() { }}
-                        onRemove={(e) => setAmenitiesSelected(e)}
-                        onSearch={function noRefCheck() { }}
-                        onSelect={(e) => setAmenitiesSelected(e)}
-                        placeholder="Amenities"
-                        options={amenities}
-                        style={{
-                            inputField: {},
-                            optionContainer: {},
-                            option: {},
-                            groupHeading: {},
-                            chips: {
-                                background: 'rgb(250, 147, 164)'
-                            },
-                            multiselectContainer: {
-                                color: 'red'
-                            },
-                            searchBox: {
-                                border: 'none',
-                                borderRadius: "0px",
-                                minWidth: "703px",
-                                minHeight: " 35px",
-                                borderBottom: '1px solid black',
-                                // borderRadius: '10px'
-                            }
-                        }}
-                    />
-                </div>
-
-                <div>
-                    <input
-                        type="file"
-                        style={{ display: 'none' }}
-                        ref={imageInputRef}
-                        onChange={onChangeImageFiles}
-                        accept="image/*"
-
-                    />
-                </div>
-
-                <div className="spot-form-image-container">
-                    {maxImage && <p className="spot-form-max">{maxImage}</p>}
-                </div>
-
-                {imageLoading && <h5>Images are loading please wait</h5>}
-
-                <div className="spot-form-button-container">
-                    <button className="spot-form-button" type='button' onClick={addImageFiles}>Add Images</button>
-                    <button className="spot-form-button" type="submit">
-                        Add a Spot
-                    </button >
-                </div>
-            </form >
+            </div>
         </div >
     )
 }
