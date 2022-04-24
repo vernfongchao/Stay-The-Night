@@ -189,7 +189,6 @@ const CreateSpotForm = ({ setShowModal }) => {
                                 <div className="spot-form-image-remove-preview-position">
                                     <AiIcons.AiFillCloseSquare onClick={(e) => removeImage(e, index)} className='spot-form-image-remove-button' />
                                 </div>
-
                             </div>
                         </div>
                     ))}
@@ -396,7 +395,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                         {maxImage && <p className="spot-form-max">{maxImage}</p>}
                     </div>
 
-                    {imageLoading && <h5>Images are loading please wait</h5>}
+                    {imageLoading && <h4>Images are loading please wait</h4>}
 
                     <div className="spot-form-button-container">
                         <button className="spot-form-button" type='button' onClick={addImageFiles}>Add Images</button>

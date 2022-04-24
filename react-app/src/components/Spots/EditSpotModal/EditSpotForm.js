@@ -5,8 +5,9 @@ import { useEditDeleteModal } from "../EditDeleteSpotModal"
 import { editSpot } from "../../../store/spot"
 import { getSpot } from "../../../store/spot"
 import { useLocations } from "../../../context/Location";
-import Multiselect from 'multiselect-react-dropdown';
 
+import Multiselect from 'multiselect-react-dropdown';
+import * as AiIcons from 'react-icons/ai'
 import './EditSpotForm.css'
 
 const EditSpotForm = ({ setShowModal }) => {
@@ -239,16 +240,18 @@ const EditSpotForm = ({ setShowModal }) => {
 
                 {imagesPreview?.map((image, index) => (image.length !== 0 &&
                     <div key={index} >
-                        <button onClick={(e) => removeImage(e, index)}>
-                            x
-                        </button>
                         <img
                             src={image?.image || image}
                             onError={(e) => e.target.src = "../../../../static/not-found.png"}
                             alt="House"
-                            width="100px"
-                            height="100px">
+                            width="125px"
+                            height="125px">
                         </img>
+                        <div className="spot-form-image-remove-preview-container">
+                            <div className="spot-edit-image-remove-preview-position">
+                                <AiIcons.AiFillCloseSquare onClick={(e) => removeImage(e, index)} className='spot-form-image-remove-button' />
+                            </div>
+                        </div>
                     </div>
                 ))}
 
@@ -456,7 +459,7 @@ const EditSpotForm = ({ setShowModal }) => {
                     <p className="error-spot-form-max">{maxImage}</p>
                 </div>
 
-                {imageLoading && <h5>Images are loading please wait</h5>}
+                {imageLoading && <h4>Images are loading please wait</h4>}
 
                 <div className="spot-form-button-container">
                     <button className="spot-form-button" type='button' onClick={addImageFiles}>Add Images</button>

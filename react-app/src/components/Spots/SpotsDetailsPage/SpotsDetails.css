@@ -81,28 +81,28 @@
 }
 .details-page-image-1 {
   grid-area: b;
-  /* aspect-ratio: 1.06 / 1; */
+  aspect-ratio: 1 / 1;
   height: 100%;
   width: 100%;
 }
 
 .details-page-image-2 {
   grid-area: c;
-  /* aspect-ratio: 1.06 / 1; */
+  aspect-ratio: 1 / 1;
   height: 100%;
   width: 100%;
 }
 
 .details-page-image-3 {
   grid-area: d;
-  /* aspect-ratio: 1.06 / 1; */
+  aspect-ratio: 1 / 1;
   height: 100%;
   width: 100%;
 }
 
 .details-page-image-4 {
   grid-area: e;
-  /* aspect-ratio: 1.06 / 1; */
+  aspect-ratio: 1 / 1;
   height: 100%;
   width: 100%;
 }

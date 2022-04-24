@@ -22,14 +22,15 @@
   flex-direction: column;
   justify-content: space-between; */
   border-radius: 10px;
-  min-height: 650px;
+  min-height: 550px;
   width: 900px;
 }
 
-/* .spot-form-image-preview {
-  display: flex;
-  justify-content: center;
-} */
+.spot-edit-image-remove-preview-position{
+    position: relative;
+    bottom: 125px;
+    left: 95px;
+}
 
 .spot-edit-form-container {
   display: flex;
