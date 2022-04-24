@@ -43,6 +43,7 @@ const CreateSpotForm = ({ setShowModal }) => {
 
     const [maxImage, setMaxImage] = useState("");
 
+    console.log(images)
 
     useEffect(() => {
         if (images.length > 0 && images.length <= 4) {
@@ -384,7 +385,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                             style={{ display: 'none' }}
                             ref={imageInputRef}
                             onChange={onChangeImageFiles}
-                            accept="image/*"
+                            accept=".jpeg, .jpg, .gif , .png"
 
                         />
                     </div>

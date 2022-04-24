@@ -1,14 +1,15 @@
-import React, { useState } from "react"
-import { Modal } from '../../../context/Modal'
-import CreateSpotForm from "./CreateSpotForm"
+import React from "react"
+// import { Modal } from '../../../context/Modal'
+// import CreateSpotForm from "./CreateSpotForm"
 import { Link } from "react-router-dom"
 
 const CreateSpotModal = () => {
-    const [showModal, setShowModal] = useState(false)
+    // const [showModal, setShowModal] = useState(false)
+    // onClick = {() => setShowModal(true)
 
     return (
         <div className="create-spot-modal-container"  >
-            <button className="create-spot-button" onClick={() => setShowModal(true)} >
+            <button className="create-spot-button" >
                 <Link to='/spots/add/new' className="create-spot-button-text">
                     <span >
                         Add a Spot!

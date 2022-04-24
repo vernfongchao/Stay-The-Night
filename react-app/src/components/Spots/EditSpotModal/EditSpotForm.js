@@ -172,6 +172,8 @@ const EditSpotForm = ({ setShowModal }) => {
                     setEditDeleteModal(false)
                 } else {
                     setImageLoading(false);
+                    setShowModal(true)
+                    setEditDeleteModal(true)
                     const errors = res.json()
                     setErrors(errors.errors)
                 }
@@ -447,7 +449,7 @@ const EditSpotForm = ({ setShowModal }) => {
                         style={{ display: 'none' }}
                         ref={imageInputRef}
                         onChange={onChangeImageFiles}
-                        accept="image/*"
+                        accept=".jpeg, .jpg, .gif , .png"
 
                     />
                 </div>
