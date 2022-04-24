@@ -45,8 +45,7 @@ const EditSpotForm = ({ setShowModal }) => {
     const [imagesToDelete, setImagesToDelete] = useState([]);
 
 
-
-    const [amenitiesSelected, setAmenitiesSelected] = useState([])
+    const [amenitiesSelected, setAmenitiesSelected] = useState(spot.amenities)
 
 
     const [maxImage, setMaxImage] = useState("");

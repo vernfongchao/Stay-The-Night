@@ -39,9 +39,7 @@ const CreateSpotForm = ({ setShowModal }) => {
 
     const [imageLoading, setImageLoading] = useState(false)
 
-
     const [amenitiesSelected, setAmenitiesSelected] = useState([])
-
 
     const [maxImage, setMaxImage] = useState("");
 
