@@ -177,10 +177,6 @@ const EditSpotForm = ({ setShowModal }) => {
                 }
             })
         }
-        if (!edit_spot.errors){
-            setShowModal(false)
-            setEditDeleteModal(false)
-        }
     }
 
 
