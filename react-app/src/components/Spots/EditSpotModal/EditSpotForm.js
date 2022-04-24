@@ -169,6 +169,8 @@ const EditSpotForm = ({ setShowModal }) => {
                     await res.json();
                     await dispatch(getSpot(spot.id))
                     setImageLoading(false);
+                    setShowModal(false)
+                    setEditDeleteModal(false)
                 } else {
                     setImageLoading(false);
                     const errors = res.json()

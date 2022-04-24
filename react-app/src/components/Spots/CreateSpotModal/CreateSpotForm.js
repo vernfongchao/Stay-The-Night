@@ -116,7 +116,7 @@ const CreateSpotForm = ({ setShowModal }) => {
                     setImageLoading(false);
                     await dispatch(getSpot(spot.id))
                     history.push(`/spots/${spot.id}`)
-                    setShowModal(false)
+                    // setShowModal(false)
                 } else {
                     setImageLoading(false);
                     const errors = res.json()
