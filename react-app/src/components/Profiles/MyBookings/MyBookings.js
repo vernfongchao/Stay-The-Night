@@ -18,7 +18,7 @@ const MyBookings = () => {
 
 
     const pastBookings = bookings?.filter(({ start_date }) => moment(start_date).add('days', 1) < moment().utcOffset(-7)).sort((a, b) => moment(b.end_date).valueOf() - moment(a.end_date).valueOf())
-    const futureBookings = bookings?.filter(({ start_date }) => moment(start_date).add('days', 1) > moment().utcOffset(-7)).sort((a, b) => moment(a.start_date).valueOf() > moment(b.start_date).valueOf())
+    const futureBookings = bookings?.filter(({ start_date }) => moment(start_date).add('days', 1) > moment().utcOffset(-7)).sort((a, b) => moment(a.start_date).valueOf() - moment(b.start_date).valueOf())
 
     if (user?.id !== +id) {
         history.push('/403-Unauthorized')
