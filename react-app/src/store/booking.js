@@ -33,6 +33,8 @@ const removeBooking = booking => (
 //     return response
 // }
 
+
+
 export const getUserBookings = (id) => async dispatch => {
     const response = await fetch(`/api/bookings/users/${id}`)
     if (response.ok) {
