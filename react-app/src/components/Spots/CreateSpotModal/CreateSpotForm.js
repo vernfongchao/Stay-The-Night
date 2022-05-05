@@ -43,7 +43,6 @@ const CreateSpotForm = ({ setShowModal }) => {
 
     const [maxImage, setMaxImage] = useState("");
 
-    console.log(images)
 
     useEffect(() => {
         if (images.length > 0 && images.length <= 4) {
