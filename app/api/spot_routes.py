@@ -39,7 +39,7 @@ def get_spot(id):
 @spot_routes.route('/images', methods=["POST"])
 @login_required
 def post_images():
-
+    print('heyyy')
     if "image" not in request.files:
         return {"errors": ["image required"]}, 400
 
@@ -91,7 +91,6 @@ def post_spot():
     data = request.get_json()
 
     if form.validate_on_submit():
-        print("===============================================",len(data['images']) < 1)
         if len(data['images']) < 1:
             return {'errors': ['Please upload at least 1 Image']}, 400
 
@@ -139,7 +138,6 @@ def edit_spot(id):
 
         db.session.commit()
 
-        print(data)
 
         amenity = Amenity.query.get(data["amenities_id"])
         for amen in data["amenities"]:

@@ -125,7 +125,7 @@ const EditSpotForm = ({ setShowModal }) => {
             bathroom,
             amenities_id: spot.amenities_id,
             amenities: newAmenities,
-            images,
+            images: imagesPreview,
         }))
         if (edit_spot.errors) {
             setErrors(edit_spot.errors)
@@ -149,17 +149,12 @@ const EditSpotForm = ({ setShowModal }) => {
             }
         })
 
-
         if (images.length > 0) {
             setImageLoading(true)
             images.forEach(async (image, i) => {
-                if (image.id) {
-                    return
-                }
                 const formData = new FormData()
                 formData.append('image', image);
                 formData.append('spot_id', spot.id)
-
                 const res = await fetch('/api/spots/images', {
                     method: 'POST',
                     body: formData
@@ -170,14 +165,20 @@ const EditSpotForm = ({ setShowModal }) => {
                     setImageLoading(false);
                     setShowModal(false)
                     setEditDeleteModal(false)
-                } else {
+                } 
+                else {
                     setImageLoading(false);
-                    setShowModal(true)
-                    setEditDeleteModal(true)
+                    setShowModal(false)
+                    setEditDeleteModal(false)
                     const errors = res.json()
                     setErrors(errors.errors)
                 }
             })
+        }
+        if(images.length === 0){
+            setImageLoading(false);
+            setShowModal(false)
+            setEditDeleteModal(false)
         }
     }
 
