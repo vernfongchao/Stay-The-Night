@@ -168,8 +168,8 @@ const EditSpotForm = ({ setShowModal }) => {
                 } 
                 else {
                     setImageLoading(false);
-                    setShowModal(false)
-                    setEditDeleteModal(false)
+                    setShowModal(true)
+                    setEditDeleteModal(true)
                     const errors = res.json()
                     setErrors(errors.errors)
                 }
