@@ -70,5 +70,4 @@ const ProfileNavigation = () => {
 
 
 
-
 export default ProfileNavigation
