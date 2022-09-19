@@ -22,6 +22,7 @@ import { getUserBookings } from './store/booking';
 import { getUserFavorites } from './store/favorite';
 
 import { AnimatePresence } from 'framer-motion/dist/framer-motion'
+import GoogleMapComponent from './components/GoogleMap/GoogleMap';
 
 
 
@@ -87,6 +88,9 @@ function App() {
           <Route exact path='/profiles/:id/favorites'>
             <ProfileNavigation />
             <MyFavorites />
+          </Route>
+          <Route path= '/google-map'>
+            <GoogleMapComponent/>
           </Route>
           <Route path='/403-Unauthorized' >
             <ErrorPage403 />

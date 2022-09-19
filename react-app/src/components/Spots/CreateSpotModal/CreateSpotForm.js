@@ -12,6 +12,8 @@ import './CreateSpot.css'
 
 
 const CreateSpotForm = ({ setShowModal }) => {
+
+
     const { countries, states, amenities } = useLocations()
     const imageInputRef = useRef()
 
@@ -165,7 +167,6 @@ const CreateSpotForm = ({ setShowModal }) => {
         setImages(array)
         setImagesPreview(arrayPreview)
     }
-
 
     return (
         <div className="spot-form-page-container">

@@ -8,8 +8,7 @@ const LandingPage = () => {
     const history = useHistory()
 
     return (
-        <div className="landing-page-container"
-            >
+        <div className="landing-page-container">
             <Carousel />
             <div className="flexible-container">
                 <h1 className="flexible-container-header">
