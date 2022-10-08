@@ -71,13 +71,11 @@ The Most difficult challenge was finishing the Update feature for spots. The dif
 - Users can see their own listings of spots but not others.
 - Users can become a Host
 - Spots refractored to only allow Hosts to post a Spot.
+- Setup AWS to allow users to upload and delete images off of their spots.
 
 ### Future Features
 
 - Users can search for a spot by name,city,state and price,
-- Users can favorite a spot.
-- Setup AWS to allow users to upload and delete images off of their spots.
-- Users can favorite their spot.
 
 ## Technologies Used
 
@@ -87,6 +85,7 @@ The Most difficult challenge was finishing the Update feature for spots. The dif
 - Heroku
 - Docker
 - PostgreSQL
+- AWS
 
 ## Local Installation
 
