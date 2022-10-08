@@ -132,7 +132,7 @@ The Most difficult challenge was finishing the Update feature for spots. The dif
    SECRET_KEY=Thisistotallynotawellkeptsecretkey,makesureyouchangeit
    ```
    
-   -Go setup your AWS account and bucket
+   -Go setup your AWS account and bucket (Please follow this [guide](https://github.com/jamesurobertson/aws-s3-pern-demo#create-your-aws-user-and-bucket) for setup)
    ``` bash
    S3_BUCKET='bucket name'
    S3_KEY='AWS User Key'
