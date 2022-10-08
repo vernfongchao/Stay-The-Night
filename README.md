@@ -131,6 +131,13 @@ The Most difficult challenge was finishing the Update feature for spots. The dif
    ```bash
    SECRET_KEY=Thisistotallynotawellkeptsecretkey,makesureyouchangeit
    ```
+   
+   -Go setup your AWS account and bucket
+   ``` bash
+   S3_BUCKET='bucket name'
+   S3_KEY='AWS User Key'
+   S3_SECRET='Any secret key of your choosing'
+   ```
 
 7. Flask backend, Migrate, Upgrade, and Seed! In the root directory run
 
