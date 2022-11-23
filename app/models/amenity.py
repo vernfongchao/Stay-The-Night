@@ -1,10 +1,13 @@
-from app.models.db import db
+from app.models.db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 class Amenity(db.Model):
     __tablename__ = 'amenities'
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
-    spot_id = db.Column(db.Integer, db.ForeignKey("spots.id"), nullable=False)
+    spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("spots.id")), nullable=False)
     parking = db.Column(db.Boolean, default=False, nullable=False)
     kitchen = db.Column(db.Boolean, default=False, nullable=False)
     pool = db.Column(db.Boolean, default=False, nullable=False)

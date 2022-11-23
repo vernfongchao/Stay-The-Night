@@ -1,12 +1,13 @@
-from app.models.db import db
-
+from app.models.db import db,environment, SCHEMA, add_prefix_for_prod
 
 class Booking(db.Model):
     __tablename__ = 'bookings'
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    spot_id = db.Column(db.Integer, db.ForeignKey("spots.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("spots.id")), nullable=False)
     start_date = db.Column(db.DateTime, nullable=False)
     end_date = db.Column(db.DateTime, nullable=False)
     guests = db.Column(db.Integer, nullable=False)
