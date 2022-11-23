@@ -71,13 +71,11 @@ The Most difficult challenge was finishing the Update feature for spots. The dif
 - Users can see their own listings of spots but not others.
 - Users can become a Host
 - Spots refractored to only allow Hosts to post a Spot.
+- Setup AWS to allow users to upload and delete images off of their spots.
 
 ### Future Features
 
 - Users can search for a spot by name,city,state and price,
-- Users can favorite a spot.
-- Setup AWS to allow users to upload and delete images off of their spots.
-- Users can favorite their spot.
 
 ## Technologies Used
 
@@ -87,6 +85,7 @@ The Most difficult challenge was finishing the Update feature for spots. The dif
 - Heroku
 - Docker
 - PostgreSQL
+- AWS
 
 ## Local Installation
 
@@ -131,6 +130,13 @@ The Most difficult challenge was finishing the Update feature for spots. The dif
 
    ```bash
    SECRET_KEY=Thisistotallynotawellkeptsecretkey,makesureyouchangeit
+   ```
+   
+   -Go setup your AWS account and bucket (Please follow this [guide](https://github.com/jamesurobertson/aws-s3-pern-demo#create-your-aws-user-and-bucket) for setup)
+   ``` bash
+   S3_BUCKET='bucket name'
+   S3_KEY='AWS User Key'
+   S3_SECRET='Any secret key of your choosing'
    ```
 
 7. Flask backend, Migrate, Upgrade, and Seed! In the root directory run
