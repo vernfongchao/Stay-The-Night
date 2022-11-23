@@ -1,5 +1,4 @@
-from app.models.db import db,environment, SCHEMA, add_prefix_for_prod
-
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 class Booking(db.Model):
     __tablename__ = 'bookings'
     if environment == "production":
