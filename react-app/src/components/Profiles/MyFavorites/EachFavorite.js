@@ -14,6 +14,7 @@ const EachFavorite = ({spot_id}) => {
     const user = useSelector(state => state.session.user)
     const spots = useSelector(state => state.spots)
     const [hover, setHover] = useState(false)
+    
     const handleImage = (e) => {
         e.target.src = "../../../../static/house1.jpg"
     }
