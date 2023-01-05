@@ -45,7 +45,7 @@ const MySpots = () => {
                             <Link to={`/spots/${spot.id}`} spot={spot} id={`image-spots-${spot.id}`}>
                                 <img
                                     className="my-each-spot-image"
-                                    src={spot.images[0].image}
+                                    src={spot?.images[0]?.image}
                                     alt={`spots #${spot.id}`}
                                     onError={handleImage}
                                 >
