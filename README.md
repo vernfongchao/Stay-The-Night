@@ -4,7 +4,7 @@ Stay-The-Night, an [Airbnb](https://www.airbnb.com/) influenced app, is a bookin
 
 ## Live Site
 
-A Live deployment of [Stay-The-Night](https://stay-the-night.herokuapp.com/) is hosted on [heroku](https://heroku.com)
+A Live deployment of [Stay-The-Night](https://stay-the-night.onrender.com/) is hosted on [render](https://render.com)
 
 ## Wiki
 
